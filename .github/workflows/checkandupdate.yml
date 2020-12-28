@@ -1,0 +1,52 @@
+# Checks for an update to the schema. If one exists, update our repo
+
+name: checkandupdate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  check:
+    - uses: actions/checkout@v2
+
+    - name: Setup Environment
+    run: npm install -g swagger2openapi |
+        npm install -g openapi-diff
+
+    - name: Download v1 Swagger 2.0 Definition
+    run: wget -O swagger_v1.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
+
+    - name: Download beta Swagger 2.0 Definition
+    run: wget -O swagger_beta.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=beta"
+
+    - name: Convert v1 Swagger 2.0 to OpenAPI 3.0 Definition
+    run: swagger2openapi -p -o openapi_v1.yaml swagger_v1.yaml
+
+    - name: Convert beta Swagger 2.0 to OpenAPI 3.0 Definition
+    run: swagger2openapi -p -o openapi_beta.yaml swagger_beta.yaml
+
+    - name: Check Diff
+    id: git-diff
+    uses: technote-space/get-diff-action
+    with:
+      SUFFIX_FILTER: .yaml, .yml, .json
+
+    - name: Commit Changes
+    if: steps.git-diff.outputs.diff
+    run: $branch="release-$(uuidgen)" \ 
+        git checkout -b $branch \
+        git add src/ \
+        git commit -m "updating openapi and swagger files" \
+        git push -u origin $branch
+
+    #- name: Create Pull Request
+    #if: steps.git-diff.outputs.diff
+    #uses: peter-evans/create-pull-request@v3
+    #with:
+    #  commit-message: "updating openapi and swagger files"
+    #  title: "Updating MSGraph's Swagger and OpenAPI Files"
