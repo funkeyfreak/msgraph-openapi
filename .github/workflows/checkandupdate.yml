@@ -40,7 +40,7 @@ jobs:
 
       - name: Commit Changes
         if: steps.git-diff.outputs.diff
-        run: $branch="release-$(uuidgen)" \ 
+        run: branch="release-$(uuidgen)" \ 
           git checkout -b $branch \
           git add src/ \
           git commit -m "updating openapi and swagger files" \
