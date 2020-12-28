@@ -36,7 +36,7 @@ jobs:
         uses: technote-space/get-diff-action@gh-actions
         with:
           PATTERNS: |
-            +(src)/**/(*.yaml|*.yml|*.json)
+            src/**/*.yaml
 
       - name: Commit Changes
         if: steps.git-diff.outputs.diff
