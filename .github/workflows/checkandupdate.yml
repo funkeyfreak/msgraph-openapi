@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Environment
-        run: npm install -g swagger2openapi
+        run: npm install
 
       - name: Download v1 Swagger 2.0 Definition
         run: wget -O swagger_v1.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
@@ -26,10 +26,10 @@ jobs:
         run: wget -O swagger_beta.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=beta"
 
       - name: Convert v1 Swagger 2.0 to OpenAPI 3.0 Definition
-        run: swagger2openapi -p -o openapi_v1.yaml swagger_v1.yaml
+        run: ./node_modules/.bin/swagger2openapi -p -o openapi_v1.yaml swagger_v1.yaml
 
       - name: Convert beta Swagger 2.0 to OpenAPI 3.0 Definition
-        run: swagger2openapi -p -o openapi_beta.yaml swagger_beta.yaml
+        run: ./node_modules/.bin/swagger2openapi -p -o openapi_beta.yaml swagger_beta.yaml
 
       - name: Check Diff
         id: git-diff
