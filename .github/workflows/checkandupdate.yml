@@ -20,23 +20,23 @@ jobs:
         run: npm install
 
       - name: Download v1 Swagger 2.0 Definition
-        run: wget -O swagger_v1.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
+        run: wget -O src/v1/swagger.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
 
       - name: Download beta Swagger 2.0 Definition
-        run: wget -O swagger_beta.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=beta"
+        run: wget -O src/beta/swagger.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=beta"
 
       - name: Convert v1 Swagger 2.0 to OpenAPI 3.0 Definition
-        run: ./node_modules/.bin/swagger2openapi -p -o openapi_v1.yaml swagger_v1.yaml
+        run: ./node_modules/.bin/swagger2openapi -p -o src/v1/openapi.yaml src/v1/swagger.yaml
 
       - name: Convert beta Swagger 2.0 to OpenAPI 3.0 Definition
-        run: ./node_modules/.bin/swagger2openapi -p -o openapi_beta.yaml swagger_beta.yaml
+        run: ./node_modules/.bin/swagger2openapi -p -o src/beta/openapi.yaml src/beta/swagger.yaml
 
       - name: Check Diff
         id: git-diff
         uses: technote-space/get-diff-action@gh-actions
         with:
           PATTERNS: |
-            +(src)/(*.yaml|*.yml|*.json)
+            +(src)/**/(*.yaml|*.yml|*.json)
 
       - name: Commit Changes
         if: steps.git-diff.outputs.diff
