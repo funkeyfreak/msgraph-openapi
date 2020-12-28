@@ -17,8 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Environment
-        run: npm install -g swagger2openapi \
-          npm install -g openapi-diff
+        run: npm install -g swagger2openapi
 
       - name: Download v1 Swagger 2.0 Definition
         run: wget -O swagger_v1.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
