@@ -35,7 +35,8 @@ jobs:
         id: git-diff
         uses: technote-space/get-diff-action@gh-actions
         with:
-          SUFFIX_FILTER: .yaml, .yml, .json
+          PATTERNS: |
+            +(src)/(*.yaml|*.yml|*.json)
 
       - name: Commit Changes
         if: steps.git-diff.outputs.diff
