@@ -38,7 +38,7 @@ jobs:
         id: git-diff
         run: |
           git diff --name-only src/**/*.yaml
-          echo ::set-output name=diff::"$(git diff --name-only src/**/*.yaml)"
+          echo "::set-output name=diff::$(git diff --name-only src/**/*.yaml)"
         #uses: technote-space/get-diff-action@gh-actions
         #with:
         #  PATTERNS: |
@@ -48,6 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: check
     steps:
+      - name: Verify Diff Variable
+        run: echo ${{ needs.check.git-diff.outputs.diff }}
       - name: Commit Changes
         if: needs.check.git-diff.outputs.diff
         run: |
