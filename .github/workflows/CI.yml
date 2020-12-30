@@ -62,16 +62,11 @@ jobs:
           echo "MADE IT HERE $bramch"
           echo $(git diff)
           git checkout -b $branch
+          echo "status"
+          git status
           echo "MADE IT HERE"
           git add ./src/**/*.yaml
           echo "MADE IT THERE"
           git commit -m "updating openapi and swagger files"
           echo "Almost Done"
           git push -u origin $branch
-
-    #- name: Create Pull Request
-    #if: steps.git-diff.outputs.diff
-    #uses: peter-evans/create-pull-request@v3
-    #with:
-    #  commit-message: "updating openapi and swagger files"
-    #  title: "Updating MSGraph's Swagger and OpenAPI Files"
