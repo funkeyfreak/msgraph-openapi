@@ -39,10 +39,6 @@ jobs:
         run: |
           git diff --name-only src/**/*.yaml
           echo "::set-output name=diff::$( git diff --name-only src/**/*.yaml )"
-        #uses: technote-space/get-diff-action@gh-actions
-        #with:
-        #  PATTERNS: |
-        #    src/**/*.yaml
 
   update:
     runs-on: ubuntu-latest
@@ -52,6 +48,18 @@ jobs:
 
       - name: Verify Diff Variable
         run: echo ${{ needs.check.outputs.diff }}
+
+      - name: Download v1 Swagger 2.0 Definition
+        run: wget -O src/v1/swagger.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=v1.0"
+
+      - name: Download beta Swagger 2.0 Definition
+        run: wget -O src/beta/swagger.yaml "https://graphslice.azurewebsites.net/openapi?operationIds=*&openApiVersion=2&graphVersion=beta"
+
+      - name: Convert v1 Swagger 2.0 to OpenAPI 3.0 Definition
+        run: ./node_modules/.bin/swagger2openapi -p -o src/v1/openapi.yaml src/v1/swagger.yaml
+
+      - name: Convert beta Swagger 2.0 to OpenAPI 3.0 Definition
+        run: ./node_modules/.bin/swagger2openapi -p -o src/beta/openapi.yaml src/beta/swagger.yaml
 
       - name: Commit Changes
         if: needs.check.outputs.diff
