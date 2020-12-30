@@ -37,13 +37,15 @@ jobs:
         with:
           PATTERNS: |
             src/**/*.yaml
-
+      
+      - name: DOES GIT WORK 
+        run: git --version
       - name: Commit Changes
         if: steps.git-diff.outputs.diff
-        run: branch="release-$(uuidgen)" &\ 
-          git checkout -b $branch &\
-          git add src/ &\
-          git commit -m "updating openapi and swagger files" &\
+        run: branch="release-$(uuidgen)" &&\ 
+          git checkout -b $branch &&\
+          git add src/ &&\
+          git commit -m "updating openapi and swagger files" &&\
           git push -u origin $branch
 
     #- name: Create Pull Request
