@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs: 
-      diff: false
+      diff: ${{ steps.git-diff.outputs.diff }}
     steps:
       - uses: actions/checkout@v2
 
@@ -38,7 +38,7 @@ jobs:
         id: git-diff
         run: |
           git diff --name-only src/**/*.yaml
-          echo "::set-output name=diff::$( echo $( git diff --name-only src/**/*.yaml ) )"
+          echo "::set-output name=diff::$( git diff --name-only src/**/*.yaml )"
         #uses: technote-space/get-diff-action@gh-actions
         #with:
         #  PATTERNS: |
@@ -49,9 +49,9 @@ jobs:
     needs: check
     steps:
       - name: Verify Diff Variable
-        run: echo ${{ needs.check.git-diff.outputs.diff }}
+        run: echo ${{ needs.check.outputs.diff }}
       - name: Commit Changes
-        if: needs.check.git-diff.outputs.diff
+        if: needs.check.outputs.git-diff.diff
         run: |
           branch="release-$(uuidgen)"
           git checkout -b $branch
