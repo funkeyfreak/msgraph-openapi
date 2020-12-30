@@ -36,7 +36,9 @@ jobs:
 
       - name: Check Diff
         id: git-diff
-        run: echo ::set-output name=diff::"$(git diff --name-only src/**/*.yaml)"
+        run: |
+          git diff --name-only src/**/*.yaml
+          echo ::set-output name=diff::"$(git diff --name-only src/**/*.yaml)"
         #uses: technote-space/get-diff-action@gh-actions
         #with:
         #  PATTERNS: |
