@@ -5,8 +5,8 @@ name: Continious Intigration
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron: '*/15 * * * *'
 
   workflow_dispatch:
 
@@ -64,14 +64,7 @@ jobs:
           branch="release-$(uuidgen)"
           git config --global user.email "support@dalinwilliams.com"
           git config --global user.name "Support"
-          echo "MADE IT HERE $bramch"
-          echo $(git diff)
           git checkout -b $branch
-          echo "status"
-          git status
-          echo "MADE IT HERE"
           git add ./src/**/*.yaml
-          echo "MADE IT THERE"
           git commit -m "updating openapi and swagger files"
-          echo "Almost Done"
           git push -u origin $branch
