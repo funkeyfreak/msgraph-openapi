@@ -54,9 +54,13 @@ jobs:
         if: needs.check.outputs.diff
         run: |
           branch="release-$(uuidgen)"
+          echo "MADE IT HERE $bramch"
           git checkout -b $branch
+          echo "MADE IT HERE"
           git add ./src/**/*.yaml
+          echo "MADE IT THERE"
           git commit -m "updating openapi and swagger files"
+          echo "Almost Done"
           git push -u origin $branch
 
     #- name: Create Pull Request
