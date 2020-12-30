@@ -52,11 +52,13 @@ jobs:
 
       - name: Verify Diff Variable
         run: echo ${{ needs.check.outputs.diff }}
-        
+
       - name: Commit Changes
         if: needs.check.outputs.diff
         run: |
           branch="release-$(uuidgen)"
+          git config --global user.email "support@dalinwilliams.com"
+          git config --global user.name "Support"
           echo "MADE IT HERE $bramch"
           git checkout -b $branch
           echo "MADE IT HERE"
