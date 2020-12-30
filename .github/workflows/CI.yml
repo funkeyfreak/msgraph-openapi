@@ -55,7 +55,7 @@ jobs:
         run: |
           branch="release-$(uuidgen)"
           git checkout -b $branch
-          git add src/**/*.yaml
+          git add ./src/**/*.yaml
           git commit -m "updating openapi and swagger files"
           git push -u origin $branch
 
