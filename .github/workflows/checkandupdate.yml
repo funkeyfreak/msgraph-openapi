@@ -33,10 +33,11 @@ jobs:
 
       - name: Check Diff
         id: git-diff
-        uses: technote-space/get-diff-action@gh-actions
-        with:
-          PATTERNS: |
-            src/**/*.yaml
+        outputs: ${{ git diff --name-only src/**/*.yaml }}
+        #uses: technote-space/get-diff-action@gh-actions
+        #with:
+        #  PATTERNS: |
+        #    src/**/*.yaml
       
       - name: DOES GIT WORK 
         run: git --version
@@ -45,7 +46,7 @@ jobs:
         if: steps.git-diff.outputs.diff
         run: |
           git checkout -b $branch
-          git add src/
+          git add src/**/*.yaml
           git commit -m "updating openapi and swagger files"
           git push -u origin $branch
         env:
