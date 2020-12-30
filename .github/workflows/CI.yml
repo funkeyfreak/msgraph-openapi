@@ -48,8 +48,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: check
     steps:
+      - uses: actions/checkout@v2
+
       - name: Verify Diff Variable
         run: echo ${{ needs.check.outputs.diff }}
+        
       - name: Commit Changes
         if: needs.check.outputs.diff
         run: |
