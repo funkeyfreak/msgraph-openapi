@@ -51,7 +51,7 @@ jobs:
       - name: Verify Diff Variable
         run: echo ${{ needs.check.outputs.diff }}
       - name: Commit Changes
-        if: needs.check.outputs.git-diff.diff
+        if: needs.check.outputs.diff
         run: |
           branch="release-$(uuidgen)"
           git checkout -b $branch
