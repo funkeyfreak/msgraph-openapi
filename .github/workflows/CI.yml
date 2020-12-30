@@ -61,6 +61,7 @@ jobs:
           git config --global user.name "Support"
           echo "MADE IT HERE $bramch"
           git checkout -b $branch
+          git add -u
           echo "MADE IT HERE"
           git add ./src/**/*.yaml
           echo "MADE IT THERE"
