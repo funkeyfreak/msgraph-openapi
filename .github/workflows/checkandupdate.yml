@@ -34,7 +34,8 @@ jobs:
       - name: Check Diff
         id: git-diff
         run: git diff --name-only src/**/*.yaml
-        outputs: ${{ git diff --name-only src/**/*.yaml }}
+        outputs: 
+          diff: ${{ git diff --name-only src/**/*.yaml }}
         #uses: technote-space/get-diff-action@gh-actions
         #with:
         #  PATTERNS: |
