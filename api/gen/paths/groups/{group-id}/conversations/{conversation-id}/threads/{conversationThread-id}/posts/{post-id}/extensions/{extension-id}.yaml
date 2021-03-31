@@ -1,0 +1,122 @@
+get:
+    operationId: groups.conversations.threads.posts.GetExtensions
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.conversations.threads.posts.UpdateExtensions
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property extensions in groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation

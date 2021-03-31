@@ -1,0 +1,73 @@
+get:
+    operationId: groups.GetPlanner
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - plans
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - plans
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerGroup'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get planner from groups
+    tags:
+        - groups.plannerGroup
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdatePlanner
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.plannerGroup'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property planner in groups
+    tags:
+        - groups.plannerGroup
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,87 @@
+get:
+    operationId: deviceAppManagement.managedEBooks.GetAssignments
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+        - description: 'key: managedEBookAssignment-id of managedEBookAssignment'
+          in: path
+          name: managedEBookAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBookAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - installIntent
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedEBookAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.managedEBooks.UpdateAssignments
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+        - description: 'key: managedEBookAssignment-id of managedEBookAssignment'
+          in: path
+          name: managedEBookAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBookAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedEBookAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation

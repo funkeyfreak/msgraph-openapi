@@ -1,0 +1,130 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItem"
+    - title: driveItem
+      type: object
+      properties:
+        audio: {}
+        content:
+            format: base64url
+            type: string
+        cTag:
+            type: string
+        deleted: {}
+        file: {}
+        fileSystemInfo: {}
+        folder: {}
+        image: {}
+        location: {}
+        package: {}
+        pendingOperations: {}
+        photo: {}
+        publication: {}
+        remoteItem: {}
+        root: {}
+        searchResult: {}
+        shared: {}
+        sharepointIds: {}
+        size:
+            format: int64
+            type: integer
+        specialFolder: {}
+        video: {}
+        webDavUrl:
+            type: string
+        workbook: {}
+        analytics: {}
+        children:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.driveItem"
+        listItem: {}
+        permissions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.permission"
+        subscriptions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.subscription"
+        thumbnails:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.thumbnailSet"
+        versions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.driveItemVersion"
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user
+    audio:
+        "@odata.type": microsoft.graph.audio
+    content: string
+    cTag: string
+    deleted:
+        "@odata.type": microsoft.graph.deleted
+    file:
+        "@odata.type": microsoft.graph.file
+    fileSystemInfo:
+        "@odata.type": microsoft.graph.fileSystemInfo
+    folder:
+        "@odata.type": microsoft.graph.folder
+    image:
+        "@odata.type": microsoft.graph.image
+    location:
+        "@odata.type": microsoft.graph.geoCoordinates
+    package:
+        "@odata.type": microsoft.graph.package
+    pendingOperations:
+        "@odata.type": microsoft.graph.pendingOperations
+    photo:
+        "@odata.type": microsoft.graph.photo
+    publication:
+        "@odata.type": microsoft.graph.publicationFacet
+    remoteItem:
+        "@odata.type": microsoft.graph.remoteItem
+    root:
+        "@odata.type": microsoft.graph.root
+    searchResult:
+        "@odata.type": microsoft.graph.searchResult
+    shared:
+        "@odata.type": microsoft.graph.shared
+    sharepointIds:
+        "@odata.type": microsoft.graph.sharepointIds
+    size: integer
+    specialFolder:
+        "@odata.type": microsoft.graph.specialFolder
+    video:
+        "@odata.type": microsoft.graph.video
+    webDavUrl: string
+    workbook:
+        "@odata.type": microsoft.graph.workbook
+    analytics:
+        "@odata.type": microsoft.graph.itemAnalytics
+    children:
+        - "@odata.type": microsoft.graph.driveItem
+    listItem:
+        "@odata.type": microsoft.graph.listItem
+    permissions:
+        - "@odata.type": microsoft.graph.permission
+    subscriptions:
+        - "@odata.type": microsoft.graph.subscription
+    thumbnails:
+        - "@odata.type": microsoft.graph.thumbnailSet
+    versions:
+        - "@odata.type": microsoft.graph.driveItemVersion

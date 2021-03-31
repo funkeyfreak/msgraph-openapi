@@ -1,0 +1,66 @@
+get:
+    operationId: me.GetExtensions
+    parameters:
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from me
+    tags:
+        - me.extension
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateExtensions
+    parameters:
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property extensions in me
+    tags:
+        - me.extension
+    x-ms-docs-operation-type: operation

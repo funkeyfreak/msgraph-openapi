@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: windowsInformationProtectionAppLockerFile
+      description: Windows Information Protection AppLocker File
+      type: object
+      properties:
+        displayName:
+            description: The friendly name
+            type: string
+        file:
+            format: base64url
+            description: File as a byte array
+            type: string
+        fileHash:
+            description: SHA256 hash of the file
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    file: string
+    fileHash: string
+    version: string

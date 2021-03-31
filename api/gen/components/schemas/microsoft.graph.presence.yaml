@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: presence
+      type: object
+      properties:
+        activity:
+            type: string
+        availability:
+            type: string
+example:
+    id: string (identifier)
+    activity: string
+    availability: string

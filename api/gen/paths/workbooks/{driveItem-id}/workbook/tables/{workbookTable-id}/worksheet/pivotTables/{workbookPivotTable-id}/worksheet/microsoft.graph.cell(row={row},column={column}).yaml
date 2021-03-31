@@ -1,0 +1,52 @@
+get:
+    operationId: workbooks.workbook.tables.worksheet.pivotTables.worksheet.cell
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookPivotTable-id of workbookPivotTable'
+          in: path
+          name: workbookPivotTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookPivotTable
+        - in: path
+          name: row
+          required: true
+          schema:
+            format: int32
+            maximum: 2.147483647e+09
+            minimum: -2.147483648e+09
+            type: integer
+        - in: path
+          name: column
+          required: true
+          schema:
+            format: int32
+            maximum: 2.147483647e+09
+            minimum: -2.147483648e+09
+            type: integer
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function cell
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

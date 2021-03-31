@@ -1,0 +1,73 @@
+get:
+    operationId: deviceManagement.GetWindowsInformationProtectionNetworkLearningSummaries
+    parameters:
+        - description: 'key: windowsInformationProtectionNetworkLearningSummary-id of windowsInformationProtectionNetworkLearningSummary'
+          in: path
+          name: windowsInformationProtectionNetworkLearningSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionNetworkLearningSummary
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deviceCount
+                    - url
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionNetworkLearningSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get windowsInformationProtectionNetworkLearningSummaries from deviceManagement
+    tags:
+        - deviceManagement.windowsInformationProtectionNetworkLearningSummary
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateWindowsInformationProtectionNetworkLearningSummaries
+    parameters:
+        - description: 'key: windowsInformationProtectionNetworkLearningSummary-id of windowsInformationProtectionNetworkLearningSummary'
+          in: path
+          name: windowsInformationProtectionNetworkLearningSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionNetworkLearningSummary
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionNetworkLearningSummary'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property windowsInformationProtectionNetworkLearningSummaries in deviceManagement
+    tags:
+        - deviceManagement.windowsInformationProtectionNetworkLearningSummary
+    x-ms-docs-operation-type: operation

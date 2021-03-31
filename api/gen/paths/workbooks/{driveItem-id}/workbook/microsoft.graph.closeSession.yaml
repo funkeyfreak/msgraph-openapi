@@ -1,0 +1,19 @@
+post:
+    operationId: workbooks.workbook.closeSession
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action closeSession
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

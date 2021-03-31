@@ -1,0 +1,140 @@
+get:
+    operationId: organization.organization.ListOrganization
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - assignedPlans
+                    - assignedPlans desc
+                    - businessPhones
+                    - businessPhones desc
+                    - city
+                    - city desc
+                    - country
+                    - country desc
+                    - countryLetterCode
+                    - countryLetterCode desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - displayName
+                    - displayName desc
+                    - marketingNotificationEmails
+                    - marketingNotificationEmails desc
+                    - onPremisesLastSyncDateTime
+                    - onPremisesLastSyncDateTime desc
+                    - onPremisesSyncEnabled
+                    - onPremisesSyncEnabled desc
+                    - postalCode
+                    - postalCode desc
+                    - preferredLanguage
+                    - preferredLanguage desc
+                    - privacyProfile
+                    - privacyProfile desc
+                    - provisionedPlans
+                    - provisionedPlans desc
+                    - securityComplianceNotificationMails
+                    - securityComplianceNotificationMails desc
+                    - securityComplianceNotificationPhones
+                    - securityComplianceNotificationPhones desc
+                    - state
+                    - state desc
+                    - street
+                    - street desc
+                    - technicalNotificationMails
+                    - technicalNotificationMails desc
+                    - tenantType
+                    - tenantType desc
+                    - verifiedDomains
+                    - verifiedDomains desc
+                    - mobileDeviceManagementAuthority
+                    - mobileDeviceManagementAuthority desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - assignedPlans
+                    - businessPhones
+                    - city
+                    - country
+                    - countryLetterCode
+                    - createdDateTime
+                    - displayName
+                    - marketingNotificationEmails
+                    - onPremisesLastSyncDateTime
+                    - onPremisesSyncEnabled
+                    - postalCode
+                    - preferredLanguage
+                    - privacyProfile
+                    - provisionedPlans
+                    - securityComplianceNotificationMails
+                    - securityComplianceNotificationPhones
+                    - state
+                    - street
+                    - technicalNotificationMails
+                    - tenantType
+                    - verifiedDomains
+                    - mobileDeviceManagementAuthority
+                    - certificateBasedAuthConfiguration
+                    - extensions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.organization'
+                                type: array
+                        title: Collection of organization
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from organization
+    tags:
+        - organization.organization
+    x-ms-docs-operation-type: operation
+post:
+    operationId: organization.organization.CreateOrganization
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.organization'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.organization'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to organization
+    tags:
+        - organization.organization
+    x-ms-docs-operation-type: operation

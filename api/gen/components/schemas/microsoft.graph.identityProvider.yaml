@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: identityProvider
+      type: object
+      properties:
+        clientId:
+            type: string
+        clientSecret:
+            type: string
+        name:
+            type: string
+        type:
+            type: string
+example:
+    id: string (identifier)
+    clientId: string
+    clientSecret: string
+    name: string
+    type: string

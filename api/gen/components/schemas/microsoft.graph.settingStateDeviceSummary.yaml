@@ -1,0 +1,65 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: settingStateDeviceSummary
+      description: Device Compilance Policy and Configuration for a Setting State summary
+      type: object
+      properties:
+        compliantDeviceCount:
+            format: int32
+            description: Device Compliant count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        conflictDeviceCount:
+            format: int32
+            description: Device conflict error count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        errorDeviceCount:
+            format: int32
+            description: Device error count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        instancePath:
+            description: Name of the InstancePath for the setting
+            type: string
+        nonCompliantDeviceCount:
+            format: int32
+            description: Device NonCompliant count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notApplicableDeviceCount:
+            format: int32
+            description: Device Not Applicable count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        remediatedDeviceCount:
+            format: int32
+            description: Device Compliant count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        settingName:
+            description: Name of the setting
+            type: string
+        unknownDeviceCount:
+            format: int32
+            description: Device Unkown count for the setting
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    compliantDeviceCount: integer
+    conflictDeviceCount: integer
+    errorDeviceCount: integer
+    instancePath: string
+    nonCompliantDeviceCount: integer
+    notApplicableDeviceCount: integer
+    remediatedDeviceCount: integer
+    settingName: string
+    unknownDeviceCount: integer

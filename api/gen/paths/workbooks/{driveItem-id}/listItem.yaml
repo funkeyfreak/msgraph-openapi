@@ -1,0 +1,89 @@
+get:
+    operationId: workbooks.GetListItem
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - contentType
+                    - sharepointIds
+                    - createdByUser
+                    - lastModifiedByUser
+                    - analytics
+                    - driveItem
+                    - fields
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - analytics
+                    - driveItem
+                    - fields
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.listItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get listItem from workbooks
+    tags:
+        - workbooks.listItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.UpdateListItem
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.listItem'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property listItem in workbooks
+    tags:
+        - workbooks.listItem
+    x-ms-docs-operation-type: operation

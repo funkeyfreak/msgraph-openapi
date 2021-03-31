@@ -1,0 +1,17 @@
+get:
+    operationId: me.outlook.supportedTimeZones-ee48
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.timeZoneInformation'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function supportedTimeZones
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

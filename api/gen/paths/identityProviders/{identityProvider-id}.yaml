@@ -1,0 +1,99 @@
+delete:
+    operationId: identityProviders.identityProvider.DeleteIdentityProvider
+    parameters:
+        - description: 'key: identityProvider-id of identityProvider'
+          in: path
+          name: identityProvider-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: identityProvider
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from identityProviders
+    tags:
+        - identityProviders.identityProvider
+    x-ms-docs-operation-type: operation
+get:
+    operationId: identityProviders.identityProvider.GetIdentityProvider
+    parameters:
+        - description: 'key: identityProvider-id of identityProvider'
+          in: path
+          name: identityProvider-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: identityProvider
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientId
+                    - clientSecret
+                    - name
+                    - type
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.identityProvider'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from identityProviders by key
+    tags:
+        - identityProviders.identityProvider
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: identityProviders.identityProvider.UpdateIdentityProvider
+    parameters:
+        - description: 'key: identityProvider-id of identityProvider'
+          in: path
+          name: identityProvider-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: identityProvider
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.identityProvider'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in identityProviders
+    tags:
+        - identityProviders.identityProvider
+    x-ms-docs-operation-type: operation

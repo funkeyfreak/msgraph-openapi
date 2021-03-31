@@ -1,0 +1,21 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: groupSettingTemplate
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        description:
+            type: string
+        displayName:
+            type: string
+        values:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.settingTemplateValue"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string
+    values:
+        - "@odata.type": microsoft.graph.settingTemplateValue

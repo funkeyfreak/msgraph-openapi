@@ -1,0 +1,18 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                Schedules:
+                    type: array
+                    items:
+                        type: string
+                EndTime: {}
+                StartTime: {}
+                AvailabilityViewInterval:
+                    format: int32
+                    maximum: 2147483647
+                    minimum: -2147483648
+                    type: integer
+description: Action parameters
+required: true

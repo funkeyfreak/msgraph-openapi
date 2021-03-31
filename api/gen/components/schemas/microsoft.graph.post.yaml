@@ -1,0 +1,69 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.outlookItem"
+    - title: post
+      type: object
+      properties:
+        body: {}
+        conversationId:
+            type: string
+        conversationThreadId:
+            type: string
+        from:
+            $ref: "#/components/schemas/microsoft.graph.recipient"
+        hasAttachments:
+            type: boolean
+        newParticipants:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.recipient"
+        receivedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        sender: {}
+        attachments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.attachment"
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        inReplyTo: {}
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    categories:
+        - string
+    changeKey: string
+    createdDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    body:
+        "@odata.type": microsoft.graph.itemBody
+    conversationId: string
+    conversationThreadId: string
+    from:
+        "@odata.type": microsoft.graph.recipient
+    hasAttachments: true
+    newParticipants:
+        - "@odata.type": microsoft.graph.recipient
+    receivedDateTime: string (timestamp)
+    sender:
+        "@odata.type": microsoft.graph.recipient
+    attachments:
+        - "@odata.type": microsoft.graph.attachment
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    inReplyTo:
+        "@odata.type": microsoft.graph.post
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

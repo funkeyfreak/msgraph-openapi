@@ -1,0 +1,24 @@
+post:
+    operationId: users.onlineMeetings.createOrGet
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/communications.onlineMeetings.createOrGetBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action createOrGet
+    tags:
+        - users.Actions
+    x-ms-docs-operation-type: action

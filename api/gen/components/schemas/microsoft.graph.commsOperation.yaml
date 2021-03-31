@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: commsOperation
+      type: object
+      properties:
+        clientContext:
+            type: string
+        resultInfo: {}
+        status: {}
+example:
+    id: string (identifier)
+    clientContext: string
+    resultInfo:
+        "@odata.type": microsoft.graph.resultInfo
+    status:
+        "@odata.type": microsoft.graph.operationStatus

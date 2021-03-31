@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamsAppDefinition
+      type: object
+      properties:
+        displayName:
+            type: string
+        teamsAppId:
+            type: string
+        version:
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    teamsAppId: string
+    version: string

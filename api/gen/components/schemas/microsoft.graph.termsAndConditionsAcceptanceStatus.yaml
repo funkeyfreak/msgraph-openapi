@@ -1,0 +1,32 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: termsAndConditionsAcceptanceStatus
+      description: A termsAndConditionsAcceptanceStatus entity represents the acceptance status of a given Terms and Conditions (T&C) policy by a given user. Users must accept the most up-to-date version of the terms in order to retain access to the Company Portal.
+      type: object
+      properties:
+        acceptedDateTime:
+            format: date-time
+            description: DateTime when the terms were last accepted by the user.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        acceptedVersion:
+            format: int32
+            description: Most recent version number of the T&C accepted by the user.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        userDisplayName:
+            description: Display name of the user whose acceptance the entity represents.
+            type: string
+        userPrincipalName:
+            description: The userPrincipalName of the User that accepted the term.
+            type: string
+        termsAndConditions: {}
+example:
+    id: string (identifier)
+    acceptedDateTime: string (timestamp)
+    acceptedVersion: integer
+    userDisplayName: string
+    userPrincipalName: string
+    termsAndConditions:
+        "@odata.type": microsoft.graph.termsAndConditions

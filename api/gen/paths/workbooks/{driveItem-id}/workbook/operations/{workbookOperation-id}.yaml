@@ -1,0 +1,88 @@
+get:
+    operationId: workbooks.workbook.GetOperations
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookOperation-id of workbookOperation'
+          in: path
+          name: workbookOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - error
+                    - resourceLocation
+                    - status
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookOperation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get operations from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.UpdateOperations
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookOperation-id of workbookOperation'
+          in: path
+          name: workbookOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.workbookOperation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property operations in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

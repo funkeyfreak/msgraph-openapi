@@ -1,0 +1,131 @@
+get:
+    operationId: shares.GetItems
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - audio
+                    - content
+                    - cTag
+                    - deleted
+                    - file
+                    - fileSystemInfo
+                    - folder
+                    - image
+                    - location
+                    - package
+                    - pendingOperations
+                    - photo
+                    - publication
+                    - remoteItem
+                    - root
+                    - searchResult
+                    - shared
+                    - sharepointIds
+                    - size
+                    - specialFolder
+                    - video
+                    - webDavUrl
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.driveItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get items from shares
+    tags:
+        - shares.driveItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.UpdateItems
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.driveItem2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property items in shares
+    tags:
+        - shares.driveItem
+    x-ms-docs-operation-type: operation

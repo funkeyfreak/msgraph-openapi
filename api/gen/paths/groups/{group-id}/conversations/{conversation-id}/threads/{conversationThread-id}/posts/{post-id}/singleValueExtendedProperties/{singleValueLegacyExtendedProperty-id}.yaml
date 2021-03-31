@@ -1,0 +1,123 @@
+get:
+    operationId: groups.conversations.threads.posts.GetSingleValueExtendedProperties
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: singleValueLegacyExtendedProperty-id of singleValueLegacyExtendedProperty'
+          in: path
+          name: singleValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: singleValueLegacyExtendedProperty
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - value
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get singleValueExtendedProperties from groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.conversations.threads.posts.UpdateSingleValueExtendedProperties
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: singleValueLegacyExtendedProperty-id of singleValueLegacyExtendedProperty'
+          in: path
+          name: singleValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: singleValueLegacyExtendedProperty
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.singleValueLegacyExtendedProperty2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property singleValueExtendedProperties in groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,94 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: schedule
+      type: object
+      properties:
+        enabled:
+            type: boolean
+        offerShiftRequestsEnabled:
+            type: boolean
+        openShiftsEnabled:
+            type: boolean
+        provisionStatus: {}
+        provisionStatusCode:
+            type: string
+        swapShiftsRequestsEnabled:
+            type: boolean
+        timeClockEnabled:
+            type: boolean
+        timeOffRequestsEnabled:
+            type: boolean
+        timeZone:
+            type: string
+        workforceIntegrationIds:
+            type: array
+            items:
+                type: string
+        offerShiftRequests:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.offerShiftRequest"
+        openShiftChangeRequests:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.openShiftChangeRequest"
+        openShifts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.openShift"
+        schedulingGroups:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.schedulingGroup"
+        shifts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.shift"
+        swapShiftsChangeRequests:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.swapShiftsChangeRequest"
+        timeOffReasons:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.timeOffReason"
+        timeOffRequests:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.timeOffRequest"
+        timesOff:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.timeOff"
+example:
+    id: string (identifier)
+    enabled: true
+    offerShiftRequestsEnabled: true
+    openShiftsEnabled: true
+    provisionStatus:
+        "@odata.type": microsoft.graph.operationStatus
+    provisionStatusCode: string
+    swapShiftsRequestsEnabled: true
+    timeClockEnabled: true
+    timeOffRequestsEnabled: true
+    timeZone: string
+    workforceIntegrationIds:
+        - string
+    offerShiftRequests:
+        - "@odata.type": microsoft.graph.offerShiftRequest
+    openShiftChangeRequests:
+        - "@odata.type": microsoft.graph.openShiftChangeRequest
+    openShifts:
+        - "@odata.type": microsoft.graph.openShift
+    schedulingGroups:
+        - "@odata.type": microsoft.graph.schedulingGroup
+    shifts:
+        - "@odata.type": microsoft.graph.shift
+    swapShiftsChangeRequests:
+        - "@odata.type": microsoft.graph.swapShiftsChangeRequest
+    timeOffReasons:
+        - "@odata.type": microsoft.graph.timeOffReason
+    timeOffRequests:
+        - "@odata.type": microsoft.graph.timeOffRequest
+    timesOff:
+        - "@odata.type": microsoft.graph.timeOff

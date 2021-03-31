@@ -1,0 +1,12 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceCompliancePolicyAssignment
+      description: Device compliance policy assignment.
+      type: object
+      properties:
+        target:
+            description: Target for the compliance policy assignment.
+example:
+    id: string (identifier)
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

@@ -1,0 +1,121 @@
+get:
+    operationId: users.todo.lists.tasks.ListExtensions
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.extension'
+                                type: array
+                        title: Collection of extension
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from users
+    tags:
+        - users.todo
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.todo.lists.tasks.CreateExtensions
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to extensions for users
+    tags:
+        - users.todo
+    x-ms-docs-operation-type: operation

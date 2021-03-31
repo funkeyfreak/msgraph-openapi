@@ -1,0 +1,95 @@
+get:
+    operationId: sites.onenote.pages.GetParentSection
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - links
+                    - pagesUrl
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenoteSection'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get parentSection from sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.onenote.pages.UpdateParentSection
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenoteSection2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property parentSection in sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation

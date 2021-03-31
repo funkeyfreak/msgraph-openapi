@@ -1,0 +1,19 @@
+title: verifiedDomain
+type: object
+properties:
+    capabilities:
+        type: string
+    isDefault:
+        type: boolean
+    isInitial:
+        type: boolean
+    name:
+        type: string
+    type:
+        type: string
+example:
+    capabilities: string
+    isDefault: true
+    isInitial: true
+    name: string
+    type: string

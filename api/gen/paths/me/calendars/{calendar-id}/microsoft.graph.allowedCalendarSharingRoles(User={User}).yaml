@@ -1,0 +1,29 @@
+get:
+    operationId: me.calendars.allowedCalendarSharingRoles
+    parameters:
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - in: path
+          name: User
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function allowedCalendarSharingRoles
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

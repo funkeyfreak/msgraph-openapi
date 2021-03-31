@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: place
+      type: object
+      properties:
+        address: {}
+        displayName:
+            type: string
+        geoCoordinates: {}
+        phone:
+            type: string
+example:
+    id: string (identifier)
+    address:
+        "@odata.type": microsoft.graph.physicalAddress
+    displayName: string
+    geoCoordinates:
+        "@odata.type": microsoft.graph.outlookGeoCoordinates
+    phone: string

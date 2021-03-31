@@ -1,0 +1,16 @@
+post:
+    operationId: me.revokeSignInSessions
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        default: false
+                        type: boolean
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action revokeSignInSessions
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

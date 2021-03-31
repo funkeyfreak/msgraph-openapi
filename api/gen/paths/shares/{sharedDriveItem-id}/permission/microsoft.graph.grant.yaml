@@ -1,0 +1,26 @@
+post:
+    operationId: shares.permission.grant
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+    requestBody:
+        $ref: '#/components/requestBodies/shares.permission.grantBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action grant
+    tags:
+        - shares.Actions
+    x-ms-docs-operation-type: action

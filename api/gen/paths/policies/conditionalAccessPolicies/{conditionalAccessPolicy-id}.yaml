@@ -1,0 +1,74 @@
+get:
+    operationId: policies.GetConditionalAccessPolicies
+    parameters:
+        - description: 'key: conditionalAccessPolicy-id of conditionalAccessPolicy'
+          in: path
+          name: conditionalAccessPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conditionalAccessPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - conditions
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - grantControls
+                    - modifiedDateTime
+                    - sessionControls
+                    - state
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.conditionalAccessPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get conditionalAccessPolicies from policies
+    tags:
+        - policies.conditionalAccessPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.UpdateConditionalAccessPolicies
+    parameters:
+        - description: 'key: conditionalAccessPolicy-id of conditionalAccessPolicy'
+          in: path
+          name: conditionalAccessPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conditionalAccessPolicy
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.conditionalAccessPolicy'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property conditionalAccessPolicies in policies
+    tags:
+        - policies.conditionalAccessPolicy
+    x-ms-docs-operation-type: operation

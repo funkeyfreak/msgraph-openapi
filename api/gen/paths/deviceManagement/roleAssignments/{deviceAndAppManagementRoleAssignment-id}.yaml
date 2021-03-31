@@ -1,0 +1,77 @@
+get:
+    operationId: deviceManagement.GetRoleAssignments
+    parameters:
+        - description: 'key: deviceAndAppManagementRoleAssignment-id of deviceAndAppManagementRoleAssignment'
+          in: path
+          name: deviceAndAppManagementRoleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceAndAppManagementRoleAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - resourceScopes
+                    - members
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get roleAssignments from deviceManagement
+    tags:
+        - deviceManagement.deviceAndAppManagementRoleAssignment
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateRoleAssignments
+    parameters:
+        - description: 'key: deviceAndAppManagementRoleAssignment-id of deviceAndAppManagementRoleAssignment'
+          in: path
+          name: deviceAndAppManagementRoleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceAndAppManagementRoleAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property roleAssignments in deviceManagement
+    tags:
+        - deviceManagement.deviceAndAppManagementRoleAssignment
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,13 @@
+title: proxiedDomain
+description: Proxied Domain
+type: object
+properties:
+    ipAddressOrFQDN:
+        description: The IP address or FQDN
+        type: string
+    proxy:
+        description: Proxy IP or FQDN
+        type: string
+example:
+    ipAddressOrFQDN: string
+    proxy: string

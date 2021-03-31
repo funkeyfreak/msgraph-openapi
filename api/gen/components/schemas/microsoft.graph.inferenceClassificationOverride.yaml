@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: inferenceClassificationOverride
+      type: object
+      properties:
+        classifyAs: {}
+        senderEmailAddress: {}
+example:
+    id: string (identifier)
+    classifyAs:
+        "@odata.type": microsoft.graph.inferenceClassificationType
+    senderEmailAddress:
+        "@odata.type": microsoft.graph.emailAddress

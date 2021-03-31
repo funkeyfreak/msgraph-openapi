@@ -1,0 +1,96 @@
+get:
+    operationId: users.onenote.pages.GetParentNotebook
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - isShared
+                    - links
+                    - sectionGroupsUrl
+                    - sectionsUrl
+                    - userRole
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.notebook'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get parentNotebook from users
+    tags:
+        - users.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.onenote.pages.UpdateParentNotebook
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.notebook'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property parentNotebook in users
+    tags:
+        - users.onenote
+    x-ms-docs-operation-type: operation

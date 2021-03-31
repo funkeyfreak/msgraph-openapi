@@ -1,0 +1,106 @@
+get:
+    operationId: me.calendars.calendarView.ListExtensions
+    parameters:
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.extension'
+                                type: array
+                        title: Collection of extension
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from me
+    tags:
+        - me.calendar
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.calendars.calendarView.CreateExtensions
+    parameters:
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to extensions for me
+    tags:
+        - me.calendar
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,89 @@
+get:
+    operationId: workbooks.workbook.GetComments
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookComment-id of workbookComment'
+          in: path
+          name: workbookComment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookComment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - content
+                    - contentType
+                    - replies
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - replies
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookComment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get comments from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.UpdateComments
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookComment-id of workbookComment'
+          in: path
+          name: workbookComment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookComment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.workbookComment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property comments in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,30 @@
+post:
+    operationId: deviceManagement.deviceCompliancePolicies.scheduleActionsForRules
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        deviceComplianceScheduledActionForRules:
+                            items: {}
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action scheduleActionsForRules
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

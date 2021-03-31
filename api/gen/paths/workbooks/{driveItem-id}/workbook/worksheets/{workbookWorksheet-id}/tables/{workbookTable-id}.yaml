@@ -1,0 +1,112 @@
+get:
+    operationId: workbooks.workbook.worksheets.GetTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - highlightFirstColumn
+                    - highlightLastColumn
+                    - legacyId
+                    - name
+                    - showBandedColumns
+                    - showBandedRows
+                    - showFilterButton
+                    - showHeaders
+                    - showTotals
+                    - style
+                    - columns
+                    - rows
+                    - sort
+                    - worksheet
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - columns
+                    - rows
+                    - sort
+                    - worksheet
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookTable'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tables from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.worksheets.UpdateTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookTable'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property tables in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

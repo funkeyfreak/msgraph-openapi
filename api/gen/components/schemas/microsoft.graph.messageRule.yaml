@@ -1,0 +1,34 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: messageRule
+      type: object
+      properties:
+        actions: {}
+        conditions: {}
+        displayName:
+            type: string
+        exceptions: {}
+        hasError:
+            type: boolean
+        isEnabled:
+            type: boolean
+        isReadOnly:
+            type: boolean
+        sequence:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    actions:
+        "@odata.type": microsoft.graph.messageRuleActions
+    conditions:
+        "@odata.type": microsoft.graph.messageRulePredicates
+    displayName: string
+    exceptions:
+        "@odata.type": microsoft.graph.messageRulePredicates
+    hasError: true
+    isEnabled: true
+    isReadOnly: true
+    sequence: integer

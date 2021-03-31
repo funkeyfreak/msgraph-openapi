@@ -1,0 +1,21 @@
+get:
+    operationId: reports.getEmailActivityUserCounts
+    parameters:
+        - in: path
+          name: period
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.report'
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getEmailActivityUserCounts
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

@@ -1,0 +1,56 @@
+get:
+    operationId: users.GetInferenceClassification
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - overrides
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.inferenceClassification'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get inferenceClassification from users
+    tags:
+        - users.inferenceClassification
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdateInferenceClassification
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.inferenceClassification'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property inferenceClassification in users
+    tags:
+        - users.inferenceClassification
+    x-ms-docs-operation-type: operation

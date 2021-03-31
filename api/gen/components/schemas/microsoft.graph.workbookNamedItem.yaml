@@ -1,0 +1,28 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookNamedItem
+      type: object
+      properties:
+        comment:
+            type: string
+        name:
+            type: string
+        scope:
+            type: string
+        type:
+            type: string
+        value: {}
+        visible:
+            type: boolean
+        worksheet: {}
+example:
+    id: string (identifier)
+    comment: string
+    name: string
+    scope: string
+    type: string
+    value:
+        "@odata.type": microsoft.graph.Json
+    visible: true
+    worksheet:
+        "@odata.type": microsoft.graph.workbookWorksheet

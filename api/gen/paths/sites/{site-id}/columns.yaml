@@ -1,0 +1,153 @@
+get:
+    operationId: sites.ListColumns
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - boolean
+                    - boolean desc
+                    - calculated
+                    - calculated desc
+                    - choice
+                    - choice desc
+                    - columnGroup
+                    - columnGroup desc
+                    - currency
+                    - currency desc
+                    - dateTime
+                    - dateTime desc
+                    - defaultValue
+                    - defaultValue desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - enforceUniqueValues
+                    - enforceUniqueValues desc
+                    - geolocation
+                    - geolocation desc
+                    - hidden
+                    - hidden desc
+                    - indexed
+                    - indexed desc
+                    - lookup
+                    - lookup desc
+                    - name
+                    - name desc
+                    - number
+                    - number desc
+                    - personOrGroup
+                    - personOrGroup desc
+                    - readOnly
+                    - readOnly desc
+                    - required
+                    - required desc
+                    - text
+                    - text desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - boolean
+                    - calculated
+                    - choice
+                    - columnGroup
+                    - currency
+                    - dateTime
+                    - defaultValue
+                    - description
+                    - displayName
+                    - enforceUniqueValues
+                    - geolocation
+                    - hidden
+                    - indexed
+                    - lookup
+                    - name
+                    - number
+                    - personOrGroup
+                    - readOnly
+                    - required
+                    - text
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.columnDefinition'
+                                type: array
+                        title: Collection of columnDefinition
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get columns from sites
+    tags:
+        - sites.columnDefinition
+    x-ms-docs-operation-type: operation
+post:
+    operationId: sites.CreateColumns
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.columnDefinition'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.columnDefinition'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to columns for sites
+    tags:
+        - sites.columnDefinition
+    x-ms-docs-operation-type: operation

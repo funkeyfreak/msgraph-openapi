@@ -1,0 +1,90 @@
+get:
+    operationId: deviceManagement.GetDeviceCompliancePolicies
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - assignments
+                    - deviceSettingStateSummaries
+                    - deviceStatuses
+                    - deviceStatusOverview
+                    - scheduledActionsForRule
+                    - userStatuses
+                    - userStatusOverview
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - deviceSettingStateSummaries
+                    - deviceStatuses
+                    - deviceStatusOverview
+                    - scheduledActionsForRule
+                    - userStatuses
+                    - userStatusOverview
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceCompliancePolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceCompliancePolicies from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDeviceCompliancePolicies
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceCompliancePolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceCompliancePolicies in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

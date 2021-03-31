@@ -1,0 +1,109 @@
+get:
+    operationId: groups.onenote.pages.parentSection.parentNotebook.GetSections
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - links
+                    - pagesUrl
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenoteSection'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get sections from groups
+    tags:
+        - groups.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.onenote.pages.parentSection.parentNotebook.UpdateSections
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenoteSection2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property sections in groups
+    tags:
+        - groups.onenote
+    x-ms-docs-operation-type: operation

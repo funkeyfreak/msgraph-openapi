@@ -1,0 +1,55 @@
+get:
+    operationId: me.GetSettings
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - contributionToContentDiscoveryAsOrganizationDisabled
+                    - contributionToContentDiscoveryDisabled
+                    - shiftPreferences
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - shiftPreferences
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.userSettings'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get settings from me
+    tags:
+        - me.userSettings
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateSettings
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.userSettings'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property settings in me
+    tags:
+        - me.userSettings
+    x-ms-docs-operation-type: operation

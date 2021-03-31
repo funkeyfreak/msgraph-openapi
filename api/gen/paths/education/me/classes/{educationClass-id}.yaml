@@ -1,0 +1,62 @@
+get:
+    operationId: education.me.GetClasses
+    parameters:
+        - description: 'key: educationClass-id of educationClass'
+          in: path
+          name: educationClass-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationClass
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classCode
+                    - createdBy
+                    - description
+                    - displayName
+                    - externalId
+                    - externalName
+                    - externalSource
+                    - mailNickname
+                    - term
+                    - group
+                    - members
+                    - schools
+                    - teachers
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - group
+                    - members
+                    - schools
+                    - teachers
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.educationClass'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get classes from education
+    tags:
+        - education.educationUser
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,19 @@
+post:
+    operationId: me.managedDevices.requestRemoteAssistance
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action requestRemoteAssistance
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

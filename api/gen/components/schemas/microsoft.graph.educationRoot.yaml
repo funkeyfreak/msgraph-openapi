@@ -1,0 +1,28 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: educationRoot
+      type: object
+      properties:
+        classes:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationClass"
+        me: {}
+        schools:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationSchool"
+        users:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationUser"
+example:
+    id: string (identifier)
+    classes:
+        - "@odata.type": microsoft.graph.educationClass
+    me:
+        "@odata.type": microsoft.graph.educationUser
+    schools:
+        - "@odata.type": microsoft.graph.educationSchool
+    users:
+        - "@odata.type": microsoft.graph.educationUser

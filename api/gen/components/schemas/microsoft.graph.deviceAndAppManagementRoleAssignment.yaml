@@ -1,0 +1,21 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.roleAssignment"
+    - title: deviceAndAppManagementRoleAssignment
+      description: The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
+      type: object
+      properties:
+        members:
+            description: The list of ids of role member security groups. These are IDs from Azure Active Directory.
+            type: array
+            items:
+                type: string
+example:
+    id: string (identifier)
+    description: string
+    displayName: string
+    resourceScopes:
+        - string
+    roleDefinition:
+        "@odata.type": microsoft.graph.roleDefinition
+    members:
+        - string

@@ -1,0 +1,31 @@
+get:
+    operationId: users.todo.lists.tasks.delta
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function delta
+    tags:
+        - users.Functions
+    x-ms-docs-operation-type: function

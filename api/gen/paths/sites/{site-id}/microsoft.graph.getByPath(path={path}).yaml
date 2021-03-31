@@ -1,0 +1,27 @@
+get:
+    operationId: sites.getByPath
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - in: path
+          name: path
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getByPath
+    tags:
+        - sites.Functions
+    x-ms-docs-operation-type: function

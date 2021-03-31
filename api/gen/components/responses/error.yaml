@@ -1,0 +1,5 @@
+description: error
+content:
+    "*/*":
+        schema:
+            $ref: "#/components/schemas/odata.error"

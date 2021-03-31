@@ -1,0 +1,43 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: permissionGrantConditionSet
+      type: object
+      properties:
+        clientApplicationIds:
+            type: array
+            items:
+                type: string
+        clientApplicationPublisherIds:
+            type: array
+            items:
+                type: string
+        clientApplicationsFromVerifiedPublisherOnly:
+            type: boolean
+        clientApplicationTenantIds:
+            type: array
+            items:
+                type: string
+        permissionClassification:
+            type: string
+        permissions:
+            type: array
+            items:
+                type: string
+        permissionType: {}
+        resourceApplication:
+            type: string
+example:
+    id: string (identifier)
+    clientApplicationIds:
+        - string
+    clientApplicationPublisherIds:
+        - string
+    clientApplicationsFromVerifiedPublisherOnly: true
+    clientApplicationTenantIds:
+        - string
+    permissionClassification: string
+    permissions:
+        - string
+    permissionType:
+        "@odata.type": microsoft.graph.permissionType
+    resourceApplication: string

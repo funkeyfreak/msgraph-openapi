@@ -1,0 +1,33 @@
+post:
+    operationId: directoryObjects.getByIds
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        ids:
+                            items:
+                                type: string
+                            type: array
+                        types:
+                            items:
+                                type: string
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getByIds
+    tags:
+        - directoryObjects.Actions
+    x-ms-docs-operation-type: action

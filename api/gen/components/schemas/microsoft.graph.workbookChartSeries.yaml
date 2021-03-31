@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartSeries
+      type: object
+      properties:
+        name:
+            type: string
+        format: {}
+        points:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookChartPoint"
+example:
+    id: string (identifier)
+    name: string
+    format:
+        "@odata.type": microsoft.graph.workbookChartSeriesFormat
+    points:
+        - "@odata.type": microsoft.graph.workbookChartPoint

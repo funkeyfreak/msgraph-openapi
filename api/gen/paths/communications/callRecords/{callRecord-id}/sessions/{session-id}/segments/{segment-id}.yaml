@@ -1,0 +1,105 @@
+get:
+    operationId: communications.callRecords.sessions.GetSegments
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+        - description: 'key: session-id of session'
+          in: path
+          name: session-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: session
+        - description: 'key: segment-id of segment'
+          in: path
+          name: segment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: segment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - callee
+                    - caller
+                    - endDateTime
+                    - failureInfo
+                    - media
+                    - startDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.callRecords.segment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get segments from communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.callRecords.sessions.UpdateSegments
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+        - description: 'key: session-id of session'
+          in: path
+          name: session-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: session
+        - description: 'key: segment-id of segment'
+          in: path
+          name: segment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: segment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.callRecords.segment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property segments in communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation

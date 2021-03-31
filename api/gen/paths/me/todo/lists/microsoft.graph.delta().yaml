@@ -1,0 +1,16 @@
+get:
+    operationId: me.todo.lists.delta
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function delta
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

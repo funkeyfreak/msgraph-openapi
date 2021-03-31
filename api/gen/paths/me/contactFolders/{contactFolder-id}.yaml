@@ -1,0 +1,61 @@
+get:
+    operationId: me.GetContactFolders
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - parentFolderId
+                    - childFolders
+                    - contacts
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contactFolder'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contactFolders from me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateContactFolders
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contactFolder'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property contactFolders in me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation

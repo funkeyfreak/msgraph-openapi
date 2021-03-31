@@ -1,0 +1,96 @@
+get:
+    operationId: me.todo.lists.GetTasks
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - body
+                    - bodyLastModifiedDateTime
+                    - completedDateTime
+                    - createdDateTime
+                    - dueDateTime
+                    - importance
+                    - isReminderOn
+                    - lastModifiedDateTime
+                    - recurrence
+                    - reminderDateTime
+                    - status
+                    - title
+                    - extensions
+                    - linkedResources
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - extensions
+                    - linkedResources
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.todoTask'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tasks from me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.todo.lists.UpdateTasks
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.todoTask2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property tasks in me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation

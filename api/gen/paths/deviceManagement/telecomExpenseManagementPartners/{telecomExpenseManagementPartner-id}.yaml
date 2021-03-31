@@ -1,0 +1,76 @@
+get:
+    operationId: deviceManagement.GetTelecomExpenseManagementPartners
+    parameters:
+        - description: 'key: telecomExpenseManagementPartner-id of telecomExpenseManagementPartner'
+          in: path
+          name: telecomExpenseManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: telecomExpenseManagementPartner
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appAuthorized
+                    - displayName
+                    - enabled
+                    - lastConnectionDateTime
+                    - url
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.telecomExpenseManagementPartner'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get telecomExpenseManagementPartners from deviceManagement
+    tags:
+        - deviceManagement.telecomExpenseManagementPartner
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateTelecomExpenseManagementPartners
+    parameters:
+        - description: 'key: telecomExpenseManagementPartner-id of telecomExpenseManagementPartner'
+          in: path
+          name: telecomExpenseManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: telecomExpenseManagementPartner
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.telecomExpenseManagementPartner'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property telecomExpenseManagementPartners in deviceManagement
+    tags:
+        - deviceManagement.telecomExpenseManagementPartner
+    x-ms-docs-operation-type: operation

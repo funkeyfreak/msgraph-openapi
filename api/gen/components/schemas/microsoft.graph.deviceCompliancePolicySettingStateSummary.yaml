@@ -1,0 +1,75 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceCompliancePolicySettingStateSummary
+      description: Device Compilance Policy Setting State summary across the account.
+      type: object
+      properties:
+        compliantDeviceCount:
+            format: int32
+            description: Number of compliant devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        conflictDeviceCount:
+            format: int32
+            description: Number of conflict devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        errorDeviceCount:
+            format: int32
+            description: Number of error devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        nonCompliantDeviceCount:
+            format: int32
+            description: Number of NonCompliant devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notApplicableDeviceCount:
+            format: int32
+            description: Number of not applicable devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        platformType:
+            description: Setting platform
+        remediatedDeviceCount:
+            format: int32
+            description: Number of remediated devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        setting:
+            description: The setting class name and property name.
+            type: string
+        settingName:
+            description: Name of the setting.
+            type: string
+        unknownDeviceCount:
+            format: int32
+            description: Number of unknown devices
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        deviceComplianceSettingStates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceComplianceSettingState"
+example:
+    id: string (identifier)
+    compliantDeviceCount: integer
+    conflictDeviceCount: integer
+    errorDeviceCount: integer
+    nonCompliantDeviceCount: integer
+    notApplicableDeviceCount: integer
+    platformType:
+        "@odata.type": microsoft.graph.policyPlatformType
+    remediatedDeviceCount: integer
+    setting: string
+    settingName: string
+    unknownDeviceCount: integer
+    deviceComplianceSettingStates:
+        - "@odata.type": microsoft.graph.deviceComplianceSettingState

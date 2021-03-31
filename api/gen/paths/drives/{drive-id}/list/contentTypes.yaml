@@ -1,0 +1,122 @@
+get:
+    operationId: drives.list.ListContentTypes
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - description
+                    - description desc
+                    - group
+                    - group desc
+                    - hidden
+                    - hidden desc
+                    - inheritedFrom
+                    - inheritedFrom desc
+                    - name
+                    - name desc
+                    - order
+                    - order desc
+                    - parentId
+                    - parentId desc
+                    - readOnly
+                    - readOnly desc
+                    - sealed
+                    - sealed desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - group
+                    - hidden
+                    - inheritedFrom
+                    - name
+                    - order
+                    - parentId
+                    - readOnly
+                    - sealed
+                    - columnLinks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - columnLinks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.contentType'
+                                type: array
+                        title: Collection of contentType
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contentTypes from drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation
+post:
+    operationId: drives.list.CreateContentTypes
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contentType2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contentType'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to contentTypes for drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation

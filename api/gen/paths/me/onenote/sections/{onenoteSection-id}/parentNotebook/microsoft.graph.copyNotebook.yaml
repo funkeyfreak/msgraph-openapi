@@ -1,0 +1,24 @@
+post:
+    operationId: me.onenote.sections.parentNotebook.copyNotebook
+    parameters:
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+    requestBody:
+        $ref: '#/components/requestBodies/groups.onenote.notebooks.copyNotebookBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action copyNotebook
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

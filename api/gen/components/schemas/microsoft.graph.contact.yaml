@@ -1,0 +1,148 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.outlookItem"
+    - title: contact
+      type: object
+      properties:
+        assistantName:
+            type: string
+        birthday:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        businessAddress: {}
+        businessHomePage:
+            type: string
+        businessPhones:
+            type: array
+            items:
+                type: string
+        children:
+            type: array
+            items:
+                type: string
+        companyName:
+            type: string
+        department:
+            type: string
+        displayName:
+            type: string
+        emailAddresses:
+            type: array
+            items: {}
+        fileAs:
+            type: string
+        generation:
+            type: string
+        givenName:
+            type: string
+        homeAddress: {}
+        homePhones:
+            type: array
+            items:
+                type: string
+        imAddresses:
+            type: array
+            items:
+                type: string
+        initials:
+            type: string
+        jobTitle:
+            type: string
+        manager:
+            type: string
+        middleName:
+            type: string
+        mobilePhone:
+            type: string
+        nickName:
+            type: string
+        officeLocation:
+            type: string
+        otherAddress: {}
+        parentFolderId:
+            type: string
+        personalNotes:
+            type: string
+        profession:
+            type: string
+        spouseName:
+            type: string
+        surname:
+            type: string
+        title:
+            type: string
+        yomiCompanyName:
+            type: string
+        yomiGivenName:
+            type: string
+        yomiSurname:
+            type: string
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        photo: {}
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    categories:
+        - string
+    changeKey: string
+    createdDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    assistantName: string
+    birthday: string (timestamp)
+    businessAddress:
+        "@odata.type": microsoft.graph.physicalAddress
+    businessHomePage: string
+    businessPhones:
+        - string
+    children:
+        - string
+    companyName: string
+    department: string
+    displayName: string
+    emailAddresses:
+        - "@odata.type": microsoft.graph.emailAddress
+    fileAs: string
+    generation: string
+    givenName: string
+    homeAddress:
+        "@odata.type": microsoft.graph.physicalAddress
+    homePhones:
+        - string
+    imAddresses:
+        - string
+    initials: string
+    jobTitle: string
+    manager: string
+    middleName: string
+    mobilePhone: string
+    nickName: string
+    officeLocation: string
+    otherAddress:
+        "@odata.type": microsoft.graph.physicalAddress
+    parentFolderId: string
+    personalNotes: string
+    profession: string
+    spouseName: string
+    surname: string
+    title: string
+    yomiCompanyName: string
+    yomiGivenName: string
+    yomiSurname: string
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    photo:
+        "@odata.type": microsoft.graph.profilePhoto
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

@@ -1,0 +1,74 @@
+get:
+    operationId: policies.policyRoot.GetPolicyRoot
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activityBasedTimeoutPolicies
+                    - authorizationPolicy
+                    - claimsMappingPolicies
+                    - homeRealmDiscoveryPolicies
+                    - permissionGrantPolicies
+                    - tokenIssuancePolicies
+                    - tokenLifetimePolicies
+                    - conditionalAccessPolicies
+                    - identitySecurityDefaultsEnforcementPolicy
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - activityBasedTimeoutPolicies
+                    - authorizationPolicy
+                    - claimsMappingPolicies
+                    - homeRealmDiscoveryPolicies
+                    - permissionGrantPolicies
+                    - tokenIssuancePolicies
+                    - tokenLifetimePolicies
+                    - conditionalAccessPolicies
+                    - identitySecurityDefaultsEnforcementPolicy
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.policyRoot'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get policies
+    tags:
+        - policies.policyRoot
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.policyRoot.UpdatePolicyRoot
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.policyRoot'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update policies
+    tags:
+        - policies.policyRoot
+    x-ms-docs-operation-type: operation

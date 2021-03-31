@@ -1,0 +1,92 @@
+get:
+    operationId: deviceAppManagement.mobileAppConfigurations.GetDeviceStatuses
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+        - description: 'key: managedDeviceMobileAppConfigurationDeviceStatus-id of managedDeviceMobileAppConfigurationDeviceStatus'
+          in: path
+          name: managedDeviceMobileAppConfigurationDeviceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfigurationDeviceStatus
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - complianceGracePeriodExpirationDateTime
+                    - deviceDisplayName
+                    - deviceModel
+                    - lastReportedDateTime
+                    - status
+                    - userName
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfigurationDeviceStatus'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceStatuses from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.mobileAppConfigurations.UpdateDeviceStatuses
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+        - description: 'key: managedDeviceMobileAppConfigurationDeviceStatus-id of managedDeviceMobileAppConfigurationDeviceStatus'
+          in: path
+          name: managedDeviceMobileAppConfigurationDeviceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfigurationDeviceStatus
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfigurationDeviceStatus'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceStatuses in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation

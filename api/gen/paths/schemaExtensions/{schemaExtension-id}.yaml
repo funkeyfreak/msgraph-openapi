@@ -1,0 +1,100 @@
+delete:
+    operationId: schemaExtensions.schemaExtension.DeleteSchemaExtension
+    parameters:
+        - description: 'key: schemaExtension-id of schemaExtension'
+          in: path
+          name: schemaExtension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: schemaExtension
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from schemaExtensions
+    tags:
+        - schemaExtensions.schemaExtension
+    x-ms-docs-operation-type: operation
+get:
+    operationId: schemaExtensions.schemaExtension.GetSchemaExtension
+    parameters:
+        - description: 'key: schemaExtension-id of schemaExtension'
+          in: path
+          name: schemaExtension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: schemaExtension
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - owner
+                    - properties
+                    - status
+                    - targetTypes
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.schemaExtension'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from schemaExtensions by key
+    tags:
+        - schemaExtensions.schemaExtension
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: schemaExtensions.schemaExtension.UpdateSchemaExtension
+    parameters:
+        - description: 'key: schemaExtension-id of schemaExtension'
+          in: path
+          name: schemaExtension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: schemaExtension
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.schemaExtension'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in schemaExtensions
+    tags:
+        - schemaExtensions.schemaExtension
+    x-ms-docs-operation-type: operation

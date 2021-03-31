@@ -1,0 +1,30 @@
+post:
+    operationId: deviceManagement.deviceEnrollmentConfigurations.assign
+    parameters:
+        - description: 'key: deviceEnrollmentConfiguration-id of deviceEnrollmentConfiguration'
+          in: path
+          name: deviceEnrollmentConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceEnrollmentConfiguration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        enrollmentConfigurationAssignments:
+                            items: {}
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assign
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

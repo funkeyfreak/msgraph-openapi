@@ -1,0 +1,15 @@
+get:
+    operationId: deviceManagement.applePushNotificationCertificate.downloadApplePushNotificationCertificateSigningRequest
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        type: string
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function downloadApplePushNotificationCertificateSigningRequest
+    tags:
+        - deviceManagement.Functions
+    x-ms-docs-operation-type: function

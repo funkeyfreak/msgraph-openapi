@@ -1,0 +1,113 @@
+get:
+    operationId: workbooks.workbook.tables.ListRows
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - index
+                    - index desc
+                    - values
+                    - values desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - index
+                    - values
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.workbookTableRow'
+                                type: array
+                        title: Collection of workbookTableRow
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get rows from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.workbook.tables.CreateRows
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookTableRow2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookTableRow'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to rows for workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

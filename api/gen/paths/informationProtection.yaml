@@ -1,0 +1,58 @@
+get:
+    operationId: informationProtection.informationProtection.GetInformationProtection
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - threatAssessmentRequests
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - threatAssessmentRequests
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.informationProtection'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get informationProtection
+    tags:
+        - informationProtection.informationProtection
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: informationProtection.informationProtection.UpdateInformationProtection
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.informationProtection'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update informationProtection
+    tags:
+        - informationProtection.informationProtection
+    x-ms-docs-operation-type: operation

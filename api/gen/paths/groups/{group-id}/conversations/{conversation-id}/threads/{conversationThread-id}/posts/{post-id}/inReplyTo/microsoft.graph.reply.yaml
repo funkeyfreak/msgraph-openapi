@@ -1,0 +1,42 @@
+post:
+    operationId: groups.conversations.threads.posts.inReplyTo.reply
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+    requestBody:
+        $ref: '#/components/requestBodies/groups.conversations.threads.replyBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action reply
+    tags:
+        - groups.Actions
+    x-ms-docs-operation-type: action

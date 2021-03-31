@@ -1,0 +1,58 @@
+get:
+    operationId: teamwork.teamwork.GetTeamwork
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - workforceIntegrations
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - workforceIntegrations
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.teamwork'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get teamwork
+    tags:
+        - teamwork.teamwork
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teamwork.teamwork.UpdateTeamwork
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.teamwork'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update teamwork
+    tags:
+        - teamwork.teamwork
+    x-ms-docs-operation-type: operation

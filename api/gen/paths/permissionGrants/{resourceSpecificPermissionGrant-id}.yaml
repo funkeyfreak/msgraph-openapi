@@ -1,0 +1,101 @@
+delete:
+    operationId: permissionGrants.resourceSpecificPermissionGrant.DeleteResourceSpecificPermissionGrant
+    parameters:
+        - description: 'key: resourceSpecificPermissionGrant-id of resourceSpecificPermissionGrant'
+          in: path
+          name: resourceSpecificPermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceSpecificPermissionGrant
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from permissionGrants
+    tags:
+        - permissionGrants.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation
+get:
+    operationId: permissionGrants.resourceSpecificPermissionGrant.GetResourceSpecificPermissionGrant
+    parameters:
+        - description: 'key: resourceSpecificPermissionGrant-id of resourceSpecificPermissionGrant'
+          in: path
+          name: resourceSpecificPermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceSpecificPermissionGrant
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - clientAppId
+                    - clientId
+                    - permission
+                    - permissionType
+                    - resourceAppId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from permissionGrants by key
+    tags:
+        - permissionGrants.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: permissionGrants.resourceSpecificPermissionGrant.UpdateResourceSpecificPermissionGrant
+    parameters:
+        - description: 'key: resourceSpecificPermissionGrant-id of resourceSpecificPermissionGrant'
+          in: path
+          name: resourceSpecificPermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceSpecificPermissionGrant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in permissionGrants
+    tags:
+        - permissionGrants.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation

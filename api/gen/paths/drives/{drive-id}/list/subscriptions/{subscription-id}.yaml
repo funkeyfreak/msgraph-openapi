@@ -1,0 +1,92 @@
+get:
+    operationId: drives.list.GetSubscriptions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get subscriptions from drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drives.list.UpdateSubscriptions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.subscription2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property subscriptions in drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,83 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: orgContact
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        addresses:
+            type: array
+            items: {}
+        companyName:
+            type: string
+        department:
+            type: string
+        displayName:
+            type: string
+        givenName:
+            type: string
+        jobTitle:
+            type: string
+        mail:
+            type: string
+        mailNickname:
+            type: string
+        onPremisesLastSyncDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        onPremisesProvisioningErrors:
+            type: array
+            items: {}
+        onPremisesSyncEnabled:
+            type: boolean
+        phones:
+            type: array
+            items: {}
+        proxyAddresses:
+            type: array
+            items:
+                type: string
+        surname:
+            type: string
+        directReports:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        manager: {}
+        memberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        transitiveMemberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    addresses:
+        - "@odata.type": microsoft.graph.physicalOfficeAddress
+    companyName: string
+    department: string
+    displayName: string
+    givenName: string
+    jobTitle: string
+    mail: string
+    mailNickname: string
+    onPremisesLastSyncDateTime: string (timestamp)
+    onPremisesProvisioningErrors:
+        - "@odata.type": microsoft.graph.onPremisesProvisioningError
+    onPremisesSyncEnabled: true
+    phones:
+        - "@odata.type": microsoft.graph.phone
+    proxyAddresses:
+        - string
+    surname: string
+    directReports:
+        - "@odata.type": microsoft.graph.directoryObject
+    manager:
+        "@odata.type": microsoft.graph.directoryObject
+    memberOf:
+        - "@odata.type": microsoft.graph.directoryObject
+    transitiveMemberOf:
+        - "@odata.type": microsoft.graph.directoryObject

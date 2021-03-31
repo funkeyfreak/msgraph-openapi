@@ -1,0 +1,86 @@
+get:
+    operationId: users.insights.GetTrending
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: trending-id of trending'
+          in: path
+          name: trending-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: trending
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastModifiedDateTime
+                    - resourceReference
+                    - resourceVisualization
+                    - weight
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.trending'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get trending from users
+    tags:
+        - users.officeGraphInsights
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.insights.UpdateTrending
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: trending-id of trending'
+          in: path
+          name: trending-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: trending
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.trending2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property trending in users
+    tags:
+        - users.officeGraphInsights
+    x-ms-docs-operation-type: operation

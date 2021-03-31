@@ -1,0 +1,16 @@
+post:
+    operationId: me.onenote.notebooks.getNotebookFromWebUrl
+    requestBody:
+        $ref: '#/components/requestBodies/groups.onenote.notebooks.getNotebookFromWebUrlBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getNotebookFromWebUrl
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,73 @@
+get:
+    operationId: deviceAppManagement.GetManagedAppStatuses
+    parameters:
+        - description: 'key: managedAppStatus-id of managedAppStatus'
+          in: path
+          name: managedAppStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppStatus
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppStatus'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedAppStatuses from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppStatus
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateManagedAppStatuses
+    parameters:
+        - description: 'key: managedAppStatus-id of managedAppStatus'
+          in: path
+          name: managedAppStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppStatus
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedAppStatus'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property managedAppStatuses in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppStatus
+    x-ms-docs-operation-type: operation

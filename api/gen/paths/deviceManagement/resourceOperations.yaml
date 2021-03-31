@@ -1,0 +1,92 @@
+get:
+    operationId: deviceManagement.ListResourceOperations
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - actionName
+                    - actionName desc
+                    - description
+                    - description desc
+                    - resourceName
+                    - resourceName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actionName
+                    - description
+                    - resourceName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.resourceOperation'
+                                type: array
+                        title: Collection of resourceOperation
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get resourceOperations from deviceManagement
+    tags:
+        - deviceManagement.resourceOperation
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.CreateResourceOperations
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceOperation'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceOperation'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to resourceOperations for deviceManagement
+    tags:
+        - deviceManagement.resourceOperation
+    x-ms-docs-operation-type: operation

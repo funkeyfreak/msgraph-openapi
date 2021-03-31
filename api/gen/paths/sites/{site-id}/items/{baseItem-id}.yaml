@@ -1,0 +1,98 @@
+get:
+    operationId: sites.GetItems
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: baseItem-id of baseItem'
+          in: path
+          name: baseItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: baseItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - createdByUser
+                    - lastModifiedByUser
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.baseItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get items from sites
+    tags:
+        - sites.baseItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.UpdateItems
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: baseItem-id of baseItem'
+          in: path
+          name: baseItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: baseItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.baseItem'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property items in sites
+    tags:
+        - sites.baseItem
+    x-ms-docs-operation-type: operation

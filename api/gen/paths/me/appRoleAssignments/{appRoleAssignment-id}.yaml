@@ -1,0 +1,74 @@
+get:
+    operationId: me.GetAppRoleAssignments
+    parameters:
+        - description: 'key: appRoleAssignment-id of appRoleAssignment'
+          in: path
+          name: appRoleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: appRoleAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - appRoleId
+                    - createdDateTime
+                    - principalDisplayName
+                    - principalId
+                    - principalType
+                    - resourceDisplayName
+                    - resourceId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get appRoleAssignments from me
+    tags:
+        - me.appRoleAssignment
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateAppRoleAssignments
+    parameters:
+        - description: 'key: appRoleAssignment-id of appRoleAssignment'
+          in: path
+          name: appRoleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: appRoleAssignment
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.appRoleAssignment2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property appRoleAssignments in me
+    tags:
+        - me.appRoleAssignment
+    x-ms-docs-operation-type: operation

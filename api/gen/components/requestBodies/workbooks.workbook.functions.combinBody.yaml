@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                number: {}
+                numberChosen: {}
+description: Action parameters
+required: true

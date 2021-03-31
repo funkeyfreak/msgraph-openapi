@@ -1,0 +1,161 @@
+get:
+    operationId: me.ListMessages
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - categories
+                    - categories desc
+                    - changeKey
+                    - changeKey desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - bccRecipients
+                    - bccRecipients desc
+                    - body
+                    - body desc
+                    - bodyPreview
+                    - bodyPreview desc
+                    - ccRecipients
+                    - ccRecipients desc
+                    - conversationId
+                    - conversationId desc
+                    - conversationIndex
+                    - conversationIndex desc
+                    - flag
+                    - flag desc
+                    - from
+                    - from desc
+                    - hasAttachments
+                    - hasAttachments desc
+                    - importance
+                    - importance desc
+                    - inferenceClassification
+                    - inferenceClassification desc
+                    - internetMessageHeaders
+                    - internetMessageHeaders desc
+                    - internetMessageId
+                    - internetMessageId desc
+                    - isDeliveryReceiptRequested
+                    - isDeliveryReceiptRequested desc
+                    - isDraft
+                    - isDraft desc
+                    - isRead
+                    - isRead desc
+                    - isReadReceiptRequested
+                    - isReadReceiptRequested desc
+                    - parentFolderId
+                    - parentFolderId desc
+                    - receivedDateTime
+                    - receivedDateTime desc
+                    - replyTo
+                    - replyTo desc
+                    - sender
+                    - sender desc
+                    - sentDateTime
+                    - sentDateTime desc
+                    - subject
+                    - subject desc
+                    - toRecipients
+                    - toRecipients desc
+                    - uniqueBody
+                    - uniqueBody desc
+                    - webLink
+                    - webLink desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - bccRecipients
+                    - body
+                    - bodyPreview
+                    - ccRecipients
+                    - conversationId
+                    - conversationIndex
+                    - flag
+                    - from
+                    - hasAttachments
+                    - importance
+                    - inferenceClassification
+                    - internetMessageHeaders
+                    - internetMessageId
+                    - isDeliveryReceiptRequested
+                    - isDraft
+                    - isRead
+                    - isReadReceiptRequested
+                    - parentFolderId
+                    - receivedDateTime
+                    - replyTo
+                    - sender
+                    - sentDateTime
+                    - subject
+                    - toRecipients
+                    - uniqueBody
+                    - webLink
+                    - attachments
+                    - extensions
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.message'
+                                type: array
+                        title: Collection of message
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get messages from me
+    tags:
+        - me.message
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.CreateMessages
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.message'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.message'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to messages for me
+    tags:
+        - me.message
+    x-ms-docs-operation-type: operation

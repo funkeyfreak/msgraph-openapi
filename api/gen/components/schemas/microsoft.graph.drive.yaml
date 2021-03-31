@@ -1,0 +1,62 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItem"
+    - title: drive
+      type: object
+      properties:
+        driveType:
+            type: string
+        owner: {}
+        quota: {}
+        sharePointIds: {}
+        system: {}
+        following:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.driveItem"
+        items:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.driveItem"
+        list: {}
+        root: {}
+        special:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.driveItem"
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user
+    driveType: string
+    owner:
+        "@odata.type": microsoft.graph.identitySet
+    quota:
+        "@odata.type": microsoft.graph.quota
+    sharePointIds:
+        "@odata.type": microsoft.graph.sharepointIds
+    system:
+        "@odata.type": microsoft.graph.systemFacet
+    following:
+        - "@odata.type": microsoft.graph.driveItem
+    items:
+        - "@odata.type": microsoft.graph.driveItem
+    list:
+        "@odata.type": microsoft.graph.list
+    root:
+        "@odata.type": microsoft.graph.driveItem
+    special:
+        - "@odata.type": microsoft.graph.driveItem

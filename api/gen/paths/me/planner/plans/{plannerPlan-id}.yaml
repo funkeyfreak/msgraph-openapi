@@ -1,0 +1,55 @@
+get:
+    operationId: me.planner.GetPlans
+    parameters:
+        - description: 'key: plannerPlan-id of plannerPlan'
+          in: path
+          name: plannerPlan-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerPlan
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - owner
+                    - title
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerPlan'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get plans from me
+    tags:
+        - me.plannerUser
+    x-ms-docs-operation-type: operation

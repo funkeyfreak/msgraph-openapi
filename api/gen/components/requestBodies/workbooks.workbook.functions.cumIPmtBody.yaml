@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                rate: {}
+                nper: {}
+                pv: {}
+                startPeriod: {}
+                endPeriod: {}
+                type: {}
+description: Action parameters
+required: true

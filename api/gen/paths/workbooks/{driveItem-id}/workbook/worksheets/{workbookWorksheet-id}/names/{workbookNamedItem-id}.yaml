@@ -1,0 +1,102 @@
+get:
+    operationId: workbooks.workbook.worksheets.GetNames
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - comment
+                    - name
+                    - scope
+                    - type
+                    - value
+                    - visible
+                    - worksheet
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - worksheet
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookNamedItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get names from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.worksheets.UpdateNames
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookNamedItem'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property names in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

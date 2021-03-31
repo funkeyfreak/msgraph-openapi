@@ -1,0 +1,62 @@
+get:
+    operationId: security.security.GetSecurity
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - alerts
+                    - secureScoreControlProfiles
+                    - secureScores
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - alerts
+                    - secureScoreControlProfiles
+                    - secureScores
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.security'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get security
+    tags:
+        - security.security
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: security.security.UpdateSecurity
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.security'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update security
+    tags:
+        - security.security
+    x-ms-docs-operation-type: operation

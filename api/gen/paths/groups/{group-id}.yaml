@@ -1,0 +1,149 @@
+delete:
+    operationId: groups.group.DeleteGroup
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from groups
+    tags:
+        - groups.group
+    x-ms-docs-operation-type: operation
+get:
+    operationId: groups.group.GetGroup
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - assignedLabels
+                    - assignedLicenses
+                    - classification
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - expirationDateTime
+                    - groupTypes
+                    - hasMembersWithLicenseErrors
+                    - licenseProcessingState
+                    - mail
+                    - mailEnabled
+                    - mailNickname
+                    - membershipRule
+                    - membershipRuleProcessingState
+                    - onPremisesDomainName
+                    - onPremisesLastSyncDateTime
+                    - onPremisesNetBiosName
+                    - onPremisesProvisioningErrors
+                    - onPremisesSamAccountName
+                    - onPremisesSecurityIdentifier
+                    - onPremisesSyncEnabled
+                    - preferredDataLocation
+                    - preferredLanguage
+                    - proxyAddresses
+                    - renewedDateTime
+                    - securityEnabled
+                    - securityIdentifier
+                    - theme
+                    - visibility
+                    - allowExternalSenders
+                    - autoSubscribeNewMembers
+                    - hideFromAddressLists
+                    - hideFromOutlookClients
+                    - isSubscribedByMail
+                    - unseenCount
+                    - isArchived
+                    - appRoleAssignments
+                    - createdOnBehalfOf
+                    - memberOf
+                    - members
+                    - membersWithLicenseErrors
+                    - owners
+                    - permissionGrants
+                    - settings
+                    - transitiveMemberOf
+                    - transitiveMembers
+                    - acceptedSenders
+                    - calendar
+                    - calendarView
+                    - conversations
+                    - events
+                    - photo
+                    - photos
+                    - rejectedSenders
+                    - threads
+                    - drive
+                    - drives
+                    - sites
+                    - extensions
+                    - groupLifecyclePolicies
+                    - planner
+                    - onenote
+                    - team
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.group'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from groups by key
+    tags:
+        - groups.group
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.group.UpdateGroup
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.group'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in groups
+    tags:
+        - groups.group
+    x-ms-docs-operation-type: operation

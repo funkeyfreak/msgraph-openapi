@@ -1,0 +1,40 @@
+post:
+    operationId: workbooks.workbook.names.worksheet.charts.series.format.fill.clear
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+        - description: 'key: workbookChartSeries-id of workbookChartSeries'
+          in: path
+          name: workbookChartSeries-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChartSeries
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action clear
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

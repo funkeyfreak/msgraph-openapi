@@ -1,0 +1,19 @@
+post:
+    operationId: deviceManagement.notificationMessageTemplates.sendTestMessage
+    parameters:
+        - description: 'key: notificationMessageTemplate-id of notificationMessageTemplate'
+          in: path
+          name: notificationMessageTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: notificationMessageTemplate
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action sendTestMessage
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

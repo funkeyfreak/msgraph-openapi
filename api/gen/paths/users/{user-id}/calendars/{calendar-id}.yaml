@@ -1,0 +1,87 @@
+get:
+    operationId: users.GetCalendars
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedOnlineMeetingProviders
+                    - canEdit
+                    - canShare
+                    - canViewPrivateItems
+                    - changeKey
+                    - color
+                    - defaultOnlineMeetingProvider
+                    - hexColor
+                    - isDefaultCalendar
+                    - isRemovable
+                    - isTallyingResponses
+                    - name
+                    - owner
+                    - calendarPermissions
+                    - calendarView
+                    - events
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendar'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendars from users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdateCalendars
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendar'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendars in users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation

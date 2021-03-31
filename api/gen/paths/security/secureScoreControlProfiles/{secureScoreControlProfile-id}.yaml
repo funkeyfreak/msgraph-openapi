@@ -1,0 +1,90 @@
+get:
+    operationId: security.GetSecureScoreControlProfiles
+    parameters:
+        - description: 'key: secureScoreControlProfile-id of secureScoreControlProfile'
+          in: path
+          name: secureScoreControlProfile-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: secureScoreControlProfile
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actionType
+                    - actionUrl
+                    - azureTenantId
+                    - complianceInformation
+                    - controlCategory
+                    - controlStateUpdates
+                    - deprecated
+                    - implementationCost
+                    - lastModifiedDateTime
+                    - maxScore
+                    - rank
+                    - remediation
+                    - remediationImpact
+                    - service
+                    - threats
+                    - tier
+                    - title
+                    - userImpact
+                    - vendorInformation
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.secureScoreControlProfile'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get secureScoreControlProfiles from security
+    tags:
+        - security.secureScoreControlProfile
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: security.UpdateSecureScoreControlProfiles
+    parameters:
+        - description: 'key: secureScoreControlProfile-id of secureScoreControlProfile'
+          in: path
+          name: secureScoreControlProfile-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: secureScoreControlProfile
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.secureScoreControlProfile'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property secureScoreControlProfiles in security
+    tags:
+        - security.secureScoreControlProfile
+    x-ms-docs-operation-type: operation

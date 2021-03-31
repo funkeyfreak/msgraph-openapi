@@ -1,0 +1,21 @@
+post:
+    operationId: me.messages.forward
+    parameters:
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    requestBody:
+        $ref: '#/components/requestBodies/me.mailFolders.messages.createForwardBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action forward
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,32 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedAppPolicy
+      description: The ManagedAppPolicy resource represents a base type for platform specific policies.
+      type: object
+      properties:
+        createdDateTime:
+            format: date-time
+            description: The date and time the policy was created.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            description: The policy's description.
+            type: string
+        displayName:
+            description: Policy display name.
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            description: Last time the policy was modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string

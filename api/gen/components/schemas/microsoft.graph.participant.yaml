@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: participant
+      type: object
+      properties:
+        info:
+            $ref: "#/components/schemas/microsoft.graph.participantInfo"
+        isInLobby:
+            type: boolean
+        isMuted:
+            type: boolean
+        mediaStreams:
+            type: array
+            items: {}
+        recordingInfo: {}
+example:
+    id: string (identifier)
+    info:
+        "@odata.type": microsoft.graph.participantInfo
+    isInLobby: true
+    isMuted: true
+    mediaStreams:
+        - "@odata.type": microsoft.graph.mediaStream
+    recordingInfo:
+        "@odata.type": microsoft.graph.recordingInfo

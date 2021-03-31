@@ -1,0 +1,7 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: reportRoot
+      description: The resource that represents an instance of History Reports.
+      type: object
+example:
+    id: string (identifier)

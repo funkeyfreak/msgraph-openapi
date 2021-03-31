@@ -1,0 +1,53 @@
+get:
+    operationId: me.GetTeamwork
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - installedApps
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - installedApps
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.userTeamwork'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get teamwork from me
+    tags:
+        - me.userTeamwork
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateTeamwork
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.userTeamwork'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property teamwork in me
+    tags:
+        - me.userTeamwork
+    x-ms-docs-operation-type: operation

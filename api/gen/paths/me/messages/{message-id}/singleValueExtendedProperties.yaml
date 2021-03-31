@@ -1,0 +1,96 @@
+get:
+    operationId: me.messages.ListSingleValueExtendedProperties
+    parameters:
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - value
+                    - value desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - value
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+                                type: array
+                        title: Collection of singleValueLegacyExtendedProperty
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get singleValueExtendedProperties from me
+    tags:
+        - me.message
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.messages.CreateSingleValueExtendedProperties
+    parameters:
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.singleValueLegacyExtendedProperty'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to singleValueExtendedProperties for me
+    tags:
+        - me.message
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,103 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicies.scheduledActionsForRule.GetScheduledActionConfigurations
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceComplianceScheduledActionForRule-id of deviceComplianceScheduledActionForRule'
+          in: path
+          name: deviceComplianceScheduledActionForRule-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceScheduledActionForRule
+        - description: 'key: deviceComplianceActionItem-id of deviceComplianceActionItem'
+          in: path
+          name: deviceComplianceActionItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceActionItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actionType
+                    - gracePeriodHours
+                    - notificationMessageCCList
+                    - notificationTemplateId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceComplianceActionItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get scheduledActionConfigurations from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceCompliancePolicies.scheduledActionsForRule.UpdateScheduledActionConfigurations
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceComplianceScheduledActionForRule-id of deviceComplianceScheduledActionForRule'
+          in: path
+          name: deviceComplianceScheduledActionForRule-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceScheduledActionForRule
+        - description: 'key: deviceComplianceActionItem-id of deviceComplianceActionItem'
+          in: path
+          name: deviceComplianceActionItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceActionItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceComplianceActionItem'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property scheduledActionConfigurations in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

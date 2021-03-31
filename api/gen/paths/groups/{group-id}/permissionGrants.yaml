@@ -1,0 +1,116 @@
+get:
+    operationId: groups.ListPermissionGrants
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - clientAppId
+                    - clientAppId desc
+                    - clientId
+                    - clientId desc
+                    - permission
+                    - permission desc
+                    - permissionType
+                    - permissionType desc
+                    - resourceAppId
+                    - resourceAppId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - clientAppId
+                    - clientId
+                    - permission
+                    - permissionType
+                    - resourceAppId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+                                type: array
+                        title: Collection of resourceSpecificPermissionGrant
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get permissionGrants from groups
+    tags:
+        - groups.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.CreatePermissionGrants
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to permissionGrants for groups
+    tags:
+        - groups.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation

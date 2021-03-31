@@ -1,0 +1,79 @@
+get:
+    operationId: drive.drive.GetDrive
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - driveType
+                    - owner
+                    - quota
+                    - sharePointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.drive'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get drive
+    tags:
+        - drive.drive
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drive.drive.UpdateDrive
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.drive'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update drive
+    tags:
+        - drive.drive
+    x-ms-docs-operation-type: operation

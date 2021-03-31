@@ -1,0 +1,74 @@
+get:
+    operationId: me.events.calendar.GetCalendarPermissions
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: calendarPermission-id of calendarPermission'
+          in: path
+          name: calendarPermission-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarPermission
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedRoles
+                    - emailAddress
+                    - isInsideOrganization
+                    - isRemovable
+                    - role
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendarPermission'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendarPermissions from me
+    tags:
+        - me.event
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.events.calendar.UpdateCalendarPermissions
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: calendarPermission-id of calendarPermission'
+          in: path
+          name: calendarPermission-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarPermission
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendarPermission2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendarPermissions in me
+    tags:
+        - me.event
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,117 @@
+get:
+    operationId: deviceAppManagement.managedEBooks.ListDeviceStates
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deviceId
+                    - deviceId desc
+                    - deviceName
+                    - deviceName desc
+                    - errorCode
+                    - errorCode desc
+                    - installState
+                    - installState desc
+                    - lastSyncDateTime
+                    - lastSyncDateTime desc
+                    - osDescription
+                    - osDescription desc
+                    - osVersion
+                    - osVersion desc
+                    - userName
+                    - userName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deviceId
+                    - deviceName
+                    - errorCode
+                    - installState
+                    - lastSyncDateTime
+                    - osDescription
+                    - osVersion
+                    - userName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.deviceInstallState'
+                                type: array
+                        title: Collection of deviceInstallState
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceStates from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.managedEBooks.CreateDeviceStates
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceInstallState'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceInstallState'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to deviceStates for deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartAxisTitle
+      type: object
+      properties:
+        text:
+            type: string
+        visible:
+            type: boolean
+        format: {}
+example:
+    id: string (identifier)
+    text: string
+    visible: true
+    format:
+        "@odata.type": microsoft.graph.workbookChartAxisTitleFormat

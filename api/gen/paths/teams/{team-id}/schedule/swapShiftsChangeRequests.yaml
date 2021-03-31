@@ -1,0 +1,146 @@
+get:
+    operationId: teams.schedule.ListSwapShiftsChangeRequests
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - assignedTo
+                    - assignedTo desc
+                    - managerActionDateTime
+                    - managerActionDateTime desc
+                    - managerActionMessage
+                    - managerActionMessage desc
+                    - managerUserId
+                    - managerUserId desc
+                    - senderDateTime
+                    - senderDateTime desc
+                    - senderMessage
+                    - senderMessage desc
+                    - senderUserId
+                    - senderUserId desc
+                    - state
+                    - state desc
+                    - recipientActionDateTime
+                    - recipientActionDateTime desc
+                    - recipientActionMessage
+                    - recipientActionMessage desc
+                    - recipientUserId
+                    - recipientUserId desc
+                    - senderShiftId
+                    - senderShiftId desc
+                    - recipientShiftId
+                    - recipientShiftId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - assignedTo
+                    - managerActionDateTime
+                    - managerActionMessage
+                    - managerUserId
+                    - senderDateTime
+                    - senderMessage
+                    - senderUserId
+                    - state
+                    - recipientActionDateTime
+                    - recipientActionMessage
+                    - recipientUserId
+                    - senderShiftId
+                    - recipientShiftId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.swapShiftsChangeRequest'
+                                type: array
+                        title: Collection of swapShiftsChangeRequest
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get swapShiftsChangeRequests from teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation
+post:
+    operationId: teams.schedule.CreateSwapShiftsChangeRequests
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.swapShiftsChangeRequest'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.swapShiftsChangeRequest'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to swapShiftsChangeRequests for teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation

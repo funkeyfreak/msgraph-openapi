@@ -1,0 +1,152 @@
+get:
+    operationId: auditLogs.ListSignIns
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - appDisplayName
+                    - appDisplayName desc
+                    - appId
+                    - appId desc
+                    - appliedConditionalAccessPolicies
+                    - appliedConditionalAccessPolicies desc
+                    - clientAppUsed
+                    - clientAppUsed desc
+                    - conditionalAccessStatus
+                    - conditionalAccessStatus desc
+                    - correlationId
+                    - correlationId desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - deviceDetail
+                    - deviceDetail desc
+                    - ipAddress
+                    - ipAddress desc
+                    - isInteractive
+                    - isInteractive desc
+                    - location
+                    - location desc
+                    - resourceDisplayName
+                    - resourceDisplayName desc
+                    - resourceId
+                    - resourceId desc
+                    - riskDetail
+                    - riskDetail desc
+                    - riskEventTypes
+                    - riskEventTypes desc
+                    - riskEventTypes_v2
+                    - riskEventTypes_v2 desc
+                    - riskLevelAggregated
+                    - riskLevelAggregated desc
+                    - riskLevelDuringSignIn
+                    - riskLevelDuringSignIn desc
+                    - riskState
+                    - riskState desc
+                    - status
+                    - status desc
+                    - userDisplayName
+                    - userDisplayName desc
+                    - userId
+                    - userId desc
+                    - userPrincipalName
+                    - userPrincipalName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appDisplayName
+                    - appId
+                    - appliedConditionalAccessPolicies
+                    - clientAppUsed
+                    - conditionalAccessStatus
+                    - correlationId
+                    - createdDateTime
+                    - deviceDetail
+                    - ipAddress
+                    - isInteractive
+                    - location
+                    - resourceDisplayName
+                    - resourceId
+                    - riskDetail
+                    - riskEventTypes
+                    - riskEventTypes_v2
+                    - riskLevelAggregated
+                    - riskLevelDuringSignIn
+                    - riskState
+                    - status
+                    - userDisplayName
+                    - userId
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.signIn'
+                                type: array
+                        title: Collection of signIn
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get signIns from auditLogs
+    tags:
+        - auditLogs.signIn
+    x-ms-docs-operation-type: operation
+post:
+    operationId: auditLogs.CreateSignIns
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.signIn'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.signIn'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to signIns for auditLogs
+    tags:
+        - auditLogs.signIn
+    x-ms-docs-operation-type: operation

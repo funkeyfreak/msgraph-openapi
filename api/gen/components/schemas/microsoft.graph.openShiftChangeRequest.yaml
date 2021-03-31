@@ -1,0 +1,24 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.scheduleChangeRequest"
+    - title: openShiftChangeRequest
+      type: object
+      properties:
+        openShiftId:
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    assignedTo:
+        "@odata.type": microsoft.graph.scheduleChangeRequestActor
+    managerActionDateTime: string (timestamp)
+    managerActionMessage: string
+    managerUserId: string
+    senderDateTime: string (timestamp)
+    senderMessage: string
+    senderUserId: string
+    state:
+        "@odata.type": microsoft.graph.scheduleChangeState
+    openShiftId: string

@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookComment
+      type: object
+      properties:
+        content:
+            type: string
+        contentType:
+            type: string
+        replies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookCommentReply"
+example:
+    id: string (identifier)
+    content: string
+    contentType: string
+    replies:
+        - "@odata.type": microsoft.graph.workbookCommentReply

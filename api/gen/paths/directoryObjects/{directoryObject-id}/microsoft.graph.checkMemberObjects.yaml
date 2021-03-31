@@ -1,0 +1,27 @@
+post:
+    operationId: directoryObjects.checkMemberObjects
+    parameters:
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+    requestBody:
+        $ref: '#/components/requestBodies/communications.getPresencesByUserIdBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            type: string
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action checkMemberObjects
+    tags:
+        - directoryObjects.Actions
+    x-ms-docs-operation-type: action

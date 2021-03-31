@@ -1,0 +1,81 @@
+get:
+    operationId: directory.GetAdministrativeUnits
+    parameters:
+        - description: 'key: administrativeUnit-id of administrativeUnit'
+          in: path
+          name: administrativeUnit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: administrativeUnit
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - visibility
+                    - members
+                    - scopedRoleMembers
+                    - extensions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - members
+                    - scopedRoleMembers
+                    - extensions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.administrativeUnit'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get administrativeUnits from directory
+    tags:
+        - directory.administrativeUnit
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: directory.UpdateAdministrativeUnits
+    parameters:
+        - description: 'key: administrativeUnit-id of administrativeUnit'
+          in: path
+          name: administrativeUnit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: administrativeUnit
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.administrativeUnit'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property administrativeUnits in directory
+    tags:
+        - directory.administrativeUnit
+    x-ms-docs-operation-type: operation

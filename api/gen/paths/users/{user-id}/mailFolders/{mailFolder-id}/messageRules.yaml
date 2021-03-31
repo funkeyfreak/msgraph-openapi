@@ -1,0 +1,119 @@
+get:
+    operationId: users.mailFolders.ListMessageRules
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - actions
+                    - actions desc
+                    - conditions
+                    - conditions desc
+                    - displayName
+                    - displayName desc
+                    - exceptions
+                    - exceptions desc
+                    - hasError
+                    - hasError desc
+                    - isEnabled
+                    - isEnabled desc
+                    - isReadOnly
+                    - isReadOnly desc
+                    - sequence
+                    - sequence desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actions
+                    - conditions
+                    - displayName
+                    - exceptions
+                    - hasError
+                    - isEnabled
+                    - isReadOnly
+                    - sequence
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.messageRule'
+                                type: array
+                        title: Collection of messageRule
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get messageRules from users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.mailFolders.CreateMessageRules
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.messageRule'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.messageRule'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to messageRules for users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation

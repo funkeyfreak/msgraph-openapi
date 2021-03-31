@@ -1,0 +1,44 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItem"
+    - title: listItem
+      type: object
+      properties:
+        contentType: {}
+        sharepointIds: {}
+        analytics: {}
+        driveItem: {}
+        fields: {}
+        versions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.listItemVersion"
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user
+    contentType:
+        "@odata.type": microsoft.graph.contentTypeInfo
+    sharepointIds:
+        "@odata.type": microsoft.graph.sharepointIds
+    analytics:
+        "@odata.type": microsoft.graph.itemAnalytics
+    driveItem:
+        "@odata.type": microsoft.graph.driveItem
+    fields:
+        "@odata.type": microsoft.graph.fieldValueSet
+    versions:
+        - "@odata.type": microsoft.graph.listItemVersion

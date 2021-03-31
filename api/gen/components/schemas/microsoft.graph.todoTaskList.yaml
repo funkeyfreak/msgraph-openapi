@@ -1,0 +1,31 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: todoTaskList
+      type: object
+      properties:
+        displayName:
+            type: string
+        isOwner:
+            type: boolean
+        isShared:
+            type: boolean
+        wellknownListName: {}
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        tasks:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.todoTask"
+example:
+    id: string (identifier)
+    displayName: string
+    isOwner: true
+    isShared: true
+    wellknownListName:
+        "@odata.type": microsoft.graph.wellknownListName
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    tasks:
+        - "@odata.type": microsoft.graph.todoTask

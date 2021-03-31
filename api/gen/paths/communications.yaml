@@ -1,0 +1,64 @@
+get:
+    operationId: communications.cloudCommunications.GetCloudCommunications
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - calls
+                    - callRecords
+                    - onlineMeetings
+                    - presences
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - calls
+                    - callRecords
+                    - onlineMeetings
+                    - presences
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.cloudCommunications'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get communications
+    tags:
+        - communications.cloudCommunications
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.cloudCommunications.UpdateCloudCommunications
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.cloudCommunications'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update communications
+    tags:
+        - communications.cloudCommunications
+    x-ms-docs-operation-type: operation

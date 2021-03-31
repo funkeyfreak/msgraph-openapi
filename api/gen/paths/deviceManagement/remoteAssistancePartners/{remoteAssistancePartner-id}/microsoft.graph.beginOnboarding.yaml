@@ -1,0 +1,19 @@
+post:
+    operationId: deviceManagement.remoteAssistancePartners.beginOnboarding
+    parameters:
+        - description: 'key: remoteAssistancePartner-id of remoteAssistancePartner'
+          in: path
+          name: remoteAssistancePartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: remoteAssistancePartner
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action beginOnboarding
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

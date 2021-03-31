@@ -1,0 +1,24 @@
+post:
+    operationId: me.onenote.pages.parentSection.copyToSectionGroup
+    parameters:
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    requestBody:
+        $ref: '#/components/requestBodies/groups.onenote.notebooks.sectionGroups.sections.copyToNotebookBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action copyToSectionGroup
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

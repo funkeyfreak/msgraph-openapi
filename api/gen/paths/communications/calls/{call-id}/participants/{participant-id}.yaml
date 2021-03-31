@@ -1,0 +1,90 @@
+get:
+    operationId: communications.calls.GetParticipants
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+        - description: 'key: participant-id of participant'
+          in: path
+          name: participant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: participant
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - info
+                    - isInLobby
+                    - isMuted
+                    - mediaStreams
+                    - recordingInfo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.participant'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get participants from communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.calls.UpdateParticipants
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+        - description: 'key: participant-id of participant'
+          in: path
+          name: participant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: participant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.participant'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property participants in communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation

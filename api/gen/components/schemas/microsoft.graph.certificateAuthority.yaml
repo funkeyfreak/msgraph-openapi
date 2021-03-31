@@ -1,0 +1,23 @@
+title: certificateAuthority
+type: object
+properties:
+    certificate:
+        format: base64url
+        type: string
+    certificateRevocationListUrl:
+        type: string
+    deltaCertificateRevocationListUrl:
+        type: string
+    isRootAuthority:
+        type: boolean
+    issuer:
+        type: string
+    issuerSki:
+        type: string
+example:
+    certificate: string
+    certificateRevocationListUrl: string
+    deltaCertificateRevocationListUrl: string
+    isRootAuthority: true
+    issuer: string
+    issuerSki: string

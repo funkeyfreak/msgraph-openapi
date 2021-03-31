@@ -1,0 +1,74 @@
+get:
+    operationId: identity.conditionalAccess.GetNamedLocations
+    parameters:
+        - description: 'key: namedLocation-id of namedLocation'
+          in: path
+          name: namedLocation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: namedLocation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - displayName
+                    - modifiedDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.namedLocation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get namedLocations from identity
+    tags:
+        - identity.conditionalAccessRoot
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: identity.conditionalAccess.UpdateNamedLocations
+    parameters:
+        - description: 'key: namedLocation-id of namedLocation'
+          in: path
+          name: namedLocation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: namedLocation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.namedLocation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property namedLocations in identity
+    tags:
+        - identity.conditionalAccessRoot
+    x-ms-docs-operation-type: operation

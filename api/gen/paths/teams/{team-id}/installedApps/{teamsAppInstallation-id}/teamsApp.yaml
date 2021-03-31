@@ -1,0 +1,57 @@
+get:
+    operationId: teams.installedApps.GetTeamsApp
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: teamsAppInstallation-id of teamsAppInstallation'
+          in: path
+          name: teamsAppInstallation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsAppInstallation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - distributionMethod
+                    - externalId
+                    - appDefinitions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appDefinitions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.teamsApp'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get teamsApp from teams
+    tags:
+        - teams.teamsAppInstallation
+    x-ms-docs-operation-type: operation

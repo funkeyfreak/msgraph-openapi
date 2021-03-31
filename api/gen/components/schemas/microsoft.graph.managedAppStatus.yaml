@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedAppStatus
+      description: Represents app protection and configuration status for the organization.
+      type: object
+      properties:
+        displayName:
+            description: Friendly name of the status report.
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    version: string

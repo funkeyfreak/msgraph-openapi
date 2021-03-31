@@ -1,0 +1,10 @@
+title: localeInfo
+type: object
+properties:
+    displayName:
+        type: string
+    locale:
+        type: string
+example:
+    displayName: string
+    locale: string

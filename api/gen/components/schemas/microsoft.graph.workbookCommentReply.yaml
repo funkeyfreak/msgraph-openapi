@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookCommentReply
+      type: object
+      properties:
+        content:
+            type: string
+        contentType:
+            type: string
+example:
+    id: string (identifier)
+    content: string
+    contentType: string

@@ -1,0 +1,120 @@
+get:
+    operationId: deviceManagement.deviceConfigurations.ListDeviceSettingStateSummaries
+    parameters:
+        - description: 'key: deviceConfiguration-id of deviceConfiguration'
+          in: path
+          name: deviceConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfiguration
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - compliantDeviceCount
+                    - compliantDeviceCount desc
+                    - conflictDeviceCount
+                    - conflictDeviceCount desc
+                    - errorDeviceCount
+                    - errorDeviceCount desc
+                    - instancePath
+                    - instancePath desc
+                    - nonCompliantDeviceCount
+                    - nonCompliantDeviceCount desc
+                    - notApplicableDeviceCount
+                    - notApplicableDeviceCount desc
+                    - remediatedDeviceCount
+                    - remediatedDeviceCount desc
+                    - settingName
+                    - settingName desc
+                    - unknownDeviceCount
+                    - unknownDeviceCount desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - compliantDeviceCount
+                    - conflictDeviceCount
+                    - errorDeviceCount
+                    - instancePath
+                    - nonCompliantDeviceCount
+                    - notApplicableDeviceCount
+                    - remediatedDeviceCount
+                    - settingName
+                    - unknownDeviceCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.settingStateDeviceSummary'
+                                type: array
+                        title: Collection of settingStateDeviceSummary
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceSettingStateSummaries from deviceManagement
+    tags:
+        - deviceManagement.deviceConfiguration
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.deviceConfigurations.CreateDeviceSettingStateSummaries
+    parameters:
+        - description: 'key: deviceConfiguration-id of deviceConfiguration'
+          in: path
+          name: deviceConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfiguration
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.settingStateDeviceSummary'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.settingStateDeviceSummary'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to deviceSettingStateSummaries for deviceManagement
+    tags:
+        - deviceManagement.deviceConfiguration
+    x-ms-docs-operation-type: operation

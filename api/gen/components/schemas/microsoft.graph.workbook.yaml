@@ -1,0 +1,43 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbook
+      type: object
+      properties:
+        application: {}
+        comments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookComment"
+        functions: {}
+        names:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookNamedItem"
+        operations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookOperation"
+        tables:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookTable"
+        worksheets:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookWorksheet"
+example:
+    id: string (identifier)
+    application:
+        "@odata.type": microsoft.graph.workbookApplication
+    comments:
+        - "@odata.type": microsoft.graph.workbookComment
+    functions:
+        "@odata.type": microsoft.graph.workbookFunctions
+    names:
+        - "@odata.type": microsoft.graph.workbookNamedItem
+    operations:
+        - "@odata.type": microsoft.graph.workbookOperation
+    tables:
+        - "@odata.type": microsoft.graph.workbookTable
+    worksheets:
+        - "@odata.type": microsoft.graph.workbookWorksheet

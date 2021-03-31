@@ -1,0 +1,77 @@
+get:
+    operationId: drive.list.GetContentTypes
+    parameters:
+        - description: 'key: contentType-id of contentType'
+          in: path
+          name: contentType-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contentType
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - group
+                    - hidden
+                    - inheritedFrom
+                    - name
+                    - order
+                    - parentId
+                    - readOnly
+                    - sealed
+                    - columnLinks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - columnLinks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contentType'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contentTypes from drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drive.list.UpdateContentTypes
+    parameters:
+        - description: 'key: contentType-id of contentType'
+          in: path
+          name: contentType-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contentType
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contentType'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property contentTypes in drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation

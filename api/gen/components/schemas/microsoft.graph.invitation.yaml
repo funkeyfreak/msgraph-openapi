@@ -1,0 +1,34 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: invitation
+      type: object
+      properties:
+        invitedUserDisplayName:
+            type: string
+        invitedUserEmailAddress:
+            type: string
+        invitedUserMessageInfo: {}
+        invitedUserType:
+            type: string
+        inviteRedeemUrl:
+            type: string
+        inviteRedirectUrl:
+            type: string
+        sendInvitationMessage:
+            type: boolean
+        status:
+            type: string
+        invitedUser: {}
+example:
+    id: string (identifier)
+    invitedUserDisplayName: string
+    invitedUserEmailAddress: string
+    invitedUserMessageInfo:
+        "@odata.type": microsoft.graph.invitedUserMessageInfo
+    invitedUserType: string
+    inviteRedeemUrl: string
+    inviteRedirectUrl: string
+    sendInvitationMessage: true
+    status: string
+    invitedUser:
+        "@odata.type": microsoft.graph.user

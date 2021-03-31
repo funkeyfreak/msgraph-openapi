@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: appCatalogs
+      type: object
+      properties:
+        teamsApps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.teamsApp"
+example:
+    id: string (identifier)
+    teamsApps:
+        - "@odata.type": microsoft.graph.teamsApp

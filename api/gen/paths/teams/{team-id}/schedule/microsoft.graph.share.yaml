@@ -1,0 +1,38 @@
+post:
+    operationId: teams.schedule.share
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        endDateTime:
+                            format: date-time
+                            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+                            type: string
+                        notifyTeam:
+                            default: false
+                            type: boolean
+                        startDateTime:
+                            format: date-time
+                            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+                            type: string
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action share
+    tags:
+        - teams.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamsTab
+      type: object
+      properties:
+        configuration: {}
+        displayName:
+            type: string
+        webUrl:
+            type: string
+        teamsApp: {}
+example:
+    id: string (identifier)
+    configuration:
+        "@odata.type": microsoft.graph.teamsTabConfiguration
+    displayName: string
+    webUrl: string
+    teamsApp:
+        "@odata.type": microsoft.graph.teamsApp

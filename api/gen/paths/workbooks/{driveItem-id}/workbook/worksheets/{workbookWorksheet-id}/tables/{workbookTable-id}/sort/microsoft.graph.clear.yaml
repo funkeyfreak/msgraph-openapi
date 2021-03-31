@@ -1,0 +1,33 @@
+post:
+    operationId: workbooks.workbook.worksheets.tables.sort.clear
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action clear
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,107 @@
+get:
+    operationId: education.me.ListSchools
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - externalSource
+                    - externalSource desc
+                    - address
+                    - address desc
+                    - createdBy
+                    - createdBy desc
+                    - externalId
+                    - externalId desc
+                    - externalPrincipalId
+                    - externalPrincipalId desc
+                    - fax
+                    - fax desc
+                    - highestGrade
+                    - highestGrade desc
+                    - lowestGrade
+                    - lowestGrade desc
+                    - phone
+                    - phone desc
+                    - principalEmail
+                    - principalEmail desc
+                    - principalName
+                    - principalName desc
+                    - schoolNumber
+                    - schoolNumber desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - externalSource
+                    - address
+                    - createdBy
+                    - externalId
+                    - externalPrincipalId
+                    - fax
+                    - highestGrade
+                    - lowestGrade
+                    - phone
+                    - principalEmail
+                    - principalName
+                    - schoolNumber
+                    - classes
+                    - users
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - classes
+                    - users
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.educationSchool'
+                                type: array
+                        title: Collection of educationSchool
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get schools from education
+    tags:
+        - education.educationUser
+    x-ms-docs-operation-type: operation

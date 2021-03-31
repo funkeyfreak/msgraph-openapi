@@ -1,0 +1,18 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: mobileAppCategory
+      description: Contains properties for a single Intune app category.
+      type: object
+      properties:
+        displayName:
+            description: The name of the app category.
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            description: The date and time the mobileAppCategory was last modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    lastModifiedDateTime: string (timestamp)

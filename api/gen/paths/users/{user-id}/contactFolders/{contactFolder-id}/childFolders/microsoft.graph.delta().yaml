@@ -1,0 +1,32 @@
+get:
+    operationId: users.contactFolders.childFolders.delta
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.contactFolder'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function delta
+    tags:
+        - users.Functions
+    x-ms-docs-operation-type: function

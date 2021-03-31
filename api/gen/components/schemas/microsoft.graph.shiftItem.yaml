@@ -1,0 +1,21 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.scheduleEntity"
+    - title: shiftItem
+      type: object
+      properties:
+        activities:
+            type: array
+            items: {}
+        displayName:
+            type: string
+        notes:
+            type: string
+example:
+    endDateTime: string (timestamp)
+    startDateTime: string (timestamp)
+    theme:
+        "@odata.type": microsoft.graph.scheduleEntityTheme
+    activities:
+        - "@odata.type": microsoft.graph.shiftActivity
+    displayName: string
+    notes: string

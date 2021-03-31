@@ -1,0 +1,56 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.educationOrganization"
+    - title: educationSchool
+      type: object
+      properties:
+        address: {}
+        createdBy: {}
+        externalId:
+            type: string
+        externalPrincipalId:
+            type: string
+        fax:
+            type: string
+        highestGrade:
+            type: string
+        lowestGrade:
+            type: string
+        phone:
+            type: string
+        principalEmail:
+            type: string
+        principalName:
+            type: string
+        schoolNumber:
+            type: string
+        classes:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationClass"
+        users:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationUser"
+example:
+    id: string (identifier)
+    description: string
+    displayName: string
+    externalSource:
+        "@odata.type": microsoft.graph.educationExternalSource
+    address:
+        "@odata.type": microsoft.graph.physicalAddress
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    externalId: string
+    externalPrincipalId: string
+    fax: string
+    highestGrade: string
+    lowestGrade: string
+    phone: string
+    principalEmail: string
+    principalName: string
+    schoolNumber: string
+    classes:
+        - "@odata.type": microsoft.graph.educationClass
+    users:
+        - "@odata.type": microsoft.graph.educationUser

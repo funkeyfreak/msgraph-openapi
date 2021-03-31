@@ -1,0 +1,33 @@
+post:
+    operationId: communications.calls.updateRecordingStatus
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        clientContext:
+                            type: string
+                        status: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action updateRecordingStatus
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

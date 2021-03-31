@@ -1,0 +1,24 @@
+post:
+    operationId: workbooks.workbook.functions.ceiling_Math
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/workbooks.workbook.functions.ceiling_MathBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action ceiling_Math
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

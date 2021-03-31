@@ -1,0 +1,68 @@
+get:
+    operationId: communications.GetPresences
+    parameters:
+        - description: 'key: presence-id of presence'
+          in: path
+          name: presence-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: presence
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activity
+                    - availability
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.presence'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get presences from communications
+    tags:
+        - communications.presence
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.UpdatePresences
+    parameters:
+        - description: 'key: presence-id of presence'
+          in: path
+          name: presence-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: presence
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.presence'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property presences in communications
+    tags:
+        - communications.presence
+    x-ms-docs-operation-type: operation

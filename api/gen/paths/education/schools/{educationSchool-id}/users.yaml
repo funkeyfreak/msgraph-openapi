@@ -1,0 +1,161 @@
+get:
+    operationId: education.schools.ListUsers
+    parameters:
+        - description: 'key: educationSchool-id of educationSchool'
+          in: path
+          name: educationSchool-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationSchool
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - accountEnabled
+                    - accountEnabled desc
+                    - assignedLicenses
+                    - assignedLicenses desc
+                    - assignedPlans
+                    - assignedPlans desc
+                    - businessPhones
+                    - businessPhones desc
+                    - createdBy
+                    - createdBy desc
+                    - department
+                    - department desc
+                    - displayName
+                    - displayName desc
+                    - externalSource
+                    - externalSource desc
+                    - givenName
+                    - givenName desc
+                    - mail
+                    - mail desc
+                    - mailingAddress
+                    - mailingAddress desc
+                    - mailNickname
+                    - mailNickname desc
+                    - middleName
+                    - middleName desc
+                    - mobilePhone
+                    - mobilePhone desc
+                    - officeLocation
+                    - officeLocation desc
+                    - passwordPolicies
+                    - passwordPolicies desc
+                    - passwordProfile
+                    - passwordProfile desc
+                    - preferredLanguage
+                    - preferredLanguage desc
+                    - primaryRole
+                    - primaryRole desc
+                    - provisionedPlans
+                    - provisionedPlans desc
+                    - refreshTokensValidFromDateTime
+                    - refreshTokensValidFromDateTime desc
+                    - residenceAddress
+                    - residenceAddress desc
+                    - showInAddressList
+                    - showInAddressList desc
+                    - student
+                    - student desc
+                    - surname
+                    - surname desc
+                    - teacher
+                    - teacher desc
+                    - usageLocation
+                    - usageLocation desc
+                    - userPrincipalName
+                    - userPrincipalName desc
+                    - userType
+                    - userType desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - accountEnabled
+                    - assignedLicenses
+                    - assignedPlans
+                    - businessPhones
+                    - createdBy
+                    - department
+                    - displayName
+                    - externalSource
+                    - givenName
+                    - mail
+                    - mailingAddress
+                    - mailNickname
+                    - middleName
+                    - mobilePhone
+                    - officeLocation
+                    - passwordPolicies
+                    - passwordProfile
+                    - preferredLanguage
+                    - primaryRole
+                    - provisionedPlans
+                    - refreshTokensValidFromDateTime
+                    - residenceAddress
+                    - showInAddressList
+                    - student
+                    - surname
+                    - teacher
+                    - usageLocation
+                    - userPrincipalName
+                    - userType
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.educationUser'
+                                type: array
+                        title: Collection of educationUser
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get users from education
+    tags:
+        - education.educationSchool
+    x-ms-docs-operation-type: operation

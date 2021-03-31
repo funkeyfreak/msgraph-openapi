@@ -1,0 +1,119 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicies.ListDeviceStatuses
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - complianceGracePeriodExpirationDateTime
+                    - complianceGracePeriodExpirationDateTime desc
+                    - deviceDisplayName
+                    - deviceDisplayName desc
+                    - deviceModel
+                    - deviceModel desc
+                    - lastReportedDateTime
+                    - lastReportedDateTime desc
+                    - status
+                    - status desc
+                    - userName
+                    - userName desc
+                    - userPrincipalName
+                    - userPrincipalName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - complianceGracePeriodExpirationDateTime
+                    - deviceDisplayName
+                    - deviceModel
+                    - lastReportedDateTime
+                    - status
+                    - userName
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.deviceComplianceDeviceStatus'
+                                type: array
+                        title: Collection of deviceComplianceDeviceStatus
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceStatuses from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.deviceCompliancePolicies.CreateDeviceStatuses
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceComplianceDeviceStatus'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceComplianceDeviceStatus'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to deviceStatuses for deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

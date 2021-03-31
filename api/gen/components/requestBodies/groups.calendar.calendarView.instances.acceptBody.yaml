@@ -1,0 +1,12 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                SendResponse:
+                    default: false
+                    type: boolean
+                Comment:
+                    type: string
+description: Action parameters
+required: true

@@ -1,0 +1,36 @@
+get:
+    operationId: groups.calendarView.calendar.allowedCalendarSharingRoles
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - in: path
+          name: User
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function allowedCalendarSharingRoles
+    tags:
+        - groups.Functions
+    x-ms-docs-operation-type: function

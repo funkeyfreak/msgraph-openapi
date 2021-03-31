@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: multiValueLegacyExtendedProperty
+      type: object
+      properties:
+        value:
+            type: array
+            items:
+                type: string
+example:
+    id: string (identifier)
+    value:
+        - string

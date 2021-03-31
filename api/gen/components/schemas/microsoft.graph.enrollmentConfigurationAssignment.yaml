@@ -1,0 +1,12 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: enrollmentConfigurationAssignment
+      description: Enrollment Configuration Assignment
+      type: object
+      properties:
+        target:
+            description: Represents an assignment to managed devices in the tenant
+example:
+    id: string (identifier)
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

@@ -1,0 +1,38 @@
+post:
+    operationId: communications.calls.redirect
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        callbackUri:
+                            type: string
+                        targets:
+                            items:
+                                $ref: '#/components/schemas/microsoft.graph.invitationParticipantInfo'
+                            type: array
+                        timeout:
+                            format: int32
+                            maximum: 2.147483647e+09
+                            minimum: -2.147483648e+09
+                            type: integer
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action redirect
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

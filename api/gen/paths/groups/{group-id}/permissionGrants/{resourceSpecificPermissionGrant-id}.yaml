@@ -1,0 +1,91 @@
+get:
+    operationId: groups.GetPermissionGrants
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: resourceSpecificPermissionGrant-id of resourceSpecificPermissionGrant'
+          in: path
+          name: resourceSpecificPermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceSpecificPermissionGrant
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - clientAppId
+                    - clientId
+                    - permission
+                    - permissionType
+                    - resourceAppId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get permissionGrants from groups
+    tags:
+        - groups.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdatePermissionGrants
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: resourceSpecificPermissionGrant-id of resourceSpecificPermissionGrant'
+          in: path
+          name: resourceSpecificPermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceSpecificPermissionGrant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property permissionGrants in groups
+    tags:
+        - groups.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation

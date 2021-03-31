@@ -1,0 +1,19 @@
+title: visualInfo
+type: object
+properties:
+    attribution: {}
+    backgroundColor:
+        type: string
+    content: {}
+    description:
+        type: string
+    displayText:
+        type: string
+example:
+    attribution:
+        "@odata.type": microsoft.graph.imageInfo
+    backgroundColor: string
+    content:
+        "@odata.type": microsoft.graph.Json
+    description: string
+    displayText: string

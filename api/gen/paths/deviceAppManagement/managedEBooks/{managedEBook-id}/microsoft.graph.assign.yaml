@@ -1,0 +1,30 @@
+post:
+    operationId: deviceAppManagement.managedEBooks.assign
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        managedEBookAssignments:
+                            items: {}
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assign
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

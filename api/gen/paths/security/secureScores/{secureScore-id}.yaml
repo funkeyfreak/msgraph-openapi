@@ -1,0 +1,81 @@
+get:
+    operationId: security.GetSecureScores
+    parameters:
+        - description: 'key: secureScore-id of secureScore'
+          in: path
+          name: secureScore-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: secureScore
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activeUserCount
+                    - averageComparativeScores
+                    - azureTenantId
+                    - controlScores
+                    - createdDateTime
+                    - currentScore
+                    - enabledServices
+                    - licensedUserCount
+                    - maxScore
+                    - vendorInformation
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.secureScore'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get secureScores from security
+    tags:
+        - security.secureScore
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: security.UpdateSecureScores
+    parameters:
+        - description: 'key: secureScore-id of secureScore'
+          in: path
+          name: secureScore-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: secureScore
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.secureScore'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property secureScores in security
+    tags:
+        - security.secureScore
+    x-ms-docs-operation-type: operation

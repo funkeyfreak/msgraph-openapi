@@ -1,0 +1,38 @@
+post:
+    operationId: workbooks.workbook.names.worksheet.tables.rows.add
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+    requestBody:
+        $ref: '#/components/requestBodies/workbooks.workbook.names.worksheet.tables.rows.addBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action add
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

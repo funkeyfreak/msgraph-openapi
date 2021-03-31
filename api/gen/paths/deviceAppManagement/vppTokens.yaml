@@ -1,0 +1,116 @@
+get:
+    operationId: deviceAppManagement.ListVppTokens
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - appleId
+                    - appleId desc
+                    - automaticallyUpdateApps
+                    - automaticallyUpdateApps desc
+                    - countryOrRegion
+                    - countryOrRegion desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - lastSyncDateTime
+                    - lastSyncDateTime desc
+                    - lastSyncStatus
+                    - lastSyncStatus desc
+                    - organizationName
+                    - organizationName desc
+                    - state
+                    - state desc
+                    - token
+                    - token desc
+                    - vppTokenAccountType
+                    - vppTokenAccountType desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appleId
+                    - automaticallyUpdateApps
+                    - countryOrRegion
+                    - expirationDateTime
+                    - lastModifiedDateTime
+                    - lastSyncDateTime
+                    - lastSyncStatus
+                    - organizationName
+                    - state
+                    - token
+                    - vppTokenAccountType
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.vppToken'
+                                type: array
+                        title: Collection of vppToken
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get vppTokens from deviceAppManagement
+    tags:
+        - deviceAppManagement.vppToken
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateVppTokens
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.vppToken'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.vppToken'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to vppTokens for deviceAppManagement
+    tags:
+        - deviceAppManagement.vppToken
+    x-ms-docs-operation-type: operation

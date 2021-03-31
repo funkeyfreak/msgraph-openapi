@@ -1,0 +1,133 @@
+get:
+    operationId: me.todo.lists.ListTasks
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - body
+                    - body desc
+                    - bodyLastModifiedDateTime
+                    - bodyLastModifiedDateTime desc
+                    - completedDateTime
+                    - completedDateTime desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - dueDateTime
+                    - dueDateTime desc
+                    - importance
+                    - importance desc
+                    - isReminderOn
+                    - isReminderOn desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - recurrence
+                    - recurrence desc
+                    - reminderDateTime
+                    - reminderDateTime desc
+                    - status
+                    - status desc
+                    - title
+                    - title desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - body
+                    - bodyLastModifiedDateTime
+                    - completedDateTime
+                    - createdDateTime
+                    - dueDateTime
+                    - importance
+                    - isReminderOn
+                    - lastModifiedDateTime
+                    - recurrence
+                    - reminderDateTime
+                    - status
+                    - title
+                    - extensions
+                    - linkedResources
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - extensions
+                    - linkedResources
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.todoTask'
+                                type: array
+                        title: Collection of todoTask
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tasks from me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.todo.lists.CreateTasks
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.todoTask'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.todoTask'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to tasks for me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,78 @@
+get:
+    operationId: deviceAppManagement.mobileAppConfigurations.GetUserStatusSummary
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - configurationVersion
+                    - errorCount
+                    - failedCount
+                    - lastUpdateDateTime
+                    - notApplicableCount
+                    - pendingCount
+                    - successCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfigurationUserSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get userStatusSummary from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.mobileAppConfigurations.UpdateUserStatusSummary
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfigurationUserSummary'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property userStatusSummary in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation

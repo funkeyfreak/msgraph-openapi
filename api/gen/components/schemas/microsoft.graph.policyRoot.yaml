@@ -1,0 +1,55 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: policyRoot
+      type: object
+      properties:
+        activityBasedTimeoutPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy"
+        authorizationPolicy: {}
+        claimsMappingPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.claimsMappingPolicy"
+        homeRealmDiscoveryPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy"
+        permissionGrantPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.permissionGrantPolicy"
+        tokenIssuancePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenIssuancePolicy"
+        tokenLifetimePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenLifetimePolicy"
+        conditionalAccessPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.conditionalAccessPolicy"
+        identitySecurityDefaultsEnforcementPolicy: {}
+example:
+    id: string (identifier)
+    activityBasedTimeoutPolicies:
+        - "@odata.type": microsoft.graph.activityBasedTimeoutPolicy
+    authorizationPolicy:
+        "@odata.type": microsoft.graph.authorizationPolicy
+    claimsMappingPolicies:
+        - "@odata.type": microsoft.graph.claimsMappingPolicy
+    homeRealmDiscoveryPolicies:
+        - "@odata.type": microsoft.graph.homeRealmDiscoveryPolicy
+    permissionGrantPolicies:
+        - "@odata.type": microsoft.graph.permissionGrantPolicy
+    tokenIssuancePolicies:
+        - "@odata.type": microsoft.graph.tokenIssuancePolicy
+    tokenLifetimePolicies:
+        - "@odata.type": microsoft.graph.tokenLifetimePolicy
+    conditionalAccessPolicies:
+        - "@odata.type": microsoft.graph.conditionalAccessPolicy
+    identitySecurityDefaultsEnforcementPolicy:
+        "@odata.type": microsoft.graph.identitySecurityDefaultsEnforcementPolicy

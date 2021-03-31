@@ -1,0 +1,29 @@
+get:
+    operationId: sites.onenote.pages.preview
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function preview
+    tags:
+        - sites.Functions
+    x-ms-docs-operation-type: function

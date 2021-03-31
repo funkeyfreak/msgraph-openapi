@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerGroup
+      type: object
+      properties:
+        plans:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.plannerPlan"
+example:
+    id: string (identifier)
+    plans:
+        - "@odata.type": microsoft.graph.plannerPlan

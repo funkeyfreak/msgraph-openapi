@@ -1,0 +1,80 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedAppRegistration
+      description: The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
+      type: object
+      properties:
+        appIdentifier:
+            description: The app package Identifier
+        applicationVersion:
+            description: App version
+            type: string
+        createdDateTime:
+            format: date-time
+            description: Date and time of creation
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        deviceName:
+            description: Host device name
+            type: string
+        deviceTag:
+            description: App management SDK generated tag, which helps relate apps hosted on the same device. Not guaranteed to relate apps in all conditions.
+            type: string
+        deviceType:
+            description: Host device type
+            type: string
+        flaggedReasons:
+            description: Zero or more reasons an app registration is flagged. E.g. app running on rooted device
+            type: array
+            items: {}
+        lastSyncDateTime:
+            format: date-time
+            description: Date and time of last the app synced with management service.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        managementSdkVersion:
+            description: App management SDK version
+            type: string
+        platformVersion:
+            description: Operating System version
+            type: string
+        userId:
+            description: The user Id to who this app registration belongs.
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+        appliedPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedAppPolicy"
+        intendedPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedAppPolicy"
+        operations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedAppOperation"
+example:
+    id: string (identifier)
+    appIdentifier:
+        "@odata.type": microsoft.graph.mobileAppIdentifier
+    applicationVersion: string
+    createdDateTime: string (timestamp)
+    deviceName: string
+    deviceTag: string
+    deviceType: string
+    flaggedReasons:
+        - "@odata.type": microsoft.graph.managedAppFlaggedReason
+    lastSyncDateTime: string (timestamp)
+    managementSdkVersion: string
+    platformVersion: string
+    userId: string
+    version: string
+    appliedPolicies:
+        - "@odata.type": microsoft.graph.managedAppPolicy
+    intendedPolicies:
+        - "@odata.type": microsoft.graph.managedAppPolicy
+    operations:
+        - "@odata.type": microsoft.graph.managedAppOperation

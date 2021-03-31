@@ -1,0 +1,86 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicies.GetAssignments
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceCompliancePolicyAssignment-id of deviceCompliancePolicyAssignment'
+          in: path
+          name: deviceCompliancePolicyAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicyAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceCompliancePolicyAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceCompliancePolicies.UpdateAssignments
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceCompliancePolicyAssignment-id of deviceCompliancePolicyAssignment'
+          in: path
+          name: deviceCompliancePolicyAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicyAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceCompliancePolicyAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

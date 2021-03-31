@@ -1,0 +1,88 @@
+get:
+    operationId: communications.calls.GetOperations
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+        - description: 'key: commsOperation-id of commsOperation'
+          in: path
+          name: commsOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: commsOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientContext
+                    - resultInfo
+                    - status
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.commsOperation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get operations from communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.calls.UpdateOperations
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+        - description: 'key: commsOperation-id of commsOperation'
+          in: path
+          name: commsOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: commsOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.commsOperation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property operations in communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation

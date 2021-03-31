@@ -1,0 +1,110 @@
+get:
+    operationId: workbooks.workbook.worksheets.tables.GetRows
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookTableRow-id of workbookTableRow'
+          in: path
+          name: workbookTableRow-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTableRow
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - index
+                    - values
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookTableRow'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get rows from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.worksheets.tables.UpdateRows
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookTableRow-id of workbookTableRow'
+          in: path
+          name: workbookTableRow-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTableRow
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookTableRow'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property rows in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,17 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: scopedRoleMembership
+      type: object
+      properties:
+        administrativeUnitId:
+            type: string
+        roleId:
+            type: string
+        roleMemberInfo:
+            $ref: "#/components/schemas/microsoft.graph.identity"
+example:
+    id: string (identifier)
+    administrativeUnitId: string
+    roleId: string
+    roleMemberInfo:
+        "@odata.type": microsoft.graph.identity

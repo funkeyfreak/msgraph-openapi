@@ -1,0 +1,97 @@
+title: teleconferenceDeviceMediaQuality
+type: object
+properties:
+    averageInboundJitter:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    averageInboundPacketLossRateInPercentage:
+        format: double
+    averageInboundRoundTripDelay:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    averageOutboundJitter:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    averageOutboundPacketLossRateInPercentage:
+        format: double
+    averageOutboundRoundTripDelay:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    channelIndex:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+    inboundPackets:
+        format: int64
+        type: integer
+    localIPAddress:
+        type: string
+    localPort:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+    maximumInboundJitter:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    maximumInboundPacketLossRateInPercentage:
+        format: double
+    maximumInboundRoundTripDelay:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    maximumOutboundJitter:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    maximumOutboundPacketLossRateInPercentage:
+        format: double
+    maximumOutboundRoundTripDelay:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    mediaDuration:
+        format: duration
+        pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+        type: string
+    networkLinkSpeedInBytes:
+        format: int64
+        type: integer
+    outboundPackets:
+        format: int64
+        type: integer
+    remoteIPAddress:
+        type: string
+    remotePort:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+example:
+    averageInboundJitter: string
+    averageInboundPacketLossRateInPercentage: double
+    averageInboundRoundTripDelay: string
+    averageOutboundJitter: string
+    averageOutboundPacketLossRateInPercentage: double
+    averageOutboundRoundTripDelay: string
+    channelIndex: integer
+    inboundPackets: integer
+    localIPAddress: string
+    localPort: integer
+    maximumInboundJitter: string
+    maximumInboundPacketLossRateInPercentage: double
+    maximumInboundRoundTripDelay: string
+    maximumOutboundJitter: string
+    maximumOutboundPacketLossRateInPercentage: double
+    maximumOutboundRoundTripDelay: string
+    mediaDuration: string
+    networkLinkSpeedInBytes: integer
+    outboundPackets: integer
+    remoteIPAddress: string
+    remotePort: integer

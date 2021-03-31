@@ -1,0 +1,34 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartDataLabels
+      type: object
+      properties:
+        position:
+            type: string
+        separator:
+            type: string
+        showBubbleSize:
+            type: boolean
+        showCategoryName:
+            type: boolean
+        showLegendKey:
+            type: boolean
+        showPercentage:
+            type: boolean
+        showSeriesName:
+            type: boolean
+        showValue:
+            type: boolean
+        format: {}
+example:
+    id: string (identifier)
+    position: string
+    separator: string
+    showBubbleSize: true
+    showCategoryName: true
+    showLegendKey: true
+    showPercentage: true
+    showSeriesName: true
+    showValue: true
+    format:
+        "@odata.type": microsoft.graph.workbookChartDataLabelFormat

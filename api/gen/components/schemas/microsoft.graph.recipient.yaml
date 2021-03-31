@@ -1,0 +1,7 @@
+title: recipient
+type: object
+properties:
+    emailAddress: {}
+example:
+    emailAddress:
+        "@odata.type": microsoft.graph.emailAddress

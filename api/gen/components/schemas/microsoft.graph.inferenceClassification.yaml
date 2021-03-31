@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: inferenceClassification
+      type: object
+      properties:
+        overrides:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.inferenceClassificationOverride"
+example:
+    id: string (identifier)
+    overrides:
+        - "@odata.type": microsoft.graph.inferenceClassificationOverride

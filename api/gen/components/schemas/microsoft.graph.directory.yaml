@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: directory
+      type: object
+      properties:
+        administrativeUnits:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.administrativeUnit"
+        deletedItems:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+example:
+    id: string (identifier)
+    administrativeUnits:
+        - "@odata.type": microsoft.graph.administrativeUnit
+    deletedItems:
+        - "@odata.type": microsoft.graph.directoryObject

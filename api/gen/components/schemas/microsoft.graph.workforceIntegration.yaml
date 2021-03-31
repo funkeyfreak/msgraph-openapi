@@ -1,0 +1,32 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.changeTrackedEntity"
+    - title: workforceIntegration
+      type: object
+      properties:
+        apiVersion:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        displayName:
+            type: string
+        encryption: {}
+        isActive:
+            type: boolean
+        supportedEntities: {}
+        url:
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    apiVersion: integer
+    displayName: string
+    encryption:
+        "@odata.type": microsoft.graph.workforceIntegrationEncryption
+    isActive: true
+    supportedEntities:
+        "@odata.type": microsoft.graph.workforceIntegrationSupportedEntities
+    url: string

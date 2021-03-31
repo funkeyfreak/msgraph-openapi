@@ -1,0 +1,28 @@
+post:
+    operationId: deviceManagement.exchangeConnectors.sync
+    parameters:
+        - description: 'key: deviceManagementExchangeConnector-id of deviceManagementExchangeConnector'
+          in: path
+          name: deviceManagementExchangeConnector-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementExchangeConnector
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        syncType: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action sync
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

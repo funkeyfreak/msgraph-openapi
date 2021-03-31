@@ -1,0 +1,80 @@
+get:
+    operationId: users.planner.GetTasks
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: plannerTask-id of plannerTask'
+          in: path
+          name: plannerTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerTask
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activeChecklistItemCount
+                    - appliedCategories
+                    - assigneePriority
+                    - assignments
+                    - bucketId
+                    - checklistItemCount
+                    - completedBy
+                    - completedDateTime
+                    - conversationThreadId
+                    - createdBy
+                    - createdDateTime
+                    - dueDateTime
+                    - hasDescription
+                    - orderHint
+                    - percentComplete
+                    - planId
+                    - previewType
+                    - referenceCount
+                    - startDateTime
+                    - title
+                    - assignedToTaskBoardFormat
+                    - bucketTaskBoardFormat
+                    - details
+                    - progressTaskBoardFormat
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignedToTaskBoardFormat
+                    - bucketTaskBoardFormat
+                    - details
+                    - progressTaskBoardFormat
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerTask'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tasks from users
+    tags:
+        - users.plannerUser
+    x-ms-docs-operation-type: operation

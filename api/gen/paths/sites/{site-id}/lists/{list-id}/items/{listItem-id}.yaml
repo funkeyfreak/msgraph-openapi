@@ -1,0 +1,117 @@
+get:
+    operationId: sites.lists.GetItems
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - contentType
+                    - sharepointIds
+                    - createdByUser
+                    - lastModifiedByUser
+                    - analytics
+                    - driveItem
+                    - fields
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - analytics
+                    - driveItem
+                    - fields
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.listItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get items from sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.lists.UpdateItems
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.listItem'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property items in sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation

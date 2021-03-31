@@ -1,0 +1,59 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: userActivity
+      type: object
+      properties:
+        activationUrl:
+            type: string
+        activitySourceHost:
+            type: string
+        appActivityId:
+            type: string
+        appDisplayName:
+            type: string
+        contentInfo: {}
+        contentUrl:
+            type: string
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        expirationDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        fallbackUrl:
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        status: {}
+        userTimezone:
+            type: string
+        visualElements:
+            $ref: "#/components/schemas/microsoft.graph.visualInfo"
+        historyItems:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.activityHistoryItem"
+example:
+    id: string (identifier)
+    activationUrl: string
+    activitySourceHost: string
+    appActivityId: string
+    appDisplayName: string
+    contentInfo:
+        "@odata.type": microsoft.graph.Json
+    contentUrl: string
+    createdDateTime: string (timestamp)
+    expirationDateTime: string (timestamp)
+    fallbackUrl: string
+    lastModifiedDateTime: string (timestamp)
+    status:
+        "@odata.type": microsoft.graph.status
+    userTimezone: string
+    visualElements:
+        "@odata.type": microsoft.graph.visualInfo
+    historyItems:
+        - "@odata.type": microsoft.graph.activityHistoryItem

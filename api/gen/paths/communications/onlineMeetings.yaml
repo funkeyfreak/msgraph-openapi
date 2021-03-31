@@ -1,0 +1,120 @@
+get:
+    operationId: communications.ListOnlineMeetings
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - allowedPresenters
+                    - allowedPresenters desc
+                    - audioConferencing
+                    - audioConferencing desc
+                    - chatInfo
+                    - chatInfo desc
+                    - creationDateTime
+                    - creationDateTime desc
+                    - endDateTime
+                    - endDateTime desc
+                    - externalId
+                    - externalId desc
+                    - isEntryExitAnnounced
+                    - isEntryExitAnnounced desc
+                    - joinInformation
+                    - joinInformation desc
+                    - joinWebUrl
+                    - joinWebUrl desc
+                    - lobbyBypassSettings
+                    - lobbyBypassSettings desc
+                    - participants
+                    - participants desc
+                    - startDateTime
+                    - startDateTime desc
+                    - subject
+                    - subject desc
+                    - videoTeleconferenceId
+                    - videoTeleconferenceId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedPresenters
+                    - audioConferencing
+                    - chatInfo
+                    - creationDateTime
+                    - endDateTime
+                    - externalId
+                    - isEntryExitAnnounced
+                    - joinInformation
+                    - joinWebUrl
+                    - lobbyBypassSettings
+                    - participants
+                    - startDateTime
+                    - subject
+                    - videoTeleconferenceId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.onlineMeeting'
+                                type: array
+                        title: Collection of onlineMeeting
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get onlineMeetings from communications
+    tags:
+        - communications.onlineMeeting
+    x-ms-docs-operation-type: operation
+post:
+    operationId: communications.CreateOnlineMeetings
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onlineMeeting2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onlineMeeting'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to onlineMeetings for communications
+    tags:
+        - communications.onlineMeeting
+    x-ms-docs-operation-type: operation

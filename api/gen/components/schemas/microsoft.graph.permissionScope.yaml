@@ -1,0 +1,33 @@
+title: permissionScope
+type: object
+properties:
+    adminConsentDescription:
+        type: string
+    adminConsentDisplayName:
+        type: string
+    id:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+    isEnabled:
+        type: boolean
+    origin:
+        type: string
+    type:
+        type: string
+    userConsentDescription:
+        type: string
+    userConsentDisplayName:
+        type: string
+    value:
+        type: string
+example:
+    adminConsentDescription: string
+    adminConsentDisplayName: string
+    id: string
+    isEnabled: true
+    origin: string
+    type: string
+    userConsentDescription: string
+    userConsentDisplayName: string
+    value: string

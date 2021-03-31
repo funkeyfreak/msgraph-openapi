@@ -1,0 +1,166 @@
+get:
+    operationId: groups.conversations.threads.ListPosts
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - categories
+                    - categories desc
+                    - changeKey
+                    - changeKey desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - body
+                    - body desc
+                    - conversationId
+                    - conversationId desc
+                    - conversationThreadId
+                    - conversationThreadId desc
+                    - from
+                    - from desc
+                    - hasAttachments
+                    - hasAttachments desc
+                    - newParticipants
+                    - newParticipants desc
+                    - receivedDateTime
+                    - receivedDateTime desc
+                    - sender
+                    - sender desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - body
+                    - conversationId
+                    - conversationThreadId
+                    - from
+                    - hasAttachments
+                    - newParticipants
+                    - receivedDateTime
+                    - sender
+                    - attachments
+                    - extensions
+                    - inReplyTo
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - attachments
+                    - extensions
+                    - inReplyTo
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.post'
+                                type: array
+                        title: Collection of post
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get posts from groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.conversations.threads.CreatePosts
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.post'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.post'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to posts for groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation

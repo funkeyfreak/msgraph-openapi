@@ -1,0 +1,71 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedEBook
+      description: An abstract class containing the base properties for Managed eBook.
+      type: object
+      properties:
+        createdDateTime:
+            format: date-time
+            description: The date and time when the eBook file was created.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            description: Description.
+            type: string
+        displayName:
+            description: Name of the eBook.
+            type: string
+        informationUrl:
+            description: The more information Url.
+            type: string
+        largeCover:
+            description: Book cover.
+        lastModifiedDateTime:
+            format: date-time
+            description: The date and time when the eBook was last modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        privacyInformationUrl:
+            description: The privacy statement Url.
+            type: string
+        publishedDateTime:
+            format: date-time
+            description: The date and time when the eBook was published.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        publisher:
+            description: Publisher.
+            type: string
+        assignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedEBookAssignment"
+        deviceStates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceInstallState"
+        installSummary: {}
+        userStateSummary:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.userInstallStateSummary"
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    informationUrl: string
+    largeCover:
+        "@odata.type": microsoft.graph.mimeContent
+    lastModifiedDateTime: string (timestamp)
+    privacyInformationUrl: string
+    publishedDateTime: string (timestamp)
+    publisher: string
+    assignments:
+        - "@odata.type": microsoft.graph.managedEBookAssignment
+    deviceStates:
+        - "@odata.type": microsoft.graph.deviceInstallState
+    installSummary:
+        "@odata.type": microsoft.graph.eBookInstallSummary
+    userStateSummary:
+        - "@odata.type": microsoft.graph.userInstallStateSummary

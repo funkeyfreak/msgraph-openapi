@@ -1,0 +1,80 @@
+get:
+    operationId: deviceManagement.GetExchangeConnectors
+    parameters:
+        - description: 'key: deviceManagementExchangeConnector-id of deviceManagementExchangeConnector'
+          in: path
+          name: deviceManagementExchangeConnector-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementExchangeConnector
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - connectorServerName
+                    - exchangeAlias
+                    - exchangeConnectorType
+                    - exchangeOrganization
+                    - lastSyncDateTime
+                    - primarySmtpAddress
+                    - serverName
+                    - status
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagementExchangeConnector'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get exchangeConnectors from deviceManagement
+    tags:
+        - deviceManagement.deviceManagementExchangeConnector
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateExchangeConnectors
+    parameters:
+        - description: 'key: deviceManagementExchangeConnector-id of deviceManagementExchangeConnector'
+          in: path
+          name: deviceManagementExchangeConnector-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementExchangeConnector
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceManagementExchangeConnector'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property exchangeConnectors in deviceManagement
+    tags:
+        - deviceManagement.deviceManagementExchangeConnector
+    x-ms-docs-operation-type: operation

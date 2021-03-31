@@ -1,0 +1,29 @@
+post:
+    operationId: search.query
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        requests:
+                            items:
+                                $ref: '#/components/schemas/microsoft.graph.searchRequest'
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.searchResponse'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action query
+    tags:
+        - search.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,70 @@
+get:
+    operationId: users.settings.GetShiftPreferences
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - availability
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.shiftPreferences'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get shiftPreferences from users
+    tags:
+        - users.userSettings
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.settings.UpdateShiftPreferences
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.shiftPreferences'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property shiftPreferences in users
+    tags:
+        - users.userSettings
+    x-ms-docs-operation-type: operation

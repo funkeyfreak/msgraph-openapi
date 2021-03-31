@@ -1,0 +1,23 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.changeTrackedEntity"
+    - title: schedulingGroup
+      type: object
+      properties:
+        displayName:
+            type: string
+        isActive:
+            type: boolean
+        userIds:
+            type: array
+            items:
+                type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    displayName: string
+    isActive: true
+    userIds:
+        - string

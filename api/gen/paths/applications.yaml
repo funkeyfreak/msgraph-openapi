@@ -1,0 +1,159 @@
+get:
+    operationId: applications.application.ListApplication
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - addIns
+                    - addIns desc
+                    - api
+                    - api desc
+                    - appId
+                    - appId desc
+                    - applicationTemplateId
+                    - applicationTemplateId desc
+                    - appRoles
+                    - appRoles desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - groupMembershipClaims
+                    - groupMembershipClaims desc
+                    - identifierUris
+                    - identifierUris desc
+                    - info
+                    - info desc
+                    - isDeviceOnlyAuthSupported
+                    - isDeviceOnlyAuthSupported desc
+                    - isFallbackPublicClient
+                    - isFallbackPublicClient desc
+                    - keyCredentials
+                    - keyCredentials desc
+                    - logo
+                    - logo desc
+                    - notes
+                    - notes desc
+                    - oauth2RequirePostResponse
+                    - oauth2RequirePostResponse desc
+                    - optionalClaims
+                    - optionalClaims desc
+                    - parentalControlSettings
+                    - parentalControlSettings desc
+                    - passwordCredentials
+                    - passwordCredentials desc
+                    - publicClient
+                    - publicClient desc
+                    - publisherDomain
+                    - publisherDomain desc
+                    - requiredResourceAccess
+                    - requiredResourceAccess desc
+                    - signInAudience
+                    - signInAudience desc
+                    - tags
+                    - tags desc
+                    - tokenEncryptionKeyId
+                    - tokenEncryptionKeyId desc
+                    - web
+                    - web desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - addIns
+                    - api
+                    - appId
+                    - applicationTemplateId
+                    - appRoles
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - groupMembershipClaims
+                    - identifierUris
+                    - info
+                    - isDeviceOnlyAuthSupported
+                    - isFallbackPublicClient
+                    - keyCredentials
+                    - logo
+                    - notes
+                    - oauth2RequirePostResponse
+                    - optionalClaims
+                    - parentalControlSettings
+                    - passwordCredentials
+                    - publicClient
+                    - publisherDomain
+                    - requiredResourceAccess
+                    - signInAudience
+                    - tags
+                    - tokenEncryptionKeyId
+                    - web
+                    - createdOnBehalfOf
+                    - extensionProperties
+                    - homeRealmDiscoveryPolicies
+                    - owners
+                    - tokenIssuancePolicies
+                    - tokenLifetimePolicies
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.application'
+                                type: array
+                        title: Collection of application
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from applications
+    tags:
+        - applications.application
+    x-ms-docs-operation-type: operation
+post:
+    operationId: applications.application.CreateApplication
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.application'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.application'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to applications
+    tags:
+        - applications.application
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: singleValueLegacyExtendedProperty
+      type: object
+      properties:
+        value:
+            type: string
+example:
+    id: string (identifier)
+    value: string

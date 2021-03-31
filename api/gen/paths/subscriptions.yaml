@@ -1,0 +1,68 @@
+get:
+    operationId: subscriptions.subscription.ListSubscription
+    parameters:
+        - $ref: '#/components/parameters/search'
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.subscription'
+                                type: array
+                        title: Collection of subscription
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from subscriptions
+    tags:
+        - subscriptions.subscription
+    x-ms-docs-operation-type: operation
+post:
+    operationId: subscriptions.subscription.CreateSubscription
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.subscription'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to subscriptions
+    tags:
+        - subscriptions.subscription
+    x-ms-docs-operation-type: operation

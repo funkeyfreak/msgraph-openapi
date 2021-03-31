@@ -1,0 +1,85 @@
+get:
+    operationId: servicePrincipals.ListTokenLifetimePolicies
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - definition
+                    - definition desc
+                    - isOrganizationDefault
+                    - isOrganizationDefault desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - definition
+                    - isOrganizationDefault
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.tokenLifetimePolicy'
+                                type: array
+                        title: Collection of tokenLifetimePolicy
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tokenLifetimePolicies from servicePrincipals
+    tags:
+        - servicePrincipals.tokenLifetimePolicy
+    x-ms-docs-operation-type: operation

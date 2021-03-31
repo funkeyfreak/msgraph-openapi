@@ -1,0 +1,77 @@
+get:
+    operationId: deviceManagement.GetRoleDefinitions
+    parameters:
+        - description: 'key: roleDefinition-id of roleDefinition'
+          in: path
+          name: roleDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleDefinition
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - isBuiltIn
+                    - rolePermissions
+                    - roleAssignments
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - roleAssignments
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.roleDefinition'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get roleDefinitions from deviceManagement
+    tags:
+        - deviceManagement.roleDefinition
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateRoleDefinitions
+    parameters:
+        - description: 'key: roleDefinition-id of roleDefinition'
+          in: path
+          name: roleDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleDefinition
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.roleDefinition'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property roleDefinitions in deviceManagement
+    tags:
+        - deviceManagement.roleDefinition
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,109 @@
+get:
+    operationId: users.mailFolders.GetChildFolders
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - childFolderCount
+                    - displayName
+                    - parentFolderId
+                    - totalItemCount
+                    - unreadItemCount
+                    - childFolders
+                    - messageRules
+                    - messages
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - childFolders
+                    - messageRules
+                    - messages
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mailFolder'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get childFolders from users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.mailFolders.UpdateChildFolders
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.mailFolder'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property childFolders in users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation

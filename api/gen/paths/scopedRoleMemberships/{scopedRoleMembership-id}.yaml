@@ -1,0 +1,98 @@
+delete:
+    operationId: scopedRoleMemberships.scopedRoleMembership.DeleteScopedRoleMembership
+    parameters:
+        - description: 'key: scopedRoleMembership-id of scopedRoleMembership'
+          in: path
+          name: scopedRoleMembership-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: scopedRoleMembership
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from scopedRoleMemberships
+    tags:
+        - scopedRoleMemberships.scopedRoleMembership
+    x-ms-docs-operation-type: operation
+get:
+    operationId: scopedRoleMemberships.scopedRoleMembership.GetScopedRoleMembership
+    parameters:
+        - description: 'key: scopedRoleMembership-id of scopedRoleMembership'
+          in: path
+          name: scopedRoleMembership-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: scopedRoleMembership
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - administrativeUnitId
+                    - roleId
+                    - roleMemberInfo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from scopedRoleMemberships by key
+    tags:
+        - scopedRoleMemberships.scopedRoleMembership
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: scopedRoleMemberships.scopedRoleMembership.UpdateScopedRoleMembership
+    parameters:
+        - description: 'key: scopedRoleMembership-id of scopedRoleMembership'
+          in: path
+          name: scopedRoleMembership-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: scopedRoleMembership
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in scopedRoleMemberships
+    tags:
+        - scopedRoleMemberships.scopedRoleMembership
+    x-ms-docs-operation-type: operation

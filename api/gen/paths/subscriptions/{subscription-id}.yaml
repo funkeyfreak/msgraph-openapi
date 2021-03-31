@@ -1,0 +1,96 @@
+delete:
+    operationId: subscriptions.subscription.DeleteSubscription
+    parameters:
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from subscriptions
+    tags:
+        - subscriptions.subscription
+    x-ms-docs-operation-type: operation
+get:
+    operationId: subscriptions.subscription.GetSubscription
+    parameters:
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from subscriptions by key
+    tags:
+        - subscriptions.subscription
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: subscriptions.subscription.UpdateSubscription
+    parameters:
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.subscription'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in subscriptions
+    tags:
+        - subscriptions.subscription
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,26 @@
+post:
+    operationId: deviceManagement.deviceCompliancePolicies.assign
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+    requestBody:
+        $ref: '#/components/requestBodies/deviceAppManagement.mobileAppConfigurations.assignBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assign
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

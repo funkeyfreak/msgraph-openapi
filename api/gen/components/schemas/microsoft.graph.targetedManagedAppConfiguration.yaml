@@ -1,0 +1,41 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.managedAppConfiguration"
+    - title: targetedManagedAppConfiguration
+      description: Configuration used to deliver a set of custom settings as-is to all users in the targeted security group
+      type: object
+      properties:
+        deployedAppCount:
+            format: int32
+            description: Count of apps to which the current policy is deployed.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        isAssigned:
+            description: Indicates if the policy is deployed to any inclusion groups or not.
+            type: boolean
+        apps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedMobileApp"
+        assignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.targetedManagedAppPolicyAssignment"
+        deploymentSummary: {}
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    customSettings:
+        - "@odata.type": microsoft.graph.keyValuePair
+    deployedAppCount: integer
+    isAssigned: true
+    apps:
+        - "@odata.type": microsoft.graph.managedMobileApp
+    assignments:
+        - "@odata.type": microsoft.graph.targetedManagedAppPolicyAssignment
+    deploymentSummary:
+        "@odata.type": microsoft.graph.managedAppPolicyDeploymentSummary

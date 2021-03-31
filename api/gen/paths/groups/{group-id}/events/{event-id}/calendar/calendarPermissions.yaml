@@ -1,0 +1,110 @@
+get:
+    operationId: groups.events.calendar.ListCalendarPermissions
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - allowedRoles
+                    - allowedRoles desc
+                    - emailAddress
+                    - emailAddress desc
+                    - isInsideOrganization
+                    - isInsideOrganization desc
+                    - isRemovable
+                    - isRemovable desc
+                    - role
+                    - role desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedRoles
+                    - emailAddress
+                    - isInsideOrganization
+                    - isRemovable
+                    - role
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.calendarPermission'
+                                type: array
+                        title: Collection of calendarPermission
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendarPermissions from groups
+    tags:
+        - groups.event
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.events.calendar.CreateCalendarPermissions
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendarPermission'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendarPermission'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to calendarPermissions for groups
+    tags:
+        - groups.event
+    x-ms-docs-operation-type: operation

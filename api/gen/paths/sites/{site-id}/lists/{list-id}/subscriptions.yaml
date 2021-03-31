@@ -1,0 +1,143 @@
+get:
+    operationId: sites.lists.ListSubscriptions
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - applicationId
+                    - applicationId desc
+                    - changeType
+                    - changeType desc
+                    - clientState
+                    - clientState desc
+                    - creatorId
+                    - creatorId desc
+                    - encryptionCertificate
+                    - encryptionCertificate desc
+                    - encryptionCertificateId
+                    - encryptionCertificateId desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - includeResourceData
+                    - includeResourceData desc
+                    - latestSupportedTlsVersion
+                    - latestSupportedTlsVersion desc
+                    - lifecycleNotificationUrl
+                    - lifecycleNotificationUrl desc
+                    - notificationUrl
+                    - notificationUrl desc
+                    - resource
+                    - resource desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.subscription'
+                                type: array
+                        title: Collection of subscription
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get subscriptions from sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation
+post:
+    operationId: sites.lists.CreateSubscriptions
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.subscription'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to subscriptions for sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation

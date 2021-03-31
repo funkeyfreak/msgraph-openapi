@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: windowsInformationProtectionNetworkLearningSummary
+      description: Windows Information Protection Network learning Summary entity.
+      type: object
+      properties:
+        deviceCount:
+            format: int32
+            description: Device Count
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        url:
+            description: Website url
+            type: string
+example:
+    id: string (identifier)
+    deviceCount: integer
+    url: string

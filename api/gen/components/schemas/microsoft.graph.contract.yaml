@@ -1,0 +1,23 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: contract
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        contractType:
+            type: string
+        customerId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        defaultDomainName:
+            type: string
+        displayName:
+            type: string
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    contractType: string
+    customerId: string
+    defaultDomainName: string
+    displayName: string

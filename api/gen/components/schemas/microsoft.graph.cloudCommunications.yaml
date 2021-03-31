@@ -1,0 +1,31 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: cloudCommunications
+      type: object
+      properties:
+        calls:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.call"
+        callRecords:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.callRecords.callRecord"
+        onlineMeetings:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onlineMeeting"
+        presences:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.presence"
+example:
+    id: string (identifier)
+    calls:
+        - "@odata.type": microsoft.graph.call
+    callRecords:
+        - "@odata.type": microsoft.graph.callRecords.callRecord
+    onlineMeetings:
+        - "@odata.type": microsoft.graph.onlineMeeting
+    presences:
+        - "@odata.type": microsoft.graph.presence

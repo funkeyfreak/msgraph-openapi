@@ -1,0 +1,86 @@
+get:
+    operationId: deviceManagement.deviceEnrollmentConfigurations.GetAssignments
+    parameters:
+        - description: 'key: deviceEnrollmentConfiguration-id of deviceEnrollmentConfiguration'
+          in: path
+          name: deviceEnrollmentConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceEnrollmentConfiguration
+        - description: 'key: enrollmentConfigurationAssignment-id of enrollmentConfigurationAssignment'
+          in: path
+          name: enrollmentConfigurationAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: enrollmentConfigurationAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.enrollmentConfigurationAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceManagement
+    tags:
+        - deviceManagement.deviceEnrollmentConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceEnrollmentConfigurations.UpdateAssignments
+    parameters:
+        - description: 'key: deviceEnrollmentConfiguration-id of deviceEnrollmentConfiguration'
+          in: path
+          name: deviceEnrollmentConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceEnrollmentConfiguration
+        - description: 'key: enrollmentConfigurationAssignment-id of enrollmentConfigurationAssignment'
+          in: path
+          name: enrollmentConfigurationAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: enrollmentConfigurationAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.enrollmentConfigurationAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceManagement
+    tags:
+        - deviceManagement.deviceEnrollmentConfiguration
+    x-ms-docs-operation-type: operation

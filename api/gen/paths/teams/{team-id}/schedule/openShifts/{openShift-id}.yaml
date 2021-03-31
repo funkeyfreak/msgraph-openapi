@@ -1,0 +1,91 @@
+get:
+    operationId: teams.schedule.GetOpenShifts
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: openShift-id of openShift'
+          in: path
+          name: openShift-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: openShift
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - draftOpenShift
+                    - schedulingGroupId
+                    - sharedOpenShift
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.openShift'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get openShifts from teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.schedule.UpdateOpenShifts
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: openShift-id of openShift'
+          in: path
+          name: openShift-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: openShift
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.openShift'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property openShifts in teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation

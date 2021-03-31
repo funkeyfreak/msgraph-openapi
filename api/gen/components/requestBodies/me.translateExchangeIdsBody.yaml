@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                InputIds:
+                    type: array
+                    items:
+                        type: string
+                TargetIdType: {}
+                SourceIdType: {}
+description: Action parameters
+required: true

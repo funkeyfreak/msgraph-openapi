@@ -1,0 +1,13 @@
+title: provisionedPlan
+type: object
+properties:
+    capabilityStatus:
+        type: string
+    provisioningStatus:
+        type: string
+    service:
+        type: string
+example:
+    capabilityStatus: string
+    provisioningStatus: string
+    service: string

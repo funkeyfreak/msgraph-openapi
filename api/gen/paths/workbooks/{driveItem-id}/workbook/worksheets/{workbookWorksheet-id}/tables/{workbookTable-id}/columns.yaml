@@ -1,0 +1,132 @@
+get:
+    operationId: workbooks.workbook.worksheets.tables.ListColumns
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - index
+                    - index desc
+                    - name
+                    - name desc
+                    - values
+                    - values desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - index
+                    - name
+                    - values
+                    - filter
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - filter
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.workbookTableColumn'
+                                type: array
+                        title: Collection of workbookTableColumn
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get columns from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.workbook.worksheets.tables.CreateColumns
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookTableColumn2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookTableColumn'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to columns for workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,34 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: onPremisesConditionalAccessSettings
+      description: Singleton entity which represents the Exchange OnPremises Conditional Access Settings for a tenant.
+      type: object
+      properties:
+        enabled:
+            description: Indicates if on premises conditional access is enabled for this organization
+            type: boolean
+        excludedGroups:
+            description: User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
+            type: array
+            items:
+                format: uuid
+                pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                type: string
+        includedGroups:
+            description: User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
+            type: array
+            items:
+                format: uuid
+                pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                type: string
+        overrideDefaultRule:
+            description: Override the default access rule when allowing a device to ensure access is granted.
+            type: boolean
+example:
+    id: string (identifier)
+    enabled: true
+    excludedGroups:
+        - string
+    includedGroups:
+        - string
+    overrideDefaultRule: true

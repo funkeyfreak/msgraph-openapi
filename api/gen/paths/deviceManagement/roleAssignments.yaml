@@ -1,0 +1,97 @@
+get:
+    operationId: deviceManagement.ListRoleAssignments
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - resourceScopes
+                    - resourceScopes desc
+                    - members
+                    - members desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - resourceScopes
+                    - members
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment'
+                                type: array
+                        title: Collection of deviceAndAppManagementRoleAssignment
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get roleAssignments from deviceManagement
+    tags:
+        - deviceManagement.deviceAndAppManagementRoleAssignment
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.CreateRoleAssignments
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to roleAssignments for deviceManagement
+    tags:
+        - deviceManagement.deviceAndAppManagementRoleAssignment
+    x-ms-docs-operation-type: operation

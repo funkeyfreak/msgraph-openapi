@@ -1,0 +1,55 @@
+get:
+    operationId: appCatalogs.teamsApps.GetAppDefinitions
+    parameters:
+        - description: 'key: teamsApp-id of teamsApp'
+          in: path
+          name: teamsApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsApp
+        - description: 'key: teamsAppDefinition-id of teamsAppDefinition'
+          in: path
+          name: teamsAppDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsAppDefinition
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - teamsAppId
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.teamsAppDefinition'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get appDefinitions from appCatalogs
+    tags:
+        - appCatalogs.teamsApp
+    x-ms-docs-operation-type: operation

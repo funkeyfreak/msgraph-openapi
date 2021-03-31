@@ -1,0 +1,98 @@
+get:
+    operationId: permissionGrants.resourceSpecificPermissionGrant.ListResourceSpecificPermissionGrant
+    parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - clientAppId
+                    - clientAppId desc
+                    - clientId
+                    - clientId desc
+                    - permission
+                    - permission desc
+                    - permissionType
+                    - permissionType desc
+                    - resourceAppId
+                    - resourceAppId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - clientAppId
+                    - clientId
+                    - permission
+                    - permissionType
+                    - resourceAppId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+                                type: array
+                        title: Collection of resourceSpecificPermissionGrant
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from permissionGrants
+    tags:
+        - permissionGrants.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation
+post:
+    operationId: permissionGrants.resourceSpecificPermissionGrant.CreateResourceSpecificPermissionGrant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to permissionGrants
+    tags:
+        - permissionGrants.resourceSpecificPermissionGrant
+    x-ms-docs-operation-type: operation

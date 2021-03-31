@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: userTeamwork
+      type: object
+      properties:
+        installedApps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.userScopeTeamsAppInstallation"
+example:
+    id: string (identifier)
+    installedApps:
+        - "@odata.type": microsoft.graph.userScopeTeamsAppInstallation

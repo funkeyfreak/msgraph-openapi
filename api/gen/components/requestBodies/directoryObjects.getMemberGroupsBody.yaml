@@ -1,0 +1,10 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                securityEnabledOnly:
+                    default: false
+                    type: boolean
+description: Action parameters
+required: true

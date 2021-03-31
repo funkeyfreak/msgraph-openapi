@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: groupLifecyclePolicy
+      type: object
+      properties:
+        alternateNotificationEmails:
+            type: string
+        groupLifetimeInDays:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        managedGroupTypes:
+            type: string
+example:
+    id: string (identifier)
+    alternateNotificationEmails: string
+    groupLifetimeInDays: integer
+    managedGroupTypes: string

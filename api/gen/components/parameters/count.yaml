@@ -1,0 +1,5 @@
+in: query
+name: $count
+description: Include count of items
+schema:
+    type: boolean

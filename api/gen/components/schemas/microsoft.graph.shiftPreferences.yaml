@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.changeTrackedEntity"
+    - title: shiftPreferences
+      type: object
+      properties:
+        availability:
+            type: array
+            items: {}
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    availability:
+        - "@odata.type": microsoft.graph.shiftAvailability

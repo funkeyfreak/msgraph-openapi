@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedEBookAssignment
+      description: Contains properties used to assign a eBook to a group.
+      type: object
+      properties:
+        installIntent:
+            description: The install intent for eBook.
+        target:
+            description: The assignment target for eBook.
+example:
+    id: string (identifier)
+    installIntent:
+        "@odata.type": microsoft.graph.installIntent
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

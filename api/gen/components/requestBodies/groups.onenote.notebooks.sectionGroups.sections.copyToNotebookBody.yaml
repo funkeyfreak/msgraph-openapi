@@ -1,0 +1,17 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                id:
+                    type: string
+                groupId:
+                    type: string
+                renameAs:
+                    type: string
+                siteCollectionId:
+                    type: string
+                siteId:
+                    type: string
+description: Action parameters
+required: true

@@ -1,0 +1,88 @@
+get:
+    operationId: deviceAppManagement.GetMobileApps
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - developer
+                    - displayName
+                    - informationUrl
+                    - isFeatured
+                    - largeIcon
+                    - lastModifiedDateTime
+                    - notes
+                    - owner
+                    - privacyInformationUrl
+                    - publisher
+                    - publishingState
+                    - assignments
+                    - categories
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - categories
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mobileApp'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mobileApps from deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateMobileApps
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mobileApp'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property mobileApps in deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation

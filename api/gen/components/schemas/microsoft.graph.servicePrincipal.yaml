@@ -1,0 +1,217 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: servicePrincipal
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        accountEnabled:
+            type: boolean
+        addIns:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.addIn"
+        alternativeNames:
+            type: array
+            items:
+                type: string
+        appDescription:
+            type: string
+        appDisplayName:
+            type: string
+        appId:
+            type: string
+        applicationTemplateId:
+            type: string
+        appOwnerOrganizationId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        appRoleAssignmentRequired:
+            type: boolean
+        appRoles:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.appRole"
+        description:
+            type: string
+        displayName:
+            type: string
+        homepage:
+            type: string
+        info: {}
+        keyCredentials:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.keyCredential"
+        loginUrl:
+            type: string
+        logoutUrl:
+            type: string
+        notes:
+            type: string
+        notificationEmailAddresses:
+            type: array
+            items:
+                type: string
+        oauth2PermissionScopes:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.permissionScope"
+        passwordCredentials:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.passwordCredential"
+        preferredSingleSignOnMode:
+            type: string
+        preferredTokenSigningKeyThumbprint:
+            type: string
+        replyUrls:
+            type: array
+            items:
+                type: string
+        samlSingleSignOnSettings: {}
+        servicePrincipalNames:
+            type: array
+            items:
+                type: string
+        servicePrincipalType:
+            type: string
+        signInAudience:
+            type: string
+        tags:
+            type: array
+            items:
+                type: string
+        tokenEncryptionKeyId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        appRoleAssignedTo:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.appRoleAssignment"
+        appRoleAssignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.appRoleAssignment"
+        claimsMappingPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.claimsMappingPolicy"
+        createdObjects:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        delegatedPermissionClassifications:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.delegatedPermissionClassification"
+        endpoints:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.endpoint"
+        homeRealmDiscoveryPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy"
+        memberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        oauth2PermissionGrants:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.oAuth2PermissionGrant"
+        ownedObjects:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        owners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        tokenIssuancePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenIssuancePolicy"
+        tokenLifetimePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenLifetimePolicy"
+        transitiveMemberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    accountEnabled: true
+    addIns:
+        - "@odata.type": microsoft.graph.addIn
+    alternativeNames:
+        - string
+    appDescription: string
+    appDisplayName: string
+    appId: string
+    applicationTemplateId: string
+    appOwnerOrganizationId: string
+    appRoleAssignmentRequired: true
+    appRoles:
+        - "@odata.type": microsoft.graph.appRole
+    description: string
+    displayName: string
+    homepage: string
+    info:
+        "@odata.type": microsoft.graph.informationalUrl
+    keyCredentials:
+        - "@odata.type": microsoft.graph.keyCredential
+    loginUrl: string
+    logoutUrl: string
+    notes: string
+    notificationEmailAddresses:
+        - string
+    oauth2PermissionScopes:
+        - "@odata.type": microsoft.graph.permissionScope
+    passwordCredentials:
+        - "@odata.type": microsoft.graph.passwordCredential
+    preferredSingleSignOnMode: string
+    preferredTokenSigningKeyThumbprint: string
+    replyUrls:
+        - string
+    samlSingleSignOnSettings:
+        "@odata.type": microsoft.graph.samlSingleSignOnSettings
+    servicePrincipalNames:
+        - string
+    servicePrincipalType: string
+    signInAudience: string
+    tags:
+        - string
+    tokenEncryptionKeyId: string
+    appRoleAssignedTo:
+        - "@odata.type": microsoft.graph.appRoleAssignment
+    appRoleAssignments:
+        - "@odata.type": microsoft.graph.appRoleAssignment
+    claimsMappingPolicies:
+        - "@odata.type": microsoft.graph.claimsMappingPolicy
+    createdObjects:
+        - "@odata.type": microsoft.graph.directoryObject
+    delegatedPermissionClassifications:
+        - "@odata.type": microsoft.graph.delegatedPermissionClassification
+    endpoints:
+        - "@odata.type": microsoft.graph.endpoint
+    homeRealmDiscoveryPolicies:
+        - "@odata.type": microsoft.graph.homeRealmDiscoveryPolicy
+    memberOf:
+        - "@odata.type": microsoft.graph.directoryObject
+    oauth2PermissionGrants:
+        - "@odata.type": microsoft.graph.oAuth2PermissionGrant
+    ownedObjects:
+        - "@odata.type": microsoft.graph.directoryObject
+    owners:
+        - "@odata.type": microsoft.graph.directoryObject
+    tokenIssuancePolicies:
+        - "@odata.type": microsoft.graph.tokenIssuancePolicy
+    tokenLifetimePolicies:
+        - "@odata.type": microsoft.graph.tokenLifetimePolicy
+    transitiveMemberOf:
+        - "@odata.type": microsoft.graph.directoryObject

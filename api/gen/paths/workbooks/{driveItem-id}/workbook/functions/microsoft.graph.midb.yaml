@@ -1,0 +1,33 @@
+post:
+    operationId: workbooks.workbook.functions.midb
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        numBytes: {}
+                        startNum: {}
+                        text: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action midb
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

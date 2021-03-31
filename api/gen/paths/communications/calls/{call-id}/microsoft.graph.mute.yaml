@@ -1,0 +1,24 @@
+post:
+    operationId: communications.calls.mute
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        $ref: '#/components/requestBodies/communications.calls.cancelMediaProcessingBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action mute
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,26 @@
+post:
+    operationId: teams.installedApps.upgrade
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: teamsAppInstallation-id of teamsAppInstallation'
+          in: path
+          name: teamsAppInstallation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsAppInstallation
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action upgrade
+    tags:
+        - teams.Actions
+    x-ms-docs-operation-type: action

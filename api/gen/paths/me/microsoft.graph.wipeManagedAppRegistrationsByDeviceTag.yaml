@@ -1,0 +1,13 @@
+post:
+    operationId: me.wipeManagedAppRegistrationsByDeviceTag
+    requestBody:
+        $ref: '#/components/requestBodies/me.wipeManagedAppRegistrationsByDeviceTagBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action wipeManagedAppRegistrationsByDeviceTag
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

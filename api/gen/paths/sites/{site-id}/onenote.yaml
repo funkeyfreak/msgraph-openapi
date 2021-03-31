@@ -1,0 +1,78 @@
+get:
+    operationId: sites.GetOnenote
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - notebooks
+                    - operations
+                    - pages
+                    - resources
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - notebooks
+                    - operations
+                    - pages
+                    - resources
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenote'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get onenote from sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.UpdateOnenote
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenote'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property onenote in sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation

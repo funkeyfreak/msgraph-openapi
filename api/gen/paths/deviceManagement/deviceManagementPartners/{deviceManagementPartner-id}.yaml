@@ -1,0 +1,79 @@
+get:
+    operationId: deviceManagement.GetDeviceManagementPartners
+    parameters:
+        - description: 'key: deviceManagementPartner-id of deviceManagementPartner'
+          in: path
+          name: deviceManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementPartner
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - isConfigured
+                    - lastHeartbeatDateTime
+                    - partnerAppType
+                    - partnerState
+                    - singleTenantAppId
+                    - whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime
+                    - whenPartnerDevicesWillBeRemovedDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagementPartner'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceManagementPartners from deviceManagement
+    tags:
+        - deviceManagement.deviceManagementPartner
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDeviceManagementPartners
+    parameters:
+        - description: 'key: deviceManagementPartner-id of deviceManagementPartner'
+          in: path
+          name: deviceManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementPartner
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceManagementPartner'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceManagementPartners in deviceManagement
+    tags:
+        - deviceManagement.deviceManagementPartner
+    x-ms-docs-operation-type: operation

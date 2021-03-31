@@ -1,0 +1,98 @@
+delete:
+    operationId: groupSettings.groupSetting.DeleteGroupSetting
+    parameters:
+        - description: 'key: groupSetting-id of groupSetting'
+          in: path
+          name: groupSetting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSetting
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from groupSettings
+    tags:
+        - groupSettings.groupSetting
+    x-ms-docs-operation-type: operation
+get:
+    operationId: groupSettings.groupSetting.GetGroupSetting
+    parameters:
+        - description: 'key: groupSetting-id of groupSetting'
+          in: path
+          name: groupSetting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSetting
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - templateId
+                    - values
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupSetting'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from groupSettings by key
+    tags:
+        - groupSettings.groupSetting
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groupSettings.groupSetting.UpdateGroupSetting
+    parameters:
+        - description: 'key: groupSetting-id of groupSetting'
+          in: path
+          name: groupSetting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSetting
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupSetting'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in groupSettings
+    tags:
+        - groupSettings.groupSetting
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: usedInsight
+      type: object
+      properties:
+        lastUsed: {}
+        resourceReference: {}
+        resourceVisualization: {}
+        resource: {}
+example:
+    id: string (identifier)
+    lastUsed:
+        "@odata.type": microsoft.graph.usageDetails
+    resourceReference:
+        "@odata.type": microsoft.graph.resourceReference
+    resourceVisualization:
+        "@odata.type": microsoft.graph.resourceVisualization
+    resource:
+        "@odata.type": microsoft.graph.entity

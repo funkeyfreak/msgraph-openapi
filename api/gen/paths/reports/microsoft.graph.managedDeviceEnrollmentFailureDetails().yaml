@@ -1,0 +1,14 @@
+get:
+    operationId: reports.managedDeviceEnrollmentFailureDetails-027e
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function managedDeviceEnrollmentFailureDetails
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

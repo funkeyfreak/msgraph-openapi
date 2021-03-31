@@ -1,0 +1,100 @@
+get:
+    operationId: shares.list.GetColumns
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: columnDefinition-id of columnDefinition'
+          in: path
+          name: columnDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: columnDefinition
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - boolean
+                    - calculated
+                    - choice
+                    - columnGroup
+                    - currency
+                    - dateTime
+                    - defaultValue
+                    - description
+                    - displayName
+                    - enforceUniqueValues
+                    - geolocation
+                    - hidden
+                    - indexed
+                    - lookup
+                    - name
+                    - number
+                    - personOrGroup
+                    - readOnly
+                    - required
+                    - text
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.columnDefinition'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get columns from shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.list.UpdateColumns
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: columnDefinition-id of columnDefinition'
+          in: path
+          name: columnDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: columnDefinition
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.columnDefinition2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property columns in shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,57 @@
+get:
+    operationId: me.outlook.GetMasterCategories
+    parameters:
+        - description: 'key: outlookCategory-id of outlookCategory'
+          in: path
+          name: outlookCategory-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: outlookCategory
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - color
+                    - displayName
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.outlookCategory'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get masterCategories from me
+    tags:
+        - me.outlookUser
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.outlook.UpdateMasterCategories
+    parameters:
+        - description: 'key: outlookCategory-id of outlookCategory'
+          in: path
+          name: outlookCategory-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: outlookCategory
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.outlookCategory'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property masterCategories in me
+    tags:
+        - me.outlookUser
+    x-ms-docs-operation-type: operation

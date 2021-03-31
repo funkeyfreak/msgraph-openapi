@@ -1,0 +1,15 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItemVersion"
+    - title: listItemVersion
+      type: object
+      properties:
+        fields: {}
+example:
+    id: string (identifier)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    publication:
+        "@odata.type": microsoft.graph.publicationFacet
+    fields:
+        "@odata.type": microsoft.graph.fieldValueSet

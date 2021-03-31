@@ -1,0 +1,10 @@
+title: dateTimeTimeZone
+type: object
+properties:
+    dateTime:
+        type: string
+    timeZone:
+        type: string
+example:
+    dateTime: string
+    timeZone: string

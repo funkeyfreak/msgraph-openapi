@@ -1,0 +1,80 @@
+get:
+    operationId: teamwork.GetWorkforceIntegrations
+    parameters:
+        - description: 'key: workforceIntegration-id of workforceIntegration'
+          in: path
+          name: workforceIntegration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workforceIntegration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - apiVersion
+                    - displayName
+                    - encryption
+                    - isActive
+                    - supportedEntities
+                    - url
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workforceIntegration'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get workforceIntegrations from teamwork
+    tags:
+        - teamwork.workforceIntegration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teamwork.UpdateWorkforceIntegrations
+    parameters:
+        - description: 'key: workforceIntegration-id of workforceIntegration'
+          in: path
+          name: workforceIntegration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workforceIntegration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.workforceIntegration'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property workforceIntegrations in teamwork
+    tags:
+        - teamwork.workforceIntegration
+    x-ms-docs-operation-type: operation

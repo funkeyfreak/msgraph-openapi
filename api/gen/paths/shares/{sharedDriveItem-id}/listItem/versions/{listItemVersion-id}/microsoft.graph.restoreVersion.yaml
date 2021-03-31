@@ -1,0 +1,26 @@
+post:
+    operationId: shares.listItem.versions.restoreVersion
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action restoreVersion
+    tags:
+        - shares.Actions
+    x-ms-docs-operation-type: action

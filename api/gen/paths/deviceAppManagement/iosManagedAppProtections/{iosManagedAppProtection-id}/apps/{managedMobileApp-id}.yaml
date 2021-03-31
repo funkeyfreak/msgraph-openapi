@@ -1,0 +1,82 @@
+get:
+    operationId: deviceAppManagement.iosManagedAppProtections.GetApps
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+        - description: 'key: managedMobileApp-id of managedMobileApp'
+          in: path
+          name: managedMobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedMobileApp
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - mobileAppIdentifier
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedMobileApp'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get apps from deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.iosManagedAppProtections.UpdateApps
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+        - description: 'key: managedMobileApp-id of managedMobileApp'
+          in: path
+          name: managedMobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedMobileApp
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedMobileApp2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property apps in deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation

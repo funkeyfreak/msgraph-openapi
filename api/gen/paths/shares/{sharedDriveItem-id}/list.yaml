@@ -1,0 +1,93 @@
+get:
+    operationId: shares.GetList
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - displayName
+                    - list
+                    - sharepointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - columns
+                    - contentTypes
+                    - drive
+                    - items
+                    - subscriptions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - columns
+                    - contentTypes
+                    - drive
+                    - items
+                    - subscriptions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.list'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get list from shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.UpdateList
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.list'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property list in shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation

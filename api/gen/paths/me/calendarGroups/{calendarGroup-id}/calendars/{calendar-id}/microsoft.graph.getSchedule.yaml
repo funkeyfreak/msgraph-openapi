@@ -1,0 +1,33 @@
+post:
+    operationId: me.calendarGroups.calendars.getSchedule
+    parameters:
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+    requestBody:
+        $ref: '#/components/requestBodies/groups.calendar.calendarView.calendar.getScheduleBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getSchedule
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

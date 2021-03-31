@@ -1,0 +1,42 @@
+post:
+    operationId: workbooks.workbook.names.worksheet.tables.columns.filter.applyFontColorFilter
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookTableColumn-id of workbookTableColumn'
+          in: path
+          name: workbookTableColumn-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTableColumn
+    requestBody:
+        $ref: '#/components/requestBodies/workbooks.workbook.names.worksheet.charts.dataLabels.format.fill.setSolidColorBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action applyFontColorFilter
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

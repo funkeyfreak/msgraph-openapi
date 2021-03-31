@@ -1,0 +1,22 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamsApp
+      type: object
+      properties:
+        displayName:
+            type: string
+        distributionMethod: {}
+        externalId:
+            type: string
+        appDefinitions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.teamsAppDefinition"
+example:
+    id: string (identifier)
+    displayName: string
+    distributionMethod:
+        "@odata.type": microsoft.graph.teamsAppDistributionMethod
+    externalId: string
+    appDefinitions:
+        - "@odata.type": microsoft.graph.teamsAppDefinition

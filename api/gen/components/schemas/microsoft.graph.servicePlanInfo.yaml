@@ -1,0 +1,18 @@
+title: servicePlanInfo
+type: object
+properties:
+    appliesTo:
+        type: string
+    provisioningStatus:
+        type: string
+    servicePlanId:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+    servicePlanName:
+        type: string
+example:
+    appliesTo: string
+    provisioningStatus: string
+    servicePlanId: string
+    servicePlanName: string

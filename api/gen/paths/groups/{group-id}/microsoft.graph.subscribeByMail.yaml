@@ -1,0 +1,19 @@
+post:
+    operationId: groups.subscribeByMail
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action subscribeByMail
+    tags:
+        - groups.Actions
+    x-ms-docs-operation-type: action

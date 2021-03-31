@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookPivotTable
+      type: object
+      properties:
+        name:
+            type: string
+        worksheet: {}
+example:
+    id: string (identifier)
+    name: string
+    worksheet:
+        "@odata.type": microsoft.graph.workbookWorksheet

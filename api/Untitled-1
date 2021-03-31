@@ -1,0 +1,32 @@
+yq eval '[.. | select(has("$ref"))]' ./api/ref/v1/openapi.yaml
+
+## Compose
+Tool should be able to build a large yaml file out of many ref objects
+
+##
+
+## Dedupe
+Tool should be able to deduplicate the following openapi doc items:
+* paths
+    + verb [get, post, put, etc]
+        - parameters
+            = in
+        - responses
+* components
+    
+
+Tool should place deduped items in the components object 
+    under a representative path, e.g. "components/parameters", "components/responses", "components/parameters/in", etc
+
+## Decompose
+Tool should be able to decompose on the following openapi 3 specific structures and export them into a given folder structure:
+* paths
+    + verb [get, post, put, etc]
+        - parameters
+        - responses
+
+command syntax:
+    decompose 
+        [-p/--path: The path under which to save the generated files - will default to "." direcotry]
+        []
+        openapi.yaml: The yaml file on which to operate

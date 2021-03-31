@@ -1,0 +1,87 @@
+get:
+    operationId: education.classes.GetMembers
+    parameters:
+        - description: 'key: educationClass-id of educationClass'
+          in: path
+          name: educationClass-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationClass
+        - description: 'key: educationUser-id of educationUser'
+          in: path
+          name: educationUser-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationUser
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - accountEnabled
+                    - assignedLicenses
+                    - assignedPlans
+                    - businessPhones
+                    - createdBy
+                    - department
+                    - displayName
+                    - externalSource
+                    - givenName
+                    - mail
+                    - mailingAddress
+                    - mailNickname
+                    - middleName
+                    - mobilePhone
+                    - officeLocation
+                    - passwordPolicies
+                    - passwordProfile
+                    - preferredLanguage
+                    - primaryRole
+                    - provisionedPlans
+                    - refreshTokensValidFromDateTime
+                    - residenceAddress
+                    - showInAddressList
+                    - student
+                    - surname
+                    - teacher
+                    - usageLocation
+                    - userPrincipalName
+                    - userType
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.educationUser'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get members from education
+    tags:
+        - education.educationClass
+    x-ms-docs-operation-type: operation

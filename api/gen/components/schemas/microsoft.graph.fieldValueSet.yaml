@@ -1,0 +1,6 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: fieldValueSet
+      type: object
+example:
+    id: string (identifier)

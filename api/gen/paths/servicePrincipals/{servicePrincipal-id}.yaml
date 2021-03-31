@@ -1,0 +1,129 @@
+delete:
+    operationId: servicePrincipals.servicePrincipal.DeleteServicePrincipal
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from servicePrincipals
+    tags:
+        - servicePrincipals.servicePrincipal
+    x-ms-docs-operation-type: operation
+get:
+    operationId: servicePrincipals.servicePrincipal.GetServicePrincipal
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - accountEnabled
+                    - addIns
+                    - alternativeNames
+                    - appDescription
+                    - appDisplayName
+                    - appId
+                    - applicationTemplateId
+                    - appOwnerOrganizationId
+                    - appRoleAssignmentRequired
+                    - appRoles
+                    - description
+                    - displayName
+                    - homepage
+                    - info
+                    - keyCredentials
+                    - loginUrl
+                    - logoutUrl
+                    - notes
+                    - notificationEmailAddresses
+                    - oauth2PermissionScopes
+                    - passwordCredentials
+                    - preferredSingleSignOnMode
+                    - preferredTokenSigningKeyThumbprint
+                    - replyUrls
+                    - samlSingleSignOnSettings
+                    - servicePrincipalNames
+                    - servicePrincipalType
+                    - signInAudience
+                    - tags
+                    - tokenEncryptionKeyId
+                    - appRoleAssignedTo
+                    - appRoleAssignments
+                    - claimsMappingPolicies
+                    - createdObjects
+                    - delegatedPermissionClassifications
+                    - endpoints
+                    - homeRealmDiscoveryPolicies
+                    - memberOf
+                    - oauth2PermissionGrants
+                    - ownedObjects
+                    - owners
+                    - tokenIssuancePolicies
+                    - tokenLifetimePolicies
+                    - transitiveMemberOf
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.servicePrincipal'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from servicePrincipals by key
+    tags:
+        - servicePrincipals.servicePrincipal
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: servicePrincipals.servicePrincipal.UpdateServicePrincipal
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.servicePrincipal'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in servicePrincipals
+    tags:
+        - servicePrincipals.servicePrincipal
+    x-ms-docs-operation-type: operation

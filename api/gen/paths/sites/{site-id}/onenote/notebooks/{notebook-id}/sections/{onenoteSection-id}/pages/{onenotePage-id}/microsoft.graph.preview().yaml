@@ -1,0 +1,43 @@
+get:
+    operationId: sites.onenote.notebooks.sections.pages.preview
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: notebook-id of notebook'
+          in: path
+          name: notebook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: notebook
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function preview
+    tags:
+        - sites.Functions
+    x-ms-docs-operation-type: function

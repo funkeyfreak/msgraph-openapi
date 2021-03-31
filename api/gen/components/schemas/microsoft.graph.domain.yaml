@@ -1,0 +1,73 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: domain
+      type: object
+      properties:
+        authenticationType:
+            type: string
+        availabilityStatus:
+            type: string
+        isAdminManaged:
+            type: boolean
+        isDefault:
+            type: boolean
+        isInitial:
+            type: boolean
+        isRoot:
+            type: boolean
+        isVerified:
+            type: boolean
+        manufacturer:
+            type: string
+        model:
+            type: string
+        passwordNotificationWindowInDays:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        passwordValidityPeriodInDays:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        state: {}
+        supportedServices:
+            type: array
+            items:
+                type: string
+        domainNameReferences:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        serviceConfigurationRecords:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.domainDnsRecord"
+        verificationDnsRecords:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.domainDnsRecord"
+example:
+    id: string (identifier)
+    authenticationType: string
+    availabilityStatus: string
+    isAdminManaged: true
+    isDefault: true
+    isInitial: true
+    isRoot: true
+    isVerified: true
+    manufacturer: string
+    model: string
+    passwordNotificationWindowInDays: integer
+    passwordValidityPeriodInDays: integer
+    state:
+        "@odata.type": microsoft.graph.domainState
+    supportedServices:
+        - string
+    domainNameReferences:
+        - "@odata.type": microsoft.graph.directoryObject
+    serviceConfigurationRecords:
+        - "@odata.type": microsoft.graph.domainDnsRecord
+    verificationDnsRecords:
+        - "@odata.type": microsoft.graph.domainDnsRecord

@@ -1,0 +1,80 @@
+get:
+    operationId: groups.GetConversations
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - hasAttachments
+                    - lastDeliveredDateTime
+                    - preview
+                    - topic
+                    - uniqueSenders
+                    - threads
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.conversation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get conversations from groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdateConversations
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.conversation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property conversations in groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation

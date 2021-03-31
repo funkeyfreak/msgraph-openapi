@@ -1,0 +1,116 @@
+get:
+    operationId: auditLogs.ListDirectoryAudits
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - activityDateTime
+                    - activityDateTime desc
+                    - activityDisplayName
+                    - activityDisplayName desc
+                    - additionalDetails
+                    - additionalDetails desc
+                    - category
+                    - category desc
+                    - correlationId
+                    - correlationId desc
+                    - initiatedBy
+                    - initiatedBy desc
+                    - loggedByService
+                    - loggedByService desc
+                    - operationType
+                    - operationType desc
+                    - result
+                    - result desc
+                    - resultReason
+                    - resultReason desc
+                    - targetResources
+                    - targetResources desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activityDateTime
+                    - activityDisplayName
+                    - additionalDetails
+                    - category
+                    - correlationId
+                    - initiatedBy
+                    - loggedByService
+                    - operationType
+                    - result
+                    - resultReason
+                    - targetResources
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.directoryAudit'
+                                type: array
+                        title: Collection of directoryAudit
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get directoryAudits from auditLogs
+    tags:
+        - auditLogs.directoryAudit
+    x-ms-docs-operation-type: operation
+post:
+    operationId: auditLogs.CreateDirectoryAudits
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryAudit'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryAudit'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to directoryAudits for auditLogs
+    tags:
+        - auditLogs.directoryAudit
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,75 @@
+get:
+    operationId: shares.GetPermission
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - expirationDateTime
+                    - grantedTo
+                    - grantedToIdentities
+                    - hasPassword
+                    - inheritedFrom
+                    - invitation
+                    - link
+                    - roles
+                    - shareId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.permission'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get permission from shares
+    tags:
+        - shares.permission
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.UpdatePermission
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.permission'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property permission in shares
+    tags:
+        - shares.permission
+    x-ms-docs-operation-type: operation

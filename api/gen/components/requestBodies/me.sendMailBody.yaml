@@ -1,0 +1,12 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                Message:
+                    $ref: "#/components/schemas/microsoft.graph.message"
+                SaveToSentItems:
+                    default: false
+                    type: boolean
+description: Action parameters
+required: true

@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookFilter
+      type: object
+      properties:
+        criteria: {}
+example:
+    id: string (identifier)
+    criteria:
+        "@odata.type": microsoft.graph.workbookFilterCriteria

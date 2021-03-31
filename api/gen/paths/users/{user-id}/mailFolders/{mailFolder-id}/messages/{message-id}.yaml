@@ -1,0 +1,132 @@
+get:
+    operationId: users.mailFolders.GetMessages
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - bccRecipients
+                    - body
+                    - bodyPreview
+                    - ccRecipients
+                    - conversationId
+                    - conversationIndex
+                    - flag
+                    - from
+                    - hasAttachments
+                    - importance
+                    - inferenceClassification
+                    - internetMessageHeaders
+                    - internetMessageId
+                    - isDeliveryReceiptRequested
+                    - isDraft
+                    - isRead
+                    - isReadReceiptRequested
+                    - parentFolderId
+                    - receivedDateTime
+                    - replyTo
+                    - sender
+                    - sentDateTime
+                    - subject
+                    - toRecipients
+                    - uniqueBody
+                    - webLink
+                    - attachments
+                    - extensions
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - attachments
+                    - extensions
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.message'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get messages from users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.mailFolders.UpdateMessages
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.message2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property messages in users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation

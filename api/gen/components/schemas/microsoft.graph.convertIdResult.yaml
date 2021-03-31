@@ -1,0 +1,13 @@
+title: convertIdResult
+type: object
+properties:
+    errorDetails: {}
+    sourceId:
+        type: string
+    targetId:
+        type: string
+example:
+    errorDetails:
+        "@odata.type": microsoft.graph.genericError
+    sourceId: string
+    targetId: string

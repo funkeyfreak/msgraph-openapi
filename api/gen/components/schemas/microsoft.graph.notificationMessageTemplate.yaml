@@ -1,0 +1,32 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: notificationMessageTemplate
+      description: Notification messages are messages that are sent to end users who are determined to be not-compliant with the compliance policies defined by the administrator. Administrators choose notifications and configure them in the Intune Admin Console using the compliance policy creation page under the “Actions for non-compliance” section. Use the notificationMessageTemplate object to create your own custom notifications for administrators to choose while configuring actions for non-compliance.
+      type: object
+      properties:
+        brandingOptions:
+            description: The Message Template Branding Options. Branding is defined in the Intune Admin Console.
+        defaultLocale:
+            description: The default locale to fallback onto when the requested locale is not available.
+            type: string
+        displayName:
+            description: Display name for the Notification Message Template.
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            description: DateTime the object was last modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        localizedNotificationMessages:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.localizedNotificationMessage"
+example:
+    id: string (identifier)
+    brandingOptions:
+        "@odata.type": microsoft.graph.notificationTemplateBrandingOptions
+    defaultLocale: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    localizedNotificationMessages:
+        - "@odata.type": microsoft.graph.localizedNotificationMessage

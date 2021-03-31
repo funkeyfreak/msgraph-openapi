@@ -1,0 +1,22 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: oAuth2PermissionGrant
+      type: object
+      properties:
+        clientId:
+            type: string
+        consentType:
+            type: string
+        principalId:
+            type: string
+        resourceId:
+            type: string
+        scope:
+            type: string
+example:
+    id: string (identifier)
+    clientId: string
+    consentType: string
+    principalId: string
+    resourceId: string
+    scope: string

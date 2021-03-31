@@ -1,0 +1,41 @@
+get:
+    operationId: me.GetInferenceClassification
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - overrides
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.inferenceClassification'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get inferenceClassification from me
+    tags:
+        - me.inferenceClassification
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateInferenceClassification
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.inferenceClassification'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property inferenceClassification in me
+    tags:
+        - me.inferenceClassification
+    x-ms-docs-operation-type: operation

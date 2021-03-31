@@ -1,0 +1,85 @@
+delete:
+    operationId: directoryObjects.directoryObject.DeleteDirectoryObject
+    parameters:
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from directoryObjects
+    tags:
+        - directoryObjects.directoryObject
+    x-ms-docs-operation-type: operation
+get:
+    operationId: directoryObjects.directoryObject.GetDirectoryObject
+    parameters:
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from directoryObjects by key
+    tags:
+        - directoryObjects.directoryObject
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: directoryObjects.directoryObject.UpdateDirectoryObject
+    parameters:
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in directoryObjects
+    tags:
+        - directoryObjects.directoryObject
+    x-ms-docs-operation-type: operation

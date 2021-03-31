@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: onenoteEntityBaseModel
+      type: object
+      properties:
+        self:
+            type: string
+example:
+    id: string (identifier)
+    self: string

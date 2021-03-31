@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                Comment:
+                    type: string
+                ToRecipients:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/microsoft.graph.recipient"
+description: Action parameters
+required: true

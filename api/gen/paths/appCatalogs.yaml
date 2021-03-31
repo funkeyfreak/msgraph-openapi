@@ -1,0 +1,58 @@
+get:
+    operationId: appCatalogs.appCatalogs.GetAppCatalogs
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - teamsApps
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - teamsApps
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.appCatalogs'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get appCatalogs
+    tags:
+        - appCatalogs.appCatalogs
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: appCatalogs.appCatalogs.UpdateAppCatalogs
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.appCatalogs'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update appCatalogs
+    tags:
+        - appCatalogs.appCatalogs
+    x-ms-docs-operation-type: operation

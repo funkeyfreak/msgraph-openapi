@@ -1,0 +1,91 @@
+delete:
+    operationId: subscribedSkus.subscribedSku.DeleteSubscribedSku
+    parameters:
+        - description: 'key: subscribedSku-id of subscribedSku'
+          in: path
+          name: subscribedSku-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscribedSku
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from subscribedSkus
+    tags:
+        - subscribedSkus.subscribedSku
+    x-ms-docs-operation-type: operation
+get:
+    operationId: subscribedSkus.subscribedSku.GetSubscribedSku
+    parameters:
+        - description: 'key: subscribedSku-id of subscribedSku'
+          in: path
+          name: subscribedSku-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscribedSku
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appliesTo
+                    - capabilityStatus
+                    - consumedUnits
+                    - prepaidUnits
+                    - servicePlans
+                    - skuId
+                    - skuPartNumber
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscribedSku'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from subscribedSkus by key
+    tags:
+        - subscribedSkus.subscribedSku
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: subscribedSkus.subscribedSku.UpdateSubscribedSku
+    parameters:
+        - description: 'key: subscribedSku-id of subscribedSku'
+          in: path
+          name: subscribedSku-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscribedSku
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.subscribedSku'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in subscribedSkus
+    tags:
+        - subscribedSkus.subscribedSku
+    x-ms-docs-operation-type: operation

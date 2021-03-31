@@ -1,0 +1,88 @@
+get:
+    operationId: deviceAppManagement.deviceAppManagement.GetDeviceAppManagement
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - isEnabledForMicrosoftStoreForBusiness
+                    - microsoftStoreForBusinessLanguage
+                    - microsoftStoreForBusinessLastCompletedApplicationSyncTime
+                    - microsoftStoreForBusinessLastSuccessfulSyncDateTime
+                    - managedEBooks
+                    - mobileAppCategories
+                    - mobileAppConfigurations
+                    - mobileApps
+                    - vppTokens
+                    - androidManagedAppProtections
+                    - defaultManagedAppProtections
+                    - iosManagedAppProtections
+                    - managedAppPolicies
+                    - managedAppRegistrations
+                    - managedAppStatuses
+                    - mdmWindowsInformationProtectionPolicies
+                    - targetedManagedAppConfigurations
+                    - windowsInformationProtectionPolicies
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - managedEBooks
+                    - mobileAppCategories
+                    - mobileAppConfigurations
+                    - mobileApps
+                    - vppTokens
+                    - androidManagedAppProtections
+                    - defaultManagedAppProtections
+                    - iosManagedAppProtections
+                    - managedAppPolicies
+                    - managedAppRegistrations
+                    - managedAppStatuses
+                    - mdmWindowsInformationProtectionPolicies
+                    - targetedManagedAppConfigurations
+                    - windowsInformationProtectionPolicies
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceAppManagement'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceAppManagement
+    tags:
+        - deviceAppManagement.deviceAppManagement
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.deviceAppManagement.UpdateDeviceAppManagement
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceAppManagement'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update deviceAppManagement
+    tags:
+        - deviceAppManagement.deviceAppManagement
+    x-ms-docs-operation-type: operation

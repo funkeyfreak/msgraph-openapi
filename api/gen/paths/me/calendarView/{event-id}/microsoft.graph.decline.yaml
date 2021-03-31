@@ -1,0 +1,21 @@
+post:
+    operationId: me.calendarView.decline
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/groups.calendar.calendarView.instances.declineBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action decline
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,25 @@
+get:
+    operationId: groups.calendar.calendarView.delta
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.event'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function delta
+    tags:
+        - groups.Functions
+    x-ms-docs-operation-type: function

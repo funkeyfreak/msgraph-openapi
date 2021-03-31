@@ -1,0 +1,62 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItem"
+    - title: list
+      type: object
+      properties:
+        displayName:
+            type: string
+        list: {}
+        sharepointIds: {}
+        system: {}
+        columns:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.columnDefinition"
+        contentTypes:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contentType"
+        drive: {}
+        items:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.listItem"
+        subscriptions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.subscription"
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user
+    displayName: string
+    list:
+        "@odata.type": microsoft.graph.listInfo
+    sharepointIds:
+        "@odata.type": microsoft.graph.sharepointIds
+    system:
+        "@odata.type": microsoft.graph.systemFacet
+    columns:
+        - "@odata.type": microsoft.graph.columnDefinition
+    contentTypes:
+        - "@odata.type": microsoft.graph.contentType
+    drive:
+        "@odata.type": microsoft.graph.drive
+    items:
+        - "@odata.type": microsoft.graph.listItem
+    subscriptions:
+        - "@odata.type": microsoft.graph.subscription

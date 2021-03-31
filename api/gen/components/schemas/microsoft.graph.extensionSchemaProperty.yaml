@@ -1,0 +1,10 @@
+title: extensionSchemaProperty
+type: object
+properties:
+    name:
+        type: string
+    type:
+        type: string
+example:
+    name: string
+    type: string

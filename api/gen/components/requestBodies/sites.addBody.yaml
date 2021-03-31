@@ -1,0 +1,10 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                value:
+                    type: array
+                    items: {}
+description: Action parameters
+required: true

@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                Post:
+                    $ref: "#/components/schemas/microsoft.graph.post"
+description: Action parameters
+required: true

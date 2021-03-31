@@ -1,0 +1,88 @@
+get:
+    operationId: groups.GetGroupLifecyclePolicies
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: groupLifecyclePolicy-id of groupLifecyclePolicy'
+          in: path
+          name: groupLifecyclePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - alternateNotificationEmails
+                    - groupLifetimeInDays
+                    - managedGroupTypes
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get groupLifecyclePolicies from groups
+    tags:
+        - groups.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdateGroupLifecyclePolicies
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: groupLifecyclePolicy-id of groupLifecyclePolicy'
+          in: path
+          name: groupLifecyclePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property groupLifecyclePolicies in groups
+    tags:
+        - groups.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation

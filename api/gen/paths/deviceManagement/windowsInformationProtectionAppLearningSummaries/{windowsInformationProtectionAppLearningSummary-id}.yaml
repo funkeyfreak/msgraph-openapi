@@ -1,0 +1,74 @@
+get:
+    operationId: deviceManagement.GetWindowsInformationProtectionAppLearningSummaries
+    parameters:
+        - description: 'key: windowsInformationProtectionAppLearningSummary-id of windowsInformationProtectionAppLearningSummary'
+          in: path
+          name: windowsInformationProtectionAppLearningSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionAppLearningSummary
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationName
+                    - applicationType
+                    - deviceCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionAppLearningSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get windowsInformationProtectionAppLearningSummaries from deviceManagement
+    tags:
+        - deviceManagement.windowsInformationProtectionAppLearningSummary
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateWindowsInformationProtectionAppLearningSummaries
+    parameters:
+        - description: 'key: windowsInformationProtectionAppLearningSummary-id of windowsInformationProtectionAppLearningSummary'
+          in: path
+          name: windowsInformationProtectionAppLearningSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionAppLearningSummary
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionAppLearningSummary'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
+    tags:
+        - deviceManagement.windowsInformationProtectionAppLearningSummary
+    x-ms-docs-operation-type: operation

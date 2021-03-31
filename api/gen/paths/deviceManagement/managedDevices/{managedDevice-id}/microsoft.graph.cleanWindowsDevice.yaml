@@ -1,0 +1,21 @@
+post:
+    operationId: deviceManagement.managedDevices.cleanWindowsDevice
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+    requestBody:
+        $ref: '#/components/requestBodies/deviceManagement.detectedApps.managedDevices.cleanWindowsDeviceBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action cleanWindowsDevice
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,221 @@
+get:
+    operationId: users.calendar.events.ListInstances
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - categories
+                    - categories desc
+                    - changeKey
+                    - changeKey desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - allowNewTimeProposals
+                    - allowNewTimeProposals desc
+                    - attendees
+                    - attendees desc
+                    - body
+                    - body desc
+                    - bodyPreview
+                    - bodyPreview desc
+                    - end
+                    - end desc
+                    - hasAttachments
+                    - hasAttachments desc
+                    - hideAttendees
+                    - hideAttendees desc
+                    - iCalUId
+                    - iCalUId desc
+                    - importance
+                    - importance desc
+                    - isAllDay
+                    - isAllDay desc
+                    - isCancelled
+                    - isCancelled desc
+                    - isDraft
+                    - isDraft desc
+                    - isOnlineMeeting
+                    - isOnlineMeeting desc
+                    - isOrganizer
+                    - isOrganizer desc
+                    - isReminderOn
+                    - isReminderOn desc
+                    - location
+                    - location desc
+                    - locations
+                    - locations desc
+                    - onlineMeeting
+                    - onlineMeeting desc
+                    - onlineMeetingProvider
+                    - onlineMeetingProvider desc
+                    - onlineMeetingUrl
+                    - onlineMeetingUrl desc
+                    - organizer
+                    - organizer desc
+                    - originalEndTimeZone
+                    - originalEndTimeZone desc
+                    - originalStart
+                    - originalStart desc
+                    - originalStartTimeZone
+                    - originalStartTimeZone desc
+                    - recurrence
+                    - recurrence desc
+                    - reminderMinutesBeforeStart
+                    - reminderMinutesBeforeStart desc
+                    - responseRequested
+                    - responseRequested desc
+                    - responseStatus
+                    - responseStatus desc
+                    - sensitivity
+                    - sensitivity desc
+                    - seriesMasterId
+                    - seriesMasterId desc
+                    - showAs
+                    - showAs desc
+                    - start
+                    - start desc
+                    - subject
+                    - subject desc
+                    - transactionId
+                    - transactionId desc
+                    - type
+                    - type desc
+                    - webLink
+                    - webLink desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - allowNewTimeProposals
+                    - attendees
+                    - body
+                    - bodyPreview
+                    - end
+                    - hasAttachments
+                    - hideAttendees
+                    - iCalUId
+                    - importance
+                    - isAllDay
+                    - isCancelled
+                    - isDraft
+                    - isOnlineMeeting
+                    - isOrganizer
+                    - isReminderOn
+                    - location
+                    - locations
+                    - onlineMeeting
+                    - onlineMeetingProvider
+                    - onlineMeetingUrl
+                    - organizer
+                    - originalEndTimeZone
+                    - originalStart
+                    - originalStartTimeZone
+                    - recurrence
+                    - reminderMinutesBeforeStart
+                    - responseRequested
+                    - responseStatus
+                    - sensitivity
+                    - seriesMasterId
+                    - showAs
+                    - start
+                    - subject
+                    - transactionId
+                    - type
+                    - webLink
+                    - attachments
+                    - calendar
+                    - extensions
+                    - instances
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.event'
+                                type: array
+                        title: Collection of event
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get instances from users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.calendar.events.CreateInstances
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.event2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.event'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to instances for users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,102 @@
+get:
+    operationId: users.calendarGroups.calendars.GetCalendarPermissions
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - description: 'key: calendarPermission-id of calendarPermission'
+          in: path
+          name: calendarPermission-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarPermission
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedRoles
+                    - emailAddress
+                    - isInsideOrganization
+                    - isRemovable
+                    - role
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendarPermission'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendarPermissions from users
+    tags:
+        - users.calendarGroup
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.calendarGroups.calendars.UpdateCalendarPermissions
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+        - description: 'key: calendarPermission-id of calendarPermission'
+          in: path
+          name: calendarPermission-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarPermission
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendarPermission2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendarPermissions in users
+    tags:
+        - users.calendarGroup
+    x-ms-docs-operation-type: operation

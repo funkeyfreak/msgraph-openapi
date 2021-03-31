@@ -1,0 +1,14 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.policyBase"
+    - title: identitySecurityDefaultsEnforcementPolicy
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        isEnabled:
+            type: boolean
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string
+    isEnabled: true

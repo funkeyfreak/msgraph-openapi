@@ -1,0 +1,28 @@
+post:
+    operationId: deviceManagement.detectedApps.managedDevices.windowsDefenderScan
+    parameters:
+        - description: 'key: detectedApp-id of detectedApp'
+          in: path
+          name: detectedApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: detectedApp
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+    requestBody:
+        $ref: '#/components/requestBodies/deviceManagement.detectedApps.managedDevices.windowsDefenderScanBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action windowsDefenderScan
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

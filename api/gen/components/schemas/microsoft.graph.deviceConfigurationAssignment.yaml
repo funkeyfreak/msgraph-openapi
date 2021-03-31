@@ -1,0 +1,12 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceConfigurationAssignment
+      description: The device configuration assignment entity assigns an AAD group to a specific device configuration.
+      type: object
+      properties:
+        target:
+            description: The assignment target for the device configuration.
+example:
+    id: string (identifier)
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

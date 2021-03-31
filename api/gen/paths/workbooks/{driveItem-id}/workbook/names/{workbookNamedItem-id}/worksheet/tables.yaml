@@ -1,0 +1,145 @@
+get:
+    operationId: workbooks.workbook.names.worksheet.ListTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - highlightFirstColumn
+                    - highlightFirstColumn desc
+                    - highlightLastColumn
+                    - highlightLastColumn desc
+                    - legacyId
+                    - legacyId desc
+                    - name
+                    - name desc
+                    - showBandedColumns
+                    - showBandedColumns desc
+                    - showBandedRows
+                    - showBandedRows desc
+                    - showFilterButton
+                    - showFilterButton desc
+                    - showHeaders
+                    - showHeaders desc
+                    - showTotals
+                    - showTotals desc
+                    - style
+                    - style desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - highlightFirstColumn
+                    - highlightLastColumn
+                    - legacyId
+                    - name
+                    - showBandedColumns
+                    - showBandedRows
+                    - showFilterButton
+                    - showHeaders
+                    - showTotals
+                    - style
+                    - columns
+                    - rows
+                    - sort
+                    - worksheet
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - columns
+                    - rows
+                    - sort
+                    - worksheet
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.workbookTable'
+                                type: array
+                        title: Collection of workbookTable
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tables from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.workbook.names.worksheet.CreateTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookTable2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookTable'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to tables for workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

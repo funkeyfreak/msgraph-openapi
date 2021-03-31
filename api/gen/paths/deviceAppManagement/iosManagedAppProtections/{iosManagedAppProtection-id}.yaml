@@ -1,0 +1,115 @@
+get:
+    operationId: deviceAppManagement.GetIosManagedAppProtections
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - allowedDataStorageLocations
+                    - allowedInboundDataTransferSources
+                    - allowedOutboundClipboardSharingLevel
+                    - allowedOutboundDataTransferDestinations
+                    - contactSyncBlocked
+                    - dataBackupBlocked
+                    - deviceComplianceRequired
+                    - disableAppPinIfDevicePinIsSet
+                    - fingerprintBlocked
+                    - managedBrowser
+                    - managedBrowserToOpenLinksRequired
+                    - maximumPinRetries
+                    - minimumPinLength
+                    - minimumRequiredAppVersion
+                    - minimumRequiredOsVersion
+                    - minimumWarningAppVersion
+                    - minimumWarningOsVersion
+                    - organizationalCredentialsRequired
+                    - periodBeforePinReset
+                    - periodOfflineBeforeAccessCheck
+                    - periodOfflineBeforeWipeIsEnforced
+                    - periodOnlineBeforeAccessCheck
+                    - pinCharacterSet
+                    - pinRequired
+                    - printBlocked
+                    - saveAsBlocked
+                    - simplePinBlocked
+                    - isAssigned
+                    - appDataEncryptionType
+                    - customBrowserProtocol
+                    - deployedAppCount
+                    - faceIdBlocked
+                    - minimumRequiredSdkVersion
+                    - assignments
+                    - apps
+                    - deploymentSummary
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - apps
+                    - deploymentSummary
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.iosManagedAppProtection'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get iosManagedAppProtections from deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateIosManagedAppProtections
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.iosManagedAppProtection'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property iosManagedAppProtections in deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation

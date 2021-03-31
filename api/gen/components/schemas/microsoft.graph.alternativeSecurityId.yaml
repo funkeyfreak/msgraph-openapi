@@ -1,0 +1,17 @@
+title: alternativeSecurityId
+type: object
+properties:
+    identityProvider:
+        type: string
+    key:
+        format: base64url
+        type: string
+    type:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+example:
+    identityProvider: string
+    key: string
+    type: integer

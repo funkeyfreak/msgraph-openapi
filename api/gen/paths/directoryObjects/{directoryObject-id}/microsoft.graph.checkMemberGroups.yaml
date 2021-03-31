@@ -1,0 +1,37 @@
+post:
+    operationId: directoryObjects.checkMemberGroups
+    parameters:
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        groupIds:
+                            items:
+                                type: string
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            type: string
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action checkMemberGroups
+    tags:
+        - directoryObjects.Actions
+    x-ms-docs-operation-type: action

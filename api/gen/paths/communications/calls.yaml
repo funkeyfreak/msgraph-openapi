@@ -1,0 +1,147 @@
+get:
+    operationId: communications.ListCalls
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - callbackUri
+                    - callbackUri desc
+                    - callChainId
+                    - callChainId desc
+                    - callOptions
+                    - callOptions desc
+                    - callRoutes
+                    - callRoutes desc
+                    - chatInfo
+                    - chatInfo desc
+                    - direction
+                    - direction desc
+                    - incomingContext
+                    - incomingContext desc
+                    - mediaConfig
+                    - mediaConfig desc
+                    - mediaState
+                    - mediaState desc
+                    - meetingInfo
+                    - meetingInfo desc
+                    - myParticipantId
+                    - myParticipantId desc
+                    - requestedModalities
+                    - requestedModalities desc
+                    - resultInfo
+                    - resultInfo desc
+                    - source
+                    - source desc
+                    - state
+                    - state desc
+                    - subject
+                    - subject desc
+                    - targets
+                    - targets desc
+                    - tenantId
+                    - tenantId desc
+                    - toneInfo
+                    - toneInfo desc
+                    - transcription
+                    - transcription desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - callbackUri
+                    - callChainId
+                    - callOptions
+                    - callRoutes
+                    - chatInfo
+                    - direction
+                    - incomingContext
+                    - mediaConfig
+                    - mediaState
+                    - meetingInfo
+                    - myParticipantId
+                    - requestedModalities
+                    - resultInfo
+                    - source
+                    - state
+                    - subject
+                    - targets
+                    - tenantId
+                    - toneInfo
+                    - transcription
+                    - operations
+                    - participants
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - operations
+                    - participants
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.call'
+                                type: array
+                        title: Collection of call
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calls from communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation
+post:
+    operationId: communications.CreateCalls
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.call'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.call'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to calls for communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation

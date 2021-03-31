@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: conversationMember
+      type: object
+      properties:
+        displayName:
+            type: string
+        roles:
+            type: array
+            items:
+                type: string
+example:
+    id: string (identifier)
+    displayName: string
+    roles:
+        - string

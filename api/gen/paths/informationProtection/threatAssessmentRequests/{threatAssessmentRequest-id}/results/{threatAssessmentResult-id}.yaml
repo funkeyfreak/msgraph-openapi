@@ -1,0 +1,88 @@
+get:
+    operationId: informationProtection.threatAssessmentRequests.GetResults
+    parameters:
+        - description: 'key: threatAssessmentRequest-id of threatAssessmentRequest'
+          in: path
+          name: threatAssessmentRequest-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: threatAssessmentRequest
+        - description: 'key: threatAssessmentResult-id of threatAssessmentResult'
+          in: path
+          name: threatAssessmentResult-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: threatAssessmentResult
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - message
+                    - resultType
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.threatAssessmentResult'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get results from informationProtection
+    tags:
+        - informationProtection.threatAssessmentRequest
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: informationProtection.threatAssessmentRequests.UpdateResults
+    parameters:
+        - description: 'key: threatAssessmentRequest-id of threatAssessmentRequest'
+          in: path
+          name: threatAssessmentRequest-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: threatAssessmentRequest
+        - description: 'key: threatAssessmentResult-id of threatAssessmentResult'
+          in: path
+          name: threatAssessmentResult-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: threatAssessmentResult
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.threatAssessmentResult'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property results in informationProtection
+    tags:
+        - informationProtection.threatAssessmentRequest
+    x-ms-docs-operation-type: operation

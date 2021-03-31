@@ -1,0 +1,100 @@
+get:
+    operationId: users.managedDevices.GetDeviceConfigurationStates
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: 'key: deviceConfigurationState-id of deviceConfigurationState'
+          in: path
+          name: deviceConfigurationState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfigurationState
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - platformType
+                    - settingCount
+                    - settingStates
+                    - state
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceConfigurationState'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceConfigurationStates from users
+    tags:
+        - users.managedDevice
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.managedDevices.UpdateDeviceConfigurationStates
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: 'key: deviceConfigurationState-id of deviceConfigurationState'
+          in: path
+          name: deviceConfigurationState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfigurationState
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceConfigurationState2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceConfigurationStates in users
+    tags:
+        - users.managedDevice
+    x-ms-docs-operation-type: operation

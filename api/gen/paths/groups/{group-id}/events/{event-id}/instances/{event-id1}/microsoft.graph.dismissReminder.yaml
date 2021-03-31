@@ -1,0 +1,33 @@
+post:
+    operationId: groups.events.instances.dismissReminder
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action dismissReminder
+    tags:
+        - groups.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,118 @@
+get:
+    operationId: communications.callRecords.ListSessions
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - callee
+                    - callee desc
+                    - caller
+                    - caller desc
+                    - endDateTime
+                    - endDateTime desc
+                    - failureInfo
+                    - failureInfo desc
+                    - modalities
+                    - modalities desc
+                    - startDateTime
+                    - startDateTime desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - callee
+                    - caller
+                    - endDateTime
+                    - failureInfo
+                    - modalities
+                    - startDateTime
+                    - segments
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - segments
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.callRecords.session'
+                                type: array
+                        title: Collection of session
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get sessions from communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation
+post:
+    operationId: communications.callRecords.CreateSessions
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.callRecords.session'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.callRecords.session'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to sessions for communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation

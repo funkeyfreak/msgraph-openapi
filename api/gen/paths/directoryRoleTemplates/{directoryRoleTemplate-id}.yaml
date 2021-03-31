@@ -1,0 +1,87 @@
+delete:
+    operationId: directoryRoleTemplates.directoryRoleTemplate.DeleteDirectoryRoleTemplate
+    parameters:
+        - description: 'key: directoryRoleTemplate-id of directoryRoleTemplate'
+          in: path
+          name: directoryRoleTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryRoleTemplate
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from directoryRoleTemplates
+    tags:
+        - directoryRoleTemplates.directoryRoleTemplate
+    x-ms-docs-operation-type: operation
+get:
+    operationId: directoryRoleTemplates.directoryRoleTemplate.GetDirectoryRoleTemplate
+    parameters:
+        - description: 'key: directoryRoleTemplate-id of directoryRoleTemplate'
+          in: path
+          name: directoryRoleTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryRoleTemplate
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryRoleTemplate'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from directoryRoleTemplates by key
+    tags:
+        - directoryRoleTemplates.directoryRoleTemplate
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: directoryRoleTemplates.directoryRoleTemplate.UpdateDirectoryRoleTemplate
+    parameters:
+        - description: 'key: directoryRoleTemplate-id of directoryRoleTemplate'
+          in: path
+          name: directoryRoleTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryRoleTemplate
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryRoleTemplate'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in directoryRoleTemplates
+    tags:
+        - directoryRoleTemplates.directoryRoleTemplate
+    x-ms-docs-operation-type: operation

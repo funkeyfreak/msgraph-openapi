@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerPlanDetails
+      type: object
+      properties:
+        categoryDescriptions: {}
+        sharedWith: {}
+example:
+    id: string (identifier)
+    categoryDescriptions:
+        "@odata.type": microsoft.graph.plannerCategoryDescriptions
+    sharedWith:
+        "@odata.type": microsoft.graph.plannerUserIds

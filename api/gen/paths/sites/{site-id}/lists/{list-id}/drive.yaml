@@ -1,0 +1,108 @@
+get:
+    operationId: sites.lists.GetDrive
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - driveType
+                    - owner
+                    - quota
+                    - sharePointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.drive'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get drive from sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.lists.UpdateDrive
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.drive2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property drive in sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation

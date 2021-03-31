@@ -1,0 +1,80 @@
+get:
+    operationId: communications.GetOnlineMeetings
+    parameters:
+        - description: 'key: onlineMeeting-id of onlineMeeting'
+          in: path
+          name: onlineMeeting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onlineMeeting
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedPresenters
+                    - audioConferencing
+                    - chatInfo
+                    - creationDateTime
+                    - endDateTime
+                    - externalId
+                    - isEntryExitAnnounced
+                    - joinInformation
+                    - joinWebUrl
+                    - lobbyBypassSettings
+                    - participants
+                    - startDateTime
+                    - subject
+                    - videoTeleconferenceId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onlineMeeting'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get onlineMeetings from communications
+    tags:
+        - communications.onlineMeeting
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.UpdateOnlineMeetings
+    parameters:
+        - description: 'key: onlineMeeting-id of onlineMeeting'
+          in: path
+          name: onlineMeeting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onlineMeeting
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onlineMeeting'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property onlineMeetings in communications
+    tags:
+        - communications.onlineMeeting
+    x-ms-docs-operation-type: operation

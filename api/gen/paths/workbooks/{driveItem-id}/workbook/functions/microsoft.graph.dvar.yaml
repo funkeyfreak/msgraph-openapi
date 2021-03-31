@@ -1,0 +1,24 @@
+post:
+    operationId: workbooks.workbook.functions.dvar
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/workbooks.workbook.functions.daverageBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action dvar
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

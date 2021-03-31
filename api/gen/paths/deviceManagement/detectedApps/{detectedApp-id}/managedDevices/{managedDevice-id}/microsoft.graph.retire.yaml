@@ -1,0 +1,26 @@
+post:
+    operationId: deviceManagement.detectedApps.managedDevices.retire
+    parameters:
+        - description: 'key: detectedApp-id of detectedApp'
+          in: path
+          name: detectedApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: detectedApp
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action retire
+    tags:
+        - deviceManagement.Actions
+    x-ms-docs-operation-type: action

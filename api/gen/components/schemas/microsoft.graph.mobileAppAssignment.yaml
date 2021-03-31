@@ -1,0 +1,20 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: mobileAppAssignment
+      description: A class containing the properties used for Group Assignment of a Mobile App.
+      type: object
+      properties:
+        intent:
+            description: The install intent defined by the admin.
+        settings:
+            description: The settings for target assignment defined by the admin.
+        target:
+            description: The target group assignment defined by the admin.
+example:
+    id: string (identifier)
+    intent:
+        "@odata.type": microsoft.graph.installIntent
+    settings:
+        "@odata.type": microsoft.graph.mobileAppAssignmentSettings
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

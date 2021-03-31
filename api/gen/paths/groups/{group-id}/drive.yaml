@@ -1,0 +1,94 @@
+get:
+    operationId: groups.GetDrive
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - driveType
+                    - owner
+                    - quota
+                    - sharePointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.drive'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get drive from groups
+    tags:
+        - groups.drive
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdateDrive
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.drive2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property drive in groups
+    tags:
+        - groups.drive
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamwork
+      type: object
+      properties:
+        workforceIntegrations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workforceIntegration"
+example:
+    id: string (identifier)
+    workforceIntegrations:
+        - "@odata.type": microsoft.graph.workforceIntegration

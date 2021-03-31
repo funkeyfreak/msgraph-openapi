@@ -1,0 +1,95 @@
+get:
+    operationId: users.GetActivities
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activationUrl
+                    - activitySourceHost
+                    - appActivityId
+                    - appDisplayName
+                    - contentInfo
+                    - contentUrl
+                    - createdDateTime
+                    - expirationDateTime
+                    - fallbackUrl
+                    - lastModifiedDateTime
+                    - status
+                    - userTimezone
+                    - visualElements
+                    - historyItems
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - historyItems
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.userActivity'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get activities from users
+    tags:
+        - users.userActivity
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdateActivities
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.userActivity'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property activities in users
+    tags:
+        - users.userActivity
+    x-ms-docs-operation-type: operation

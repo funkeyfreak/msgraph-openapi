@@ -1,0 +1,53 @@
+get:
+    operationId: me.GetPresence
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activity
+                    - availability
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.presence'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get presence from me
+    tags:
+        - me.presence
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdatePresence
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.presence'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property presence in me
+    tags:
+        - me.presence
+    x-ms-docs-operation-type: operation

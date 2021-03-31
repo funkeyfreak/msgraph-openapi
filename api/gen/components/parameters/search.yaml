@@ -1,0 +1,5 @@
+in: query
+name: $search
+description: Search items by search phrases
+schema:
+    type: string

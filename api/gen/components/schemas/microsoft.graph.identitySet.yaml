@@ -1,0 +1,13 @@
+title: identitySet
+type: object
+properties:
+    application: {}
+    device: {}
+    user: {}
+example:
+    application:
+        "@odata.type": microsoft.graph.identity
+    device:
+        "@odata.type": microsoft.graph.identity
+    user:
+        "@odata.type": microsoft.graph.identity

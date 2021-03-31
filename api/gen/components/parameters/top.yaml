@@ -1,0 +1,6 @@
+in: query
+name: $top
+description: Show only the first n items
+schema:
+    type: integer
+    minimum: 0

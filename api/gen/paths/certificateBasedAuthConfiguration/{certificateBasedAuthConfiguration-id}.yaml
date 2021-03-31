@@ -1,0 +1,96 @@
+delete:
+    operationId: certificateBasedAuthConfiguration.certificateBasedAuthConfiguration.DeleteCertificateBasedAuthConfiguration
+    parameters:
+        - description: 'key: certificateBasedAuthConfiguration-id of certificateBasedAuthConfiguration'
+          in: path
+          name: certificateBasedAuthConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: certificateBasedAuthConfiguration
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from certificateBasedAuthConfiguration
+    tags:
+        - certificateBasedAuthConfiguration.certificateBasedAuthConfiguration
+    x-ms-docs-operation-type: operation
+get:
+    operationId: certificateBasedAuthConfiguration.certificateBasedAuthConfiguration.GetCertificateBasedAuthConfiguration
+    parameters:
+        - description: 'key: certificateBasedAuthConfiguration-id of certificateBasedAuthConfiguration'
+          in: path
+          name: certificateBasedAuthConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: certificateBasedAuthConfiguration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - certificateAuthorities
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.certificateBasedAuthConfiguration'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from certificateBasedAuthConfiguration by key
+    tags:
+        - certificateBasedAuthConfiguration.certificateBasedAuthConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: certificateBasedAuthConfiguration.certificateBasedAuthConfiguration.UpdateCertificateBasedAuthConfiguration
+    parameters:
+        - description: 'key: certificateBasedAuthConfiguration-id of certificateBasedAuthConfiguration'
+          in: path
+          name: certificateBasedAuthConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: certificateBasedAuthConfiguration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.certificateBasedAuthConfiguration'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in certificateBasedAuthConfiguration
+    tags:
+        - certificateBasedAuthConfiguration.certificateBasedAuthConfiguration
+    x-ms-docs-operation-type: operation

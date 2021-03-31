@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartFont
+      type: object
+      properties:
+        bold:
+            type: boolean
+        color:
+            type: string
+        italic:
+            type: boolean
+        name:
+            type: string
+        size:
+            format: double
+        underline:
+            type: string
+example:
+    id: string (identifier)
+    bold: true
+    color: string
+    italic: true
+    name: string
+    size: double
+    underline: string

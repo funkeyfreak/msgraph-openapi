@@ -1,0 +1,170 @@
+get:
+    operationId: deviceAppManagement.ListMdmWindowsInformationProtectionPolicies
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - version
+                    - version desc
+                    - azureRightsManagementServicesAllowed
+                    - azureRightsManagementServicesAllowed desc
+                    - dataRecoveryCertificate
+                    - dataRecoveryCertificate desc
+                    - enforcementLevel
+                    - enforcementLevel desc
+                    - enterpriseDomain
+                    - enterpriseDomain desc
+                    - enterpriseInternalProxyServers
+                    - enterpriseInternalProxyServers desc
+                    - enterpriseIPRanges
+                    - enterpriseIPRanges desc
+                    - enterpriseIPRangesAreAuthoritative
+                    - enterpriseIPRangesAreAuthoritative desc
+                    - enterpriseNetworkDomainNames
+                    - enterpriseNetworkDomainNames desc
+                    - enterpriseProtectedDomainNames
+                    - enterpriseProtectedDomainNames desc
+                    - enterpriseProxiedDomains
+                    - enterpriseProxiedDomains desc
+                    - enterpriseProxyServers
+                    - enterpriseProxyServers desc
+                    - enterpriseProxyServersAreAuthoritative
+                    - enterpriseProxyServersAreAuthoritative desc
+                    - exemptApps
+                    - exemptApps desc
+                    - iconsVisible
+                    - iconsVisible desc
+                    - indexingEncryptedStoresOrItemsBlocked
+                    - indexingEncryptedStoresOrItemsBlocked desc
+                    - isAssigned
+                    - isAssigned desc
+                    - neutralDomainResources
+                    - neutralDomainResources desc
+                    - protectedApps
+                    - protectedApps desc
+                    - protectionUnderLockConfigRequired
+                    - protectionUnderLockConfigRequired desc
+                    - revokeOnUnenrollDisabled
+                    - revokeOnUnenrollDisabled desc
+                    - rightsManagementServicesTemplateId
+                    - rightsManagementServicesTemplateId desc
+                    - smbAutoEncryptedFileExtensions
+                    - smbAutoEncryptedFileExtensions desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - azureRightsManagementServicesAllowed
+                    - dataRecoveryCertificate
+                    - enforcementLevel
+                    - enterpriseDomain
+                    - enterpriseInternalProxyServers
+                    - enterpriseIPRanges
+                    - enterpriseIPRangesAreAuthoritative
+                    - enterpriseNetworkDomainNames
+                    - enterpriseProtectedDomainNames
+                    - enterpriseProxiedDomains
+                    - enterpriseProxyServers
+                    - enterpriseProxyServersAreAuthoritative
+                    - exemptApps
+                    - iconsVisible
+                    - indexingEncryptedStoresOrItemsBlocked
+                    - isAssigned
+                    - neutralDomainResources
+                    - protectedApps
+                    - protectionUnderLockConfigRequired
+                    - revokeOnUnenrollDisabled
+                    - rightsManagementServicesTemplateId
+                    - smbAutoEncryptedFileExtensions
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.mdmWindowsInformationProtectionPolicy'
+                                type: array
+                        title: Collection of mdmWindowsInformationProtectionPolicy
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mdmWindowsInformationProtectionPolicies from deviceAppManagement
+    tags:
+        - deviceAppManagement.mdmWindowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateMdmWindowsInformationProtectionPolicies
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mdmWindowsInformationProtectionPolicy'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mdmWindowsInformationProtectionPolicy'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to mdmWindowsInformationProtectionPolicies for deviceAppManagement
+    tags:
+        - deviceAppManagement.mdmWindowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation

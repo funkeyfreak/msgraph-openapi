@@ -1,0 +1,18 @@
+post:
+    operationId: communications.getPresencesByUserId
+    requestBody:
+        $ref: '#/components/requestBodies/communications.getPresencesByUserIdBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getPresencesByUserId
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartLineFormat
+      type: object
+      properties:
+        color:
+            type: string
+example:
+    id: string (identifier)
+    color: string

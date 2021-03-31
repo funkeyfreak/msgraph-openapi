@@ -1,0 +1,40 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: contentType
+      type: object
+      properties:
+        description:
+            type: string
+        group:
+            type: string
+        hidden:
+            type: boolean
+        inheritedFrom: {}
+        name:
+            type: string
+        order: {}
+        parentId:
+            type: string
+        readOnly:
+            type: boolean
+        sealed:
+            type: boolean
+        columnLinks:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.columnLink"
+example:
+    id: string (identifier)
+    description: string
+    group: string
+    hidden: true
+    inheritedFrom:
+        "@odata.type": microsoft.graph.itemReference
+    name: string
+    order:
+        "@odata.type": microsoft.graph.contentTypeOrder
+    parentId: string
+    readOnly: true
+    sealed: true
+    columnLinks:
+        - "@odata.type": microsoft.graph.columnLink

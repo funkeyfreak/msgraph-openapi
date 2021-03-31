@@ -1,0 +1,39 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.onenoteEntityHierarchyModel"
+    - title: sectionGroup
+      type: object
+      properties:
+        sectionGroupsUrl:
+            type: string
+        sectionsUrl:
+            type: string
+        parentNotebook: {}
+        parentSectionGroup: {}
+        sectionGroups:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.sectionGroup"
+        sections:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onenoteSection"
+example:
+    id: string (identifier)
+    self: string
+    createdDateTime: string (timestamp)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    displayName: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    sectionGroupsUrl: string
+    sectionsUrl: string
+    parentNotebook:
+        "@odata.type": microsoft.graph.notebook
+    parentSectionGroup:
+        "@odata.type": microsoft.graph.sectionGroup
+    sectionGroups:
+        - "@odata.type": microsoft.graph.sectionGroup
+    sections:
+        - "@odata.type": microsoft.graph.onenoteSection

@@ -1,0 +1,12 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                address:
+                    type: string
+                hasHeaders:
+                    default: false
+                    type: boolean
+description: Action parameters
+required: true

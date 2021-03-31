@@ -1,0 +1,10 @@
+title: settingValue
+type: object
+properties:
+    name:
+        type: string
+    value:
+        type: string
+example:
+    name: string
+    value: string

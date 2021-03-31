@@ -1,0 +1,11 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                x: {}
+                mean: {}
+                standardDev: {}
+                cumulative: {}
+description: Action parameters
+required: true

@@ -1,0 +1,99 @@
+delete:
+    operationId: places.place.DeletePlace
+    parameters:
+        - description: 'key: place-id of place'
+          in: path
+          name: place-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: place
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from places
+    tags:
+        - places.place
+    x-ms-docs-operation-type: operation
+get:
+    operationId: places.place.GetPlace
+    parameters:
+        - description: 'key: place-id of place'
+          in: path
+          name: place-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: place
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - address
+                    - displayName
+                    - geoCoordinates
+                    - phone
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.place'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from places by key
+    tags:
+        - places.place
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: places.place.UpdatePlace
+    parameters:
+        - description: 'key: place-id of place'
+          in: path
+          name: place-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: place
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.place'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in places
+    tags:
+        - places.place
+    x-ms-docs-operation-type: operation

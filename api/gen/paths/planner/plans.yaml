@@ -1,0 +1,101 @@
+get:
+    operationId: planner.ListPlans
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdBy
+                    - createdBy desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - owner
+                    - owner desc
+                    - title
+                    - title desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - owner
+                    - title
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.plannerPlan'
+                                type: array
+                        title: Collection of plannerPlan
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get plans from planner
+    tags:
+        - planner.plannerPlan
+    x-ms-docs-operation-type: operation
+post:
+    operationId: planner.CreatePlans
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.plannerPlan'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerPlan'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to plans for planner
+    tags:
+        - planner.plannerPlan
+    x-ms-docs-operation-type: operation

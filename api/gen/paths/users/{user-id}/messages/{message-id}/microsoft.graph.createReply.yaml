@@ -1,0 +1,31 @@
+post:
+    operationId: users.messages.createReply
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    requestBody:
+        $ref: '#/components/requestBodies/me.mailFolders.messages.createReplyBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action createReply
+    tags:
+        - users.Actions
+    x-ms-docs-operation-type: action

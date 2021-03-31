@@ -1,0 +1,23 @@
+get:
+    operationId: reports.getSkypeForBusinessActivityUserDetail-e4c9
+    parameters:
+        - in: path
+          name: date
+          required: true
+          schema:
+            format: date
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.report'
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getSkypeForBusinessActivityUserDetail
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

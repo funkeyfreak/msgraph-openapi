@@ -1,0 +1,107 @@
+get:
+    operationId: deviceManagement.ListDeviceManagementPartners
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - displayName
+                    - displayName desc
+                    - isConfigured
+                    - isConfigured desc
+                    - lastHeartbeatDateTime
+                    - lastHeartbeatDateTime desc
+                    - partnerAppType
+                    - partnerAppType desc
+                    - partnerState
+                    - partnerState desc
+                    - singleTenantAppId
+                    - singleTenantAppId desc
+                    - whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime
+                    - whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime desc
+                    - whenPartnerDevicesWillBeRemovedDateTime
+                    - whenPartnerDevicesWillBeRemovedDateTime desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - isConfigured
+                    - lastHeartbeatDateTime
+                    - partnerAppType
+                    - partnerState
+                    - singleTenantAppId
+                    - whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime
+                    - whenPartnerDevicesWillBeRemovedDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.deviceManagementPartner'
+                                type: array
+                        title: Collection of deviceManagementPartner
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceManagementPartners from deviceManagement
+    tags:
+        - deviceManagement.deviceManagementPartner
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.CreateDeviceManagementPartners
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceManagementPartner'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagementPartner'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to deviceManagementPartners for deviceManagement
+    tags:
+        - deviceManagement.deviceManagementPartner
+    x-ms-docs-operation-type: operation

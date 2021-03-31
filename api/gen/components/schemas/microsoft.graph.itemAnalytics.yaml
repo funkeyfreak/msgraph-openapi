@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: itemAnalytics
+      type: object
+      properties:
+        allTime: {}
+        itemActivityStats:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.itemActivityStat"
+        lastSevenDays: {}
+example:
+    id: string (identifier)
+    allTime:
+        "@odata.type": microsoft.graph.itemActivityStat
+    itemActivityStats:
+        - "@odata.type": microsoft.graph.itemActivityStat
+    lastSevenDays:
+        "@odata.type": microsoft.graph.itemActivityStat

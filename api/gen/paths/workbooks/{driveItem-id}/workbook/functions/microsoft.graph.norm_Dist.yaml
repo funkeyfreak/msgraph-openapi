@@ -1,0 +1,24 @@
+post:
+    operationId: workbooks.workbook.functions.norm_Dist
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/workbooks.workbook.functions.logNorm_DistBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action norm_Dist
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

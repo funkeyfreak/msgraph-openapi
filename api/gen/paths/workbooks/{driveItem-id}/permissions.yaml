@@ -1,0 +1,125 @@
+get:
+    operationId: workbooks.ListPermissions
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - grantedTo
+                    - grantedTo desc
+                    - grantedToIdentities
+                    - grantedToIdentities desc
+                    - hasPassword
+                    - hasPassword desc
+                    - inheritedFrom
+                    - inheritedFrom desc
+                    - invitation
+                    - invitation desc
+                    - link
+                    - link desc
+                    - roles
+                    - roles desc
+                    - shareId
+                    - shareId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - expirationDateTime
+                    - grantedTo
+                    - grantedToIdentities
+                    - hasPassword
+                    - inheritedFrom
+                    - invitation
+                    - link
+                    - roles
+                    - shareId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.permission'
+                                type: array
+                        title: Collection of permission
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get permissions from workbooks
+    tags:
+        - workbooks.permission
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.CreatePermissions
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.permission'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.permission'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to permissions for workbooks
+    tags:
+        - workbooks.permission
+    x-ms-docs-operation-type: operation

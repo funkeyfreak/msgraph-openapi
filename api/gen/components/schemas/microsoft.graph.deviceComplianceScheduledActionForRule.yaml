@@ -1,0 +1,18 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceComplianceScheduledActionForRule
+      description: Scheduled Action for Rule
+      type: object
+      properties:
+        ruleName:
+            description: Name of the rule which this scheduled action applies to.
+            type: string
+        scheduledActionConfigurations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceComplianceActionItem"
+example:
+    id: string (identifier)
+    ruleName: string
+    scheduledActionConfigurations:
+        - "@odata.type": microsoft.graph.deviceComplianceActionItem

@@ -1,0 +1,24 @@
+post:
+    operationId: me.messages.move
+    parameters:
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    requestBody:
+        $ref: '#/components/requestBodies/me.mailFolders.childFolders.copyBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action move
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

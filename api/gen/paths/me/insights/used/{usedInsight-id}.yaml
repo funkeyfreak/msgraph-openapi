@@ -1,0 +1,71 @@
+get:
+    operationId: me.insights.GetUsed
+    parameters:
+        - description: 'key: usedInsight-id of usedInsight'
+          in: path
+          name: usedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: usedInsight
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastUsed
+                    - resourceReference
+                    - resourceVisualization
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.usedInsight'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get used from me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.insights.UpdateUsed
+    parameters:
+        - description: 'key: usedInsight-id of usedInsight'
+          in: path
+          name: usedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: usedInsight
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.usedInsight2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property used in me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation

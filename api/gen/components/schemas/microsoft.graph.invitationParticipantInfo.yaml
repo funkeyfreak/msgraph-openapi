@@ -1,0 +1,11 @@
+title: invitationParticipantInfo
+type: object
+properties:
+    identity:
+        $ref: "#/components/schemas/microsoft.graph.identitySet"
+    replacesCallId:
+        type: string
+example:
+    identity:
+        "@odata.type": microsoft.graph.identitySet
+    replacesCallId: string

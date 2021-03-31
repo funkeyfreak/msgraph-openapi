@@ -1,0 +1,30 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.policyBase"
+    - title: authorizationPolicy
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        allowedToSignUpEmailBasedSubscriptions:
+            type: boolean
+        allowedToUseSSPR:
+            type: boolean
+        allowEmailVerifiedUsersToJoinOrganization:
+            type: boolean
+        allowInvitesFrom: {}
+        blockMsolPowerShell:
+            type: boolean
+        defaultUserRolePermissions:
+            $ref: "#/components/schemas/microsoft.graph.defaultUserRolePermissions"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string
+    allowedToSignUpEmailBasedSubscriptions: true
+    allowedToUseSSPR: true
+    allowEmailVerifiedUsersToJoinOrganization: true
+    allowInvitesFrom:
+        "@odata.type": microsoft.graph.allowInvitesFrom
+    blockMsolPowerShell: true
+    defaultUserRolePermissions:
+        "@odata.type": microsoft.graph.defaultUserRolePermissions

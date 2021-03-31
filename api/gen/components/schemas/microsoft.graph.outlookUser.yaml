@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: outlookUser
+      type: object
+      properties:
+        masterCategories:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.outlookCategory"
+example:
+    id: string (identifier)
+    masterCategories:
+        - "@odata.type": microsoft.graph.outlookCategory

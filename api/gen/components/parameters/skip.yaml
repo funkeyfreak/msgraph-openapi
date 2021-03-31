@@ -1,0 +1,6 @@
+in: query
+name: $skip
+description: Skip the first n items
+schema:
+    type: integer
+    minimum: 0

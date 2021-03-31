@@ -1,0 +1,78 @@
+get:
+    operationId: policies.GetTokenLifetimePolicies
+    parameters:
+        - description: 'key: tokenLifetimePolicy-id of tokenLifetimePolicy'
+          in: path
+          name: tokenLifetimePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: tokenLifetimePolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - definition
+                    - isOrganizationDefault
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.tokenLifetimePolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tokenLifetimePolicies from policies
+    tags:
+        - policies.tokenLifetimePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.UpdateTokenLifetimePolicies
+    parameters:
+        - description: 'key: tokenLifetimePolicy-id of tokenLifetimePolicy'
+          in: path
+          name: tokenLifetimePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: tokenLifetimePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.tokenLifetimePolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property tokenLifetimePolicies in policies
+    tags:
+        - policies.tokenLifetimePolicy
+    x-ms-docs-operation-type: operation

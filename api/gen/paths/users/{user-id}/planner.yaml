@@ -1,0 +1,70 @@
+get:
+    operationId: users.GetPlanner
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerUser'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get planner from users
+    tags:
+        - users.plannerUser
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdatePlanner
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.plannerUser'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property planner in users
+    tags:
+        - users.plannerUser
+    x-ms-docs-operation-type: operation

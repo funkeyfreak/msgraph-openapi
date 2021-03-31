@@ -1,0 +1,94 @@
+get:
+    operationId: shares.list.items.versions.GetFields
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.fieldValueSet'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get fields from shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.list.items.versions.UpdateFields
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.fieldValueSet'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property fields in shares
+    tags:
+        - shares.list
+    x-ms-docs-operation-type: operation

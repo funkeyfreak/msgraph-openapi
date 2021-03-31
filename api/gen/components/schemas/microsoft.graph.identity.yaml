@@ -1,0 +1,10 @@
+title: identity
+type: object
+properties:
+    displayName:
+        type: string
+    id:
+        type: string
+example:
+    displayName: string
+    id: string

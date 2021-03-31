@@ -1,0 +1,93 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.targetedManagedAppProtection"
+    - title: androidManagedAppProtection
+      description: Policy used to configure detailed management settings targeted to specific security groups and for a specified set of apps on an Android device
+      type: object
+      properties:
+        customBrowserDisplayName:
+            description: Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+            type: string
+        customBrowserPackageId:
+            description: Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+            type: string
+        deployedAppCount:
+            format: int32
+            description: Count of apps to which the current policy is deployed.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        disableAppEncryptionIfDeviceEncryptionIsEnabled:
+            description: When this setting is enabled, app level encryption is disabled if device level encryption is enabled
+            type: boolean
+        encryptAppData:
+            description: Indicates whether application data for managed apps should be encrypted
+            type: boolean
+        minimumRequiredPatchVersion:
+            description: Define the oldest required Android security patch level a user can have to gain secure access to the app.
+            type: string
+        minimumWarningPatchVersion:
+            description: Define the oldest recommended Android security patch level a user can have for secure access to the app.
+            type: string
+        screenCaptureBlocked:
+            description: Indicates whether a managed user can take screen captures of managed apps
+            type: boolean
+        apps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedMobileApp"
+        deploymentSummary: {}
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    allowedDataStorageLocations:
+        - "@odata.type": microsoft.graph.managedAppDataStorageLocation
+    allowedInboundDataTransferSources:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    allowedOutboundClipboardSharingLevel:
+        "@odata.type": microsoft.graph.managedAppClipboardSharingLevel
+    allowedOutboundDataTransferDestinations:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    contactSyncBlocked: true
+    dataBackupBlocked: true
+    deviceComplianceRequired: true
+    disableAppPinIfDevicePinIsSet: true
+    fingerprintBlocked: true
+    managedBrowser:
+        "@odata.type": microsoft.graph.managedBrowserType
+    managedBrowserToOpenLinksRequired: true
+    maximumPinRetries: integer
+    minimumPinLength: integer
+    minimumRequiredAppVersion: string
+    minimumRequiredOsVersion: string
+    minimumWarningAppVersion: string
+    minimumWarningOsVersion: string
+    organizationalCredentialsRequired: true
+    periodBeforePinReset: string
+    periodOfflineBeforeAccessCheck: string
+    periodOfflineBeforeWipeIsEnforced: string
+    periodOnlineBeforeAccessCheck: string
+    pinCharacterSet:
+        "@odata.type": microsoft.graph.managedAppPinCharacterSet
+    pinRequired: true
+    printBlocked: true
+    saveAsBlocked: true
+    simplePinBlocked: true
+    isAssigned: true
+    assignments:
+        - "@odata.type": microsoft.graph.targetedManagedAppPolicyAssignment
+    customBrowserDisplayName: string
+    customBrowserPackageId: string
+    deployedAppCount: integer
+    disableAppEncryptionIfDeviceEncryptionIsEnabled: true
+    encryptAppData: true
+    minimumRequiredPatchVersion: string
+    minimumWarningPatchVersion: string
+    screenCaptureBlocked: true
+    apps:
+        - "@odata.type": microsoft.graph.managedMobileApp
+    deploymentSummary:
+        "@odata.type": microsoft.graph.managedAppPolicyDeploymentSummary

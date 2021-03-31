@@ -1,0 +1,141 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.managedAppPolicy"
+    - title: windowsInformationProtection
+      description: Policy for Windows information protection to configure detailed management settings
+      type: object
+      properties:
+        azureRightsManagementServicesAllowed:
+            description: Specifies whether to allow Azure RMS encryption for WIP
+            type: boolean
+        dataRecoveryCertificate:
+            description: Specifies a recovery certificate that can be used for data recovery of encrypted files. This is the same as the data recovery agent(DRA) certificate for encrypting file system(EFS)
+        enforcementLevel:
+            description: WIP enforcement level.See the Enum definition for supported values
+        enterpriseDomain:
+            description: Primary enterprise domain
+            type: string
+        enterpriseInternalProxyServers:
+            description: This is the comma-separated list of internal proxy servers. For example, "157.54.14.28, 157.54.11.118, 10.202.14.167, 157.53.14.163, 157.69.210.59". These proxies have been configured by the admin to connect to specific resources on the Internet. They are considered to be enterprise network locations. The proxies are only leveraged in configuring the EnterpriseProxiedDomains policy to force traffic to the matched domains through these proxies
+            type: array
+            items: {}
+        enterpriseIPRanges:
+            description: Sets the enterprise IP ranges that define the computers in the enterprise network. Data that comes from those computers will be considered part of the enterprise and protected. These locations will be considered a safe destination for enterprise data to be shared to
+            type: array
+            items: {}
+        enterpriseIPRangesAreAuthoritative:
+            description: Boolean value that tells the client to accept the configured list and not to use heuristics to attempt to find other subnets. Default is false
+            type: boolean
+        enterpriseNetworkDomainNames:
+            description: This is the list of domains that comprise the boundaries of the enterprise. Data from one of these domains that is sent to a device will be considered enterprise data and protected These locations will be considered a safe destination for enterprise data to be shared to
+            type: array
+            items: {}
+        enterpriseProtectedDomainNames:
+            description: List of enterprise domains to be protected
+            type: array
+            items: {}
+        enterpriseProxiedDomains:
+            description: Contains a list of Enterprise resource domains hosted in the cloud that need to be protected. Connections to these resources are considered enterprise data. If a proxy is paired with a cloud resource, traffic to the cloud resource will be routed through the enterprise network via the denoted proxy server (on Port 80). A proxy server used for this purpose must also be configured using the EnterpriseInternalProxyServers policy
+            type: array
+            items: {}
+        enterpriseProxyServers:
+            description: This is a list of proxy servers. Any server not on this list is considered non-enterprise
+            type: array
+            items: {}
+        enterpriseProxyServersAreAuthoritative:
+            description: Boolean value that tells the client to accept the configured list of proxies and not try to detect other work proxies. Default is false
+            type: boolean
+        exemptApps:
+            description: Exempt applications can also access enterprise data, but the data handled by those applications are not protected. This is because some critical enterprise applications may have compatibility problems with encrypted data.
+            type: array
+            items: {}
+        iconsVisible:
+            description: Determines whether overlays are added to icons for WIP protected files in Explorer and enterprise only app tiles in the Start menu. Starting in Windows 10, version 1703 this setting also configures the visibility of the WIP icon in the title bar of a WIP-protected app
+            type: boolean
+        indexingEncryptedStoresOrItemsBlocked:
+            description: This switch is for the Windows Search Indexer, to allow or disallow indexing of items
+            type: boolean
+        isAssigned:
+            description: Indicates if the policy is deployed to any inclusion groups or not.
+            type: boolean
+        neutralDomainResources:
+            description: List of domain names that can used for work or personal resource
+            type: array
+            items: {}
+        protectedApps:
+            description: Protected applications can access enterprise data and the data handled by those applications are protected with encryption
+            type: array
+            items: {}
+        protectionUnderLockConfigRequired:
+            description: Specifies whether the protection under lock feature (also known as encrypt under pin) should be configured
+            type: boolean
+        revokeOnUnenrollDisabled:
+            description: This policy controls whether to revoke the WIP keys when a device unenrolls from the management service. If set to 1 (Don't revoke keys), the keys will not be revoked and the user will continue to have access to protected files after unenrollment. If the keys are not revoked, there will be no revoked file cleanup subsequently.
+            type: boolean
+        rightsManagementServicesTemplateId:
+            format: uuid
+            description: TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        smbAutoEncryptedFileExtensions:
+            description: Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
+            type: array
+            items: {}
+        assignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.targetedManagedAppPolicyAssignment"
+        exemptAppLockerFiles:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.windowsInformationProtectionAppLockerFile"
+        protectedAppLockerFiles:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.windowsInformationProtectionAppLockerFile"
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    azureRightsManagementServicesAllowed: true
+    dataRecoveryCertificate:
+        "@odata.type": microsoft.graph.windowsInformationProtectionDataRecoveryCertificate
+    enforcementLevel:
+        "@odata.type": microsoft.graph.windowsInformationProtectionEnforcementLevel
+    enterpriseDomain: string
+    enterpriseInternalProxyServers:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseIPRanges:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionIPRangeCollection
+    enterpriseIPRangesAreAuthoritative: true
+    enterpriseNetworkDomainNames:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProtectedDomainNames:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProxiedDomains:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionProxiedDomainCollection
+    enterpriseProxyServers:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProxyServersAreAuthoritative: true
+    exemptApps:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionApp
+    iconsVisible: true
+    indexingEncryptedStoresOrItemsBlocked: true
+    isAssigned: true
+    neutralDomainResources:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    protectedApps:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionApp
+    protectionUnderLockConfigRequired: true
+    revokeOnUnenrollDisabled: true
+    rightsManagementServicesTemplateId: string
+    smbAutoEncryptedFileExtensions:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    assignments:
+        - "@odata.type": microsoft.graph.targetedManagedAppPolicyAssignment
+    exemptAppLockerFiles:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionAppLockerFile
+    protectedAppLockerFiles:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionAppLockerFile

@@ -1,0 +1,36 @@
+post:
+    operationId: communications.calls.playPrompt
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        clientContext:
+                            type: string
+                        prompts:
+                            items:
+                                $ref: '#/components/schemas/microsoft.graph.prompt'
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action playPrompt
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

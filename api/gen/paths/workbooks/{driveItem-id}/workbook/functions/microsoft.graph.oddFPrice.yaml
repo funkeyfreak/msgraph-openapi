@@ -1,0 +1,39 @@
+post:
+    operationId: workbooks.workbook.functions.oddFPrice
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        basis: {}
+                        firstCoupon: {}
+                        frequency: {}
+                        issue: {}
+                        maturity: {}
+                        rate: {}
+                        redemption: {}
+                        settlement: {}
+                        yld: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action oddFPrice
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

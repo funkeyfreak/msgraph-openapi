@@ -1,0 +1,128 @@
+get:
+    operationId: domains.domain.ListDomain
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - authenticationType
+                    - authenticationType desc
+                    - availabilityStatus
+                    - availabilityStatus desc
+                    - isAdminManaged
+                    - isAdminManaged desc
+                    - isDefault
+                    - isDefault desc
+                    - isInitial
+                    - isInitial desc
+                    - isRoot
+                    - isRoot desc
+                    - isVerified
+                    - isVerified desc
+                    - manufacturer
+                    - manufacturer desc
+                    - model
+                    - model desc
+                    - passwordNotificationWindowInDays
+                    - passwordNotificationWindowInDays desc
+                    - passwordValidityPeriodInDays
+                    - passwordValidityPeriodInDays desc
+                    - state
+                    - state desc
+                    - supportedServices
+                    - supportedServices desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - authenticationType
+                    - availabilityStatus
+                    - isAdminManaged
+                    - isDefault
+                    - isInitial
+                    - isRoot
+                    - isVerified
+                    - manufacturer
+                    - model
+                    - passwordNotificationWindowInDays
+                    - passwordValidityPeriodInDays
+                    - state
+                    - supportedServices
+                    - domainNameReferences
+                    - serviceConfigurationRecords
+                    - verificationDnsRecords
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - domainNameReferences
+                    - serviceConfigurationRecords
+                    - verificationDnsRecords
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.domain'
+                                type: array
+                        title: Collection of domain
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from domains
+    tags:
+        - domains.domain
+    x-ms-docs-operation-type: operation
+post:
+    operationId: domains.domain.CreateDomain
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.domain'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.domain'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to domains
+    tags:
+        - domains.domain
+    x-ms-docs-operation-type: operation

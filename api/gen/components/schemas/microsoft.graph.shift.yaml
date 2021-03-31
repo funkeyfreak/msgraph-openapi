@@ -1,0 +1,23 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.changeTrackedEntity"
+    - title: shift
+      type: object
+      properties:
+        draftShift: {}
+        schedulingGroupId:
+            type: string
+        sharedShift: {}
+        userId:
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    draftShift:
+        "@odata.type": microsoft.graph.shiftItem
+    schedulingGroupId: string
+    sharedShift:
+        "@odata.type": microsoft.graph.shiftItem
+    userId: string

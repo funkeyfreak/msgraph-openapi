@@ -1,0 +1,86 @@
+get:
+    operationId: deviceManagement.termsAndConditions.GetAssignments
+    parameters:
+        - description: 'key: termsAndConditions-id of termsAndConditions'
+          in: path
+          name: termsAndConditions-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditions
+        - description: 'key: termsAndConditionsAssignment-id of termsAndConditionsAssignment'
+          in: path
+          name: termsAndConditionsAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditionsAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.termsAndConditionsAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceManagement
+    tags:
+        - deviceManagement.termsAndConditions
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.termsAndConditions.UpdateAssignments
+    parameters:
+        - description: 'key: termsAndConditions-id of termsAndConditions'
+          in: path
+          name: termsAndConditions-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditions
+        - description: 'key: termsAndConditionsAssignment-id of termsAndConditionsAssignment'
+          in: path
+          name: termsAndConditionsAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditionsAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.termsAndConditionsAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceManagement
+    tags:
+        - deviceManagement.termsAndConditions
+    x-ms-docs-operation-type: operation

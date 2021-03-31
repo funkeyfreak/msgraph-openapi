@@ -1,0 +1,19 @@
+post:
+    operationId: communications.calls.keepAlive
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action keepAlive
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

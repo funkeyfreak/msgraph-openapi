@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: conditionalAccessRoot
+      type: object
+      properties:
+        namedLocations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.namedLocation"
+        policies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.conditionalAccessPolicy"
+example:
+    id: string (identifier)
+    namedLocations:
+        - "@odata.type": microsoft.graph.namedLocation
+    policies:
+        - "@odata.type": microsoft.graph.conditionalAccessPolicy

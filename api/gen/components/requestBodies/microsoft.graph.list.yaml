@@ -1,0 +1,6 @@
+content:
+    application/json:
+        schema:
+            $ref: "#/components/schemas/microsoft.graph.list"
+description: New navigation property values
+required: true

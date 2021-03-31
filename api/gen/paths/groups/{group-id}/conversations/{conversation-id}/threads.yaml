@@ -1,0 +1,132 @@
+get:
+    operationId: groups.conversations.ListThreads
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - ccRecipients
+                    - ccRecipients desc
+                    - hasAttachments
+                    - hasAttachments desc
+                    - isLocked
+                    - isLocked desc
+                    - lastDeliveredDateTime
+                    - lastDeliveredDateTime desc
+                    - preview
+                    - preview desc
+                    - topic
+                    - topic desc
+                    - toRecipients
+                    - toRecipients desc
+                    - uniqueSenders
+                    - uniqueSenders desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - ccRecipients
+                    - hasAttachments
+                    - isLocked
+                    - lastDeliveredDateTime
+                    - preview
+                    - topic
+                    - toRecipients
+                    - uniqueSenders
+                    - posts
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - posts
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.conversationThread'
+                                type: array
+                        title: Collection of conversationThread
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get threads from groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.conversations.CreateThreads
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversation-id of conversation'
+          in: path
+          name: conversation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversation
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.conversationThread'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.conversationThread'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to threads for groups
+    tags:
+        - groups.conversation
+    x-ms-docs-operation-type: operation

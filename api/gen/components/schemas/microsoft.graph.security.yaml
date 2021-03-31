@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: security
+      type: object
+      properties:
+        alerts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.alert"
+        secureScoreControlProfiles:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.secureScoreControlProfile"
+        secureScores:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.secureScore"
+example:
+    id: string (identifier)
+    alerts:
+        - "@odata.type": microsoft.graph.alert
+    secureScoreControlProfiles:
+        - "@odata.type": microsoft.graph.secureScoreControlProfile
+    secureScores:
+        - "@odata.type": microsoft.graph.secureScore

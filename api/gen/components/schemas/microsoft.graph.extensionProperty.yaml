@@ -1,0 +1,27 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: extensionProperty
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        appDisplayName:
+            type: string
+        dataType:
+            type: string
+        isSyncedFromOnPremises:
+            type: boolean
+        name:
+            type: string
+        targetObjects:
+            type: array
+            items:
+                type: string
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    appDisplayName: string
+    dataType: string
+    isSyncedFromOnPremises: true
+    name: string
+    targetObjects:
+        - string

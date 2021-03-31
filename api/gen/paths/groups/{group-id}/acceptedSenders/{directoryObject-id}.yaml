@@ -1,0 +1,70 @@
+get:
+    operationId: groups.GetAcceptedSenders
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get acceptedSenders from groups
+    tags:
+        - groups.directoryObject
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdateAcceptedSenders
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.directoryObject2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property acceptedSenders in groups
+    tags:
+        - groups.directoryObject
+    x-ms-docs-operation-type: operation

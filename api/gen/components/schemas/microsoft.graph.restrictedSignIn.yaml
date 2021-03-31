@@ -1,0 +1,46 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.signIn"
+    - title: restrictedSignIn
+      type: object
+      properties:
+        targetTenantId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+example:
+    id: string (identifier)
+    appDisplayName: string
+    appId: string
+    appliedConditionalAccessPolicies:
+        - "@odata.type": microsoft.graph.appliedConditionalAccessPolicy
+    clientAppUsed: string
+    conditionalAccessStatus:
+        "@odata.type": microsoft.graph.conditionalAccessStatus
+    correlationId: string
+    createdDateTime: string (timestamp)
+    deviceDetail:
+        "@odata.type": microsoft.graph.deviceDetail
+    ipAddress: string
+    isInteractive: true
+    location:
+        "@odata.type": microsoft.graph.signInLocation
+    resourceDisplayName: string
+    resourceId: string
+    riskDetail:
+        "@odata.type": microsoft.graph.riskDetail
+    riskEventTypes:
+        - "@odata.type": microsoft.graph.riskEventType
+    riskEventTypes_v2:
+        - string
+    riskLevelAggregated:
+        "@odata.type": microsoft.graph.riskLevel
+    riskLevelDuringSignIn:
+        "@odata.type": microsoft.graph.riskLevel
+    riskState:
+        "@odata.type": microsoft.graph.riskState
+    status:
+        "@odata.type": microsoft.graph.signInStatus
+    userDisplayName: string
+    userId: string
+    userPrincipalName: string
+    targetTenantId: string

@@ -1,0 +1,82 @@
+get:
+    operationId: deviceManagement.GetIosUpdateStatuses
+    parameters:
+        - description: 'key: iosUpdateDeviceStatus-id of iosUpdateDeviceStatus'
+          in: path
+          name: iosUpdateDeviceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosUpdateDeviceStatus
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - complianceGracePeriodExpirationDateTime
+                    - deviceDisplayName
+                    - deviceId
+                    - deviceModel
+                    - installStatus
+                    - lastReportedDateTime
+                    - osVersion
+                    - status
+                    - userId
+                    - userName
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.iosUpdateDeviceStatus'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get iosUpdateStatuses from deviceManagement
+    tags:
+        - deviceManagement.iosUpdateDeviceStatus
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateIosUpdateStatuses
+    parameters:
+        - description: 'key: iosUpdateDeviceStatus-id of iosUpdateDeviceStatus'
+          in: path
+          name: iosUpdateDeviceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosUpdateDeviceStatus
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.iosUpdateDeviceStatus'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property iosUpdateStatuses in deviceManagement
+    tags:
+        - deviceManagement.iosUpdateDeviceStatus
+    x-ms-docs-operation-type: operation

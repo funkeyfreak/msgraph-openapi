@@ -1,0 +1,30 @@
+post:
+    operationId: deviceAppManagement.mobileApps.assign
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        mobileAppAssignments:
+                            items: {}
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assign
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

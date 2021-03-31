@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                ProposedNewTime: {}
+                SendResponse:
+                    default: false
+                    type: boolean
+                Comment:
+                    type: string
+description: Action parameters
+required: true

@@ -1,0 +1,29 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                attendees:
+                    type: array
+                    items: {}
+                locationConstraint: {}
+                timeConstraint: {}
+                meetingDuration:
+                    format: duration
+                    pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+                    type: string
+                maxCandidates:
+                    format: int32
+                    maximum: 2147483647
+                    minimum: -2147483648
+                    type: integer
+                isOrganizerOptional:
+                    default: false
+                    type: boolean
+                returnSuggestionReasons:
+                    default: false
+                    type: boolean
+                minimumAttendeePercentage:
+                    format: double
+description: Action parameters
+required: true

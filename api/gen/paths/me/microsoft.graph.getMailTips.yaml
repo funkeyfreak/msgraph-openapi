@@ -1,0 +1,19 @@
+post:
+    operationId: me.getMailTips
+    requestBody:
+        $ref: '#/components/requestBodies/me.getMailTipsBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.mailTips'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getMailTips
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

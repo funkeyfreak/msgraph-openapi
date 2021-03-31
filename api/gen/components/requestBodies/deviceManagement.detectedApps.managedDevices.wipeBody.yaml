@@ -1,0 +1,15 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                keepEnrollmentData:
+                    default: false
+                    type: boolean
+                keepUserData:
+                    default: false
+                    type: boolean
+                macOsUnlockCode:
+                    type: string
+description: Action parameters
+required: true

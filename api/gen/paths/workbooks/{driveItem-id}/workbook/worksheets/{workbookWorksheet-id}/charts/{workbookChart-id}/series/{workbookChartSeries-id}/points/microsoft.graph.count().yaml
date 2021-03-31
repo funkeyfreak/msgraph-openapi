@@ -1,0 +1,47 @@
+get:
+    operationId: workbooks.workbook.worksheets.charts.series.points.count
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+        - description: 'key: workbookChartSeries-id of workbookChartSeries'
+          in: path
+          name: workbookChartSeries-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChartSeries
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        format: int32
+                        maximum: 2.147483647e+09
+                        minimum: -2.147483648e+09
+                        type: integer
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function count
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

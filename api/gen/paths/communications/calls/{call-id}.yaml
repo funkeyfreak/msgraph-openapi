@@ -1,0 +1,95 @@
+get:
+    operationId: communications.GetCalls
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - callbackUri
+                    - callChainId
+                    - callOptions
+                    - callRoutes
+                    - chatInfo
+                    - direction
+                    - incomingContext
+                    - mediaConfig
+                    - mediaState
+                    - meetingInfo
+                    - myParticipantId
+                    - requestedModalities
+                    - resultInfo
+                    - source
+                    - state
+                    - subject
+                    - targets
+                    - tenantId
+                    - toneInfo
+                    - transcription
+                    - operations
+                    - participants
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - operations
+                    - participants
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.call'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calls from communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.UpdateCalls
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.call'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calls in communications
+    tags:
+        - communications.call
+    x-ms-docs-operation-type: operation

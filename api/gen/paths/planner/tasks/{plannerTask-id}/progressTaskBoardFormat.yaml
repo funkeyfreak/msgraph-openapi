@@ -1,0 +1,72 @@
+get:
+    operationId: planner.tasks.GetProgressTaskBoardFormat
+    parameters:
+        - description: 'key: plannerTask-id of plannerTask'
+          in: path
+          name: plannerTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerTask
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - orderHint
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerProgressTaskBoardTaskFormat'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get progressTaskBoardFormat from planner
+    tags:
+        - planner.plannerTask
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: planner.tasks.UpdateProgressTaskBoardFormat
+    parameters:
+        - description: 'key: plannerTask-id of plannerTask'
+          in: path
+          name: plannerTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerTask
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.plannerProgressTaskBoardTaskFormat'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property progressTaskBoardFormat in planner
+    tags:
+        - planner.plannerTask
+    x-ms-docs-operation-type: operation

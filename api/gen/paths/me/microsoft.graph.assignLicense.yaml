@@ -1,0 +1,16 @@
+post:
+    operationId: me.assignLicense
+    requestBody:
+        $ref: '#/components/requestBodies/groups.assignLicenseBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assignLicense
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

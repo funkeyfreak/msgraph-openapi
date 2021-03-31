@@ -1,0 +1,109 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: softwareUpdateStatusSummary
+      type: object
+      properties:
+        compliantDeviceCount:
+            format: int32
+            description: Number of compliant devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        compliantUserCount:
+            format: int32
+            description: Number of compliant users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        conflictDeviceCount:
+            format: int32
+            description: Number of conflict devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        conflictUserCount:
+            format: int32
+            description: Number of conflict users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        displayName:
+            description: The name of the policy.
+            type: string
+        errorDeviceCount:
+            format: int32
+            description: Number of devices had error.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        errorUserCount:
+            format: int32
+            description: Number of users had error.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        nonCompliantDeviceCount:
+            format: int32
+            description: Number of non compliant devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        nonCompliantUserCount:
+            format: int32
+            description: Number of non compliant users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notApplicableDeviceCount:
+            format: int32
+            description: Number of not applicable devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notApplicableUserCount:
+            format: int32
+            description: Number of not applicable users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        remediatedDeviceCount:
+            format: int32
+            description: Number of remediated devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        remediatedUserCount:
+            format: int32
+            description: Number of remediated users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        unknownDeviceCount:
+            format: int32
+            description: Number of unknown devices.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        unknownUserCount:
+            format: int32
+            description: Number of unknown users.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    compliantDeviceCount: integer
+    compliantUserCount: integer
+    conflictDeviceCount: integer
+    conflictUserCount: integer
+    displayName: string
+    errorDeviceCount: integer
+    errorUserCount: integer
+    nonCompliantDeviceCount: integer
+    nonCompliantUserCount: integer
+    notApplicableDeviceCount: integer
+    notApplicableUserCount: integer
+    remediatedDeviceCount: integer
+    remediatedUserCount: integer
+    unknownDeviceCount: integer
+    unknownUserCount: integer

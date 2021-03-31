@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookOperation
+      type: object
+      properties:
+        error: {}
+        resourceLocation:
+            type: string
+        status: {}
+example:
+    id: string (identifier)
+    error:
+        "@odata.type": microsoft.graph.workbookOperationError
+    resourceLocation: string
+    status:
+        "@odata.type": microsoft.graph.workbookOperationStatus

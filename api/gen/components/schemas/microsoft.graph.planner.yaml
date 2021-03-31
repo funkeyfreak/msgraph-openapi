@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: planner
+      type: object
+      properties:
+        buckets:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.plannerBucket"
+        plans:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.plannerPlan"
+        tasks:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.plannerTask"
+example:
+    id: string (identifier)
+    buckets:
+        - "@odata.type": microsoft.graph.plannerBucket
+    plans:
+        - "@odata.type": microsoft.graph.plannerPlan
+    tasks:
+        - "@odata.type": microsoft.graph.plannerTask

@@ -1,0 +1,86 @@
+get:
+    operationId: deviceAppManagement.targetedManagedAppConfigurations.GetAssignments
+    parameters:
+        - description: 'key: targetedManagedAppConfiguration-id of targetedManagedAppConfiguration'
+          in: path
+          name: targetedManagedAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: targetedManagedAppConfiguration
+        - description: 'key: targetedManagedAppPolicyAssignment-id of targetedManagedAppPolicyAssignment'
+          in: path
+          name: targetedManagedAppPolicyAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: targetedManagedAppPolicyAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.targetedManagedAppPolicyAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceAppManagement
+    tags:
+        - deviceAppManagement.targetedManagedAppConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.targetedManagedAppConfigurations.UpdateAssignments
+    parameters:
+        - description: 'key: targetedManagedAppConfiguration-id of targetedManagedAppConfiguration'
+          in: path
+          name: targetedManagedAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: targetedManagedAppConfiguration
+        - description: 'key: targetedManagedAppPolicyAssignment-id of targetedManagedAppPolicyAssignment'
+          in: path
+          name: targetedManagedAppPolicyAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: targetedManagedAppPolicyAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.targetedManagedAppPolicyAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceAppManagement
+    tags:
+        - deviceAppManagement.targetedManagedAppConfiguration
+    x-ms-docs-operation-type: operation

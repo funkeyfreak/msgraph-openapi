@@ -1,0 +1,23 @@
+get:
+    operationId: me.onenote.notebooks.getRecentNotebooks
+    parameters:
+        - in: path
+          name: includePersonalNotebooks
+          required: true
+          schema:
+            default: false
+            type: boolean
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getRecentNotebooks
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

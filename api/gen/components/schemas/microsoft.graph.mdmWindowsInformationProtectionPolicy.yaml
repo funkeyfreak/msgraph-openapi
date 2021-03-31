@@ -1,0 +1,52 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.windowsInformationProtection"
+    - title: mdmWindowsInformationProtectionPolicy
+      description: Policy for Windows information protection with MDM
+      type: object
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    azureRightsManagementServicesAllowed: true
+    dataRecoveryCertificate:
+        "@odata.type": microsoft.graph.windowsInformationProtectionDataRecoveryCertificate
+    enforcementLevel:
+        "@odata.type": microsoft.graph.windowsInformationProtectionEnforcementLevel
+    enterpriseDomain: string
+    enterpriseInternalProxyServers:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseIPRanges:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionIPRangeCollection
+    enterpriseIPRangesAreAuthoritative: true
+    enterpriseNetworkDomainNames:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProtectedDomainNames:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProxiedDomains:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionProxiedDomainCollection
+    enterpriseProxyServers:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    enterpriseProxyServersAreAuthoritative: true
+    exemptApps:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionApp
+    iconsVisible: true
+    indexingEncryptedStoresOrItemsBlocked: true
+    isAssigned: true
+    neutralDomainResources:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    protectedApps:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionApp
+    protectionUnderLockConfigRequired: true
+    revokeOnUnenrollDisabled: true
+    rightsManagementServicesTemplateId: string
+    smbAutoEncryptedFileExtensions:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionResourceCollection
+    assignments:
+        - "@odata.type": microsoft.graph.targetedManagedAppPolicyAssignment
+    exemptAppLockerFiles:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionAppLockerFile
+    protectedAppLockerFiles:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionAppLockerFile

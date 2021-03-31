@@ -1,0 +1,74 @@
+get:
+    operationId: me.insights.GetShared
+    parameters:
+        - description: 'key: sharedInsight-id of sharedInsight'
+          in: path
+          name: sharedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedInsight
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastShared
+                    - resourceReference
+                    - resourceVisualization
+                    - sharingHistory
+                    - lastSharedMethod
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - lastSharedMethod
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.sharedInsight'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get shared from me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.insights.UpdateShared
+    parameters:
+        - description: 'key: sharedInsight-id of sharedInsight'
+          in: path
+          name: sharedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedInsight
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.sharedInsight'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property shared in me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation

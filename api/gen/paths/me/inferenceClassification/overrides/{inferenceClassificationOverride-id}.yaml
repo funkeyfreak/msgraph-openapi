@@ -1,0 +1,57 @@
+get:
+    operationId: me.inferenceClassification.GetOverrides
+    parameters:
+        - description: 'key: inferenceClassificationOverride-id of inferenceClassificationOverride'
+          in: path
+          name: inferenceClassificationOverride-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: inferenceClassificationOverride
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classifyAs
+                    - senderEmailAddress
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.inferenceClassificationOverride'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get overrides from me
+    tags:
+        - me.inferenceClassification
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.inferenceClassification.UpdateOverrides
+    parameters:
+        - description: 'key: inferenceClassificationOverride-id of inferenceClassificationOverride'
+          in: path
+          name: inferenceClassificationOverride-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: inferenceClassificationOverride
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.inferenceClassificationOverride'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property overrides in me
+    tags:
+        - me.inferenceClassification
+    x-ms-docs-operation-type: operation

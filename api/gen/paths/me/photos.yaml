@@ -1,0 +1,72 @@
+get:
+    operationId: me.ListPhotos
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - height
+                    - height desc
+                    - width
+                    - width desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - height
+                    - width
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+                                type: array
+                        title: Collection of profilePhoto
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get photos from me
+    tags:
+        - me.profilePhoto
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.CreatePhotos
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.profilePhoto'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to photos for me
+    tags:
+        - me.profilePhoto
+    x-ms-docs-operation-type: operation

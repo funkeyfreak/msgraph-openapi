@@ -1,0 +1,20 @@
+title: participantInfo
+type: object
+properties:
+    countryCode:
+        type: string
+    endpointType: {}
+    identity:
+        $ref: "#/components/schemas/microsoft.graph.identitySet"
+    languageId:
+        type: string
+    region:
+        type: string
+example:
+    countryCode: string
+    endpointType:
+        "@odata.type": microsoft.graph.endpointType
+    identity:
+        "@odata.type": microsoft.graph.identitySet
+    languageId: string
+    region: string

@@ -1,0 +1,88 @@
+get:
+    operationId: groups.GetSettings
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: groupSetting-id of groupSetting'
+          in: path
+          name: groupSetting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSetting
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - templateId
+                    - values
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupSetting'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get settings from groups
+    tags:
+        - groups.groupSetting
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdateSettings
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: groupSetting-id of groupSetting'
+          in: path
+          name: groupSetting-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSetting
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupSetting'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property settings in groups
+    tags:
+        - groups.groupSetting
+    x-ms-docs-operation-type: operation

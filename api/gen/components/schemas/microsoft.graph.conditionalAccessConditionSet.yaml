@@ -1,0 +1,27 @@
+title: conditionalAccessConditionSet
+type: object
+properties:
+    applications: {}
+    clientAppTypes:
+        type: array
+        items: {}
+    locations: {}
+    platforms: {}
+    signInRiskLevels:
+        type: array
+        items: {}
+    users:
+        $ref: "#/components/schemas/microsoft.graph.conditionalAccessUsers"
+example:
+    applications:
+        "@odata.type": microsoft.graph.conditionalAccessApplications
+    clientAppTypes:
+        - "@odata.type": microsoft.graph.conditionalAccessClientApp
+    locations:
+        "@odata.type": microsoft.graph.conditionalAccessLocations
+    platforms:
+        "@odata.type": microsoft.graph.conditionalAccessPlatforms
+    signInRiskLevels:
+        - "@odata.type": microsoft.graph.riskLevel
+    users:
+        "@odata.type": microsoft.graph.conditionalAccessUsers

@@ -1,0 +1,93 @@
+get:
+    operationId: communications.callRecords.GetSessions
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+        - description: 'key: session-id of session'
+          in: path
+          name: session-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: session
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - callee
+                    - caller
+                    - endDateTime
+                    - failureInfo
+                    - modalities
+                    - startDateTime
+                    - segments
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - segments
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.callRecords.session'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get sessions from communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: communications.callRecords.UpdateSessions
+    parameters:
+        - description: 'key: callRecord-id of callRecord'
+          in: path
+          name: callRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: callRecord
+        - description: 'key: session-id of session'
+          in: path
+          name: session-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: session
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.callRecords.session'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property sessions in communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation

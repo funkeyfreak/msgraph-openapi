@@ -1,0 +1,30 @@
+get:
+    operationId: groups.onenote.notebooks.getRecentNotebooks
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - in: path
+          name: includePersonalNotebooks
+          required: true
+          schema:
+            default: false
+            type: boolean
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getRecentNotebooks
+    tags:
+        - groups.Functions
+    x-ms-docs-operation-type: function

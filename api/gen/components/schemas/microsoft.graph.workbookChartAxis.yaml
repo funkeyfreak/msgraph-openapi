@@ -1,0 +1,31 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartAxis
+      type: object
+      properties:
+        majorUnit: {}
+        maximum: {}
+        minimum: {}
+        minorUnit: {}
+        format: {}
+        majorGridlines: {}
+        minorGridlines: {}
+        title: {}
+example:
+    id: string (identifier)
+    majorUnit:
+        "@odata.type": microsoft.graph.Json
+    maximum:
+        "@odata.type": microsoft.graph.Json
+    minimum:
+        "@odata.type": microsoft.graph.Json
+    minorUnit:
+        "@odata.type": microsoft.graph.Json
+    format:
+        "@odata.type": microsoft.graph.workbookChartAxisFormat
+    majorGridlines:
+        "@odata.type": microsoft.graph.workbookChartGridlines
+    minorGridlines:
+        "@odata.type": microsoft.graph.workbookChartGridlines
+    title:
+        "@odata.type": microsoft.graph.workbookChartAxisTitle

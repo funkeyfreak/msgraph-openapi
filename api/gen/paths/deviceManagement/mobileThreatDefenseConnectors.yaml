@@ -1,0 +1,107 @@
+get:
+    operationId: deviceManagement.ListMobileThreatDefenseConnectors
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - androidDeviceBlockedOnMissingPartnerData
+                    - androidDeviceBlockedOnMissingPartnerData desc
+                    - androidEnabled
+                    - androidEnabled desc
+                    - iosDeviceBlockedOnMissingPartnerData
+                    - iosDeviceBlockedOnMissingPartnerData desc
+                    - iosEnabled
+                    - iosEnabled desc
+                    - lastHeartbeatDateTime
+                    - lastHeartbeatDateTime desc
+                    - partnerState
+                    - partnerState desc
+                    - partnerUnresponsivenessThresholdInDays
+                    - partnerUnresponsivenessThresholdInDays desc
+                    - partnerUnsupportedOsVersionBlocked
+                    - partnerUnsupportedOsVersionBlocked desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - androidDeviceBlockedOnMissingPartnerData
+                    - androidEnabled
+                    - iosDeviceBlockedOnMissingPartnerData
+                    - iosEnabled
+                    - lastHeartbeatDateTime
+                    - partnerState
+                    - partnerUnresponsivenessThresholdInDays
+                    - partnerUnsupportedOsVersionBlocked
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.mobileThreatDefenseConnector'
+                                type: array
+                        title: Collection of mobileThreatDefenseConnector
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mobileThreatDefenseConnectors from deviceManagement
+    tags:
+        - deviceManagement.mobileThreatDefenseConnector
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.CreateMobileThreatDefenseConnectors
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mobileThreatDefenseConnector'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mobileThreatDefenseConnector'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to mobileThreatDefenseConnectors for deviceManagement
+    tags:
+        - deviceManagement.mobileThreatDefenseConnector
+    x-ms-docs-operation-type: operation

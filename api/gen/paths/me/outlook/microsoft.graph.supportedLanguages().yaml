@@ -1,0 +1,17 @@
+get:
+    operationId: me.outlook.supportedLanguages
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.localeInfo'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function supportedLanguages
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

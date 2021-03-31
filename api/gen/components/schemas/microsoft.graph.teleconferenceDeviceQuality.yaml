@@ -1,0 +1,43 @@
+title: teleconferenceDeviceQuality
+type: object
+properties:
+    callChainId:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+    cloudServiceDeploymentEnvironment:
+        type: string
+    cloudServiceDeploymentId:
+        type: string
+    cloudServiceInstanceName:
+        type: string
+    cloudServiceName:
+        type: string
+    deviceDescription:
+        type: string
+    deviceName:
+        type: string
+    mediaLegId:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+    mediaQualityList:
+        type: array
+        items:
+            $ref: "#/components/schemas/microsoft.graph.teleconferenceDeviceMediaQuality"
+    participantId:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+example:
+    callChainId: string
+    cloudServiceDeploymentEnvironment: string
+    cloudServiceDeploymentId: string
+    cloudServiceInstanceName: string
+    cloudServiceName: string
+    deviceDescription: string
+    deviceName: string
+    mediaLegId: string
+    mediaQualityList:
+        - "@odata.type": microsoft.graph.teleconferenceDeviceMediaQuality
+    participantId: string

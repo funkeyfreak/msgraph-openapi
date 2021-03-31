@@ -1,0 +1,71 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceCompliancePolicy
+      description: "This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. "
+      type: object
+      properties:
+        createdDateTime:
+            format: date-time
+            description: DateTime the object was created.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            description: Admin provided description of the Device Configuration.
+            type: string
+        displayName:
+            description: Admin provided name of the device configuration.
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            description: DateTime the object was last modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        version:
+            format: int32
+            description: Version of the device configuration.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        assignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceCompliancePolicyAssignment"
+        deviceSettingStateSummaries:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.settingStateDeviceSummary"
+        deviceStatuses:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceComplianceDeviceStatus"
+        deviceStatusOverview: {}
+        scheduledActionsForRule:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceComplianceScheduledActionForRule"
+        userStatuses:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceComplianceUserStatus"
+        userStatusOverview: {}
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: integer
+    assignments:
+        - "@odata.type": microsoft.graph.deviceCompliancePolicyAssignment
+    deviceSettingStateSummaries:
+        - "@odata.type": microsoft.graph.settingStateDeviceSummary
+    deviceStatuses:
+        - "@odata.type": microsoft.graph.deviceComplianceDeviceStatus
+    deviceStatusOverview:
+        "@odata.type": microsoft.graph.deviceComplianceDeviceOverview
+    scheduledActionsForRule:
+        - "@odata.type": microsoft.graph.deviceComplianceScheduledActionForRule
+    userStatuses:
+        - "@odata.type": microsoft.graph.deviceComplianceUserStatus
+    userStatusOverview:
+        "@odata.type": microsoft.graph.deviceComplianceUserOverview

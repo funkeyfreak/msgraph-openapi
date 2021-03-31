@@ -1,0 +1,134 @@
+get:
+    operationId: devices.device.ListDevice
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - accountEnabled
+                    - accountEnabled desc
+                    - alternativeSecurityIds
+                    - alternativeSecurityIds desc
+                    - approximateLastSignInDateTime
+                    - approximateLastSignInDateTime desc
+                    - complianceExpirationDateTime
+                    - complianceExpirationDateTime desc
+                    - deviceId
+                    - deviceId desc
+                    - deviceMetadata
+                    - deviceMetadata desc
+                    - deviceVersion
+                    - deviceVersion desc
+                    - displayName
+                    - displayName desc
+                    - isCompliant
+                    - isCompliant desc
+                    - isManaged
+                    - isManaged desc
+                    - mdmAppId
+                    - mdmAppId desc
+                    - onPremisesLastSyncDateTime
+                    - onPremisesLastSyncDateTime desc
+                    - onPremisesSyncEnabled
+                    - onPremisesSyncEnabled desc
+                    - operatingSystem
+                    - operatingSystem desc
+                    - operatingSystemVersion
+                    - operatingSystemVersion desc
+                    - physicalIds
+                    - physicalIds desc
+                    - profileType
+                    - profileType desc
+                    - systemLabels
+                    - systemLabels desc
+                    - trustType
+                    - trustType desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - accountEnabled
+                    - alternativeSecurityIds
+                    - approximateLastSignInDateTime
+                    - complianceExpirationDateTime
+                    - deviceId
+                    - deviceMetadata
+                    - deviceVersion
+                    - displayName
+                    - isCompliant
+                    - isManaged
+                    - mdmAppId
+                    - onPremisesLastSyncDateTime
+                    - onPremisesSyncEnabled
+                    - operatingSystem
+                    - operatingSystemVersion
+                    - physicalIds
+                    - profileType
+                    - systemLabels
+                    - trustType
+                    - memberOf
+                    - registeredOwners
+                    - registeredUsers
+                    - transitiveMemberOf
+                    - extensions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.device'
+                                type: array
+                        title: Collection of device
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from devices
+    tags:
+        - devices.device
+    x-ms-docs-operation-type: operation
+post:
+    operationId: devices.device.CreateDevice
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.device'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.device'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to devices
+    tags:
+        - devices.device
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,14 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                cost: {}
+                datePurchased: {}
+                firstPeriod: {}
+                salvage: {}
+                period: {}
+                rate: {}
+                basis: {}
+description: Action parameters
+required: true

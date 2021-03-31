@@ -1,0 +1,497 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: user
+      description: Represents an Azure Active Directory user object.
+      type: object
+      properties:
+        accountEnabled:
+            type: boolean
+        ageGroup:
+            type: string
+        assignedLicenses:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.assignedLicense"
+        assignedPlans:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.assignedPlan"
+        businessPhones:
+            type: array
+            items:
+                type: string
+        city:
+            type: string
+        companyName:
+            type: string
+        consentProvidedForMinor:
+            type: string
+        country:
+            type: string
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        creationType:
+            type: string
+        department:
+            type: string
+        displayName:
+            type: string
+        employeeHireDate:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        employeeId:
+            type: string
+        employeeOrgData: {}
+        employeeType:
+            type: string
+        externalUserState:
+            type: string
+        externalUserStateChangeDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        faxNumber:
+            type: string
+        givenName:
+            type: string
+        identities:
+            type: array
+            items: {}
+        imAddresses:
+            type: array
+            items:
+                type: string
+        isResourceAccount:
+            type: boolean
+        jobTitle:
+            type: string
+        lastPasswordChangeDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        legalAgeGroupClassification:
+            type: string
+        licenseAssignmentStates:
+            type: array
+            items: {}
+        mail:
+            type: string
+        mailNickname:
+            type: string
+        mobilePhone:
+            type: string
+        officeLocation:
+            type: string
+        onPremisesDistinguishedName:
+            type: string
+        onPremisesDomainName:
+            type: string
+        onPremisesExtensionAttributes: {}
+        onPremisesImmutableId:
+            type: string
+        onPremisesLastSyncDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        onPremisesProvisioningErrors:
+            type: array
+            items: {}
+        onPremisesSamAccountName:
+            type: string
+        onPremisesSecurityIdentifier:
+            type: string
+        onPremisesSyncEnabled:
+            type: boolean
+        onPremisesUserPrincipalName:
+            type: string
+        otherMails:
+            type: array
+            items:
+                type: string
+        passwordPolicies:
+            type: string
+        passwordProfile: {}
+        postalCode:
+            type: string
+        preferredLanguage:
+            type: string
+        provisionedPlans:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.provisionedPlan"
+        proxyAddresses:
+            type: array
+            items:
+                type: string
+        showInAddressList:
+            type: boolean
+        signInSessionsValidFromDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        state:
+            type: string
+        streetAddress:
+            type: string
+        surname:
+            type: string
+        usageLocation:
+            type: string
+        userPrincipalName:
+            type: string
+        userType:
+            type: string
+        mailboxSettings: {}
+        deviceEnrollmentLimit:
+            format: int32
+            description: The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        aboutMe:
+            type: string
+        birthday:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        hireDate:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        interests:
+            type: array
+            items:
+                type: string
+        mySite:
+            type: string
+        pastProjects:
+            type: array
+            items:
+                type: string
+        preferredName:
+            type: string
+        responsibilities:
+            type: array
+            items:
+                type: string
+        schools:
+            type: array
+            items:
+                type: string
+        skills:
+            type: array
+            items:
+                type: string
+        appRoleAssignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.appRoleAssignment"
+        createdObjects:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        directReports:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        licenseDetails:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.licenseDetails"
+        manager: {}
+        memberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        oauth2PermissionGrants:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.oAuth2PermissionGrant"
+        ownedDevices:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        ownedObjects:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        registeredDevices:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        scopedRoleMemberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.scopedRoleMembership"
+        transitiveMemberOf:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        calendar: {}
+        calendarGroups:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.calendarGroup"
+        calendars:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.calendar"
+        calendarView:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.event"
+        contactFolders:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contactFolder"
+        contacts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contact"
+        events:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.event"
+        inferenceClassification: {}
+        mailFolders:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.mailFolder"
+        messages:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.message"
+        outlook: {}
+        people:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.person"
+        photo: {}
+        photos:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.profilePhoto"
+        drive: {}
+        drives:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.drive"
+        followedSites:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.site"
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        managedDevices:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedDevice"
+        managedAppRegistrations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedAppRegistration"
+        deviceManagementTroubleshootingEvents:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent"
+        planner: {}
+        insights: {}
+        settings: {}
+        onenote: {}
+        activities:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.userActivity"
+        onlineMeetings:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onlineMeeting"
+        presence: {}
+        joinedTeams:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.team"
+        teamwork: {}
+        todo: {}
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    accountEnabled: true
+    ageGroup: string
+    assignedLicenses:
+        - "@odata.type": microsoft.graph.assignedLicense
+    assignedPlans:
+        - "@odata.type": microsoft.graph.assignedPlan
+    businessPhones:
+        - string
+    city: string
+    companyName: string
+    consentProvidedForMinor: string
+    country: string
+    createdDateTime: string (timestamp)
+    creationType: string
+    department: string
+    displayName: string
+    employeeHireDate: string (timestamp)
+    employeeId: string
+    employeeOrgData:
+        "@odata.type": microsoft.graph.employeeOrgData
+    employeeType: string
+    externalUserState: string
+    externalUserStateChangeDateTime: string (timestamp)
+    faxNumber: string
+    givenName: string
+    identities:
+        - "@odata.type": microsoft.graph.objectIdentity
+    imAddresses:
+        - string
+    isResourceAccount: true
+    jobTitle: string
+    lastPasswordChangeDateTime: string (timestamp)
+    legalAgeGroupClassification: string
+    licenseAssignmentStates:
+        - "@odata.type": microsoft.graph.licenseAssignmentState
+    mail: string
+    mailNickname: string
+    mobilePhone: string
+    officeLocation: string
+    onPremisesDistinguishedName: string
+    onPremisesDomainName: string
+    onPremisesExtensionAttributes:
+        "@odata.type": microsoft.graph.onPremisesExtensionAttributes
+    onPremisesImmutableId: string
+    onPremisesLastSyncDateTime: string (timestamp)
+    onPremisesProvisioningErrors:
+        - "@odata.type": microsoft.graph.onPremisesProvisioningError
+    onPremisesSamAccountName: string
+    onPremisesSecurityIdentifier: string
+    onPremisesSyncEnabled: true
+    onPremisesUserPrincipalName: string
+    otherMails:
+        - string
+    passwordPolicies: string
+    passwordProfile:
+        "@odata.type": microsoft.graph.passwordProfile
+    postalCode: string
+    preferredLanguage: string
+    provisionedPlans:
+        - "@odata.type": microsoft.graph.provisionedPlan
+    proxyAddresses:
+        - string
+    showInAddressList: true
+    signInSessionsValidFromDateTime: string (timestamp)
+    state: string
+    streetAddress: string
+    surname: string
+    usageLocation: string
+    userPrincipalName: string
+    userType: string
+    mailboxSettings:
+        "@odata.type": microsoft.graph.mailboxSettings
+    deviceEnrollmentLimit: integer
+    aboutMe: string
+    birthday: string (timestamp)
+    hireDate: string (timestamp)
+    interests:
+        - string
+    mySite: string
+    pastProjects:
+        - string
+    preferredName: string
+    responsibilities:
+        - string
+    schools:
+        - string
+    skills:
+        - string
+    appRoleAssignments:
+        - "@odata.type": microsoft.graph.appRoleAssignment
+    createdObjects:
+        - "@odata.type": microsoft.graph.directoryObject
+    directReports:
+        - "@odata.type": microsoft.graph.directoryObject
+    licenseDetails:
+        - "@odata.type": microsoft.graph.licenseDetails
+    manager:
+        "@odata.type": microsoft.graph.directoryObject
+    memberOf:
+        - "@odata.type": microsoft.graph.directoryObject
+    oauth2PermissionGrants:
+        - "@odata.type": microsoft.graph.oAuth2PermissionGrant
+    ownedDevices:
+        - "@odata.type": microsoft.graph.directoryObject
+    ownedObjects:
+        - "@odata.type": microsoft.graph.directoryObject
+    registeredDevices:
+        - "@odata.type": microsoft.graph.directoryObject
+    scopedRoleMemberOf:
+        - "@odata.type": microsoft.graph.scopedRoleMembership
+    transitiveMemberOf:
+        - "@odata.type": microsoft.graph.directoryObject
+    calendar:
+        "@odata.type": microsoft.graph.calendar
+    calendarGroups:
+        - "@odata.type": microsoft.graph.calendarGroup
+    calendars:
+        - "@odata.type": microsoft.graph.calendar
+    calendarView:
+        - "@odata.type": microsoft.graph.event
+    contactFolders:
+        - "@odata.type": microsoft.graph.contactFolder
+    contacts:
+        - "@odata.type": microsoft.graph.contact
+    events:
+        - "@odata.type": microsoft.graph.event
+    inferenceClassification:
+        "@odata.type": microsoft.graph.inferenceClassification
+    mailFolders:
+        - "@odata.type": microsoft.graph.mailFolder
+    messages:
+        - "@odata.type": microsoft.graph.message
+    outlook:
+        "@odata.type": microsoft.graph.outlookUser
+    people:
+        - "@odata.type": microsoft.graph.person
+    photo:
+        "@odata.type": microsoft.graph.profilePhoto
+    photos:
+        - "@odata.type": microsoft.graph.profilePhoto
+    drive:
+        "@odata.type": microsoft.graph.drive
+    drives:
+        - "@odata.type": microsoft.graph.drive
+    followedSites:
+        - "@odata.type": microsoft.graph.site
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    managedDevices:
+        - "@odata.type": microsoft.graph.managedDevice
+    managedAppRegistrations:
+        - "@odata.type": microsoft.graph.managedAppRegistration
+    deviceManagementTroubleshootingEvents:
+        - "@odata.type": microsoft.graph.deviceManagementTroubleshootingEvent
+    planner:
+        "@odata.type": microsoft.graph.plannerUser
+    insights:
+        "@odata.type": microsoft.graph.officeGraphInsights
+    settings:
+        "@odata.type": microsoft.graph.userSettings
+    onenote:
+        "@odata.type": microsoft.graph.onenote
+    activities:
+        - "@odata.type": microsoft.graph.userActivity
+    onlineMeetings:
+        - "@odata.type": microsoft.graph.onlineMeeting
+    presence:
+        "@odata.type": microsoft.graph.presence
+    joinedTeams:
+        - "@odata.type": microsoft.graph.team
+    teamwork:
+        "@odata.type": microsoft.graph.userTeamwork
+    todo:
+        "@odata.type": microsoft.graph.todo

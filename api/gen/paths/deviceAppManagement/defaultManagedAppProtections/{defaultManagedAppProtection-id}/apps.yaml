@@ -1,0 +1,99 @@
+get:
+    operationId: deviceAppManagement.defaultManagedAppProtections.ListApps
+    parameters:
+        - description: 'key: defaultManagedAppProtection-id of defaultManagedAppProtection'
+          in: path
+          name: defaultManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: defaultManagedAppProtection
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - mobileAppIdentifier
+                    - mobileAppIdentifier desc
+                    - version
+                    - version desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - mobileAppIdentifier
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.managedMobileApp'
+                                type: array
+                        title: Collection of managedMobileApp
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get apps from deviceAppManagement
+    tags:
+        - deviceAppManagement.defaultManagedAppProtection
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.defaultManagedAppProtections.CreateApps
+    parameters:
+        - description: 'key: defaultManagedAppProtection-id of defaultManagedAppProtection'
+          in: path
+          name: defaultManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: defaultManagedAppProtection
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedMobileApp'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedMobileApp'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to apps for deviceAppManagement
+    tags:
+        - deviceAppManagement.defaultManagedAppProtection
+    x-ms-docs-operation-type: operation

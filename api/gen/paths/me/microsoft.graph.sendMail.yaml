@@ -1,0 +1,13 @@
+post:
+    operationId: me.sendMail
+    requestBody:
+        $ref: '#/components/requestBodies/me.sendMailBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action sendMail
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

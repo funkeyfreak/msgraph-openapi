@@ -1,0 +1,23 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: windowsInformationProtectionAppLearningSummary
+      description: Windows Information Protection AppLearning Summary entity.
+      type: object
+      properties:
+        applicationName:
+            description: Application Name
+            type: string
+        applicationType:
+            description: Application Type
+        deviceCount:
+            format: int32
+            description: Device Count
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    applicationName: string
+    applicationType:
+        "@odata.type": microsoft.graph.applicationType
+    deviceCount: integer

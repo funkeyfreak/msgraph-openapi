@@ -1,0 +1,221 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedDevice
+      description: Devices that are managed or pre-enrolled through Intune
+      type: object
+      properties:
+        activationLockBypassCode:
+            description: Code that allows the Activation Lock on a device to be bypassed. This property is read-only.
+            type: string
+        androidSecurityPatchLevel:
+            description: Android security patch level. This property is read-only.
+            type: string
+        azureADDeviceId:
+            description: The unique identifier for the Azure Active Directory device. Read only. This property is read-only.
+            type: string
+        azureADRegistered:
+            description: Whether the device is Azure Active Directory registered. This property is read-only.
+            type: boolean
+        complianceGracePeriodExpirationDateTime:
+            format: date-time
+            description: The DateTime when device compliance grace period expires. This property is read-only.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        complianceState:
+            description: Compliance state of the device. This property is read-only.
+        configurationManagerClientEnabledFeatures:
+            description: ConfigrMgr client enabled features. This property is read-only.
+        deviceActionResults:
+            description: List of ComplexType deviceActionResult objects. This property is read-only.
+            type: array
+            items: {}
+        deviceCategoryDisplayName:
+            description: Device category display name. This property is read-only.
+            type: string
+        deviceEnrollmentType:
+            description: Enrollment type of the device. This property is read-only.
+        deviceHealthAttestationState:
+            description: The device health attestation state. This property is read-only.
+        deviceName:
+            description: Name of the device. This property is read-only.
+            type: string
+        deviceRegistrationState:
+            description: Device registration state. This property is read-only.
+        easActivated:
+            description: Whether the device is Exchange ActiveSync activated. This property is read-only.
+            type: boolean
+        easActivationDateTime:
+            format: date-time
+            description: Exchange ActivationSync activation time of the device. This property is read-only.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        easDeviceId:
+            description: Exchange ActiveSync Id of the device. This property is read-only.
+            type: string
+        emailAddress:
+            description: Email(s) for the user associated with the device. This property is read-only.
+            type: string
+        enrolledDateTime:
+            format: date-time
+            description: Enrollment time of the device. This property is read-only.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        exchangeAccessState:
+            description: The Access State of the device in Exchange. This property is read-only.
+        exchangeAccessStateReason:
+            description: The reason for the device's access state in Exchange. This property is read-only.
+        exchangeLastSuccessfulSyncDateTime:
+            format: date-time
+            description: Last time the device contacted Exchange. This property is read-only.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        freeStorageSpaceInBytes:
+            format: int64
+            description: Free Storage in Bytes. This property is read-only.
+            type: integer
+        imei:
+            description: IMEI. This property is read-only.
+            type: string
+        isEncrypted:
+            description: Device encryption status. This property is read-only.
+            type: boolean
+        isSupervised:
+            description: Device supervised status. This property is read-only.
+            type: boolean
+        jailBroken:
+            description: whether the device is jail broken or rooted. This property is read-only.
+            type: string
+        lastSyncDateTime:
+            format: date-time
+            description: The date and time that the device last completed a successful sync with Intune. This property is read-only.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        managedDeviceName:
+            description: Automatically generated name to identify a device. Can be overwritten to a user friendly name.
+            type: string
+        managedDeviceOwnerType:
+            description: Ownership of the device. Can be 'company' or 'personal'
+        managementAgent:
+            description: Management channel of the device. Intune, EAS, etc. This property is read-only.
+        manufacturer:
+            description: Manufacturer of the device. This property is read-only.
+            type: string
+        meid:
+            description: MEID. This property is read-only.
+            type: string
+        model:
+            description: Model of the device. This property is read-only.
+            type: string
+        operatingSystem:
+            description: Operating system of the device. Windows, iOS, etc. This property is read-only.
+            type: string
+        osVersion:
+            description: Operating system version of the device. This property is read-only.
+            type: string
+        partnerReportedThreatState:
+            description: Indicates the threat state of a device when a Mobile Threat Defense partner is in use by the account and device. Read Only. This property is read-only.
+        phoneNumber:
+            description: Phone number of the device. This property is read-only.
+            type: string
+        remoteAssistanceSessionErrorDetails:
+            description: An error string that identifies issues when creating Remote Assistance session objects. This property is read-only.
+            type: string
+        remoteAssistanceSessionUrl:
+            description: Url that allows a Remote Assistance session to be established with the device. This property is read-only.
+            type: string
+        serialNumber:
+            description: SerialNumber. This property is read-only.
+            type: string
+        subscriberCarrier:
+            description: Subscriber Carrier. This property is read-only.
+            type: string
+        totalStorageSpaceInBytes:
+            format: int64
+            description: Total Storage in Bytes. This property is read-only.
+            type: integer
+        userDisplayName:
+            description: User display name. This property is read-only.
+            type: string
+        userId:
+            description: Unique Identifier for the user associated with the device. This property is read-only.
+            type: string
+        userPrincipalName:
+            description: Device user principal name. This property is read-only.
+            type: string
+        wiFiMacAddress:
+            description: Wi-Fi MAC. This property is read-only.
+            type: string
+        deviceCompliancePolicyStates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceCompliancePolicyState"
+        deviceConfigurationStates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceConfigurationState"
+        deviceCategory: {}
+example:
+    id: string (identifier)
+    activationLockBypassCode: string
+    androidSecurityPatchLevel: string
+    azureADDeviceId: string
+    azureADRegistered: true
+    complianceGracePeriodExpirationDateTime: string (timestamp)
+    complianceState:
+        "@odata.type": microsoft.graph.complianceState
+    configurationManagerClientEnabledFeatures:
+        "@odata.type": microsoft.graph.configurationManagerClientEnabledFeatures
+    deviceActionResults:
+        - "@odata.type": microsoft.graph.deviceActionResult
+    deviceCategoryDisplayName: string
+    deviceEnrollmentType:
+        "@odata.type": microsoft.graph.deviceEnrollmentType
+    deviceHealthAttestationState:
+        "@odata.type": microsoft.graph.deviceHealthAttestationState
+    deviceName: string
+    deviceRegistrationState:
+        "@odata.type": microsoft.graph.deviceRegistrationState
+    easActivated: true
+    easActivationDateTime: string (timestamp)
+    easDeviceId: string
+    emailAddress: string
+    enrolledDateTime: string (timestamp)
+    exchangeAccessState:
+        "@odata.type": microsoft.graph.deviceManagementExchangeAccessState
+    exchangeAccessStateReason:
+        "@odata.type": microsoft.graph.deviceManagementExchangeAccessStateReason
+    exchangeLastSuccessfulSyncDateTime: string (timestamp)
+    freeStorageSpaceInBytes: integer
+    imei: string
+    isEncrypted: true
+    isSupervised: true
+    jailBroken: string
+    lastSyncDateTime: string (timestamp)
+    managedDeviceName: string
+    managedDeviceOwnerType:
+        "@odata.type": microsoft.graph.managedDeviceOwnerType
+    managementAgent:
+        "@odata.type": microsoft.graph.managementAgentType
+    manufacturer: string
+    meid: string
+    model: string
+    operatingSystem: string
+    osVersion: string
+    partnerReportedThreatState:
+        "@odata.type": microsoft.graph.managedDevicePartnerReportedHealthState
+    phoneNumber: string
+    remoteAssistanceSessionErrorDetails: string
+    remoteAssistanceSessionUrl: string
+    serialNumber: string
+    subscriberCarrier: string
+    totalStorageSpaceInBytes: integer
+    userDisplayName: string
+    userId: string
+    userPrincipalName: string
+    wiFiMacAddress: string
+    deviceCompliancePolicyStates:
+        - "@odata.type": microsoft.graph.deviceCompliancePolicyState
+    deviceConfigurationStates:
+        - "@odata.type": microsoft.graph.deviceConfigurationState
+    deviceCategory:
+        "@odata.type": microsoft.graph.deviceCategory

@@ -1,0 +1,10 @@
+title: auditActivityInitiator
+type: object
+properties:
+    app: {}
+    user: {}
+example:
+    app:
+        "@odata.type": microsoft.graph.appIdentity
+    user:
+        "@odata.type": microsoft.graph.userIdentity

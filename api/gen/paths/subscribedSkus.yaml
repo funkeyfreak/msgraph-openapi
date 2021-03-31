@@ -1,0 +1,89 @@
+get:
+    operationId: subscribedSkus.subscribedSku.ListSubscribedSku
+    parameters:
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - appliesTo
+                    - appliesTo desc
+                    - capabilityStatus
+                    - capabilityStatus desc
+                    - consumedUnits
+                    - consumedUnits desc
+                    - prepaidUnits
+                    - prepaidUnits desc
+                    - servicePlans
+                    - servicePlans desc
+                    - skuId
+                    - skuId desc
+                    - skuPartNumber
+                    - skuPartNumber desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appliesTo
+                    - capabilityStatus
+                    - consumedUnits
+                    - prepaidUnits
+                    - servicePlans
+                    - skuId
+                    - skuPartNumber
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.subscribedSku'
+                                type: array
+                        title: Collection of subscribedSku
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from subscribedSkus
+    tags:
+        - subscribedSkus.subscribedSku
+    x-ms-docs-operation-type: operation
+post:
+    operationId: subscribedSkus.subscribedSku.CreateSubscribedSku
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.subscribedSku'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscribedSku'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to subscribedSkus
+    tags:
+        - subscribedSkus.subscribedSku
+    x-ms-docs-operation-type: operation

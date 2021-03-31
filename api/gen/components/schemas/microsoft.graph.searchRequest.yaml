@@ -1,0 +1,40 @@
+title: searchRequest
+type: object
+properties:
+    contentSources:
+        type: array
+        items:
+            type: string
+    enableTopResults:
+        type: boolean
+    entityTypes:
+        type: array
+        items: {}
+    fields:
+        type: array
+        items:
+            type: string
+    from:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+    query:
+        $ref: "#/components/schemas/microsoft.graph.searchQuery"
+    size:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+example:
+    contentSources:
+        - string
+    enableTopResults: true
+    entityTypes:
+        - "@odata.type": microsoft.graph.entityType
+    fields:
+        - string
+    from: integer
+    query:
+        "@odata.type": microsoft.graph.searchQuery
+    size: integer

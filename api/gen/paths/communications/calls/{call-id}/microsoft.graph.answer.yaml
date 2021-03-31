@@ -1,0 +1,34 @@
+post:
+    operationId: communications.calls.answer
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        acceptedModalities:
+                            items: {}
+                            type: array
+                        callbackUri:
+                            type: string
+                        mediaConfig:
+                            $ref: '#/components/schemas/microsoft.graph.mediaConfig'
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action answer
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

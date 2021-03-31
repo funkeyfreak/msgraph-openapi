@@ -1,0 +1,105 @@
+get:
+    operationId: teams.schedule.ListSchedulingGroups
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - displayName
+                    - displayName desc
+                    - isActive
+                    - isActive desc
+                    - userIds
+                    - userIds desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - displayName
+                    - isActive
+                    - userIds
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.schedulingGroup'
+                                type: array
+                        title: Collection of schedulingGroup
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get schedulingGroups from teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation
+post:
+    operationId: teams.schedule.CreateSchedulingGroups
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.schedulingGroup'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.schedulingGroup'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to schedulingGroups for teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation

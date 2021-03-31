@@ -1,0 +1,80 @@
+get:
+    operationId: teams.schedule.GetSchedulingGroups
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: schedulingGroup-id of schedulingGroup'
+          in: path
+          name: schedulingGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: schedulingGroup
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - displayName
+                    - isActive
+                    - userIds
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.schedulingGroup'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get schedulingGroups from teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.schedule.UpdateSchedulingGroups
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: schedulingGroup-id of schedulingGroup'
+          in: path
+          name: schedulingGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: schedulingGroup
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.schedulingGroup'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property schedulingGroups in teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation

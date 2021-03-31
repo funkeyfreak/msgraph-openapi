@@ -1,0 +1,13 @@
+post:
+    operationId: me.exportPersonalData
+    requestBody:
+        $ref: '#/components/requestBodies/me.exportPersonalDataBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action exportPersonalData
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

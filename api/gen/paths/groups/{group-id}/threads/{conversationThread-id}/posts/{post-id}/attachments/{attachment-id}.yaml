@@ -1,0 +1,113 @@
+get:
+    operationId: groups.threads.posts.GetAttachments
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: attachment-id of attachment'
+          in: path
+          name: attachment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: attachment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - contentType
+                    - isInline
+                    - lastModifiedDateTime
+                    - name
+                    - size
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.attachment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get attachments from groups
+    tags:
+        - groups.conversationThread
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.threads.posts.UpdateAttachments
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+        - description: 'key: attachment-id of attachment'
+          in: path
+          name: attachment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: attachment
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.attachment'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property attachments in groups
+    tags:
+        - groups.conversationThread
+    x-ms-docs-operation-type: operation

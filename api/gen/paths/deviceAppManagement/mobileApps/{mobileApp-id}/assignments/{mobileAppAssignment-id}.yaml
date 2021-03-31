@@ -1,0 +1,88 @@
+get:
+    operationId: deviceAppManagement.mobileApps.GetAssignments
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+        - description: 'key: mobileAppAssignment-id of mobileAppAssignment'
+          in: path
+          name: mobileAppAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileAppAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - intent
+                    - settings
+                    - target
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mobileAppAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get assignments from deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.mobileApps.UpdateAssignments
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+        - description: 'key: mobileAppAssignment-id of mobileAppAssignment'
+          in: path
+          name: mobileAppAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileAppAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mobileAppAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property assignments in deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,149 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: application
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        addIns:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.addIn"
+        api: {}
+        appId:
+            type: string
+        applicationTemplateId:
+            type: string
+        appRoles:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.appRole"
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            type: string
+        displayName:
+            type: string
+        groupMembershipClaims:
+            type: string
+        identifierUris:
+            type: array
+            items:
+                type: string
+        info: {}
+        isDeviceOnlyAuthSupported:
+            type: boolean
+        isFallbackPublicClient:
+            type: boolean
+        keyCredentials:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.keyCredential"
+        logo:
+            format: base64url
+            type: string
+        notes:
+            type: string
+        oauth2RequirePostResponse:
+            type: boolean
+        optionalClaims: {}
+        parentalControlSettings: {}
+        passwordCredentials:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.passwordCredential"
+        publicClient: {}
+        publisherDomain:
+            type: string
+        requiredResourceAccess:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.requiredResourceAccess"
+        signInAudience:
+            type: string
+        tags:
+            type: array
+            items:
+                type: string
+        tokenEncryptionKeyId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        web: {}
+        createdOnBehalfOf: {}
+        extensionProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extensionProperty"
+        homeRealmDiscoveryPolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy"
+        owners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        tokenIssuancePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenIssuancePolicy"
+        tokenLifetimePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.tokenLifetimePolicy"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    addIns:
+        - "@odata.type": microsoft.graph.addIn
+    api:
+        "@odata.type": microsoft.graph.apiApplication
+    appId: string
+    applicationTemplateId: string
+    appRoles:
+        - "@odata.type": microsoft.graph.appRole
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    groupMembershipClaims: string
+    identifierUris:
+        - string
+    info:
+        "@odata.type": microsoft.graph.informationalUrl
+    isDeviceOnlyAuthSupported: true
+    isFallbackPublicClient: true
+    keyCredentials:
+        - "@odata.type": microsoft.graph.keyCredential
+    logo: string
+    notes: string
+    oauth2RequirePostResponse: true
+    optionalClaims:
+        "@odata.type": microsoft.graph.optionalClaims
+    parentalControlSettings:
+        "@odata.type": microsoft.graph.parentalControlSettings
+    passwordCredentials:
+        - "@odata.type": microsoft.graph.passwordCredential
+    publicClient:
+        "@odata.type": microsoft.graph.publicClientApplication
+    publisherDomain: string
+    requiredResourceAccess:
+        - "@odata.type": microsoft.graph.requiredResourceAccess
+    signInAudience: string
+    tags:
+        - string
+    tokenEncryptionKeyId: string
+    web:
+        "@odata.type": microsoft.graph.webApplication
+    createdOnBehalfOf:
+        "@odata.type": microsoft.graph.directoryObject
+    extensionProperties:
+        - "@odata.type": microsoft.graph.extensionProperty
+    homeRealmDiscoveryPolicies:
+        - "@odata.type": microsoft.graph.homeRealmDiscoveryPolicy
+    owners:
+        - "@odata.type": microsoft.graph.directoryObject
+    tokenIssuancePolicies:
+        - "@odata.type": microsoft.graph.tokenIssuancePolicy
+    tokenLifetimePolicies:
+        - "@odata.type": microsoft.graph.tokenLifetimePolicy

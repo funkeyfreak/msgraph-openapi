@@ -1,0 +1,162 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.outlookItem"
+    - title: event
+      type: object
+      properties:
+        allowNewTimeProposals:
+            type: boolean
+        attendees:
+            type: array
+            items: {}
+        body: {}
+        bodyPreview:
+            type: string
+        end: {}
+        hasAttachments:
+            type: boolean
+        hideAttendees:
+            type: boolean
+        iCalUId:
+            type: string
+        importance: {}
+        isAllDay:
+            type: boolean
+        isCancelled:
+            type: boolean
+        isDraft:
+            type: boolean
+        isOnlineMeeting:
+            type: boolean
+        isOrganizer:
+            type: boolean
+        isReminderOn:
+            type: boolean
+        location: {}
+        locations:
+            type: array
+            items: {}
+        onlineMeeting: {}
+        onlineMeetingProvider: {}
+        onlineMeetingUrl:
+            type: string
+        organizer: {}
+        originalEndTimeZone:
+            type: string
+        originalStart:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        originalStartTimeZone:
+            type: string
+        recurrence: {}
+        reminderMinutesBeforeStart:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        responseRequested:
+            type: boolean
+        responseStatus: {}
+        sensitivity: {}
+        seriesMasterId:
+            type: string
+        showAs: {}
+        start: {}
+        subject:
+            type: string
+        transactionId:
+            type: string
+        type: {}
+        webLink:
+            type: string
+        attachments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.attachment"
+        calendar: {}
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        instances:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.event"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    categories:
+        - string
+    changeKey: string
+    createdDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    allowNewTimeProposals: true
+    attendees:
+        - "@odata.type": microsoft.graph.attendee
+    body:
+        "@odata.type": microsoft.graph.itemBody
+    bodyPreview: string
+    end:
+        "@odata.type": microsoft.graph.dateTimeTimeZone
+    hasAttachments: true
+    hideAttendees: true
+    iCalUId: string
+    importance:
+        "@odata.type": microsoft.graph.importance
+    isAllDay: true
+    isCancelled: true
+    isDraft: true
+    isOnlineMeeting: true
+    isOrganizer: true
+    isReminderOn: true
+    location:
+        "@odata.type": microsoft.graph.location
+    locations:
+        - "@odata.type": microsoft.graph.location
+    onlineMeeting:
+        "@odata.type": microsoft.graph.onlineMeetingInfo
+    onlineMeetingProvider:
+        "@odata.type": microsoft.graph.onlineMeetingProviderType
+    onlineMeetingUrl: string
+    organizer:
+        "@odata.type": microsoft.graph.recipient
+    originalEndTimeZone: string
+    originalStart: string (timestamp)
+    originalStartTimeZone: string
+    recurrence:
+        "@odata.type": microsoft.graph.patternedRecurrence
+    reminderMinutesBeforeStart: integer
+    responseRequested: true
+    responseStatus:
+        "@odata.type": microsoft.graph.responseStatus
+    sensitivity:
+        "@odata.type": microsoft.graph.sensitivity
+    seriesMasterId: string
+    showAs:
+        "@odata.type": microsoft.graph.freeBusyStatus
+    start:
+        "@odata.type": microsoft.graph.dateTimeTimeZone
+    subject: string
+    transactionId: string
+    type:
+        "@odata.type": microsoft.graph.eventType
+    webLink: string
+    attachments:
+        - "@odata.type": microsoft.graph.attachment
+    calendar:
+        "@odata.type": microsoft.graph.calendar
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    instances:
+        - "@odata.type": microsoft.graph.event
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

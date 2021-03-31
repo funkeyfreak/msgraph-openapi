@@ -1,0 +1,6 @@
+content:
+    application/json:
+        schema:
+            $ref: "#/components/schemas/microsoft.graph.activityHistoryItem"
+description: New navigation property
+required: true

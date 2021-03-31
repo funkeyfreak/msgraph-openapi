@@ -1,0 +1,24 @@
+post:
+    operationId: users.revokeSignInSessions
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        default: false
+                        type: boolean
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action revokeSignInSessions
+    tags:
+        - users.Actions
+    x-ms-docs-operation-type: action

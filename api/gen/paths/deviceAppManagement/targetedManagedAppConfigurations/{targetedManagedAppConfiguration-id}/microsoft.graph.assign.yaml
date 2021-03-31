@@ -1,0 +1,21 @@
+post:
+    operationId: deviceAppManagement.targetedManagedAppConfigurations.assign
+    parameters:
+        - description: 'key: targetedManagedAppConfiguration-id of targetedManagedAppConfiguration'
+          in: path
+          name: targetedManagedAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: targetedManagedAppConfiguration
+    requestBody:
+        $ref: '#/components/requestBodies/deviceAppManagement.mobileAppConfigurations.assignBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action assign
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,62 @@
+get:
+    operationId: auditLogs.auditLogRoot.GetAuditLogRoot
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - directoryAudits
+                    - restrictedSignIns
+                    - signIns
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - directoryAudits
+                    - restrictedSignIns
+                    - signIns
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.auditLogRoot'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get auditLogs
+    tags:
+        - auditLogs.auditLogRoot
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: auditLogs.auditLogRoot.UpdateAuditLogRoot
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.auditLogRoot'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update auditLogs
+    tags:
+        - auditLogs.auditLogRoot
+    x-ms-docs-operation-type: operation

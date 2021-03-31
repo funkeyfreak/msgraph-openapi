@@ -1,0 +1,90 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicies.GetUserStatuses
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceComplianceUserStatus-id of deviceComplianceUserStatus'
+          in: path
+          name: deviceComplianceUserStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceUserStatus
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - devicesCount
+                    - lastReportedDateTime
+                    - status
+                    - userDisplayName
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceComplianceUserStatus'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get userStatuses from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceCompliancePolicies.UpdateUserStatuses
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: deviceComplianceUserStatus-id of deviceComplianceUserStatus'
+          in: path
+          name: deviceComplianceUserStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceUserStatus
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceComplianceUserStatus'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property userStatuses in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

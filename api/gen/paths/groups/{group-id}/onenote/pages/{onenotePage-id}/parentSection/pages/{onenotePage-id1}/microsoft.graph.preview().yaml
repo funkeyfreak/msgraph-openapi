@@ -1,0 +1,36 @@
+get:
+    operationId: groups.onenote.pages.parentSection.pages.preview
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function preview
+    tags:
+        - groups.Functions
+    x-ms-docs-operation-type: function

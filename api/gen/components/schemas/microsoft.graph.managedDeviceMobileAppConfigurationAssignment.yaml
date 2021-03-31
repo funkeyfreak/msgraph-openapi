@@ -1,0 +1,12 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedDeviceMobileAppConfigurationAssignment
+      description: Contains the properties used to assign an MDM app configuration to a group.
+      type: object
+      properties:
+        target:
+            description: Assignment target that the T&C policy is assigned to.
+example:
+    id: string (identifier)
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

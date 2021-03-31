@@ -1,0 +1,16 @@
+post:
+    operationId: me.findMeetingTimes
+    requestBody:
+        $ref: '#/components/requestBodies/me.findMeetingTimesBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action findMeetingTimes
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

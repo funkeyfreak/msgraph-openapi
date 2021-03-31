@@ -1,0 +1,55 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: educationClass
+      type: object
+      properties:
+        classCode:
+            type: string
+        createdBy: {}
+        description:
+            type: string
+        displayName:
+            type: string
+        externalId:
+            type: string
+        externalName:
+            type: string
+        externalSource: {}
+        mailNickname:
+            type: string
+        term: {}
+        group: {}
+        members:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationUser"
+        schools:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationSchool"
+        teachers:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.educationUser"
+example:
+    id: string (identifier)
+    classCode: string
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    description: string
+    displayName: string
+    externalId: string
+    externalName: string
+    externalSource:
+        "@odata.type": microsoft.graph.educationExternalSource
+    mailNickname: string
+    term:
+        "@odata.type": microsoft.graph.educationTerm
+    group:
+        "@odata.type": microsoft.graph.group
+    members:
+        - "@odata.type": microsoft.graph.educationUser
+    schools:
+        - "@odata.type": microsoft.graph.educationSchool
+    teachers:
+        - "@odata.type": microsoft.graph.educationUser

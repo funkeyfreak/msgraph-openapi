@@ -1,0 +1,115 @@
+get:
+    operationId: users.GetCalendarView
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - allowNewTimeProposals
+                    - attendees
+                    - body
+                    - bodyPreview
+                    - end
+                    - hasAttachments
+                    - hideAttendees
+                    - iCalUId
+                    - importance
+                    - isAllDay
+                    - isCancelled
+                    - isDraft
+                    - isOnlineMeeting
+                    - isOrganizer
+                    - isReminderOn
+                    - location
+                    - locations
+                    - onlineMeeting
+                    - onlineMeetingProvider
+                    - onlineMeetingUrl
+                    - organizer
+                    - originalEndTimeZone
+                    - originalStart
+                    - originalStartTimeZone
+                    - recurrence
+                    - reminderMinutesBeforeStart
+                    - responseRequested
+                    - responseStatus
+                    - sensitivity
+                    - seriesMasterId
+                    - showAs
+                    - start
+                    - subject
+                    - transactionId
+                    - type
+                    - webLink
+                    - attachments
+                    - calendar
+                    - extensions
+                    - instances
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.event'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendarView from users
+    tags:
+        - users.event
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdateCalendarView
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.event'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendarView in users
+    tags:
+        - users.event
+    x-ms-docs-operation-type: operation

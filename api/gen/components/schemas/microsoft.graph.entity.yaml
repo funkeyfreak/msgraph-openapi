@@ -1,0 +1,7 @@
+title: entity
+type: object
+properties:
+    id:
+        type: string
+example:
+    id: string (identifier)

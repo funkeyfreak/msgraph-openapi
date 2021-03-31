@@ -1,0 +1,79 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: team
+      type: object
+      properties:
+        classification:
+            type: string
+        description:
+            type: string
+        displayName:
+            type: string
+        funSettings: {}
+        guestSettings: {}
+        internalId:
+            type: string
+        isArchived:
+            type: boolean
+        memberSettings: {}
+        messagingSettings: {}
+        specialization: {}
+        visibility: {}
+        webUrl:
+            type: string
+        schedule: {}
+        channels:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.channel"
+        group: {}
+        installedApps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.teamsAppInstallation"
+        members:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.conversationMember"
+        operations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.teamsAsyncOperation"
+        primaryChannel: {}
+        template: {}
+example:
+    id: string (identifier)
+    classification: string
+    description: string
+    displayName: string
+    funSettings:
+        "@odata.type": microsoft.graph.teamFunSettings
+    guestSettings:
+        "@odata.type": microsoft.graph.teamGuestSettings
+    internalId: string
+    isArchived: true
+    memberSettings:
+        "@odata.type": microsoft.graph.teamMemberSettings
+    messagingSettings:
+        "@odata.type": microsoft.graph.teamMessagingSettings
+    specialization:
+        "@odata.type": microsoft.graph.teamSpecialization
+    visibility:
+        "@odata.type": microsoft.graph.teamVisibilityType
+    webUrl: string
+    schedule:
+        "@odata.type": microsoft.graph.schedule
+    channels:
+        - "@odata.type": microsoft.graph.channel
+    group:
+        "@odata.type": microsoft.graph.group
+    installedApps:
+        - "@odata.type": microsoft.graph.teamsAppInstallation
+    members:
+        - "@odata.type": microsoft.graph.conversationMember
+    operations:
+        - "@odata.type": microsoft.graph.teamsAsyncOperation
+    primaryChannel:
+        "@odata.type": microsoft.graph.channel
+    template:
+        "@odata.type": microsoft.graph.teamsTemplate

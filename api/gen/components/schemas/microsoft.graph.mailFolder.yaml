@@ -1,0 +1,61 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: mailFolder
+      type: object
+      properties:
+        childFolderCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        displayName:
+            type: string
+        parentFolderId:
+            type: string
+        totalItemCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        unreadItemCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        childFolders:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.mailFolder"
+        messageRules:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.messageRule"
+        messages:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.message"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    childFolderCount: integer
+    displayName: string
+    parentFolderId: string
+    totalItemCount: integer
+    unreadItemCount: integer
+    childFolders:
+        - "@odata.type": microsoft.graph.mailFolder
+    messageRules:
+        - "@odata.type": microsoft.graph.messageRule
+    messages:
+        - "@odata.type": microsoft.graph.message
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

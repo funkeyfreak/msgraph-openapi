@@ -1,0 +1,45 @@
+get:
+    operationId: workbooks.workbook.worksheets.cell
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - in: path
+          name: row
+          required: true
+          schema:
+            format: int32
+            maximum: 2.147483647e+09
+            minimum: -2.147483648e+09
+            type: integer
+        - in: path
+          name: column
+          required: true
+          schema:
+            format: int32
+            maximum: 2.147483647e+09
+            minimum: -2.147483648e+09
+            type: integer
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function cell
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

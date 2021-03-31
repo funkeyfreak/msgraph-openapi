@@ -1,0 +1,36 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: administrativeUnit
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        description:
+            type: string
+        displayName:
+            type: string
+        visibility:
+            type: string
+        members:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.directoryObject"
+        scopedRoleMembers:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.scopedRoleMembership"
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string
+    visibility: string
+    members:
+        - "@odata.type": microsoft.graph.directoryObject
+    scopedRoleMembers:
+        - "@odata.type": microsoft.graph.scopedRoleMembership
+    extensions:
+        - "@odata.type": microsoft.graph.extension

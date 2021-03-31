@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerTaskDetails
+      type: object
+      properties:
+        checklist: {}
+        description:
+            type: string
+        previewType: {}
+        references: {}
+example:
+    id: string (identifier)
+    checklist:
+        "@odata.type": microsoft.graph.plannerChecklistItems
+    description: string
+    previewType:
+        "@odata.type": microsoft.graph.plannerPreviewType
+    references:
+        "@odata.type": microsoft.graph.plannerExternalReferences

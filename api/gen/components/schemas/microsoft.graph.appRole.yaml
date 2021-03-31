@@ -1,0 +1,30 @@
+title: appRole
+type: object
+properties:
+    allowedMemberTypes:
+        type: array
+        items:
+            type: string
+    description:
+        type: string
+    displayName:
+        type: string
+    id:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+    isEnabled:
+        type: boolean
+    origin:
+        type: string
+    value:
+        type: string
+example:
+    allowedMemberTypes:
+        - string
+    description: string
+    displayName: string
+    id: string
+    isEnabled: true
+    origin: string
+    value: string

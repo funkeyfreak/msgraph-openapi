@@ -1,0 +1,81 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.targetedManagedAppProtection"
+    - title: iosManagedAppProtection
+      description: Policy used to configure detailed management settings targeted to specific security groups and for a specified set of apps on an iOS device
+      type: object
+      properties:
+        appDataEncryptionType:
+            description: Type of encryption which should be used for data in a managed app.
+        customBrowserProtocol:
+            description: A custom browser protocol to open weblink on iOS. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+            type: string
+        deployedAppCount:
+            format: int32
+            description: Count of apps to which the current policy is deployed.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        faceIdBlocked:
+            description: Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True.
+            type: boolean
+        minimumRequiredSdkVersion:
+            description: Versions less than the specified version will block the managed app from accessing company data.
+            type: string
+        apps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedMobileApp"
+        deploymentSummary: {}
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    allowedDataStorageLocations:
+        - "@odata.type": microsoft.graph.managedAppDataStorageLocation
+    allowedInboundDataTransferSources:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    allowedOutboundClipboardSharingLevel:
+        "@odata.type": microsoft.graph.managedAppClipboardSharingLevel
+    allowedOutboundDataTransferDestinations:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    contactSyncBlocked: true
+    dataBackupBlocked: true
+    deviceComplianceRequired: true
+    disableAppPinIfDevicePinIsSet: true
+    fingerprintBlocked: true
+    managedBrowser:
+        "@odata.type": microsoft.graph.managedBrowserType
+    managedBrowserToOpenLinksRequired: true
+    maximumPinRetries: integer
+    minimumPinLength: integer
+    minimumRequiredAppVersion: string
+    minimumRequiredOsVersion: string
+    minimumWarningAppVersion: string
+    minimumWarningOsVersion: string
+    organizationalCredentialsRequired: true
+    periodBeforePinReset: string
+    periodOfflineBeforeAccessCheck: string
+    periodOfflineBeforeWipeIsEnforced: string
+    periodOnlineBeforeAccessCheck: string
+    pinCharacterSet:
+        "@odata.type": microsoft.graph.managedAppPinCharacterSet
+    pinRequired: true
+    printBlocked: true
+    saveAsBlocked: true
+    simplePinBlocked: true
+    isAssigned: true
+    assignments:
+        - "@odata.type": microsoft.graph.targetedManagedAppPolicyAssignment
+    appDataEncryptionType:
+        "@odata.type": microsoft.graph.managedAppDataEncryptionType
+    customBrowserProtocol: string
+    deployedAppCount: integer
+    faceIdBlocked: true
+    minimumRequiredSdkVersion: string
+    apps:
+        - "@odata.type": microsoft.graph.managedMobileApp
+    deploymentSummary:
+        "@odata.type": microsoft.graph.managedAppPolicyDeploymentSummary

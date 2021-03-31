@@ -1,0 +1,78 @@
+get:
+    operationId: policies.GetActivityBasedTimeoutPolicies
+    parameters:
+        - description: 'key: activityBasedTimeoutPolicy-id of activityBasedTimeoutPolicy'
+          in: path
+          name: activityBasedTimeoutPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: activityBasedTimeoutPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - definition
+                    - isOrganizationDefault
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get activityBasedTimeoutPolicies from policies
+    tags:
+        - policies.activityBasedTimeoutPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.UpdateActivityBasedTimeoutPolicies
+    parameters:
+        - description: 'key: activityBasedTimeoutPolicy-id of activityBasedTimeoutPolicy'
+          in: path
+          name: activityBasedTimeoutPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: activityBasedTimeoutPolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property activityBasedTimeoutPolicies in policies
+    tags:
+        - policies.activityBasedTimeoutPolicy
+    x-ms-docs-operation-type: operation

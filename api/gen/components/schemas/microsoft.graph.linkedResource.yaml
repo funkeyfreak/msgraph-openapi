@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: linkedResource
+      type: object
+      properties:
+        applicationName:
+            type: string
+        displayName:
+            type: string
+        externalId:
+            type: string
+        webUrl:
+            type: string
+example:
+    id: string (identifier)
+    applicationName: string
+    displayName: string
+    externalId: string
+    webUrl: string

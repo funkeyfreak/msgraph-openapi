@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: userSettings
+      type: object
+      properties:
+        contributionToContentDiscoveryAsOrganizationDisabled:
+            type: boolean
+        contributionToContentDiscoveryDisabled:
+            type: boolean
+        shiftPreferences: {}
+example:
+    id: string (identifier)
+    contributionToContentDiscoveryAsOrganizationDisabled: true
+    contributionToContentDiscoveryDisabled: true
+    shiftPreferences:
+        "@odata.type": microsoft.graph.shiftPreferences

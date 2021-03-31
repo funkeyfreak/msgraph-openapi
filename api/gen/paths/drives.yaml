@@ -1,0 +1,139 @@
+get:
+    operationId: drives.drive.ListDrive
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdBy
+                    - createdBy desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - eTag
+                    - eTag desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - name
+                    - name desc
+                    - parentReference
+                    - parentReference desc
+                    - webUrl
+                    - webUrl desc
+                    - driveType
+                    - driveType desc
+                    - owner
+                    - owner desc
+                    - quota
+                    - quota desc
+                    - sharePointIds
+                    - sharePointIds desc
+                    - system
+                    - system desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - driveType
+                    - owner
+                    - quota
+                    - sharePointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - following
+                    - items
+                    - list
+                    - root
+                    - special
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.drive'
+                                type: array
+                        title: Collection of drive
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from drives
+    tags:
+        - drives.drive
+    x-ms-docs-operation-type: operation
+post:
+    operationId: drives.drive.CreateDrive
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.drive'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.drive'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to drives
+    tags:
+        - drives.drive
+    x-ms-docs-operation-type: operation

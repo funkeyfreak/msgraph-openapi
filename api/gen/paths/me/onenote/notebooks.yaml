@@ -1,0 +1,118 @@
+get:
+    operationId: me.onenote.ListNotebooks
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - self
+                    - self desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - createdBy
+                    - createdBy desc
+                    - displayName
+                    - displayName desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - isDefault
+                    - isDefault desc
+                    - isShared
+                    - isShared desc
+                    - links
+                    - links desc
+                    - sectionGroupsUrl
+                    - sectionGroupsUrl desc
+                    - sectionsUrl
+                    - sectionsUrl desc
+                    - userRole
+                    - userRole desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - isShared
+                    - links
+                    - sectionGroupsUrl
+                    - sectionsUrl
+                    - userRole
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.notebook'
+                                type: array
+                        title: Collection of notebook
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get notebooks from me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.onenote.CreateNotebooks
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.notebook2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.notebook'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to notebooks for me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,100 @@
+delete:
+    operationId: oauth2PermissionGrants.oAuth2PermissionGrant.DeleteOAuth2PermissionGrant
+    parameters:
+        - description: 'key: oAuth2PermissionGrant-id of oAuth2PermissionGrant'
+          in: path
+          name: oAuth2PermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: oAuth2PermissionGrant
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from oauth2PermissionGrants
+    tags:
+        - oauth2PermissionGrants.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation
+get:
+    operationId: oauth2PermissionGrants.oAuth2PermissionGrant.GetOAuth2PermissionGrant
+    parameters:
+        - description: 'key: oAuth2PermissionGrant-id of oAuth2PermissionGrant'
+          in: path
+          name: oAuth2PermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: oAuth2PermissionGrant
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientId
+                    - consentType
+                    - principalId
+                    - resourceId
+                    - scope
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from oauth2PermissionGrants by key
+    tags:
+        - oauth2PermissionGrants.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: oauth2PermissionGrants.oAuth2PermissionGrant.UpdateOAuth2PermissionGrant
+    parameters:
+        - description: 'key: oAuth2PermissionGrant-id of oAuth2PermissionGrant'
+          in: path
+          name: oAuth2PermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: oAuth2PermissionGrant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in oauth2PermissionGrants
+    tags:
+        - oauth2PermissionGrants.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,77 @@
+get:
+    operationId: deviceManagement.GetDetectedApps
+    parameters:
+        - description: 'key: detectedApp-id of detectedApp'
+          in: path
+          name: detectedApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: detectedApp
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deviceCount
+                    - displayName
+                    - sizeInByte
+                    - version
+                    - managedDevices
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - managedDevices
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.detectedApp'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get detectedApps from deviceManagement
+    tags:
+        - deviceManagement.detectedApp
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDetectedApps
+    parameters:
+        - description: 'key: detectedApp-id of detectedApp'
+          in: path
+          name: detectedApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: detectedApp
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.detectedApp'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property detectedApps in deviceManagement
+    tags:
+        - deviceManagement.detectedApp
+    x-ms-docs-operation-type: operation

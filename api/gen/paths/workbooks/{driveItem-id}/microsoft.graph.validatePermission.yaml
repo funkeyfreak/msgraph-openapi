@@ -1,0 +1,31 @@
+post:
+    operationId: workbooks.validatePermission
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        challengeToken:
+                            type: string
+                        password:
+                            type: string
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action validatePermission
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

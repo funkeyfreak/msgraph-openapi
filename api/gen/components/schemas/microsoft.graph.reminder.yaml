@@ -1,0 +1,28 @@
+title: reminder
+type: object
+properties:
+    changeKey:
+        type: string
+    eventEndTime: {}
+    eventId:
+        type: string
+    eventLocation: {}
+    eventStartTime: {}
+    eventSubject:
+        type: string
+    eventWebLink:
+        type: string
+    reminderFireTime: {}
+example:
+    changeKey: string
+    eventEndTime:
+        "@odata.type": microsoft.graph.dateTimeTimeZone
+    eventId: string
+    eventLocation:
+        "@odata.type": microsoft.graph.location
+    eventStartTime:
+        "@odata.type": microsoft.graph.dateTimeTimeZone
+    eventSubject: string
+    eventWebLink: string
+    reminderFireTime:
+        "@odata.type": microsoft.graph.dateTimeTimeZone

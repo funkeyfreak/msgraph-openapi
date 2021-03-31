@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                name:
+                    type: string
+                formula:
+                    type: string
+                comment:
+                    type: string
+description: Action parameters
+required: true

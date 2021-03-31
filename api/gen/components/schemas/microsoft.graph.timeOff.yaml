@@ -1,0 +1,20 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.changeTrackedEntity"
+    - title: timeOff
+      type: object
+      properties:
+        draftTimeOff: {}
+        sharedTimeOff: {}
+        userId:
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    draftTimeOff:
+        "@odata.type": microsoft.graph.timeOffItem
+    sharedTimeOff:
+        "@odata.type": microsoft.graph.timeOffItem
+    userId: string

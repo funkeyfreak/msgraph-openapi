@@ -1,0 +1,55 @@
+get:
+    operationId: me.GetPlanner
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerUser'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get planner from me
+    tags:
+        - me.plannerUser
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdatePlanner
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.plannerUser'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property planner in me
+    tags:
+        - me.plannerUser
+    x-ms-docs-operation-type: operation

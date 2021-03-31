@@ -1,0 +1,112 @@
+get:
+    operationId: communications.ListCallRecords
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - endDateTime
+                    - endDateTime desc
+                    - joinWebUrl
+                    - joinWebUrl desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - modalities
+                    - modalities desc
+                    - organizer
+                    - organizer desc
+                    - participants
+                    - participants desc
+                    - startDateTime
+                    - startDateTime desc
+                    - type
+                    - type desc
+                    - version
+                    - version desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - endDateTime
+                    - joinWebUrl
+                    - lastModifiedDateTime
+                    - modalities
+                    - organizer
+                    - participants
+                    - startDateTime
+                    - type
+                    - version
+                    - sessions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - sessions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.callRecords.callRecord'
+                                type: array
+                        title: Collection of callRecord
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get callRecords from communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation
+post:
+    operationId: communications.CreateCallRecords
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.callRecords.callRecord'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.callRecords.callRecord'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to callRecords for communications
+    tags:
+        - communications.callRecord
+    x-ms-docs-operation-type: operation

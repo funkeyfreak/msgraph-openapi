@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartSeriesFormat
+      type: object
+      properties:
+        fill: {}
+        line: {}
+example:
+    id: string (identifier)
+    fill:
+        "@odata.type": microsoft.graph.workbookChartFill
+    line:
+        "@odata.type": microsoft.graph.workbookChartLineFormat

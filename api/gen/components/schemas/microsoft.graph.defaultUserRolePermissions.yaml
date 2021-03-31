@@ -1,0 +1,19 @@
+title: defaultUserRolePermissions
+type: object
+properties:
+    allowedToCreateApps:
+        type: boolean
+    allowedToCreateSecurityGroups:
+        type: boolean
+    allowedToReadOtherUsers:
+        type: boolean
+    permissionGrantPoliciesAssigned:
+        type: array
+        items:
+            type: string
+example:
+    allowedToCreateApps: true
+    allowedToCreateSecurityGroups: true
+    allowedToReadOtherUsers: true
+    permissionGrantPoliciesAssigned:
+        - string

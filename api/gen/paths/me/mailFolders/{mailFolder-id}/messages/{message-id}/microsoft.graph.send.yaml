@@ -1,0 +1,26 @@
+post:
+    operationId: me.mailFolders.messages.send
+    parameters:
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action send
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

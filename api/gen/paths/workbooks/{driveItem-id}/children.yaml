@@ -1,0 +1,206 @@
+get:
+    operationId: workbooks.ListChildren
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdBy
+                    - createdBy desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - eTag
+                    - eTag desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - name
+                    - name desc
+                    - parentReference
+                    - parentReference desc
+                    - webUrl
+                    - webUrl desc
+                    - audio
+                    - audio desc
+                    - content
+                    - content desc
+                    - cTag
+                    - cTag desc
+                    - deleted
+                    - deleted desc
+                    - file
+                    - file desc
+                    - fileSystemInfo
+                    - fileSystemInfo desc
+                    - folder
+                    - folder desc
+                    - image
+                    - image desc
+                    - location
+                    - location desc
+                    - package
+                    - package desc
+                    - pendingOperations
+                    - pendingOperations desc
+                    - photo
+                    - photo desc
+                    - publication
+                    - publication desc
+                    - remoteItem
+                    - remoteItem desc
+                    - root
+                    - root desc
+                    - searchResult
+                    - searchResult desc
+                    - shared
+                    - shared desc
+                    - sharepointIds
+                    - sharepointIds desc
+                    - size
+                    - size desc
+                    - specialFolder
+                    - specialFolder desc
+                    - video
+                    - video desc
+                    - webDavUrl
+                    - webDavUrl desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - audio
+                    - content
+                    - cTag
+                    - deleted
+                    - file
+                    - fileSystemInfo
+                    - folder
+                    - image
+                    - location
+                    - package
+                    - pendingOperations
+                    - photo
+                    - publication
+                    - remoteItem
+                    - root
+                    - searchResult
+                    - shared
+                    - sharepointIds
+                    - size
+                    - specialFolder
+                    - video
+                    - webDavUrl
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.driveItem'
+                                type: array
+                        title: Collection of driveItem
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get children from workbooks
+    tags:
+        - workbooks.driveItem
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.CreateChildren
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.driveItem'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.driveItem'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to children for workbooks
+    tags:
+        - workbooks.driveItem
+    x-ms-docs-operation-type: operation

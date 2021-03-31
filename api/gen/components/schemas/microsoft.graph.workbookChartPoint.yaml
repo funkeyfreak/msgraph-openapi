@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartPoint
+      type: object
+      properties:
+        value: {}
+        format: {}
+example:
+    id: string (identifier)
+    value:
+        "@odata.type": microsoft.graph.Json
+    format:
+        "@odata.type": microsoft.graph.workbookChartPointFormat

@@ -1,0 +1,81 @@
+get:
+    operationId: me.events.GetMultiValueExtendedProperties
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: multiValueLegacyExtendedProperty-id of multiValueLegacyExtendedProperty'
+          in: path
+          name: multiValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: multiValueLegacyExtendedProperty
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - value
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get multiValueExtendedProperties from me
+    tags:
+        - me.event
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.events.UpdateMultiValueExtendedProperties
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: multiValueLegacyExtendedProperty-id of multiValueLegacyExtendedProperty'
+          in: path
+          name: multiValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: multiValueLegacyExtendedProperty
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.multiValueLegacyExtendedProperty'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property multiValueExtendedProperties in me
+    tags:
+        - me.event
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,82 @@
+get:
+    operationId: auditLogs.GetDirectoryAudits
+    parameters:
+        - description: 'key: directoryAudit-id of directoryAudit'
+          in: path
+          name: directoryAudit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryAudit
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activityDateTime
+                    - activityDisplayName
+                    - additionalDetails
+                    - category
+                    - correlationId
+                    - initiatedBy
+                    - loggedByService
+                    - operationType
+                    - result
+                    - resultReason
+                    - targetResources
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryAudit'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get directoryAudits from auditLogs
+    tags:
+        - auditLogs.directoryAudit
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: auditLogs.UpdateDirectoryAudits
+    parameters:
+        - description: 'key: directoryAudit-id of directoryAudit'
+          in: path
+          name: directoryAudit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryAudit
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryAudit'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property directoryAudits in auditLogs
+    tags:
+        - auditLogs.directoryAudit
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,139 @@
+get:
+    operationId: users.contactFolders.GetContacts
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - assistantName
+                    - birthday
+                    - businessAddress
+                    - businessHomePage
+                    - businessPhones
+                    - children
+                    - companyName
+                    - department
+                    - displayName
+                    - emailAddresses
+                    - fileAs
+                    - generation
+                    - givenName
+                    - homeAddress
+                    - homePhones
+                    - imAddresses
+                    - initials
+                    - jobTitle
+                    - manager
+                    - middleName
+                    - mobilePhone
+                    - nickName
+                    - officeLocation
+                    - otherAddress
+                    - parentFolderId
+                    - personalNotes
+                    - profession
+                    - spouseName
+                    - surname
+                    - title
+                    - yomiCompanyName
+                    - yomiGivenName
+                    - yomiSurname
+                    - extensions
+                    - multiValueExtendedProperties
+                    - photo
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - extensions
+                    - multiValueExtendedProperties
+                    - photo
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contact'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contacts from users
+    tags:
+        - users.contactFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.contactFolders.UpdateContacts
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contact'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property contacts in users
+    tags:
+        - users.contactFolder
+    x-ms-docs-operation-type: operation

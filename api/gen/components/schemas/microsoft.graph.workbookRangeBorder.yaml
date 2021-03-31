@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookRangeBorder
+      type: object
+      properties:
+        color:
+            type: string
+        sideIndex:
+            type: string
+        style:
+            type: string
+        weight:
+            type: string
+example:
+    id: string (identifier)
+    color: string
+    sideIndex: string
+    style: string
+    weight: string

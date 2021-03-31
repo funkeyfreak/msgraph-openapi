@@ -1,0 +1,22 @@
+post:
+    operationId: domains.verify
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action verify
+    tags:
+        - domains.Actions
+    x-ms-docs-operation-type: action

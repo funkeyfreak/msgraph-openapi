@@ -1,0 +1,12 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: targetedManagedAppPolicyAssignment
+      description: The type for deployment of groups or apps.
+      type: object
+      properties:
+        target:
+            description: Identifier for deployment to a group or app
+example:
+    id: string (identifier)
+    target:
+        "@odata.type": microsoft.graph.deviceAndAppManagementAssignmentTarget

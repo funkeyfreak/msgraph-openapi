@@ -1,0 +1,13 @@
+title: driveRecipient
+type: object
+properties:
+    alias:
+        type: string
+    email:
+        type: string
+    objectId:
+        type: string
+example:
+    alias: string
+    email: string
+    objectId: string

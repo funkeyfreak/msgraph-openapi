@@ -1,0 +1,6 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamsTemplate
+      type: object
+example:
+    id: string (identifier)

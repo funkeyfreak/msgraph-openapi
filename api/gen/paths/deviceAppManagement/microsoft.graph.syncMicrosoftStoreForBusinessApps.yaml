@@ -1,0 +1,11 @@
+post:
+    operationId: deviceAppManagement.syncMicrosoftStoreForBusinessApps
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action syncMicrosoftStoreForBusinessApps
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

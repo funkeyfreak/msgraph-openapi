@@ -1,0 +1,28 @@
+post:
+    operationId: communications.calls.changeScreenSharingRole
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        role: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action changeScreenSharingRole
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

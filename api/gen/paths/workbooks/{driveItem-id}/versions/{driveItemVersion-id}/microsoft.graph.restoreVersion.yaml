@@ -1,0 +1,26 @@
+post:
+    operationId: workbooks.versions.restoreVersion
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: driveItemVersion-id of driveItemVersion'
+          in: path
+          name: driveItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItemVersion
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action restoreVersion
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

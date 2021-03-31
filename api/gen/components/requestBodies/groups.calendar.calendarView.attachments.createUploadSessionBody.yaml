@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                AttachmentItem:
+                    $ref: "#/components/schemas/microsoft.graph.attachmentItem"
+description: Action parameters
+required: true

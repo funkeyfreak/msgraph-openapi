@@ -1,0 +1,97 @@
+get:
+    operationId: teams.schedule.GetOpenShiftChangeRequests
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: openShiftChangeRequest-id of openShiftChangeRequest'
+          in: path
+          name: openShiftChangeRequest-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: openShiftChangeRequest
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - assignedTo
+                    - managerActionDateTime
+                    - managerActionMessage
+                    - managerUserId
+                    - senderDateTime
+                    - senderMessage
+                    - senderUserId
+                    - state
+                    - openShiftId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.openShiftChangeRequest'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get openShiftChangeRequests from teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.schedule.UpdateOpenShiftChangeRequests
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: openShiftChangeRequest-id of openShiftChangeRequest'
+          in: path
+          name: openShiftChangeRequest-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: openShiftChangeRequest
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.openShiftChangeRequest'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property openShiftChangeRequests in teams
+    tags:
+        - teams.schedule
+    x-ms-docs-operation-type: operation

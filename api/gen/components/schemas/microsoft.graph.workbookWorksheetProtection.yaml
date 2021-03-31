@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookWorksheetProtection
+      type: object
+      properties:
+        options: {}
+        protected:
+            type: boolean
+example:
+    id: string (identifier)
+    options:
+        "@odata.type": microsoft.graph.workbookWorksheetProtectionOptions
+    protected: true

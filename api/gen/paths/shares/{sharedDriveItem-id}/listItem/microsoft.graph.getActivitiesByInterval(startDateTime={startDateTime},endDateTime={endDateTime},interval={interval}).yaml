@@ -1,0 +1,39 @@
+get:
+    operationId: shares.listItem.getActivitiesByInterval-53ee
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - in: path
+          name: startDateTime
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: endDateTime
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: interval
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getActivitiesByInterval
+    tags:
+        - shares.Functions
+    x-ms-docs-operation-type: function

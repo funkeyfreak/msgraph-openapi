@@ -1,0 +1,59 @@
+get:
+    operationId: me.GetCalendarGroups
+    parameters:
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - changeKey
+                    - classId
+                    - name
+                    - calendars
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendarGroup'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendarGroups from me
+    tags:
+        - me.calendarGroup
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateCalendarGroups
+    parameters:
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendarGroup'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendarGroups in me
+    tags:
+        - me.calendarGroup
+    x-ms-docs-operation-type: operation

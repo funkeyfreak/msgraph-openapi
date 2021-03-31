@@ -1,0 +1,109 @@
+delete:
+    operationId: organization.organization.DeleteOrganization
+    parameters:
+        - description: 'key: organization-id of organization'
+          in: path
+          name: organization-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: organization
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from organization
+    tags:
+        - organization.organization
+    x-ms-docs-operation-type: operation
+get:
+    operationId: organization.organization.GetOrganization
+    parameters:
+        - description: 'key: organization-id of organization'
+          in: path
+          name: organization-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: organization
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - assignedPlans
+                    - businessPhones
+                    - city
+                    - country
+                    - countryLetterCode
+                    - createdDateTime
+                    - displayName
+                    - marketingNotificationEmails
+                    - onPremisesLastSyncDateTime
+                    - onPremisesSyncEnabled
+                    - postalCode
+                    - preferredLanguage
+                    - privacyProfile
+                    - provisionedPlans
+                    - securityComplianceNotificationMails
+                    - securityComplianceNotificationPhones
+                    - state
+                    - street
+                    - technicalNotificationMails
+                    - tenantType
+                    - verifiedDomains
+                    - mobileDeviceManagementAuthority
+                    - certificateBasedAuthConfiguration
+                    - extensions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.organization'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from organization by key
+    tags:
+        - organization.organization
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: organization.organization.UpdateOrganization
+    parameters:
+        - description: 'key: organization-id of organization'
+          in: path
+          name: organization-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: organization
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.organization'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in organization
+    tags:
+        - organization.organization
+    x-ms-docs-operation-type: operation

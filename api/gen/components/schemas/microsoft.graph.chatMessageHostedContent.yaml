@@ -1,0 +1,6 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: chatMessageHostedContent
+      type: object
+example:
+    id: string (identifier)

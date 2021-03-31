@@ -1,0 +1,43 @@
+get:
+    operationId: deviceManagement.GetManagedDeviceOverview
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deviceExchangeAccessStateSummary
+                    - deviceOperatingSystemSummary
+                    - dualEnrolledDeviceCount
+                    - enrolledDeviceCount
+                    - mdmEnrolledCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDeviceOverview'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedDeviceOverview from deviceManagement
+    tags:
+        - deviceManagement.managedDeviceOverview
+    x-ms-docs-operation-type: operation

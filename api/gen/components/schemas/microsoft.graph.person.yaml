@@ -1,0 +1,72 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: person
+      type: object
+      properties:
+        birthday:
+            type: string
+        companyName:
+            type: string
+        department:
+            type: string
+        displayName:
+            type: string
+        givenName:
+            type: string
+        imAddress:
+            type: string
+        isFavorite:
+            type: boolean
+        jobTitle:
+            type: string
+        officeLocation:
+            type: string
+        personNotes:
+            type: string
+        personType: {}
+        phones:
+            type: array
+            items: {}
+        postalAddresses:
+            type: array
+            items: {}
+        profession:
+            type: string
+        scoredEmailAddresses:
+            type: array
+            items: {}
+        surname:
+            type: string
+        userPrincipalName:
+            type: string
+        websites:
+            type: array
+            items: {}
+        yomiCompany:
+            type: string
+example:
+    id: string (identifier)
+    birthday: string
+    companyName: string
+    department: string
+    displayName: string
+    givenName: string
+    imAddress: string
+    isFavorite: true
+    jobTitle: string
+    officeLocation: string
+    personNotes: string
+    personType:
+        "@odata.type": microsoft.graph.personType
+    phones:
+        - "@odata.type": microsoft.graph.phone
+    postalAddresses:
+        - "@odata.type": microsoft.graph.location
+    profession: string
+    scoredEmailAddresses:
+        - "@odata.type": microsoft.graph.scoredEmailAddress
+    surname: string
+    userPrincipalName: string
+    websites:
+        - "@odata.type": microsoft.graph.website
+    yomiCompany: string

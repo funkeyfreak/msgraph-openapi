@@ -1,0 +1,6 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartFill
+      type: object
+example:
+    id: string (identifier)

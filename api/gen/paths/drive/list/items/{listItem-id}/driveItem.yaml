@@ -1,0 +1,117 @@
+get:
+    operationId: drive.list.items.GetDriveItem
+    parameters:
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - audio
+                    - content
+                    - cTag
+                    - deleted
+                    - file
+                    - fileSystemInfo
+                    - folder
+                    - image
+                    - location
+                    - package
+                    - pendingOperations
+                    - photo
+                    - publication
+                    - remoteItem
+                    - root
+                    - searchResult
+                    - shared
+                    - sharepointIds
+                    - size
+                    - specialFolder
+                    - video
+                    - webDavUrl
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.driveItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get driveItem from drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drive.list.items.UpdateDriveItem
+    parameters:
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.driveItem2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property driveItem in drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation

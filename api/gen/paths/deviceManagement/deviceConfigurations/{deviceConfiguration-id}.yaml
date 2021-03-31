@@ -1,0 +1,88 @@
+get:
+    operationId: deviceManagement.GetDeviceConfigurations
+    parameters:
+        - description: 'key: deviceConfiguration-id of deviceConfiguration'
+          in: path
+          name: deviceConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfiguration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - assignments
+                    - deviceSettingStateSummaries
+                    - deviceStatuses
+                    - deviceStatusOverview
+                    - userStatuses
+                    - userStatusOverview
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - deviceSettingStateSummaries
+                    - deviceStatuses
+                    - deviceStatusOverview
+                    - userStatuses
+                    - userStatusOverview
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceConfiguration'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceConfigurations from deviceManagement
+    tags:
+        - deviceManagement.deviceConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDeviceConfigurations
+    parameters:
+        - description: 'key: deviceConfiguration-id of deviceConfiguration'
+          in: path
+          name: deviceConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceConfiguration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceConfiguration'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceConfigurations in deviceManagement
+    tags:
+        - deviceManagement.deviceConfiguration
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,91 @@
+get:
+    operationId: deviceManagement.termsAndConditions.GetAcceptanceStatuses
+    parameters:
+        - description: 'key: termsAndConditions-id of termsAndConditions'
+          in: path
+          name: termsAndConditions-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditions
+        - description: 'key: termsAndConditionsAcceptanceStatus-id of termsAndConditionsAcceptanceStatus'
+          in: path
+          name: termsAndConditionsAcceptanceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditionsAcceptanceStatus
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - acceptedDateTime
+                    - acceptedVersion
+                    - userDisplayName
+                    - userPrincipalName
+                    - termsAndConditions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - termsAndConditions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.termsAndConditionsAcceptanceStatus'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get acceptanceStatuses from deviceManagement
+    tags:
+        - deviceManagement.termsAndConditions
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.termsAndConditions.UpdateAcceptanceStatuses
+    parameters:
+        - description: 'key: termsAndConditions-id of termsAndConditions'
+          in: path
+          name: termsAndConditions-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditions
+        - description: 'key: termsAndConditionsAcceptanceStatus-id of termsAndConditionsAcceptanceStatus'
+          in: path
+          name: termsAndConditionsAcceptanceStatus-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: termsAndConditionsAcceptanceStatus
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.termsAndConditionsAcceptanceStatus'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property acceptanceStatuses in deviceManagement
+    tags:
+        - deviceManagement.termsAndConditions
+    x-ms-docs-operation-type: operation

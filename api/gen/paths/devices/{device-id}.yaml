@@ -1,0 +1,109 @@
+delete:
+    operationId: devices.device.DeleteDevice
+    parameters:
+        - description: 'key: device-id of device'
+          in: path
+          name: device-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: device
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from devices
+    tags:
+        - devices.device
+    x-ms-docs-operation-type: operation
+get:
+    operationId: devices.device.GetDevice
+    parameters:
+        - description: 'key: device-id of device'
+          in: path
+          name: device-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: device
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - accountEnabled
+                    - alternativeSecurityIds
+                    - approximateLastSignInDateTime
+                    - complianceExpirationDateTime
+                    - deviceId
+                    - deviceMetadata
+                    - deviceVersion
+                    - displayName
+                    - isCompliant
+                    - isManaged
+                    - mdmAppId
+                    - onPremisesLastSyncDateTime
+                    - onPremisesSyncEnabled
+                    - operatingSystem
+                    - operatingSystemVersion
+                    - physicalIds
+                    - profileType
+                    - systemLabels
+                    - trustType
+                    - memberOf
+                    - registeredOwners
+                    - registeredUsers
+                    - transitiveMemberOf
+                    - extensions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.device'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from devices by key
+    tags:
+        - devices.device
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: devices.device.UpdateDevice
+    parameters:
+        - description: 'key: device-id of device'
+          in: path
+          name: device-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: device
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.device'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in devices
+    tags:
+        - devices.device
+    x-ms-docs-operation-type: operation

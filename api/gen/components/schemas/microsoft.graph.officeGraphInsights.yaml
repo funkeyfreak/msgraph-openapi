@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: officeGraphInsights
+      type: object
+      properties:
+        shared:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.sharedInsight"
+        trending:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.trending"
+        used:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.usedInsight"
+example:
+    id: string (identifier)
+    shared:
+        - "@odata.type": microsoft.graph.sharedInsight
+    trending:
+        - "@odata.type": microsoft.graph.trending
+    used:
+        - "@odata.type": microsoft.graph.usedInsight

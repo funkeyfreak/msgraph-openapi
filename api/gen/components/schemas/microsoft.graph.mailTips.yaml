@@ -1,0 +1,51 @@
+title: mailTips
+type: object
+properties:
+    automaticReplies: {}
+    customMailTip:
+        type: string
+    deliveryRestricted:
+        type: boolean
+    emailAddress: {}
+    error: {}
+    externalMemberCount:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+    isModerated:
+        type: boolean
+    mailboxFull:
+        type: boolean
+    maxMessageSize:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+    recipientScope: {}
+    recipientSuggestions:
+        type: array
+        items: {}
+    totalMemberCount:
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+        type: integer
+example:
+    automaticReplies:
+        "@odata.type": microsoft.graph.automaticRepliesMailTips
+    customMailTip: string
+    deliveryRestricted: true
+    emailAddress:
+        "@odata.type": microsoft.graph.emailAddress
+    error:
+        "@odata.type": microsoft.graph.mailTipsError
+    externalMemberCount: integer
+    isModerated: true
+    mailboxFull: true
+    maxMessageSize: integer
+    recipientScope:
+        "@odata.type": microsoft.graph.recipientScopeType
+    recipientSuggestions:
+        - "@odata.type": microsoft.graph.recipient
+    totalMemberCount: integer

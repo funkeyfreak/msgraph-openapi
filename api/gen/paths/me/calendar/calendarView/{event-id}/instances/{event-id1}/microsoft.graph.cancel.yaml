@@ -1,0 +1,28 @@
+post:
+    operationId: me.calendar.calendarView.instances.cancel
+    parameters:
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+        - description: 'key: event-id of event'
+          in: path
+          name: event-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: event
+    requestBody:
+        $ref: '#/components/requestBodies/groups.calendar.calendarView.instances.cancelBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action cancel
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

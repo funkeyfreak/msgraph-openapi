@@ -1,0 +1,34 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: detectedApp
+      description: A managed or unmanaged app that is installed on a managed device. Unmanaged apps will only appear for devices marked as corporate owned.
+      type: object
+      properties:
+        deviceCount:
+            format: int32
+            description: The number of devices that have installed this application
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        displayName:
+            description: Name of the discovered application. Read-only
+            type: string
+        sizeInByte:
+            format: int64
+            description: Discovered application size in bytes. Read-only
+            type: integer
+        version:
+            description: Version of the discovered application. Read-only
+            type: string
+        managedDevices:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedDevice"
+example:
+    id: string (identifier)
+    deviceCount: integer
+    displayName: string
+    sizeInByte: integer
+    version: string
+    managedDevices:
+        - "@odata.type": microsoft.graph.managedDevice

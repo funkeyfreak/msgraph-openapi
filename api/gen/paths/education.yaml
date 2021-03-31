@@ -1,0 +1,64 @@
+get:
+    operationId: education.educationRoot.GetEducationRoot
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classes
+                    - me
+                    - schools
+                    - users
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - classes
+                    - me
+                    - schools
+                    - users
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.educationRoot'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get education
+    tags:
+        - education.educationRoot
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: education.educationRoot.UpdateEducationRoot
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.educationRoot'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update education
+    tags:
+        - education.educationRoot
+    x-ms-docs-operation-type: operation

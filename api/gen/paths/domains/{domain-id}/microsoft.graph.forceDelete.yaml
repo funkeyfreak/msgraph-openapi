@@ -1,0 +1,30 @@
+post:
+    operationId: domains.forceDelete
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        disableUserAccounts:
+                            default: false
+                            type: boolean
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action forceDelete
+    tags:
+        - domains.Actions
+    x-ms-docs-operation-type: action

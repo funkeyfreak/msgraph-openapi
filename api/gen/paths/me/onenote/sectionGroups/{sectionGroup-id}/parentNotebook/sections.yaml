@@ -1,0 +1,126 @@
+get:
+    operationId: me.onenote.sectionGroups.parentNotebook.ListSections
+    parameters:
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - self
+                    - self desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - createdBy
+                    - createdBy desc
+                    - displayName
+                    - displayName desc
+                    - lastModifiedBy
+                    - lastModifiedBy desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - isDefault
+                    - isDefault desc
+                    - links
+                    - links desc
+                    - pagesUrl
+                    - pagesUrl desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - links
+                    - pagesUrl
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - pages
+                    - parentNotebook
+                    - parentSectionGroup
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.onenoteSection'
+                                type: array
+                        title: Collection of onenoteSection
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get sections from me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.onenote.sectionGroups.parentNotebook.CreateSections
+    parameters:
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenoteSection'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenoteSection'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to sections for me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation

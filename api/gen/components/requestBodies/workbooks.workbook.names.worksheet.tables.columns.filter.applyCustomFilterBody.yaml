@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                criteria1:
+                    type: string
+                criteria2:
+                    type: string
+                oper:
+                    type: string
+description: Action parameters
+required: true

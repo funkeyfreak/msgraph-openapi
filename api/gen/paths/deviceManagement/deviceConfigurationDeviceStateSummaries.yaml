@@ -1,0 +1,63 @@
+get:
+    operationId: deviceManagement.GetDeviceConfigurationDeviceStateSummaries
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - compliantDeviceCount
+                    - conflictDeviceCount
+                    - errorDeviceCount
+                    - nonCompliantDeviceCount
+                    - notApplicableDeviceCount
+                    - remediatedDeviceCount
+                    - unknownDeviceCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceConfigurationDeviceStateSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceConfigurationDeviceStateSummaries from deviceManagement
+    tags:
+        - deviceManagement.deviceConfigurationDeviceStateSummary
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDeviceConfigurationDeviceStateSummaries
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceConfigurationDeviceStateSummary'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceConfigurationDeviceStateSummaries in deviceManagement
+    tags:
+        - deviceManagement.deviceConfigurationDeviceStateSummary
+    x-ms-docs-operation-type: operation

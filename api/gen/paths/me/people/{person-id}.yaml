@@ -1,0 +1,74 @@
+get:
+    operationId: me.GetPeople
+    parameters:
+        - description: 'key: person-id of person'
+          in: path
+          name: person-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: person
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - birthday
+                    - companyName
+                    - department
+                    - displayName
+                    - givenName
+                    - imAddress
+                    - isFavorite
+                    - jobTitle
+                    - officeLocation
+                    - personNotes
+                    - personType
+                    - phones
+                    - postalAddresses
+                    - profession
+                    - scoredEmailAddresses
+                    - surname
+                    - userPrincipalName
+                    - websites
+                    - yomiCompany
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.person'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get people from me
+    tags:
+        - me.person
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdatePeople
+    parameters:
+        - description: 'key: person-id of person'
+          in: path
+          name: person-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: person
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.person2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property people in me
+    tags:
+        - me.person
+    x-ms-docs-operation-type: operation

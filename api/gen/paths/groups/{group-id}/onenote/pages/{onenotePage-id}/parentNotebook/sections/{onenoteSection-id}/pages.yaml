@@ -1,0 +1,158 @@
+get:
+    operationId: groups.onenote.pages.parentNotebook.sections.ListPages
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - self
+                    - self desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - content
+                    - content desc
+                    - contentUrl
+                    - contentUrl desc
+                    - createdByAppId
+                    - createdByAppId desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - level
+                    - level desc
+                    - links
+                    - links desc
+                    - order
+                    - order desc
+                    - title
+                    - title desc
+                    - userTags
+                    - userTags desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - content
+                    - contentUrl
+                    - createdByAppId
+                    - lastModifiedDateTime
+                    - level
+                    - links
+                    - order
+                    - title
+                    - userTags
+                    - parentNotebook
+                    - parentSection
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - parentNotebook
+                    - parentSection
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.onenotePage'
+                                type: array
+                        title: Collection of onenotePage
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get pages from groups
+    tags:
+        - groups.onenote
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.onenote.pages.parentNotebook.sections.CreatePages
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenotePage'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenotePage'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to pages for groups
+    tags:
+        - groups.onenote
+    x-ms-docs-operation-type: operation

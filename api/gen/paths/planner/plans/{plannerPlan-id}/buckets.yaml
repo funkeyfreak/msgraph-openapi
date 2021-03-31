@@ -1,0 +1,79 @@
+get:
+    operationId: planner.plans.ListBuckets
+    parameters:
+        - description: 'key: plannerPlan-id of plannerPlan'
+          in: path
+          name: plannerPlan-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerPlan
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - name
+                    - name desc
+                    - orderHint
+                    - orderHint desc
+                    - planId
+                    - planId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - name
+                    - orderHint
+                    - planId
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.plannerBucket'
+                                type: array
+                        title: Collection of plannerBucket
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get buckets from planner
+    tags:
+        - planner.plannerPlan
+    x-ms-docs-operation-type: operation

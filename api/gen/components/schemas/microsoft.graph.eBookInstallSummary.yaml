@@ -1,0 +1,50 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: eBookInstallSummary
+      description: Contains properties for the installation summary of a book for a device.
+      type: object
+      properties:
+        failedDeviceCount:
+            format: int32
+            description: Number of Devices that have failed to install this book.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        failedUserCount:
+            format: int32
+            description: Number of Users that have 1 or more device that failed to install this book.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        installedDeviceCount:
+            format: int32
+            description: Number of Devices that have successfully installed this book.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        installedUserCount:
+            format: int32
+            description: Number of Users whose devices have all succeeded to install this book.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notInstalledDeviceCount:
+            format: int32
+            description: Number of Devices that does not have this book installed.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notInstalledUserCount:
+            format: int32
+            description: Number of Users that did not install this book.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    failedDeviceCount: integer
+    failedUserCount: integer
+    installedDeviceCount: integer
+    installedUserCount: integer
+    notInstalledDeviceCount: integer
+    notInstalledUserCount: integer

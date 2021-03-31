@@ -1,0 +1,62 @@
+get:
+    operationId: planner.planner.GetPlanner
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - buckets
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - buckets
+                    - plans
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.planner'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get planner
+    tags:
+        - planner.planner
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: planner.planner.UpdatePlanner
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.planner'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update planner
+    tags:
+        - planner.planner
+    x-ms-docs-operation-type: operation

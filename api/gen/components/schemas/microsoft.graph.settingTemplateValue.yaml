@@ -1,0 +1,16 @@
+title: settingTemplateValue
+type: object
+properties:
+    defaultValue:
+        type: string
+    description:
+        type: string
+    name:
+        type: string
+    type:
+        type: string
+example:
+    defaultValue: string
+    description: string
+    name: string
+    type: string

@@ -1,0 +1,13 @@
+title: requiredResourceAccess
+type: object
+properties:
+    resourceAccess:
+        type: array
+        items:
+            $ref: "#/components/schemas/microsoft.graph.resourceAccess"
+    resourceAppId:
+        type: string
+example:
+    resourceAccess:
+        - "@odata.type": microsoft.graph.resourceAccess
+    resourceAppId: string

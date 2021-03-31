@@ -1,0 +1,15 @@
+get:
+    operationId: reports.getOffice365ActivationsUserDetail
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.report'
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getOffice365ActivationsUserDetail
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

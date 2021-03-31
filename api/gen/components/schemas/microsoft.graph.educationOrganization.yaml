@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: educationOrganization
+      type: object
+      properties:
+        description:
+            type: string
+        displayName:
+            type: string
+        externalSource: {}
+example:
+    id: string (identifier)
+    description: string
+    displayName: string
+    externalSource:
+        "@odata.type": microsoft.graph.educationExternalSource

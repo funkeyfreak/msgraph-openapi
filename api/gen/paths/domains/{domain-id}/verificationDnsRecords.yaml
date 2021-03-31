@@ -1,0 +1,108 @@
+get:
+    operationId: domains.ListVerificationDnsRecords
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - isOptional
+                    - isOptional desc
+                    - label
+                    - label desc
+                    - recordType
+                    - recordType desc
+                    - supportedService
+                    - supportedService desc
+                    - ttl
+                    - ttl desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - isOptional
+                    - label
+                    - recordType
+                    - supportedService
+                    - ttl
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.domainDnsRecord'
+                                type: array
+                        title: Collection of domainDnsRecord
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get verificationDnsRecords from domains
+    tags:
+        - domains.domainDnsRecord
+    x-ms-docs-operation-type: operation
+post:
+    operationId: domains.CreateVerificationDnsRecords
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.domainDnsRecord2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.domainDnsRecord'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to verificationDnsRecords for domains
+    tags:
+        - domains.domainDnsRecord
+    x-ms-docs-operation-type: operation

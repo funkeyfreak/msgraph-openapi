@@ -1,0 +1,99 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerTask
+      type: object
+      properties:
+        activeChecklistItemCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        appliedCategories: {}
+        assigneePriority:
+            type: string
+        assignments: {}
+        bucketId:
+            type: string
+        checklistItemCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        completedBy: {}
+        completedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        conversationThreadId:
+            type: string
+        createdBy: {}
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        dueDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        hasDescription:
+            type: boolean
+        orderHint:
+            type: string
+        percentComplete:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        planId:
+            type: string
+        previewType: {}
+        referenceCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        startDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        title:
+            type: string
+        assignedToTaskBoardFormat: {}
+        bucketTaskBoardFormat: {}
+        details: {}
+        progressTaskBoardFormat: {}
+example:
+    id: string (identifier)
+    activeChecklistItemCount: integer
+    appliedCategories:
+        "@odata.type": microsoft.graph.plannerAppliedCategories
+    assigneePriority: string
+    assignments:
+        "@odata.type": microsoft.graph.plannerAssignments
+    bucketId: string
+    checklistItemCount: integer
+    completedBy:
+        "@odata.type": microsoft.graph.identitySet
+    completedDateTime: string (timestamp)
+    conversationThreadId: string
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    dueDateTime: string (timestamp)
+    hasDescription: true
+    orderHint: string
+    percentComplete: integer
+    planId: string
+    previewType:
+        "@odata.type": microsoft.graph.plannerPreviewType
+    referenceCount: integer
+    startDateTime: string (timestamp)
+    title: string
+    assignedToTaskBoardFormat:
+        "@odata.type": microsoft.graph.plannerAssignedToTaskBoardTaskFormat
+    bucketTaskBoardFormat:
+        "@odata.type": microsoft.graph.plannerBucketTaskBoardTaskFormat
+    details:
+        "@odata.type": microsoft.graph.plannerTaskDetails
+    progressTaskBoardFormat:
+        "@odata.type": microsoft.graph.plannerProgressTaskBoardTaskFormat

@@ -1,0 +1,24 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: endpoint
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        capability:
+            type: string
+        providerId:
+            type: string
+        providerName:
+            type: string
+        providerResourceId:
+            type: string
+        uri:
+            type: string
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    capability: string
+    providerId: string
+    providerName: string
+    providerResourceId: string
+    uri: string

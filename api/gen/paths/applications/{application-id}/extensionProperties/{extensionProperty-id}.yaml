@@ -1,0 +1,91 @@
+get:
+    operationId: applications.GetExtensionProperties
+    parameters:
+        - description: 'key: application-id of application'
+          in: path
+          name: application-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+        - description: 'key: extensionProperty-id of extensionProperty'
+          in: path
+          name: extensionProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extensionProperty
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - appDisplayName
+                    - dataType
+                    - isSyncedFromOnPremises
+                    - name
+                    - targetObjects
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extensionProperty'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensionProperties from applications
+    tags:
+        - applications.extensionProperty
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: applications.UpdateExtensionProperties
+    parameters:
+        - description: 'key: application-id of application'
+          in: path
+          name: application-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+        - description: 'key: extensionProperty-id of extensionProperty'
+          in: path
+          name: extensionProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extensionProperty
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.extensionProperty'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property extensionProperties in applications
+    tags:
+        - applications.extensionProperty
+    x-ms-docs-operation-type: operation

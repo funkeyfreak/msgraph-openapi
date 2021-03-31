@@ -1,0 +1,46 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookWorksheet
+      type: object
+      properties:
+        name:
+            type: string
+        position:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        visibility:
+            type: string
+        charts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookChart"
+        names:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookNamedItem"
+        pivotTables:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookPivotTable"
+        protection: {}
+        tables:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookTable"
+example:
+    id: string (identifier)
+    name: string
+    position: integer
+    visibility: string
+    charts:
+        - "@odata.type": microsoft.graph.workbookChart
+    names:
+        - "@odata.type": microsoft.graph.workbookNamedItem
+    pivotTables:
+        - "@odata.type": microsoft.graph.workbookPivotTable
+    protection:
+        "@odata.type": microsoft.graph.workbookWorksheetProtection
+    tables:
+        - "@odata.type": microsoft.graph.workbookTable

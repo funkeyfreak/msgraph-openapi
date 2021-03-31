@@ -1,0 +1,146 @@
+delete:
+    operationId: workbooks.driveItem.DeleteDriveItem
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from workbooks
+    tags:
+        - workbooks.driveItem
+    x-ms-docs-operation-type: operation
+get:
+    operationId: workbooks.driveItem.GetDriveItem
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - audio
+                    - content
+                    - cTag
+                    - deleted
+                    - file
+                    - fileSystemInfo
+                    - folder
+                    - image
+                    - location
+                    - package
+                    - pendingOperations
+                    - photo
+                    - publication
+                    - remoteItem
+                    - root
+                    - searchResult
+                    - shared
+                    - sharepointIds
+                    - size
+                    - specialFolder
+                    - video
+                    - webDavUrl
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - workbook
+                    - analytics
+                    - children
+                    - listItem
+                    - permissions
+                    - subscriptions
+                    - thumbnails
+                    - versions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.driveItem'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from workbooks by key
+    tags:
+        - workbooks.driveItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.driveItem.UpdateDriveItem
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.driveItem'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in workbooks
+    tags:
+        - workbooks.driveItem
+    x-ms-docs-operation-type: operation

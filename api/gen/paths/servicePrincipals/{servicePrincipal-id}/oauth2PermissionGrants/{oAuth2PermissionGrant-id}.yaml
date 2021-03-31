@@ -1,0 +1,57 @@
+get:
+    operationId: servicePrincipals.GetOauth2PermissionGrants
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - description: 'key: oAuth2PermissionGrant-id of oAuth2PermissionGrant'
+          in: path
+          name: oAuth2PermissionGrant-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: oAuth2PermissionGrant
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientId
+                    - consentType
+                    - principalId
+                    - resourceId
+                    - scope
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get oauth2PermissionGrants from servicePrincipals
+    tags:
+        - servicePrincipals.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation

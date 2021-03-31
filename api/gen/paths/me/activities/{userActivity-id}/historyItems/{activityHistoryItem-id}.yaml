@@ -1,0 +1,90 @@
+get:
+    operationId: me.activities.GetHistoryItems
+    parameters:
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+        - description: 'key: activityHistoryItem-id of activityHistoryItem'
+          in: path
+          name: activityHistoryItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: activityHistoryItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activeDurationSeconds
+                    - createdDateTime
+                    - expirationDateTime
+                    - lastActiveDateTime
+                    - lastModifiedDateTime
+                    - startedDateTime
+                    - status
+                    - userTimezone
+                    - activity
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - activity
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.activityHistoryItem'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get historyItems from me
+    tags:
+        - me.userActivity
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.activities.UpdateHistoryItems
+    parameters:
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+        - description: 'key: activityHistoryItem-id of activityHistoryItem'
+          in: path
+          name: activityHistoryItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: activityHistoryItem
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.activityHistoryItem2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property historyItems in me
+    tags:
+        - me.userActivity
+    x-ms-docs-operation-type: operation

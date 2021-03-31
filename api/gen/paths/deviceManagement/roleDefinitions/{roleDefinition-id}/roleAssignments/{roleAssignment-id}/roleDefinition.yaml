@@ -1,0 +1,58 @@
+get:
+    operationId: deviceManagement.roleDefinitions.roleAssignments.GetRoleDefinition
+    parameters:
+        - description: 'key: roleDefinition-id of roleDefinition'
+          in: path
+          name: roleDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleDefinition
+        - description: 'key: roleAssignment-id of roleAssignment'
+          in: path
+          name: roleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - isBuiltIn
+                    - rolePermissions
+                    - roleAssignments
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - roleAssignments
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.roleDefinition'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get roleDefinition from deviceManagement
+    tags:
+        - deviceManagement.roleDefinition
+    x-ms-docs-operation-type: operation

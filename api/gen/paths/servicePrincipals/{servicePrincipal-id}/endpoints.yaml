@@ -1,0 +1,116 @@
+get:
+    operationId: servicePrincipals.ListEndpoints
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - capability
+                    - capability desc
+                    - providerId
+                    - providerId desc
+                    - providerName
+                    - providerName desc
+                    - providerResourceId
+                    - providerResourceId desc
+                    - uri
+                    - uri desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - capability
+                    - providerId
+                    - providerName
+                    - providerResourceId
+                    - uri
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.endpoint'
+                                type: array
+                        title: Collection of endpoint
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get endpoints from servicePrincipals
+    tags:
+        - servicePrincipals.endpoint
+    x-ms-docs-operation-type: operation
+post:
+    operationId: servicePrincipals.CreateEndpoints
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.endpoint'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.endpoint'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to endpoints for servicePrincipals
+    tags:
+        - servicePrincipals.endpoint
+    x-ms-docs-operation-type: operation

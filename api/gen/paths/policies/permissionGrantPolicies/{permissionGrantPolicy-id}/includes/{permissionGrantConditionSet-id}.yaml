@@ -1,0 +1,88 @@
+get:
+    operationId: policies.permissionGrantPolicies.GetIncludes
+    parameters:
+        - description: 'key: permissionGrantPolicy-id of permissionGrantPolicy'
+          in: path
+          name: permissionGrantPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantPolicy
+        - description: 'key: permissionGrantConditionSet-id of permissionGrantConditionSet'
+          in: path
+          name: permissionGrantConditionSet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantConditionSet
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientApplicationIds
+                    - clientApplicationPublisherIds
+                    - clientApplicationsFromVerifiedPublisherOnly
+                    - clientApplicationTenantIds
+                    - permissionClassification
+                    - permissions
+                    - permissionType
+                    - resourceApplication
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.permissionGrantConditionSet'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get includes from policies
+    tags:
+        - policies.permissionGrantPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.permissionGrantPolicies.UpdateIncludes
+    parameters:
+        - description: 'key: permissionGrantPolicy-id of permissionGrantPolicy'
+          in: path
+          name: permissionGrantPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantPolicy
+        - description: 'key: permissionGrantConditionSet-id of permissionGrantConditionSet'
+          in: path
+          name: permissionGrantConditionSet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantConditionSet
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.permissionGrantConditionSet2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property includes in policies
+    tags:
+        - policies.permissionGrantPolicy
+    x-ms-docs-operation-type: operation

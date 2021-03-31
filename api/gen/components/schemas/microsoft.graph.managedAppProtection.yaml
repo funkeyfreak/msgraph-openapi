@@ -1,0 +1,137 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.managedAppPolicy"
+    - title: managedAppProtection
+      description: Policy used to configure detailed management settings for a specified set of apps
+      type: object
+      properties:
+        allowedDataStorageLocations:
+            description: Data storage locations where a user may store managed data.
+            type: array
+            items: {}
+        allowedInboundDataTransferSources:
+            description: Sources from which data is allowed to be transferred.
+        allowedOutboundClipboardSharingLevel:
+            description: The level to which the clipboard may be shared between apps on the managed device.
+        allowedOutboundDataTransferDestinations:
+            description: Destinations to which data is allowed to be transferred.
+        contactSyncBlocked:
+            description: Indicates whether contacts can be synced to the user's device.
+            type: boolean
+        dataBackupBlocked:
+            description: Indicates whether the backup of a managed app's data is blocked.
+            type: boolean
+        deviceComplianceRequired:
+            description: Indicates whether device compliance is required.
+            type: boolean
+        disableAppPinIfDevicePinIsSet:
+            description: Indicates whether use of the app pin is required if the device pin is set.
+            type: boolean
+        fingerprintBlocked:
+            description: Indicates whether use of the fingerprint reader is allowed in place of a pin if PinRequired is set to True.
+            type: boolean
+        managedBrowser:
+            description: Indicates in which managed browser(s) that internet links should be opened. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+        managedBrowserToOpenLinksRequired:
+            description: Indicates whether internet links should be opened in the managed browser app, or any custom browser specified by CustomBrowserProtocol (for iOS) or CustomBrowserPackageId/CustomBrowserDisplayName (for Android)
+            type: boolean
+        maximumPinRetries:
+            format: int32
+            description: Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        minimumPinLength:
+            format: int32
+            description: Minimum pin length required for an app-level pin if PinRequired is set to True
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        minimumRequiredAppVersion:
+            description: Versions less than the specified version will block the managed app from accessing company data.
+            type: string
+        minimumRequiredOsVersion:
+            description: Versions less than the specified version will block the managed app from accessing company data.
+            type: string
+        minimumWarningAppVersion:
+            description: Versions less than the specified version will result in warning message on the managed app.
+            type: string
+        minimumWarningOsVersion:
+            description: Versions less than the specified version will result in warning message on the managed app from accessing company data.
+            type: string
+        organizationalCredentialsRequired:
+            description: Indicates whether organizational credentials are required for app use.
+            type: boolean
+        periodBeforePinReset:
+            format: duration
+            description: TimePeriod before the all-level pin must be reset if PinRequired is set to True.
+            pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+            type: string
+        periodOfflineBeforeAccessCheck:
+            format: duration
+            description: The period after which access is checked when the device is not connected to the internet.
+            pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+            type: string
+        periodOfflineBeforeWipeIsEnforced:
+            format: duration
+            description: The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
+            pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+            type: string
+        periodOnlineBeforeAccessCheck:
+            format: duration
+            description: The period after which access is checked when the device is connected to the internet.
+            pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+            type: string
+        pinCharacterSet:
+            description: Character set which may be used for an app-level pin if PinRequired is set to True.
+        pinRequired:
+            description: Indicates whether an app-level pin is required.
+            type: boolean
+        printBlocked:
+            description: Indicates whether printing is allowed from managed apps.
+            type: boolean
+        saveAsBlocked:
+            description: Indicates whether users may use the "Save As" menu item to save a copy of protected files.
+            type: boolean
+        simplePinBlocked:
+            description: Indicates whether simplePin is blocked.
+            type: boolean
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    allowedDataStorageLocations:
+        - "@odata.type": microsoft.graph.managedAppDataStorageLocation
+    allowedInboundDataTransferSources:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    allowedOutboundClipboardSharingLevel:
+        "@odata.type": microsoft.graph.managedAppClipboardSharingLevel
+    allowedOutboundDataTransferDestinations:
+        "@odata.type": microsoft.graph.managedAppDataTransferLevel
+    contactSyncBlocked: true
+    dataBackupBlocked: true
+    deviceComplianceRequired: true
+    disableAppPinIfDevicePinIsSet: true
+    fingerprintBlocked: true
+    managedBrowser:
+        "@odata.type": microsoft.graph.managedBrowserType
+    managedBrowserToOpenLinksRequired: true
+    maximumPinRetries: integer
+    minimumPinLength: integer
+    minimumRequiredAppVersion: string
+    minimumRequiredOsVersion: string
+    minimumWarningAppVersion: string
+    minimumWarningOsVersion: string
+    organizationalCredentialsRequired: true
+    periodBeforePinReset: string
+    periodOfflineBeforeAccessCheck: string
+    periodOfflineBeforeWipeIsEnforced: string
+    periodOnlineBeforeAccessCheck: string
+    pinCharacterSet:
+        "@odata.type": microsoft.graph.managedAppPinCharacterSet
+    pinRequired: true
+    printBlocked: true
+    saveAsBlocked: true
+    simplePinBlocked: true

@@ -1,0 +1,99 @@
+get:
+    operationId: users.ListDeviceManagementTroubleshootingEvents
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - correlationId
+                    - correlationId desc
+                    - eventDateTime
+                    - eventDateTime desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - correlationId
+                    - eventDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent'
+                                type: array
+                        title: Collection of deviceManagementTroubleshootingEvent
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceManagementTroubleshootingEvents from users
+    tags:
+        - users.deviceManagementTroubleshootingEvent
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.CreateDeviceManagementTroubleshootingEvents
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceManagementTroubleshootingEvent'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to deviceManagementTroubleshootingEvents for users
+    tags:
+        - users.deviceManagementTroubleshootingEvent
+    x-ms-docs-operation-type: operation

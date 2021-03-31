@@ -1,0 +1,89 @@
+get:
+    operationId: deviceAppManagement.managedAppRegistrations.GetOperations
+    parameters:
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: 'key: managedAppOperation-id of managedAppOperation'
+          in: path
+          name: managedAppOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - lastModifiedDateTime
+                    - state
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppOperation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get operations from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppRegistration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.managedAppRegistrations.UpdateOperations
+    parameters:
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: 'key: managedAppOperation-id of managedAppOperation'
+          in: path
+          name: managedAppOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedAppOperation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property operations in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppRegistration
+    x-ms-docs-operation-type: operation

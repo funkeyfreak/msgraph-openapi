@@ -1,0 +1,99 @@
+get:
+    operationId: drives.list.items.GetVersions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - publication
+                    - fields
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - fields
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.listItemVersion'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get versions from drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drives.list.items.UpdateVersions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.listItemVersion'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property versions in drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation

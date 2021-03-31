@@ -1,0 +1,8 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                reference: {}
+description: Action parameters
+required: true

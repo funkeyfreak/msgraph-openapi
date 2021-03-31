@@ -1,0 +1,46 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceManagementPartner
+      description: Entity which represents a connection to device management partner.
+      type: object
+      properties:
+        displayName:
+            description: Partner display name
+            type: string
+        isConfigured:
+            description: Whether device management partner is configured or not
+            type: boolean
+        lastHeartbeatDateTime:
+            format: date-time
+            description: Timestamp of last heartbeat after admin enabled option Connect to Device management Partner
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        partnerAppType:
+            description: Partner App type
+        partnerState:
+            description: Partner state of this tenant
+        singleTenantAppId:
+            description: Partner Single tenant App id
+            type: string
+        whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime:
+            format: date-time
+            description: DateTime in UTC when PartnerDevices will be marked as NonCompliant
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        whenPartnerDevicesWillBeRemovedDateTime:
+            format: date-time
+            description: DateTime in UTC when PartnerDevices will be removed
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    isConfigured: true
+    lastHeartbeatDateTime: string (timestamp)
+    partnerAppType:
+        "@odata.type": microsoft.graph.deviceManagementPartnerAppType
+    partnerState:
+        "@odata.type": microsoft.graph.deviceManagementPartnerTenantState
+    singleTenantAppId: string
+    whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime: string (timestamp)
+    whenPartnerDevicesWillBeRemovedDateTime: string (timestamp)

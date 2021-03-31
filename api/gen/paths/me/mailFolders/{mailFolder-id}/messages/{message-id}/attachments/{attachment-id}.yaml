@@ -1,0 +1,99 @@
+get:
+    operationId: me.mailFolders.messages.GetAttachments
+    parameters:
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - description: 'key: attachment-id of attachment'
+          in: path
+          name: attachment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: attachment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - contentType
+                    - isInline
+                    - lastModifiedDateTime
+                    - name
+                    - size
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.attachment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get attachments from me
+    tags:
+        - me.mailFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.mailFolders.messages.UpdateAttachments
+    parameters:
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - description: 'key: attachment-id of attachment'
+          in: path
+          name: attachment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: attachment
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.attachment'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property attachments in me
+    tags:
+        - me.mailFolder
+    x-ms-docs-operation-type: operation

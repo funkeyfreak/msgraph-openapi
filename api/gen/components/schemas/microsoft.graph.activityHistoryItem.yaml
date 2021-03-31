@@ -1,0 +1,48 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: activityHistoryItem
+      type: object
+      properties:
+        activeDurationSeconds:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        expirationDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        lastActiveDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        startedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        status: {}
+        userTimezone:
+            type: string
+        activity:
+            $ref: "#/components/schemas/microsoft.graph.userActivity"
+example:
+    id: string (identifier)
+    activeDurationSeconds: integer
+    createdDateTime: string (timestamp)
+    expirationDateTime: string (timestamp)
+    lastActiveDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    startedDateTime: string (timestamp)
+    status:
+        "@odata.type": microsoft.graph.status
+    userTimezone: string
+    activity:
+        "@odata.type": microsoft.graph.userActivity

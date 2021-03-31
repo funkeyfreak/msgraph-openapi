@@ -1,0 +1,36 @@
+get:
+    operationId: workbooks.workbook.names.worksheet.pivotTables.worksheet.range-0e4a
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookPivotTable-id of workbookPivotTable'
+          in: path
+          name: workbookPivotTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookPivotTable
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function range
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

@@ -1,0 +1,97 @@
+get:
+    operationId: workbooks.workbook.worksheets.GetPivotTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookPivotTable-id of workbookPivotTable'
+          in: path
+          name: workbookPivotTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookPivotTable
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - name
+                    - worksheet
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - worksheet
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookPivotTable'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get pivotTables from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.worksheets.UpdatePivotTables
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookWorksheet-id of workbookWorksheet'
+          in: path
+          name: workbookWorksheet-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookWorksheet
+        - description: 'key: workbookPivotTable-id of workbookPivotTable'
+          in: path
+          name: workbookPivotTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookPivotTable
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookPivotTable2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property pivotTables in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

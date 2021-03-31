@@ -1,0 +1,9 @@
+title: report
+description: Device Configuration profile History reports.
+type: object
+properties:
+    content:
+        format: base64url
+        type: string
+example:
+    content: string

@@ -1,0 +1,39 @@
+get:
+    operationId: users.calendarGroups.calendars.events.delta
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - description: 'key: calendar-id of calendar'
+          in: path
+          name: calendar-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendar
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.event'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function delta
+    tags:
+        - users.Functions
+    x-ms-docs-operation-type: function

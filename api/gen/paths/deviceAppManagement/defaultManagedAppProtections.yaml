@@ -1,0 +1,213 @@
+get:
+    operationId: deviceAppManagement.ListDefaultManagedAppProtections
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - version
+                    - version desc
+                    - allowedDataStorageLocations
+                    - allowedDataStorageLocations desc
+                    - allowedInboundDataTransferSources
+                    - allowedInboundDataTransferSources desc
+                    - allowedOutboundClipboardSharingLevel
+                    - allowedOutboundClipboardSharingLevel desc
+                    - allowedOutboundDataTransferDestinations
+                    - allowedOutboundDataTransferDestinations desc
+                    - contactSyncBlocked
+                    - contactSyncBlocked desc
+                    - dataBackupBlocked
+                    - dataBackupBlocked desc
+                    - deviceComplianceRequired
+                    - deviceComplianceRequired desc
+                    - disableAppPinIfDevicePinIsSet
+                    - disableAppPinIfDevicePinIsSet desc
+                    - fingerprintBlocked
+                    - fingerprintBlocked desc
+                    - managedBrowser
+                    - managedBrowser desc
+                    - managedBrowserToOpenLinksRequired
+                    - managedBrowserToOpenLinksRequired desc
+                    - maximumPinRetries
+                    - maximumPinRetries desc
+                    - minimumPinLength
+                    - minimumPinLength desc
+                    - minimumRequiredAppVersion
+                    - minimumRequiredAppVersion desc
+                    - minimumRequiredOsVersion
+                    - minimumRequiredOsVersion desc
+                    - minimumWarningAppVersion
+                    - minimumWarningAppVersion desc
+                    - minimumWarningOsVersion
+                    - minimumWarningOsVersion desc
+                    - organizationalCredentialsRequired
+                    - organizationalCredentialsRequired desc
+                    - periodBeforePinReset
+                    - periodBeforePinReset desc
+                    - periodOfflineBeforeAccessCheck
+                    - periodOfflineBeforeAccessCheck desc
+                    - periodOfflineBeforeWipeIsEnforced
+                    - periodOfflineBeforeWipeIsEnforced desc
+                    - periodOnlineBeforeAccessCheck
+                    - periodOnlineBeforeAccessCheck desc
+                    - pinCharacterSet
+                    - pinCharacterSet desc
+                    - pinRequired
+                    - pinRequired desc
+                    - printBlocked
+                    - printBlocked desc
+                    - saveAsBlocked
+                    - saveAsBlocked desc
+                    - simplePinBlocked
+                    - simplePinBlocked desc
+                    - appDataEncryptionType
+                    - appDataEncryptionType desc
+                    - customSettings
+                    - customSettings desc
+                    - deployedAppCount
+                    - deployedAppCount desc
+                    - disableAppEncryptionIfDeviceEncryptionIsEnabled
+                    - disableAppEncryptionIfDeviceEncryptionIsEnabled desc
+                    - encryptAppData
+                    - encryptAppData desc
+                    - faceIdBlocked
+                    - faceIdBlocked desc
+                    - minimumRequiredPatchVersion
+                    - minimumRequiredPatchVersion desc
+                    - minimumRequiredSdkVersion
+                    - minimumRequiredSdkVersion desc
+                    - minimumWarningPatchVersion
+                    - minimumWarningPatchVersion desc
+                    - screenCaptureBlocked
+                    - screenCaptureBlocked desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - allowedDataStorageLocations
+                    - allowedInboundDataTransferSources
+                    - allowedOutboundClipboardSharingLevel
+                    - allowedOutboundDataTransferDestinations
+                    - contactSyncBlocked
+                    - dataBackupBlocked
+                    - deviceComplianceRequired
+                    - disableAppPinIfDevicePinIsSet
+                    - fingerprintBlocked
+                    - managedBrowser
+                    - managedBrowserToOpenLinksRequired
+                    - maximumPinRetries
+                    - minimumPinLength
+                    - minimumRequiredAppVersion
+                    - minimumRequiredOsVersion
+                    - minimumWarningAppVersion
+                    - minimumWarningOsVersion
+                    - organizationalCredentialsRequired
+                    - periodBeforePinReset
+                    - periodOfflineBeforeAccessCheck
+                    - periodOfflineBeforeWipeIsEnforced
+                    - periodOnlineBeforeAccessCheck
+                    - pinCharacterSet
+                    - pinRequired
+                    - printBlocked
+                    - saveAsBlocked
+                    - simplePinBlocked
+                    - appDataEncryptionType
+                    - customSettings
+                    - deployedAppCount
+                    - disableAppEncryptionIfDeviceEncryptionIsEnabled
+                    - encryptAppData
+                    - faceIdBlocked
+                    - minimumRequiredPatchVersion
+                    - minimumRequiredSdkVersion
+                    - minimumWarningPatchVersion
+                    - screenCaptureBlocked
+                    - apps
+                    - deploymentSummary
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - apps
+                    - deploymentSummary
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.defaultManagedAppProtection'
+                                type: array
+                        title: Collection of defaultManagedAppProtection
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get defaultManagedAppProtections from deviceAppManagement
+    tags:
+        - deviceAppManagement.defaultManagedAppProtection
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateDefaultManagedAppProtections
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.defaultManagedAppProtection'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.defaultManagedAppProtection'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to defaultManagedAppProtections for deviceAppManagement
+    tags:
+        - deviceAppManagement.defaultManagedAppProtection
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,140 @@
+get:
+    operationId: security.ListSecureScoreControlProfiles
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - actionType
+                    - actionType desc
+                    - actionUrl
+                    - actionUrl desc
+                    - azureTenantId
+                    - azureTenantId desc
+                    - complianceInformation
+                    - complianceInformation desc
+                    - controlCategory
+                    - controlCategory desc
+                    - controlStateUpdates
+                    - controlStateUpdates desc
+                    - deprecated
+                    - deprecated desc
+                    - implementationCost
+                    - implementationCost desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - maxScore
+                    - maxScore desc
+                    - rank
+                    - rank desc
+                    - remediation
+                    - remediation desc
+                    - remediationImpact
+                    - remediationImpact desc
+                    - service
+                    - service desc
+                    - threats
+                    - threats desc
+                    - tier
+                    - tier desc
+                    - title
+                    - title desc
+                    - userImpact
+                    - userImpact desc
+                    - vendorInformation
+                    - vendorInformation desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actionType
+                    - actionUrl
+                    - azureTenantId
+                    - complianceInformation
+                    - controlCategory
+                    - controlStateUpdates
+                    - deprecated
+                    - implementationCost
+                    - lastModifiedDateTime
+                    - maxScore
+                    - rank
+                    - remediation
+                    - remediationImpact
+                    - service
+                    - threats
+                    - tier
+                    - title
+                    - userImpact
+                    - vendorInformation
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.secureScoreControlProfile'
+                                type: array
+                        title: Collection of secureScoreControlProfile
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get secureScoreControlProfiles from security
+    tags:
+        - security.secureScoreControlProfile
+    x-ms-docs-operation-type: operation
+post:
+    operationId: security.CreateSecureScoreControlProfiles
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.secureScoreControlProfile'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.secureScoreControlProfile'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to secureScoreControlProfiles for security
+    tags:
+        - security.secureScoreControlProfile
+    x-ms-docs-operation-type: operation

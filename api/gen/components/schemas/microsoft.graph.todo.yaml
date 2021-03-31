@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: todo
+      type: object
+      properties:
+        lists:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.todoTaskList"
+example:
+    id: string (identifier)
+    lists:
+        - "@odata.type": microsoft.graph.todoTaskList

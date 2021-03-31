@@ -1,0 +1,5 @@
+in: query
+name: $filter
+description: Filter items by property values
+schema:
+    type: string

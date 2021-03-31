@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: columnLink
+      type: object
+      properties:
+        name:
+            type: string
+example:
+    id: string (identifier)
+    name: string

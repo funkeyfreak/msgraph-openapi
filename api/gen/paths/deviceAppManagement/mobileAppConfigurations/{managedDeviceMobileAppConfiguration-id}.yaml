@@ -1,0 +1,87 @@
+get:
+    operationId: deviceAppManagement.GetMobileAppConfigurations
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - targetedMobileApps
+                    - version
+                    - assignments
+                    - deviceStatuses
+                    - deviceStatusSummary
+                    - userStatuses
+                    - userStatusSummary
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - deviceStatuses
+                    - deviceStatusSummary
+                    - userStatuses
+                    - userStatusSummary
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfiguration'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mobileAppConfigurations from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateMobileAppConfigurations
+    parameters:
+        - description: 'key: managedDeviceMobileAppConfiguration-id of managedDeviceMobileAppConfiguration'
+          in: path
+          name: managedDeviceMobileAppConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDeviceMobileAppConfiguration
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfiguration'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property mobileAppConfigurations in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation

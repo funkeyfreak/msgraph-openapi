@@ -1,0 +1,211 @@
+get:
+    operationId: me.contactFolders.ListContacts
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - categories
+                    - categories desc
+                    - changeKey
+                    - changeKey desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - assistantName
+                    - assistantName desc
+                    - birthday
+                    - birthday desc
+                    - businessAddress
+                    - businessAddress desc
+                    - businessHomePage
+                    - businessHomePage desc
+                    - businessPhones
+                    - businessPhones desc
+                    - children
+                    - children desc
+                    - companyName
+                    - companyName desc
+                    - department
+                    - department desc
+                    - displayName
+                    - displayName desc
+                    - emailAddresses
+                    - emailAddresses desc
+                    - fileAs
+                    - fileAs desc
+                    - generation
+                    - generation desc
+                    - givenName
+                    - givenName desc
+                    - homeAddress
+                    - homeAddress desc
+                    - homePhones
+                    - homePhones desc
+                    - imAddresses
+                    - imAddresses desc
+                    - initials
+                    - initials desc
+                    - jobTitle
+                    - jobTitle desc
+                    - manager
+                    - manager desc
+                    - middleName
+                    - middleName desc
+                    - mobilePhone
+                    - mobilePhone desc
+                    - nickName
+                    - nickName desc
+                    - officeLocation
+                    - officeLocation desc
+                    - otherAddress
+                    - otherAddress desc
+                    - parentFolderId
+                    - parentFolderId desc
+                    - personalNotes
+                    - personalNotes desc
+                    - profession
+                    - profession desc
+                    - spouseName
+                    - spouseName desc
+                    - surname
+                    - surname desc
+                    - title
+                    - title desc
+                    - yomiCompanyName
+                    - yomiCompanyName desc
+                    - yomiGivenName
+                    - yomiGivenName desc
+                    - yomiSurname
+                    - yomiSurname desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - assistantName
+                    - birthday
+                    - businessAddress
+                    - businessHomePage
+                    - businessPhones
+                    - children
+                    - companyName
+                    - department
+                    - displayName
+                    - emailAddresses
+                    - fileAs
+                    - generation
+                    - givenName
+                    - homeAddress
+                    - homePhones
+                    - imAddresses
+                    - initials
+                    - jobTitle
+                    - manager
+                    - middleName
+                    - mobilePhone
+                    - nickName
+                    - officeLocation
+                    - otherAddress
+                    - parentFolderId
+                    - personalNotes
+                    - profession
+                    - spouseName
+                    - surname
+                    - title
+                    - yomiCompanyName
+                    - yomiGivenName
+                    - yomiSurname
+                    - extensions
+                    - multiValueExtendedProperties
+                    - photo
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - extensions
+                    - multiValueExtendedProperties
+                    - photo
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.contact'
+                                type: array
+                        title: Collection of contact
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contacts from me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.contactFolders.CreateContacts
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contact2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contact'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to contacts for me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation

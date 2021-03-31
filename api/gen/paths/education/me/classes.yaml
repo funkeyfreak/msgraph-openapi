@@ -1,0 +1,96 @@
+get:
+    operationId: education.me.ListClasses
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - classCode
+                    - classCode desc
+                    - createdBy
+                    - createdBy desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - externalId
+                    - externalId desc
+                    - externalName
+                    - externalName desc
+                    - externalSource
+                    - externalSource desc
+                    - mailNickname
+                    - mailNickname desc
+                    - term
+                    - term desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classCode
+                    - createdBy
+                    - description
+                    - displayName
+                    - externalId
+                    - externalName
+                    - externalSource
+                    - mailNickname
+                    - term
+                    - group
+                    - members
+                    - schools
+                    - teachers
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - group
+                    - members
+                    - schools
+                    - teachers
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.educationClass'
+                                type: array
+                        title: Collection of educationClass
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get classes from education
+    tags:
+        - education.educationUser
+    x-ms-docs-operation-type: operation

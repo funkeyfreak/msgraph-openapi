@@ -1,0 +1,80 @@
+get:
+    operationId: deviceManagement.GetComplianceManagementPartners
+    parameters:
+        - description: 'key: complianceManagementPartner-id of complianceManagementPartner'
+          in: path
+          name: complianceManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: complianceManagementPartner
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - androidEnrollmentAssignments
+                    - androidOnboarded
+                    - displayName
+                    - iosEnrollmentAssignments
+                    - iosOnboarded
+                    - lastHeartbeatDateTime
+                    - macOsEnrollmentAssignments
+                    - macOsOnboarded
+                    - partnerState
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.complianceManagementPartner'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get complianceManagementPartners from deviceManagement
+    tags:
+        - deviceManagement.complianceManagementPartner
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateComplianceManagementPartners
+    parameters:
+        - description: 'key: complianceManagementPartner-id of complianceManagementPartner'
+          in: path
+          name: complianceManagementPartner-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: complianceManagementPartner
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.complianceManagementPartner'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property complianceManagementPartners in deviceManagement
+    tags:
+        - deviceManagement.complianceManagementPartner
+    x-ms-docs-operation-type: operation

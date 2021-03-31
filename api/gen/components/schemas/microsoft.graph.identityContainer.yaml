@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: identityContainer
+      type: object
+      properties:
+        conditionalAccess: {}
+example:
+    id: string (identifier)
+    conditionalAccess:
+        "@odata.type": microsoft.graph.conditionalAccessRoot

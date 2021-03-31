@@ -1,0 +1,15 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: directoryRoleTemplate
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        description:
+            type: string
+        displayName:
+            type: string
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string

@@ -1,0 +1,93 @@
+get:
+    operationId: devices.ListExtensions
+    parameters:
+        - description: 'key: device-id of device'
+          in: path
+          name: device-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: device
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.extension'
+                                type: array
+                        title: Collection of extension
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from devices
+    tags:
+        - devices.extension
+    x-ms-docs-operation-type: operation
+post:
+    operationId: devices.CreateExtensions
+    parameters:
+        - description: 'key: device-id of device'
+          in: path
+          name: device-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: device
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to extensions for devices
+    tags:
+        - devices.extension
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,83 @@
+get:
+    operationId: sites.onenote.GetResources
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenoteResource-id of onenoteResource'
+          in: path
+          name: onenoteResource-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteResource
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - content
+                    - contentUrl
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenoteResource'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get resources from sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.onenote.UpdateResources
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenoteResource-id of onenoteResource'
+          in: path
+          name: onenoteResource-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteResource
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenoteResource2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property resources in sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,78 @@
+get:
+    operationId: policies.GetPermissionGrantPolicies
+    parameters:
+        - description: 'key: permissionGrantPolicy-id of permissionGrantPolicy'
+          in: path
+          name: permissionGrantPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - excludes
+                    - includes
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - excludes
+                    - includes
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.permissionGrantPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get permissionGrantPolicies from policies
+    tags:
+        - policies.permissionGrantPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.UpdatePermissionGrantPolicies
+    parameters:
+        - description: 'key: permissionGrantPolicy-id of permissionGrantPolicy'
+          in: path
+          name: permissionGrantPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: permissionGrantPolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.permissionGrantPolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property permissionGrantPolicies in policies
+    tags:
+        - policies.permissionGrantPolicy
+    x-ms-docs-operation-type: operation

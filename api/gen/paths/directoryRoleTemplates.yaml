@@ -1,0 +1,77 @@
+get:
+    operationId: directoryRoleTemplates.directoryRoleTemplate.ListDirectoryRoleTemplate
+    parameters:
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.directoryRoleTemplate'
+                                type: array
+                        title: Collection of directoryRoleTemplate
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from directoryRoleTemplates
+    tags:
+        - directoryRoleTemplates.directoryRoleTemplate
+    x-ms-docs-operation-type: operation
+post:
+    operationId: directoryRoleTemplates.directoryRoleTemplate.CreateDirectoryRoleTemplate
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryRoleTemplate'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryRoleTemplate'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to directoryRoleTemplates
+    tags:
+        - directoryRoleTemplates.directoryRoleTemplate
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,71 @@
+get:
+    operationId: groups.GetPhotos
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: profilePhoto-id of profilePhoto'
+          in: path
+          name: profilePhoto-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: profilePhoto
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - height
+                    - width
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get photos from groups
+    tags:
+        - groups.profilePhoto
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groups.UpdatePhotos
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: profilePhoto-id of profilePhoto'
+          in: path
+          name: profilePhoto-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: profilePhoto
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.profilePhoto2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property photos in groups
+    tags:
+        - groups.profilePhoto
+    x-ms-docs-operation-type: operation

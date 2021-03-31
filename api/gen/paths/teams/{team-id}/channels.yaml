@@ -1,0 +1,124 @@
+get:
+    operationId: teams.ListChannels
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - email
+                    - email desc
+                    - isFavoriteByDefault
+                    - isFavoriteByDefault desc
+                    - membershipType
+                    - membershipType desc
+                    - webUrl
+                    - webUrl desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - email
+                    - isFavoriteByDefault
+                    - membershipType
+                    - webUrl
+                    - filesFolder
+                    - members
+                    - messages
+                    - tabs
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - filesFolder
+                    - members
+                    - messages
+                    - tabs
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.channel'
+                                type: array
+                        title: Collection of channel
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get channels from teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation
+post:
+    operationId: teams.CreateChannels
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.channel'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.channel'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to channels for teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,116 @@
+get:
+    operationId: deviceManagement.deviceManagement.GetDeviceManagement
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - intuneAccountId
+                    - settings
+                    - intuneBrand
+                    - subscriptionState
+                    - termsAndConditions
+                    - deviceCompliancePolicies
+                    - deviceCompliancePolicyDeviceStateSummary
+                    - deviceCompliancePolicySettingStateSummaries
+                    - deviceConfigurationDeviceStateSummaries
+                    - deviceConfigurations
+                    - iosUpdateStatuses
+                    - softwareUpdateStatusSummary
+                    - complianceManagementPartners
+                    - conditionalAccessSettings
+                    - deviceCategories
+                    - deviceEnrollmentConfigurations
+                    - deviceManagementPartners
+                    - exchangeConnectors
+                    - mobileThreatDefenseConnectors
+                    - applePushNotificationCertificate
+                    - detectedApps
+                    - managedDeviceOverview
+                    - managedDevices
+                    - notificationMessageTemplates
+                    - resourceOperations
+                    - roleAssignments
+                    - roleDefinitions
+                    - remoteAssistancePartners
+                    - telecomExpenseManagementPartners
+                    - troubleshootingEvents
+                    - windowsInformationProtectionAppLearningSummaries
+                    - windowsInformationProtectionNetworkLearningSummaries
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - termsAndConditions
+                    - deviceCompliancePolicies
+                    - deviceCompliancePolicyDeviceStateSummary
+                    - deviceCompliancePolicySettingStateSummaries
+                    - deviceConfigurationDeviceStateSummaries
+                    - deviceConfigurations
+                    - iosUpdateStatuses
+                    - softwareUpdateStatusSummary
+                    - complianceManagementPartners
+                    - conditionalAccessSettings
+                    - deviceCategories
+                    - deviceEnrollmentConfigurations
+                    - deviceManagementPartners
+                    - exchangeConnectors
+                    - mobileThreatDefenseConnectors
+                    - applePushNotificationCertificate
+                    - detectedApps
+                    - managedDeviceOverview
+                    - managedDevices
+                    - notificationMessageTemplates
+                    - resourceOperations
+                    - roleAssignments
+                    - roleDefinitions
+                    - remoteAssistancePartners
+                    - telecomExpenseManagementPartners
+                    - troubleshootingEvents
+                    - windowsInformationProtectionAppLearningSummaries
+                    - windowsInformationProtectionNetworkLearningSummaries
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagement'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceManagement
+    tags:
+        - deviceManagement.deviceManagement
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceManagement.UpdateDeviceManagement
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceManagement'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update deviceManagement
+    tags:
+        - deviceManagement.deviceManagement
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,176 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceManagement
+      description: Singleton entity that acts as a container for all device management functionality.
+      type: object
+      properties:
+        intuneAccountId:
+            format: uuid
+            description: Intune Account Id for given tenant
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        settings:
+            description: Account level settings.
+        intuneBrand:
+            description: intuneBrand contains data which is used in customizing the appearance of the Company Portal applications as well as the end user web portal.
+        subscriptionState:
+            description: Tenant mobile device management subscription state.
+        termsAndConditions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.termsAndConditions"
+        deviceCompliancePolicies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceCompliancePolicy"
+        deviceCompliancePolicyDeviceStateSummary: {}
+        deviceCompliancePolicySettingStateSummaries:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceCompliancePolicySettingStateSummary"
+        deviceConfigurationDeviceStateSummaries: {}
+        deviceConfigurations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceConfiguration"
+        iosUpdateStatuses:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.iosUpdateDeviceStatus"
+        softwareUpdateStatusSummary: {}
+        complianceManagementPartners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.complianceManagementPartner"
+        conditionalAccessSettings: {}
+        deviceCategories:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceCategory"
+        deviceEnrollmentConfigurations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceEnrollmentConfiguration"
+        deviceManagementPartners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceManagementPartner"
+        exchangeConnectors:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceManagementExchangeConnector"
+        mobileThreatDefenseConnectors:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.mobileThreatDefenseConnector"
+        applePushNotificationCertificate: {}
+        detectedApps:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.detectedApp"
+        managedDeviceOverview: {}
+        managedDevices:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.managedDevice"
+        notificationMessageTemplates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.notificationMessageTemplate"
+        resourceOperations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.resourceOperation"
+        roleAssignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceAndAppManagementRoleAssignment"
+        roleDefinitions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.roleDefinition"
+        remoteAssistancePartners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.remoteAssistancePartner"
+        telecomExpenseManagementPartners:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.telecomExpenseManagementPartner"
+        troubleshootingEvents:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent"
+        windowsInformationProtectionAppLearningSummaries:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.windowsInformationProtectionAppLearningSummary"
+        windowsInformationProtectionNetworkLearningSummaries:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.windowsInformationProtectionNetworkLearningSummary"
+example:
+    id: string (identifier)
+    intuneAccountId: string
+    settings:
+        "@odata.type": microsoft.graph.deviceManagementSettings
+    intuneBrand:
+        "@odata.type": microsoft.graph.intuneBrand
+    subscriptionState:
+        "@odata.type": microsoft.graph.deviceManagementSubscriptionState
+    termsAndConditions:
+        - "@odata.type": microsoft.graph.termsAndConditions
+    deviceCompliancePolicies:
+        - "@odata.type": microsoft.graph.deviceCompliancePolicy
+    deviceCompliancePolicyDeviceStateSummary:
+        "@odata.type": microsoft.graph.deviceCompliancePolicyDeviceStateSummary
+    deviceCompliancePolicySettingStateSummaries:
+        - "@odata.type": microsoft.graph.deviceCompliancePolicySettingStateSummary
+    deviceConfigurationDeviceStateSummaries:
+        "@odata.type": microsoft.graph.deviceConfigurationDeviceStateSummary
+    deviceConfigurations:
+        - "@odata.type": microsoft.graph.deviceConfiguration
+    iosUpdateStatuses:
+        - "@odata.type": microsoft.graph.iosUpdateDeviceStatus
+    softwareUpdateStatusSummary:
+        "@odata.type": microsoft.graph.softwareUpdateStatusSummary
+    complianceManagementPartners:
+        - "@odata.type": microsoft.graph.complianceManagementPartner
+    conditionalAccessSettings:
+        "@odata.type": microsoft.graph.onPremisesConditionalAccessSettings
+    deviceCategories:
+        - "@odata.type": microsoft.graph.deviceCategory
+    deviceEnrollmentConfigurations:
+        - "@odata.type": microsoft.graph.deviceEnrollmentConfiguration
+    deviceManagementPartners:
+        - "@odata.type": microsoft.graph.deviceManagementPartner
+    exchangeConnectors:
+        - "@odata.type": microsoft.graph.deviceManagementExchangeConnector
+    mobileThreatDefenseConnectors:
+        - "@odata.type": microsoft.graph.mobileThreatDefenseConnector
+    applePushNotificationCertificate:
+        "@odata.type": microsoft.graph.applePushNotificationCertificate
+    detectedApps:
+        - "@odata.type": microsoft.graph.detectedApp
+    managedDeviceOverview:
+        "@odata.type": microsoft.graph.managedDeviceOverview
+    managedDevices:
+        - "@odata.type": microsoft.graph.managedDevice
+    notificationMessageTemplates:
+        - "@odata.type": microsoft.graph.notificationMessageTemplate
+    resourceOperations:
+        - "@odata.type": microsoft.graph.resourceOperation
+    roleAssignments:
+        - "@odata.type": microsoft.graph.deviceAndAppManagementRoleAssignment
+    roleDefinitions:
+        - "@odata.type": microsoft.graph.roleDefinition
+    remoteAssistancePartners:
+        - "@odata.type": microsoft.graph.remoteAssistancePartner
+    telecomExpenseManagementPartners:
+        - "@odata.type": microsoft.graph.telecomExpenseManagementPartner
+    troubleshootingEvents:
+        - "@odata.type": microsoft.graph.deviceManagementTroubleshootingEvent
+    windowsInformationProtectionAppLearningSummaries:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionAppLearningSummary
+    windowsInformationProtectionNetworkLearningSummaries:
+        - "@odata.type": microsoft.graph.windowsInformationProtectionNetworkLearningSummary

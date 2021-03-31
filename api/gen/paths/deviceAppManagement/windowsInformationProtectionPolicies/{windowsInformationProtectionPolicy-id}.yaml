@@ -1,0 +1,116 @@
+get:
+    operationId: deviceAppManagement.GetWindowsInformationProtectionPolicies
+    parameters:
+        - description: 'key: windowsInformationProtectionPolicy-id of windowsInformationProtectionPolicy'
+          in: path
+          name: windowsInformationProtectionPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - azureRightsManagementServicesAllowed
+                    - dataRecoveryCertificate
+                    - enforcementLevel
+                    - enterpriseDomain
+                    - enterpriseInternalProxyServers
+                    - enterpriseIPRanges
+                    - enterpriseIPRangesAreAuthoritative
+                    - enterpriseNetworkDomainNames
+                    - enterpriseProtectedDomainNames
+                    - enterpriseProxiedDomains
+                    - enterpriseProxyServers
+                    - enterpriseProxyServersAreAuthoritative
+                    - exemptApps
+                    - iconsVisible
+                    - indexingEncryptedStoresOrItemsBlocked
+                    - isAssigned
+                    - neutralDomainResources
+                    - protectedApps
+                    - protectionUnderLockConfigRequired
+                    - revokeOnUnenrollDisabled
+                    - rightsManagementServicesTemplateId
+                    - smbAutoEncryptedFileExtensions
+                    - daysWithoutContactBeforeUnenroll
+                    - mdmEnrollmentUrl
+                    - minutesOfInactivityBeforeDeviceLock
+                    - numberOfPastPinsRemembered
+                    - passwordMaximumAttemptCount
+                    - pinExpirationDays
+                    - pinLowercaseLetters
+                    - pinMinimumLength
+                    - pinSpecialCharacters
+                    - pinUppercaseLetters
+                    - revokeOnMdmHandoffDisabled
+                    - windowsHelloForBusinessBlocked
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get windowsInformationProtectionPolicies from deviceAppManagement
+    tags:
+        - deviceAppManagement.windowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateWindowsInformationProtectionPolicies
+    parameters:
+        - description: 'key: windowsInformationProtectionPolicy-id of windowsInformationProtectionPolicy'
+          in: path
+          name: windowsInformationProtectionPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: windowsInformationProtectionPolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.windowsInformationProtectionPolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property windowsInformationProtectionPolicies in deviceAppManagement
+    tags:
+        - deviceAppManagement.windowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,85 @@
+get:
+    operationId: deviceAppManagement.managedAppRegistrations.GetAppliedPolicies
+    parameters:
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: 'key: managedAppPolicy-id of managedAppPolicy'
+          in: path
+          name: managedAppPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get appliedPolicies from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppRegistration
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.managedAppRegistrations.UpdateAppliedPolicies
+    parameters:
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: 'key: managedAppPolicy-id of managedAppPolicy'
+          in: path
+          name: managedAppPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppPolicy
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedAppPolicy2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property appliedPolicies in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppRegistration
+    x-ms-docs-operation-type: operation

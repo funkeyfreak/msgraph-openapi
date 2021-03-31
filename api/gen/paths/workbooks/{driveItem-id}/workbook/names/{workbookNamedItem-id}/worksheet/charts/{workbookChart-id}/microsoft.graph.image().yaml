@@ -1,0 +1,37 @@
+get:
+    operationId: workbooks.workbook.names.worksheet.charts.image-9d93
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        type: string
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function image
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

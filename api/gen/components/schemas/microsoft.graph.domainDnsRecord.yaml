@@ -1,0 +1,25 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: domainDnsRecord
+      type: object
+      properties:
+        isOptional:
+            type: boolean
+        label:
+            type: string
+        recordType:
+            type: string
+        supportedService:
+            type: string
+        ttl:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    isOptional: true
+    label: string
+    recordType: string
+    supportedService: string
+    ttl: integer

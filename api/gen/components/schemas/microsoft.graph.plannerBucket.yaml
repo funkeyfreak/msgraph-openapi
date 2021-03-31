@@ -1,0 +1,22 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerBucket
+      type: object
+      properties:
+        name:
+            type: string
+        orderHint:
+            type: string
+        planId:
+            type: string
+        tasks:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.plannerTask"
+example:
+    id: string (identifier)
+    name: string
+    orderHint: string
+    planId: string
+    tasks:
+        - "@odata.type": microsoft.graph.plannerTask

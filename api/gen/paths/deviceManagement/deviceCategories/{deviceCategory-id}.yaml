@@ -1,0 +1,68 @@
+get:
+    operationId: deviceManagement.GetDeviceCategories
+    parameters:
+        - description: 'key: deviceCategory-id of deviceCategory'
+          in: path
+          name: deviceCategory-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCategory
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceCategory'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceCategories from deviceManagement
+    tags:
+        - deviceManagement.deviceCategory
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateDeviceCategories
+    parameters:
+        - description: 'key: deviceCategory-id of deviceCategory'
+          in: path
+          name: deviceCategory-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCategory
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceCategory'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceCategories in deviceManagement
+    tags:
+        - deviceManagement.deviceCategory
+    x-ms-docs-operation-type: operation

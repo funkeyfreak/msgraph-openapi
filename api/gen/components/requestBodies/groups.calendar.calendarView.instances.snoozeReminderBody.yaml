@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                NewReminderTime:
+                    $ref: "#/components/schemas/microsoft.graph.dateTimeTimeZone"
+description: Action parameters
+required: true

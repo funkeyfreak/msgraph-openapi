@@ -1,0 +1,36 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: subscribedSku
+      type: object
+      properties:
+        appliesTo:
+            type: string
+        capabilityStatus:
+            type: string
+        consumedUnits:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        prepaidUnits: {}
+        servicePlans:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.servicePlanInfo"
+        skuId:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+        skuPartNumber:
+            type: string
+example:
+    id: string (identifier)
+    appliesTo: string
+    capabilityStatus: string
+    consumedUnits: integer
+    prepaidUnits:
+        "@odata.type": microsoft.graph.licenseUnitsDetail
+    servicePlans:
+        - "@odata.type": microsoft.graph.servicePlanInfo
+    skuId: string
+    skuPartNumber: string

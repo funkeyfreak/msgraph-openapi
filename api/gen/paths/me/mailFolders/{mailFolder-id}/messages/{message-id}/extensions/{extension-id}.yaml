@@ -1,0 +1,94 @@
+get:
+    operationId: me.mailFolders.messages.GetExtensions
+    parameters:
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.extension'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get extensions from me
+    tags:
+        - me.mailFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.mailFolders.messages.UpdateExtensions
+    parameters:
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: message-id of message'
+          in: path
+          name: message-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: message
+        - description: 'key: extension-id of extension'
+          in: path
+          name: extension-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: extension
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.extension'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property extensions in me
+    tags:
+        - me.mailFolder
+    x-ms-docs-operation-type: operation

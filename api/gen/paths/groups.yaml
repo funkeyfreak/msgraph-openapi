@@ -1,0 +1,210 @@
+get:
+    operationId: groups.group.ListGroup
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - assignedLabels
+                    - assignedLabels desc
+                    - assignedLicenses
+                    - assignedLicenses desc
+                    - classification
+                    - classification desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - groupTypes
+                    - groupTypes desc
+                    - hasMembersWithLicenseErrors
+                    - hasMembersWithLicenseErrors desc
+                    - licenseProcessingState
+                    - licenseProcessingState desc
+                    - mail
+                    - mail desc
+                    - mailEnabled
+                    - mailEnabled desc
+                    - mailNickname
+                    - mailNickname desc
+                    - membershipRule
+                    - membershipRule desc
+                    - membershipRuleProcessingState
+                    - membershipRuleProcessingState desc
+                    - onPremisesDomainName
+                    - onPremisesDomainName desc
+                    - onPremisesLastSyncDateTime
+                    - onPremisesLastSyncDateTime desc
+                    - onPremisesNetBiosName
+                    - onPremisesNetBiosName desc
+                    - onPremisesProvisioningErrors
+                    - onPremisesProvisioningErrors desc
+                    - onPremisesSamAccountName
+                    - onPremisesSamAccountName desc
+                    - onPremisesSecurityIdentifier
+                    - onPremisesSecurityIdentifier desc
+                    - onPremisesSyncEnabled
+                    - onPremisesSyncEnabled desc
+                    - preferredDataLocation
+                    - preferredDataLocation desc
+                    - preferredLanguage
+                    - preferredLanguage desc
+                    - proxyAddresses
+                    - proxyAddresses desc
+                    - renewedDateTime
+                    - renewedDateTime desc
+                    - securityEnabled
+                    - securityEnabled desc
+                    - securityIdentifier
+                    - securityIdentifier desc
+                    - theme
+                    - theme desc
+                    - visibility
+                    - visibility desc
+                    - allowExternalSenders
+                    - allowExternalSenders desc
+                    - autoSubscribeNewMembers
+                    - autoSubscribeNewMembers desc
+                    - hideFromAddressLists
+                    - hideFromAddressLists desc
+                    - hideFromOutlookClients
+                    - hideFromOutlookClients desc
+                    - isSubscribedByMail
+                    - isSubscribedByMail desc
+                    - unseenCount
+                    - unseenCount desc
+                    - isArchived
+                    - isArchived desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - assignedLabels
+                    - assignedLicenses
+                    - classification
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - expirationDateTime
+                    - groupTypes
+                    - hasMembersWithLicenseErrors
+                    - licenseProcessingState
+                    - mail
+                    - mailEnabled
+                    - mailNickname
+                    - membershipRule
+                    - membershipRuleProcessingState
+                    - onPremisesDomainName
+                    - onPremisesLastSyncDateTime
+                    - onPremisesNetBiosName
+                    - onPremisesProvisioningErrors
+                    - onPremisesSamAccountName
+                    - onPremisesSecurityIdentifier
+                    - onPremisesSyncEnabled
+                    - preferredDataLocation
+                    - preferredLanguage
+                    - proxyAddresses
+                    - renewedDateTime
+                    - securityEnabled
+                    - securityIdentifier
+                    - theme
+                    - visibility
+                    - allowExternalSenders
+                    - autoSubscribeNewMembers
+                    - hideFromAddressLists
+                    - hideFromOutlookClients
+                    - isSubscribedByMail
+                    - unseenCount
+                    - isArchived
+                    - appRoleAssignments
+                    - createdOnBehalfOf
+                    - memberOf
+                    - members
+                    - membersWithLicenseErrors
+                    - owners
+                    - permissionGrants
+                    - settings
+                    - transitiveMemberOf
+                    - transitiveMembers
+                    - acceptedSenders
+                    - calendar
+                    - calendarView
+                    - conversations
+                    - events
+                    - photo
+                    - photos
+                    - rejectedSenders
+                    - threads
+                    - drive
+                    - drives
+                    - sites
+                    - extensions
+                    - groupLifecyclePolicies
+                    - planner
+                    - onenote
+                    - team
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.group'
+                                type: array
+                        title: Collection of group
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from groups
+    tags:
+        - groups.group
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.group.CreateGroup
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.group'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.group'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to groups
+    tags:
+        - groups.group
+    x-ms-docs-operation-type: operation

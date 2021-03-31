@@ -1,0 +1,82 @@
+get:
+    operationId: deviceAppManagement.GetVppTokens
+    parameters:
+        - description: 'key: vppToken-id of vppToken'
+          in: path
+          name: vppToken-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: vppToken
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appleId
+                    - automaticallyUpdateApps
+                    - countryOrRegion
+                    - expirationDateTime
+                    - lastModifiedDateTime
+                    - lastSyncDateTime
+                    - lastSyncStatus
+                    - organizationName
+                    - state
+                    - token
+                    - vppTokenAccountType
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.vppToken'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get vppTokens from deviceAppManagement
+    tags:
+        - deviceAppManagement.vppToken
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateVppTokens
+    parameters:
+        - description: 'key: vppToken-id of vppToken'
+          in: path
+          name: vppToken-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: vppToken
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.vppToken'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property vppTokens in deviceAppManagement
+    tags:
+        - deviceAppManagement.vppToken
+    x-ms-docs-operation-type: operation

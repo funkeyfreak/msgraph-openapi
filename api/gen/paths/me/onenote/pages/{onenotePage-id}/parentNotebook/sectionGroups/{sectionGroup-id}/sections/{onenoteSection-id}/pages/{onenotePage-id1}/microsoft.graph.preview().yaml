@@ -1,0 +1,43 @@
+get:
+    operationId: me.onenote.pages.parentNotebook.sectionGroups.sections.pages.preview
+    parameters:
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function preview
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

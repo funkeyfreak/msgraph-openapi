@@ -1,0 +1,43 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: onenote
+      type: object
+      properties:
+        notebooks:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.notebook"
+        operations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onenoteOperation"
+        pages:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onenotePage"
+        resources:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onenoteResource"
+        sectionGroups:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.sectionGroup"
+        sections:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.onenoteSection"
+example:
+    id: string (identifier)
+    notebooks:
+        - "@odata.type": microsoft.graph.notebook
+    operations:
+        - "@odata.type": microsoft.graph.onenoteOperation
+    pages:
+        - "@odata.type": microsoft.graph.onenotePage
+    resources:
+        - "@odata.type": microsoft.graph.onenoteResource
+    sectionGroups:
+        - "@odata.type": microsoft.graph.sectionGroup
+    sections:
+        - "@odata.type": microsoft.graph.onenoteSection

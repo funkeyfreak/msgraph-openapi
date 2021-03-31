@@ -1,0 +1,55 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookTable
+      type: object
+      properties:
+        highlightFirstColumn:
+            type: boolean
+        highlightLastColumn:
+            type: boolean
+        legacyId:
+            type: string
+        name:
+            type: string
+        showBandedColumns:
+            type: boolean
+        showBandedRows:
+            type: boolean
+        showFilterButton:
+            type: boolean
+        showHeaders:
+            type: boolean
+        showTotals:
+            type: boolean
+        style:
+            type: string
+        columns:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookTableColumn"
+        rows:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookTableRow"
+        sort: {}
+        worksheet: {}
+example:
+    id: string (identifier)
+    highlightFirstColumn: true
+    highlightLastColumn: true
+    legacyId: string
+    name: string
+    showBandedColumns: true
+    showBandedRows: true
+    showFilterButton: true
+    showHeaders: true
+    showTotals: true
+    style: string
+    columns:
+        - "@odata.type": microsoft.graph.workbookTableColumn
+    rows:
+        - "@odata.type": microsoft.graph.workbookTableRow
+    sort:
+        "@odata.type": microsoft.graph.workbookTableSort
+    worksheet:
+        "@odata.type": microsoft.graph.workbookWorksheet

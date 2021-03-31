@@ -1,0 +1,110 @@
+get:
+    operationId: security.GetAlerts
+    parameters:
+        - description: 'key: alert-id of alert'
+          in: path
+          name: alert-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: alert
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activityGroupName
+                    - alertDetections
+                    - assignedTo
+                    - azureSubscriptionId
+                    - azureTenantId
+                    - category
+                    - closedDateTime
+                    - cloudAppStates
+                    - comments
+                    - confidence
+                    - createdDateTime
+                    - description
+                    - detectionIds
+                    - eventDateTime
+                    - feedback
+                    - fileStates
+                    - historyStates
+                    - hostStates
+                    - incidentIds
+                    - investigationSecurityStates
+                    - lastEventDateTime
+                    - lastModifiedDateTime
+                    - malwareStates
+                    - messageSecurityStates
+                    - networkConnections
+                    - processes
+                    - recommendedActions
+                    - registryKeyStates
+                    - securityResources
+                    - severity
+                    - sourceMaterials
+                    - status
+                    - tags
+                    - title
+                    - triggers
+                    - uriClickSecurityStates
+                    - userStates
+                    - vendorInformation
+                    - vulnerabilityStates
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.alert'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get alerts from security
+    tags:
+        - security.alert
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: security.UpdateAlerts
+    parameters:
+        - description: 'key: alert-id of alert'
+          in: path
+          name: alert-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: alert
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.alert'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property alerts in security
+    tags:
+        - security.alert
+    x-ms-docs-operation-type: operation

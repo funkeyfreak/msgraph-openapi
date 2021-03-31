@@ -1,0 +1,92 @@
+get:
+    operationId: groupLifecyclePolicies.groupLifecyclePolicy.ListGroupLifecyclePolicy
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - alternateNotificationEmails
+                    - alternateNotificationEmails desc
+                    - groupLifetimeInDays
+                    - groupLifetimeInDays desc
+                    - managedGroupTypes
+                    - managedGroupTypes desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - alternateNotificationEmails
+                    - groupLifetimeInDays
+                    - managedGroupTypes
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+                                type: array
+                        title: Collection of groupLifecyclePolicy
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from groupLifecyclePolicies
+    tags:
+        - groupLifecyclePolicies.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groupLifecyclePolicies.groupLifecyclePolicy.CreateGroupLifecyclePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to groupLifecyclePolicies
+    tags:
+        - groupLifecyclePolicies.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation

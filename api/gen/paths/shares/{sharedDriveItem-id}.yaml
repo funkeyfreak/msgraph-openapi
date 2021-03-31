@@ -1,0 +1,123 @@
+delete:
+    operationId: shares.sharedDriveItem.DeleteSharedDriveItem
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from shares
+    tags:
+        - shares.sharedDriveItem
+    x-ms-docs-operation-type: operation
+get:
+    operationId: shares.sharedDriveItem.GetSharedDriveItem
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - owner
+                    - createdByUser
+                    - lastModifiedByUser
+                    - driveItem
+                    - items
+                    - list
+                    - listItem
+                    - permission
+                    - root
+                    - site
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - driveItem
+                    - items
+                    - list
+                    - listItem
+                    - permission
+                    - root
+                    - site
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.sharedDriveItem'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from shares by key
+    tags:
+        - shares.sharedDriveItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.sharedDriveItem.UpdateSharedDriveItem
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.sharedDriveItem'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in shares
+    tags:
+        - shares.sharedDriveItem
+    x-ms-docs-operation-type: operation

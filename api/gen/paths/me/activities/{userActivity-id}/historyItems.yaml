@@ -1,0 +1,119 @@
+get:
+    operationId: me.activities.ListHistoryItems
+    parameters:
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - activeDurationSeconds
+                    - activeDurationSeconds desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - lastActiveDateTime
+                    - lastActiveDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - startedDateTime
+                    - startedDateTime desc
+                    - status
+                    - status desc
+                    - userTimezone
+                    - userTimezone desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activeDurationSeconds
+                    - createdDateTime
+                    - expirationDateTime
+                    - lastActiveDateTime
+                    - lastModifiedDateTime
+                    - startedDateTime
+                    - status
+                    - userTimezone
+                    - activity
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - activity
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.activityHistoryItem'
+                                type: array
+                        title: Collection of activityHistoryItem
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get historyItems from me
+    tags:
+        - me.userActivity
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.activities.CreateHistoryItems
+    parameters:
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.activityHistoryItem'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.activityHistoryItem'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to historyItems for me
+    tags:
+        - me.userActivity
+    x-ms-docs-operation-type: operation

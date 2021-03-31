@@ -1,0 +1,21 @@
+post:
+    operationId: communications.calls.logTeleconferenceDeviceQuality
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        quality:
+                            $ref: '#/components/schemas/microsoft.graph.teleconferenceDeviceQuality'
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action logTeleconferenceDeviceQuality
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

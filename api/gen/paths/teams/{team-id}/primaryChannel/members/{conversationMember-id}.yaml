@@ -1,0 +1,82 @@
+get:
+    operationId: teams.primaryChannel.GetMembers
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: conversationMember-id of conversationMember'
+          in: path
+          name: conversationMember-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationMember
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - roles
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.conversationMember'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get members from teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.primaryChannel.UpdateMembers
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: conversationMember-id of conversationMember'
+          in: path
+          name: conversationMember-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationMember
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.conversationMember2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property members in teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation

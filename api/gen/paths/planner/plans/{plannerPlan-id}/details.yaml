@@ -1,0 +1,73 @@
+get:
+    operationId: planner.plans.GetDetails
+    parameters:
+        - description: 'key: plannerPlan-id of plannerPlan'
+          in: path
+          name: plannerPlan-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerPlan
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categoryDescriptions
+                    - sharedWith
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerPlanDetails'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get details from planner
+    tags:
+        - planner.plannerPlan
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: planner.plans.UpdateDetails
+    parameters:
+        - description: 'key: plannerPlan-id of plannerPlan'
+          in: path
+          name: plannerPlan-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerPlan
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.plannerPlanDetails'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property details in planner
+    tags:
+        - planner.plannerPlan
+    x-ms-docs-operation-type: operation

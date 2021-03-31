@@ -1,0 +1,30 @@
+get:
+    operationId: sites.onenote.notebooks.getRecentNotebooks
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - in: path
+          name: includePersonalNotebooks
+          required: true
+          schema:
+            default: false
+            type: boolean
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getRecentNotebooks
+    tags:
+        - sites.Functions
+    x-ms-docs-operation-type: function

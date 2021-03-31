@@ -1,0 +1,62 @@
+get:
+    operationId: groups.planner.GetPlans
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: plannerPlan-id of plannerPlan'
+          in: path
+          name: plannerPlan-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerPlan
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - owner
+                    - title
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - buckets
+                    - details
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerPlan'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get plans from groups
+    tags:
+        - groups.plannerGroup
+    x-ms-docs-operation-type: operation

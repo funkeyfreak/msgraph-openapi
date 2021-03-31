@@ -1,0 +1,15 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                index:
+                    format: int32
+                    maximum: 2147483647
+                    minimum: -2147483648
+                    type: integer
+                values: {}
+                name:
+                    type: string
+description: Action parameters
+required: true

@@ -1,0 +1,44 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: baseItem
+      type: object
+      properties:
+        createdBy: {}
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            type: string
+        eTag:
+            type: string
+        lastModifiedBy: {}
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        name:
+            type: string
+        parentReference: {}
+        webUrl:
+            type: string
+        createdByUser: {}
+        lastModifiedByUser: {}
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user

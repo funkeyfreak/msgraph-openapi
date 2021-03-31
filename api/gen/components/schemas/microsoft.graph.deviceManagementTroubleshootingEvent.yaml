@@ -1,0 +1,18 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceManagementTroubleshootingEvent
+      description: Event representing an general failure.
+      type: object
+      properties:
+        correlationId:
+            description: Id used for tracing the failure in the service.
+            type: string
+        eventDateTime:
+            format: date-time
+            description: Time when the event occurred .
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+example:
+    id: string (identifier)
+    correlationId: string
+    eventDateTime: string (timestamp)

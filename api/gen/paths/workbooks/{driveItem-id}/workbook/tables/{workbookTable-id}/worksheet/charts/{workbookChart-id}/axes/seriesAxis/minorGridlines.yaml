@@ -1,0 +1,97 @@
+get:
+    operationId: workbooks.workbook.tables.worksheet.charts.axes.seriesAxis.GetMinorGridlines
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - visible
+                    - format
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - format
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookChartGridlines'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get minorGridlines from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.tables.worksheet.charts.axes.seriesAxis.UpdateMinorGridlines
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookChartGridlines'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property minorGridlines in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,23 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.operation"
+    - title: onenoteOperation
+      type: object
+      properties:
+        error: {}
+        percentComplete:
+            type: string
+        resourceId:
+            type: string
+        resourceLocation:
+            type: string
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    lastActionDateTime: string (timestamp)
+    status:
+        "@odata.type": microsoft.graph.operationStatus
+    error:
+        "@odata.type": microsoft.graph.onenoteOperationError
+    percentComplete: string
+    resourceId: string
+    resourceLocation: string

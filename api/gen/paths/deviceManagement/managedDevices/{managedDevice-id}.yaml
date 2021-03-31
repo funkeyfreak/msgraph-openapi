@@ -1,0 +1,118 @@
+get:
+    operationId: deviceManagement.GetManagedDevices
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activationLockBypassCode
+                    - androidSecurityPatchLevel
+                    - azureADDeviceId
+                    - azureADRegistered
+                    - complianceGracePeriodExpirationDateTime
+                    - complianceState
+                    - configurationManagerClientEnabledFeatures
+                    - deviceActionResults
+                    - deviceCategoryDisplayName
+                    - deviceEnrollmentType
+                    - deviceHealthAttestationState
+                    - deviceName
+                    - deviceRegistrationState
+                    - easActivated
+                    - easActivationDateTime
+                    - easDeviceId
+                    - emailAddress
+                    - enrolledDateTime
+                    - exchangeAccessState
+                    - exchangeAccessStateReason
+                    - exchangeLastSuccessfulSyncDateTime
+                    - freeStorageSpaceInBytes
+                    - imei
+                    - isEncrypted
+                    - isSupervised
+                    - jailBroken
+                    - lastSyncDateTime
+                    - managedDeviceName
+                    - managedDeviceOwnerType
+                    - managementAgent
+                    - manufacturer
+                    - meid
+                    - model
+                    - operatingSystem
+                    - osVersion
+                    - partnerReportedThreatState
+                    - phoneNumber
+                    - remoteAssistanceSessionErrorDetails
+                    - remoteAssistanceSessionUrl
+                    - serialNumber
+                    - subscriberCarrier
+                    - totalStorageSpaceInBytes
+                    - userDisplayName
+                    - userId
+                    - userPrincipalName
+                    - wiFiMacAddress
+                    - deviceCompliancePolicyStates
+                    - deviceConfigurationStates
+                    - deviceCategory
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - deviceCompliancePolicyStates
+                    - deviceConfigurationStates
+                    - deviceCategory
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDevice'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedDevices from deviceManagement
+    tags:
+        - deviceManagement.managedDevice
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateManagedDevices
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedDevice'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property managedDevices in deviceManagement
+    tags:
+        - deviceManagement.managedDevice
+    x-ms-docs-operation-type: operation

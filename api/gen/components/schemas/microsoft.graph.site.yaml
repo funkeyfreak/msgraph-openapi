@@ -1,0 +1,83 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItem"
+    - title: site
+      type: object
+      properties:
+        displayName:
+            type: string
+        error: {}
+        root: {}
+        sharepointIds: {}
+        siteCollection: {}
+        analytics: {}
+        columns:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.columnDefinition"
+        contentTypes:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contentType"
+        drive: {}
+        drives:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.drive"
+        items:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.baseItem"
+        lists:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.list"
+        sites:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.site"
+        onenote: {}
+example:
+    id: string (identifier)
+    createdBy:
+        "@odata.type": microsoft.graph.identitySet
+    createdDateTime: string (timestamp)
+    description: string
+    eTag: string
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    name: string
+    parentReference:
+        "@odata.type": microsoft.graph.itemReference
+    webUrl: string
+    createdByUser:
+        "@odata.type": microsoft.graph.user
+    lastModifiedByUser:
+        "@odata.type": microsoft.graph.user
+    displayName: string
+    error:
+        "@odata.type": microsoft.graph.publicError
+    root:
+        "@odata.type": microsoft.graph.root
+    sharepointIds:
+        "@odata.type": microsoft.graph.sharepointIds
+    siteCollection:
+        "@odata.type": microsoft.graph.siteCollection
+    analytics:
+        "@odata.type": microsoft.graph.itemAnalytics
+    columns:
+        - "@odata.type": microsoft.graph.columnDefinition
+    contentTypes:
+        - "@odata.type": microsoft.graph.contentType
+    drive:
+        "@odata.type": microsoft.graph.drive
+    drives:
+        - "@odata.type": microsoft.graph.drive
+    items:
+        - "@odata.type": microsoft.graph.baseItem
+    lists:
+        - "@odata.type": microsoft.graph.list
+    sites:
+        - "@odata.type": microsoft.graph.site
+    onenote:
+        "@odata.type": microsoft.graph.onenote

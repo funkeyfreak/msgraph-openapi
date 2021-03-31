@@ -1,0 +1,118 @@
+get:
+    operationId: deviceAppManagement.ListManagedEBooks
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - informationUrl
+                    - informationUrl desc
+                    - largeCover
+                    - largeCover desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - privacyInformationUrl
+                    - privacyInformationUrl desc
+                    - publishedDateTime
+                    - publishedDateTime desc
+                    - publisher
+                    - publisher desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - informationUrl
+                    - largeCover
+                    - lastModifiedDateTime
+                    - privacyInformationUrl
+                    - publishedDateTime
+                    - publisher
+                    - assignments
+                    - deviceStates
+                    - installSummary
+                    - userStateSummary
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - deviceStates
+                    - installSummary
+                    - userStateSummary
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.managedEBook'
+                                type: array
+                        title: Collection of managedEBook
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedEBooks from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateManagedEBooks
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedEBook'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedEBook'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to managedEBooks for deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation

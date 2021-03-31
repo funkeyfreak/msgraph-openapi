@@ -1,0 +1,59 @@
+get:
+    operationId: applications.GetHomeRealmDiscoveryPolicies
+    parameters:
+        - description: 'key: application-id of application'
+          in: path
+          name: application-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+        - description: 'key: homeRealmDiscoveryPolicy-id of homeRealmDiscoveryPolicy'
+          in: path
+          name: homeRealmDiscoveryPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: homeRealmDiscoveryPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - definition
+                    - isOrganizationDefault
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get homeRealmDiscoveryPolicies from applications
+    tags:
+        - applications.homeRealmDiscoveryPolicy
+    x-ms-docs-operation-type: operation

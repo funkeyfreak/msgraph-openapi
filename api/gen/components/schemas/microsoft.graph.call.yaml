@@ -1,0 +1,85 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: call
+      type: object
+      properties:
+        callbackUri:
+            type: string
+        callChainId:
+            type: string
+        callOptions: {}
+        callRoutes:
+            type: array
+            items: {}
+        chatInfo: {}
+        direction: {}
+        incomingContext: {}
+        mediaConfig: {}
+        mediaState: {}
+        meetingInfo: {}
+        myParticipantId:
+            type: string
+        requestedModalities:
+            type: array
+            items: {}
+        resultInfo: {}
+        source: {}
+        state: {}
+        subject:
+            type: string
+        targets:
+            type: array
+            items: {}
+        tenantId:
+            type: string
+        toneInfo: {}
+        transcription: {}
+        operations:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.commsOperation"
+        participants:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.participant"
+example:
+    id: string (identifier)
+    callbackUri: string
+    callChainId: string
+    callOptions:
+        "@odata.type": microsoft.graph.callOptions
+    callRoutes:
+        - "@odata.type": microsoft.graph.callRoute
+    chatInfo:
+        "@odata.type": microsoft.graph.chatInfo
+    direction:
+        "@odata.type": microsoft.graph.callDirection
+    incomingContext:
+        "@odata.type": microsoft.graph.incomingContext
+    mediaConfig:
+        "@odata.type": microsoft.graph.mediaConfig
+    mediaState:
+        "@odata.type": microsoft.graph.callMediaState
+    meetingInfo:
+        "@odata.type": microsoft.graph.meetingInfo
+    myParticipantId: string
+    requestedModalities:
+        - "@odata.type": microsoft.graph.modality
+    resultInfo:
+        "@odata.type": microsoft.graph.resultInfo
+    source:
+        "@odata.type": microsoft.graph.participantInfo
+    state:
+        "@odata.type": microsoft.graph.callState
+    subject: string
+    targets:
+        - "@odata.type": microsoft.graph.invitationParticipantInfo
+    tenantId: string
+    toneInfo:
+        "@odata.type": microsoft.graph.toneInfo
+    transcription:
+        "@odata.type": microsoft.graph.callTranscriptionInfo
+    operations:
+        - "@odata.type": microsoft.graph.commsOperation
+    participants:
+        - "@odata.type": microsoft.graph.participant

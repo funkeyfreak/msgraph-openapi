@@ -1,0 +1,140 @@
+get:
+    operationId: workbooks.workbook.tables.worksheet.charts.series.ListPoints
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+        - description: 'key: workbookChartSeries-id of workbookChartSeries'
+          in: path
+          name: workbookChartSeries-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChartSeries
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - value
+                    - value desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - value
+                    - format
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - format
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.workbookChartPoint'
+                                type: array
+                        title: Collection of workbookChartPoint
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get points from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+post:
+    operationId: workbooks.workbook.tables.worksheet.charts.series.CreatePoints
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookChart-id of workbookChart'
+          in: path
+          name: workbookChart-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChart
+        - description: 'key: workbookChartSeries-id of workbookChartSeries'
+          in: path
+          name: workbookChartSeries-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookChartSeries
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.workbookChartPoint'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookChartPoint'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to points for workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

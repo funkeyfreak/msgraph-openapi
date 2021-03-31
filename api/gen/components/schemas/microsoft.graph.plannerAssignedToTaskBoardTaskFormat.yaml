@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerAssignedToTaskBoardTaskFormat
+      type: object
+      properties:
+        orderHintsByAssignee: {}
+        unassignedOrderHint:
+            type: string
+example:
+    id: string (identifier)
+    orderHintsByAssignee:
+        "@odata.type": microsoft.graph.plannerOrderHintsByAssignee
+    unassignedOrderHint: string

@@ -1,0 +1,67 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: columnDefinition
+      type: object
+      properties:
+        boolean: {}
+        calculated: {}
+        choice: {}
+        columnGroup:
+            type: string
+        currency: {}
+        dateTime: {}
+        defaultValue: {}
+        description:
+            type: string
+        displayName:
+            type: string
+        enforceUniqueValues:
+            type: boolean
+        geolocation: {}
+        hidden:
+            type: boolean
+        indexed:
+            type: boolean
+        lookup: {}
+        name:
+            type: string
+        number: {}
+        personOrGroup: {}
+        readOnly:
+            type: boolean
+        required:
+            type: boolean
+        text: {}
+example:
+    id: string (identifier)
+    boolean:
+        "@odata.type": microsoft.graph.booleanColumn
+    calculated:
+        "@odata.type": microsoft.graph.calculatedColumn
+    choice:
+        "@odata.type": microsoft.graph.choiceColumn
+    columnGroup: string
+    currency:
+        "@odata.type": microsoft.graph.currencyColumn
+    dateTime:
+        "@odata.type": microsoft.graph.dateTimeColumn
+    defaultValue:
+        "@odata.type": microsoft.graph.defaultColumnValue
+    description: string
+    displayName: string
+    enforceUniqueValues: true
+    geolocation:
+        "@odata.type": microsoft.graph.geolocationColumn
+    hidden: true
+    indexed: true
+    lookup:
+        "@odata.type": microsoft.graph.lookupColumn
+    name: string
+    number:
+        "@odata.type": microsoft.graph.numberColumn
+    personOrGroup:
+        "@odata.type": microsoft.graph.personOrGroupColumn
+    readOnly: true
+    required: true
+    text:
+        "@odata.type": microsoft.graph.textColumn

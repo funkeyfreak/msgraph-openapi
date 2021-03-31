@@ -1,0 +1,81 @@
+get:
+    operationId: groupSettingTemplates.groupSettingTemplate.ListGroupSettingTemplate
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - values
+                    - values desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - values
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.groupSettingTemplate'
+                                type: array
+                        title: Collection of groupSettingTemplate
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from groupSettingTemplates
+    tags:
+        - groupSettingTemplates.groupSettingTemplate
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groupSettingTemplates.groupSettingTemplate.CreateGroupSettingTemplate
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupSettingTemplate'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupSettingTemplate'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to groupSettingTemplates
+    tags:
+        - groupSettingTemplates.groupSettingTemplate
+    x-ms-docs-operation-type: operation

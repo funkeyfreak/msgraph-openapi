@@ -1,0 +1,53 @@
+get:
+    operationId: organization.GetCertificateBasedAuthConfiguration
+    parameters:
+        - description: 'key: organization-id of organization'
+          in: path
+          name: organization-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: organization
+        - description: 'key: certificateBasedAuthConfiguration-id of certificateBasedAuthConfiguration'
+          in: path
+          name: certificateBasedAuthConfiguration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: certificateBasedAuthConfiguration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - certificateAuthorities
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.certificateBasedAuthConfiguration'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get certificateBasedAuthConfiguration from organization
+    tags:
+        - organization.certificateBasedAuthConfiguration
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,85 @@
+get:
+    operationId: shares.listItem.GetVersions
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - publication
+                    - fields
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - fields
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.listItemVersion'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get versions from shares
+    tags:
+        - shares.listItem
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: shares.listItem.UpdateVersions
+    parameters:
+        - description: 'key: sharedDriveItem-id of sharedDriveItem'
+          in: path
+          name: sharedDriveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedDriveItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.listItemVersion'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property versions in shares
+    tags:
+        - shares.listItem
+    x-ms-docs-operation-type: operation

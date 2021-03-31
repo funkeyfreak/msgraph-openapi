@@ -1,0 +1,7 @@
+title: conditionalAccessSessionControl
+type: object
+properties:
+    isEnabled:
+        type: boolean
+example:
+    isEnabled: true

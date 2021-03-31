@@ -1,0 +1,38 @@
+post:
+    operationId: groups.threads.posts.attachments.createUploadSession
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: conversationThread-id of conversationThread'
+          in: path
+          name: conversationThread-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: conversationThread
+        - description: 'key: post-id of post'
+          in: path
+          name: post-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: post
+    requestBody:
+        $ref: '#/components/requestBodies/groups.calendar.calendarView.attachments.createUploadSessionBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action createUploadSession
+    tags:
+        - groups.Actions
+    x-ms-docs-operation-type: action

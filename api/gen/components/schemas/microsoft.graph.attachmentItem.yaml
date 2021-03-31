@@ -1,0 +1,20 @@
+title: attachmentItem
+type: object
+properties:
+    attachmentType: {}
+    contentType:
+        type: string
+    isInline:
+        type: boolean
+    name:
+        type: string
+    size:
+        format: int64
+        type: integer
+example:
+    attachmentType:
+        "@odata.type": microsoft.graph.attachmentType
+    contentType: string
+    isInline: true
+    name: string
+    size: integer

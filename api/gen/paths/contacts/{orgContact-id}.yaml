@@ -1,0 +1,103 @@
+delete:
+    operationId: contacts.orgContact.DeleteOrgContact
+    parameters:
+        - description: 'key: orgContact-id of orgContact'
+          in: path
+          name: orgContact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: orgContact
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from contacts
+    tags:
+        - contacts.orgContact
+    x-ms-docs-operation-type: operation
+get:
+    operationId: contacts.orgContact.GetOrgContact
+    parameters:
+        - description: 'key: orgContact-id of orgContact'
+          in: path
+          name: orgContact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: orgContact
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - addresses
+                    - companyName
+                    - department
+                    - displayName
+                    - givenName
+                    - jobTitle
+                    - mail
+                    - mailNickname
+                    - onPremisesLastSyncDateTime
+                    - onPremisesProvisioningErrors
+                    - onPremisesSyncEnabled
+                    - phones
+                    - proxyAddresses
+                    - surname
+                    - directReports
+                    - manager
+                    - memberOf
+                    - transitiveMemberOf
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.orgContact'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from contacts by key
+    tags:
+        - contacts.orgContact
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: contacts.orgContact.UpdateOrgContact
+    parameters:
+        - description: 'key: orgContact-id of orgContact'
+          in: path
+          name: orgContact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: orgContact
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.orgContact'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in contacts
+    tags:
+        - contacts.orgContact
+    x-ms-docs-operation-type: operation

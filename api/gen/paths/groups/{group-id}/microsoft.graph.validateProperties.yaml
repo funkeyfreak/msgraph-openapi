@@ -1,0 +1,35 @@
+post:
+    operationId: groups.validateProperties
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        displayName:
+                            type: string
+                        mailNickname:
+                            type: string
+                        onBehalfOfUserId:
+                            format: uuid
+                            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                            type: string
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action validateProperties
+    tags:
+        - groups.Actions
+    x-ms-docs-operation-type: action

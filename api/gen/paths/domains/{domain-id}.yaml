@@ -1,0 +1,114 @@
+delete:
+    operationId: domains.domain.DeleteDomain
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from domains
+    tags:
+        - domains.domain
+    x-ms-docs-operation-type: operation
+get:
+    operationId: domains.domain.GetDomain
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - authenticationType
+                    - availabilityStatus
+                    - isAdminManaged
+                    - isDefault
+                    - isInitial
+                    - isRoot
+                    - isVerified
+                    - manufacturer
+                    - model
+                    - passwordNotificationWindowInDays
+                    - passwordValidityPeriodInDays
+                    - state
+                    - supportedServices
+                    - domainNameReferences
+                    - serviceConfigurationRecords
+                    - verificationDnsRecords
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - domainNameReferences
+                    - serviceConfigurationRecords
+                    - verificationDnsRecords
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.domain'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from domains by key
+    tags:
+        - domains.domain
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: domains.domain.UpdateDomain
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.domain'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in domains
+    tags:
+        - domains.domain
+    x-ms-docs-operation-type: operation

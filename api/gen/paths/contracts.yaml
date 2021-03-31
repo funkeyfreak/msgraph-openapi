@@ -1,0 +1,84 @@
+get:
+    operationId: contracts.contract.ListContract
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - contractType
+                    - contractType desc
+                    - customerId
+                    - customerId desc
+                    - defaultDomainName
+                    - defaultDomainName desc
+                    - displayName
+                    - displayName desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - contractType
+                    - customerId
+                    - defaultDomainName
+                    - displayName
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.contract'
+                                type: array
+                        title: Collection of contract
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from contracts
+    tags:
+        - contracts.contract
+    x-ms-docs-operation-type: operation
+post:
+    operationId: contracts.contract.CreateContract
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.contract'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contract'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to contracts
+    tags:
+        - contracts.contract
+    x-ms-docs-operation-type: operation

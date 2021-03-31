@@ -1,0 +1,88 @@
+delete:
+    operationId: groupSettingTemplates.groupSettingTemplate.DeleteGroupSettingTemplate
+    parameters:
+        - description: 'key: groupSettingTemplate-id of groupSettingTemplate'
+          in: path
+          name: groupSettingTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSettingTemplate
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from groupSettingTemplates
+    tags:
+        - groupSettingTemplates.groupSettingTemplate
+    x-ms-docs-operation-type: operation
+get:
+    operationId: groupSettingTemplates.groupSettingTemplate.GetGroupSettingTemplate
+    parameters:
+        - description: 'key: groupSettingTemplate-id of groupSettingTemplate'
+          in: path
+          name: groupSettingTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSettingTemplate
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - values
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupSettingTemplate'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from groupSettingTemplates by key
+    tags:
+        - groupSettingTemplates.groupSettingTemplate
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groupSettingTemplates.groupSettingTemplate.UpdateGroupSettingTemplate
+    parameters:
+        - description: 'key: groupSettingTemplate-id of groupSettingTemplate'
+          in: path
+          name: groupSettingTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupSettingTemplate
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupSettingTemplate'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in groupSettingTemplates
+    tags:
+        - groupSettingTemplates.groupSettingTemplate
+    x-ms-docs-operation-type: operation

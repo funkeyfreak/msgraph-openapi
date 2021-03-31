@@ -1,0 +1,110 @@
+get:
+    operationId: deviceManagement.ListComplianceManagementPartners
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - androidEnrollmentAssignments
+                    - androidEnrollmentAssignments desc
+                    - androidOnboarded
+                    - androidOnboarded desc
+                    - displayName
+                    - displayName desc
+                    - iosEnrollmentAssignments
+                    - iosEnrollmentAssignments desc
+                    - iosOnboarded
+                    - iosOnboarded desc
+                    - lastHeartbeatDateTime
+                    - lastHeartbeatDateTime desc
+                    - macOsEnrollmentAssignments
+                    - macOsEnrollmentAssignments desc
+                    - macOsOnboarded
+                    - macOsOnboarded desc
+                    - partnerState
+                    - partnerState desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - androidEnrollmentAssignments
+                    - androidOnboarded
+                    - displayName
+                    - iosEnrollmentAssignments
+                    - iosOnboarded
+                    - lastHeartbeatDateTime
+                    - macOsEnrollmentAssignments
+                    - macOsOnboarded
+                    - partnerState
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.complianceManagementPartner'
+                                type: array
+                        title: Collection of complianceManagementPartner
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get complianceManagementPartners from deviceManagement
+    tags:
+        - deviceManagement.complianceManagementPartner
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceManagement.CreateComplianceManagementPartners
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.complianceManagementPartner'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.complianceManagementPartner'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to complianceManagementPartners for deviceManagement
+    tags:
+        - deviceManagement.complianceManagementPartner
+    x-ms-docs-operation-type: operation

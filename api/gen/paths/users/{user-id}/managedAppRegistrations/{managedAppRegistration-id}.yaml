@@ -1,0 +1,70 @@
+get:
+    operationId: users.GetManagedAppRegistrations
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - appIdentifier
+                    - applicationVersion
+                    - createdDateTime
+                    - deviceName
+                    - deviceTag
+                    - deviceType
+                    - flaggedReasons
+                    - lastSyncDateTime
+                    - managementSdkVersion
+                    - platformVersion
+                    - userId
+                    - version
+                    - appliedPolicies
+                    - intendedPolicies
+                    - operations
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliedPolicies
+                    - intendedPolicies
+                    - operations
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppRegistration'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedAppRegistrations from users
+    tags:
+        - users.managedAppRegistration
+    x-ms-docs-operation-type: operation

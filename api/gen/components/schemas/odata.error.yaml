@@ -1,0 +1,6 @@
+required:
+    - error
+type: object
+properties:
+    error:
+        $ref: "#/components/schemas/odata.error.main"

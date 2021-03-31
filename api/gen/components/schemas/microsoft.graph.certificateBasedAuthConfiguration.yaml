@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: certificateBasedAuthConfiguration
+      type: object
+      properties:
+        certificateAuthorities:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.certificateAuthority"
+example:
+    id: string (identifier)
+    certificateAuthorities:
+        - "@odata.type": microsoft.graph.certificateAuthority

@@ -1,0 +1,24 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: calendarPermission
+      type: object
+      properties:
+        allowedRoles:
+            type: array
+            items: {}
+        emailAddress: {}
+        isInsideOrganization:
+            type: boolean
+        isRemovable:
+            type: boolean
+        role: {}
+example:
+    id: string (identifier)
+    allowedRoles:
+        - "@odata.type": microsoft.graph.calendarRoleType
+    emailAddress:
+        "@odata.type": microsoft.graph.emailAddress
+    isInsideOrganization: true
+    isRemovable: true
+    role:
+        "@odata.type": microsoft.graph.calendarRoleType

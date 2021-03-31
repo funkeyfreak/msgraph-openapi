@@ -1,0 +1,28 @@
+post:
+    operationId: me.onenote.pages.parentSection.pages.onenotePatchContent
+    parameters:
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    requestBody:
+        $ref: '#/components/requestBodies/groups.onenote.notebooks.sectionGroups.sections.pages.onenotePatchContentBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action onenotePatchContent
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

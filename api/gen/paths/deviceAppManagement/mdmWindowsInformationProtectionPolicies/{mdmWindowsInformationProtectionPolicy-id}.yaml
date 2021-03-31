@@ -1,0 +1,104 @@
+get:
+    operationId: deviceAppManagement.GetMdmWindowsInformationProtectionPolicies
+    parameters:
+        - description: 'key: mdmWindowsInformationProtectionPolicy-id of mdmWindowsInformationProtectionPolicy'
+          in: path
+          name: mdmWindowsInformationProtectionPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mdmWindowsInformationProtectionPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                    - azureRightsManagementServicesAllowed
+                    - dataRecoveryCertificate
+                    - enforcementLevel
+                    - enterpriseDomain
+                    - enterpriseInternalProxyServers
+                    - enterpriseIPRanges
+                    - enterpriseIPRangesAreAuthoritative
+                    - enterpriseNetworkDomainNames
+                    - enterpriseProtectedDomainNames
+                    - enterpriseProxiedDomains
+                    - enterpriseProxyServers
+                    - enterpriseProxyServersAreAuthoritative
+                    - exemptApps
+                    - iconsVisible
+                    - indexingEncryptedStoresOrItemsBlocked
+                    - isAssigned
+                    - neutralDomainResources
+                    - protectedApps
+                    - protectionUnderLockConfigRequired
+                    - revokeOnUnenrollDisabled
+                    - rightsManagementServicesTemplateId
+                    - smbAutoEncryptedFileExtensions
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - exemptAppLockerFiles
+                    - protectedAppLockerFiles
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mdmWindowsInformationProtectionPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mdmWindowsInformationProtectionPolicies from deviceAppManagement
+    tags:
+        - deviceAppManagement.mdmWindowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateMdmWindowsInformationProtectionPolicies
+    parameters:
+        - description: 'key: mdmWindowsInformationProtectionPolicy-id of mdmWindowsInformationProtectionPolicy'
+          in: path
+          name: mdmWindowsInformationProtectionPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mdmWindowsInformationProtectionPolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mdmWindowsInformationProtectionPolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
+    tags:
+        - deviceAppManagement.mdmWindowsInformationProtectionPolicy
+    x-ms-docs-operation-type: operation

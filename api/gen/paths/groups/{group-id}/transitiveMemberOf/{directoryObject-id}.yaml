@@ -1,0 +1,53 @@
+get:
+    operationId: groups.GetTransitiveMemberOf
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - description: 'key: directoryObject-id of directoryObject'
+          in: path
+          name: directoryObject-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: directoryObject
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get transitiveMemberOf from groups
+    tags:
+        - groups.directoryObject
+    x-ms-docs-operation-type: operation

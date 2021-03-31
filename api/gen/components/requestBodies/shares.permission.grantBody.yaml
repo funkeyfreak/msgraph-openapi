@@ -1,0 +1,14 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                roles:
+                    type: array
+                    items:
+                        type: string
+                recipients:
+                    type: array
+                    items: {}
+description: Action parameters
+required: true

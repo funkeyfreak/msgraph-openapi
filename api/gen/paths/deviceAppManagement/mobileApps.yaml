@@ -1,0 +1,126 @@
+get:
+    operationId: deviceAppManagement.ListMobileApps
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - developer
+                    - developer desc
+                    - displayName
+                    - displayName desc
+                    - informationUrl
+                    - informationUrl desc
+                    - isFeatured
+                    - isFeatured desc
+                    - largeIcon
+                    - largeIcon desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - notes
+                    - notes desc
+                    - owner
+                    - owner desc
+                    - privacyInformationUrl
+                    - privacyInformationUrl desc
+                    - publisher
+                    - publisher desc
+                    - publishingState
+                    - publishingState desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - developer
+                    - displayName
+                    - informationUrl
+                    - isFeatured
+                    - largeIcon
+                    - lastModifiedDateTime
+                    - notes
+                    - owner
+                    - privacyInformationUrl
+                    - publisher
+                    - publishingState
+                    - assignments
+                    - categories
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - categories
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.mobileApp'
+                                type: array
+                        title: Collection of mobileApp
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mobileApps from deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateMobileApps
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.mobileApp'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mobileApp'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to mobileApps for deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation

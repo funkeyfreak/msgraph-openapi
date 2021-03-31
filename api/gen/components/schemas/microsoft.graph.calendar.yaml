@@ -1,0 +1,78 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: calendar
+      type: object
+      properties:
+        allowedOnlineMeetingProviders:
+            type: array
+            items: {}
+        canEdit:
+            type: boolean
+        canShare:
+            type: boolean
+        canViewPrivateItems:
+            type: boolean
+        changeKey:
+            type: string
+        color: {}
+        defaultOnlineMeetingProvider: {}
+        hexColor:
+            type: string
+        isDefaultCalendar:
+            type: boolean
+        isRemovable:
+            type: boolean
+        isTallyingResponses:
+            type: boolean
+        name:
+            type: string
+        owner: {}
+        calendarPermissions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.calendarPermission"
+        calendarView:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.event"
+        events:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.event"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    allowedOnlineMeetingProviders:
+        - "@odata.type": microsoft.graph.onlineMeetingProviderType
+    canEdit: true
+    canShare: true
+    canViewPrivateItems: true
+    changeKey: string
+    color:
+        "@odata.type": microsoft.graph.calendarColor
+    defaultOnlineMeetingProvider:
+        "@odata.type": microsoft.graph.onlineMeetingProviderType
+    hexColor: string
+    isDefaultCalendar: true
+    isRemovable: true
+    isTallyingResponses: true
+    name: string
+    owner:
+        "@odata.type": microsoft.graph.emailAddress
+    calendarPermissions:
+        - "@odata.type": microsoft.graph.calendarPermission
+    calendarView:
+        - "@odata.type": microsoft.graph.event
+    events:
+        - "@odata.type": microsoft.graph.event
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

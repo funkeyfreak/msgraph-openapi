@@ -1,0 +1,106 @@
+get:
+    operationId: sites.lists.GetSubscriptions
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get subscriptions from sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.lists.UpdateSubscriptions
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: list-id of list'
+          in: path
+          name: list-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: list
+        - description: 'key: subscription-id of subscription'
+          in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: subscription
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.subscription2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property subscriptions in sites
+    tags:
+        - sites.list
+    x-ms-docs-operation-type: operation

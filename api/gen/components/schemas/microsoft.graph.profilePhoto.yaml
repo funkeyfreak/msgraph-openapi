@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: profilePhoto
+      type: object
+      properties:
+        height:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        width:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    height: integer
+    width: integer

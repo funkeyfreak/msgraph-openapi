@@ -1,0 +1,129 @@
+get:
+    operationId: drives.list.ListSubscriptions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - applicationId
+                    - applicationId desc
+                    - changeType
+                    - changeType desc
+                    - clientState
+                    - clientState desc
+                    - creatorId
+                    - creatorId desc
+                    - encryptionCertificate
+                    - encryptionCertificate desc
+                    - encryptionCertificateId
+                    - encryptionCertificateId desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - includeResourceData
+                    - includeResourceData desc
+                    - latestSupportedTlsVersion
+                    - latestSupportedTlsVersion desc
+                    - lifecycleNotificationUrl
+                    - lifecycleNotificationUrl desc
+                    - notificationUrl
+                    - notificationUrl desc
+                    - resource
+                    - resource desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationId
+                    - changeType
+                    - clientState
+                    - creatorId
+                    - encryptionCertificate
+                    - encryptionCertificateId
+                    - expirationDateTime
+                    - includeResourceData
+                    - latestSupportedTlsVersion
+                    - lifecycleNotificationUrl
+                    - notificationUrl
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.subscription'
+                                type: array
+                        title: Collection of subscription
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get subscriptions from drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation
+post:
+    operationId: drives.list.CreateSubscriptions
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.subscription'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.subscription'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to subscriptions for drives
+    tags:
+        - drives.list
+    x-ms-docs-operation-type: operation

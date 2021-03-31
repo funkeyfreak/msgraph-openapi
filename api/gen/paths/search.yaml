@@ -1,0 +1,56 @@
+get:
+    operationId: search.searchEntity.GetSearchEntity
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.searchEntity'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get search
+    tags:
+        - search.searchEntity
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: search.searchEntity.UpdateSearchEntity
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.searchEntity'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update search
+    tags:
+        - search.searchEntity
+    x-ms-docs-operation-type: operation

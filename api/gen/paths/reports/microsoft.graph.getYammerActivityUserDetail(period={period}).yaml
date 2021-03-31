@@ -1,0 +1,21 @@
+get:
+    operationId: reports.getYammerActivityUserDetail-15a5
+    parameters:
+        - in: path
+          name: period
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.report'
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getYammerActivityUserDetail
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

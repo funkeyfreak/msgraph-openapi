@@ -1,0 +1,118 @@
+get:
+    operationId: contacts.orgContact.ListOrgContact
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - addresses
+                    - addresses desc
+                    - companyName
+                    - companyName desc
+                    - department
+                    - department desc
+                    - displayName
+                    - displayName desc
+                    - givenName
+                    - givenName desc
+                    - jobTitle
+                    - jobTitle desc
+                    - mail
+                    - mail desc
+                    - mailNickname
+                    - mailNickname desc
+                    - onPremisesLastSyncDateTime
+                    - onPremisesLastSyncDateTime desc
+                    - onPremisesProvisioningErrors
+                    - onPremisesProvisioningErrors desc
+                    - onPremisesSyncEnabled
+                    - onPremisesSyncEnabled desc
+                    - phones
+                    - phones desc
+                    - proxyAddresses
+                    - proxyAddresses desc
+                    - surname
+                    - surname desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - addresses
+                    - companyName
+                    - department
+                    - displayName
+                    - givenName
+                    - jobTitle
+                    - mail
+                    - mailNickname
+                    - onPremisesLastSyncDateTime
+                    - onPremisesProvisioningErrors
+                    - onPremisesSyncEnabled
+                    - phones
+                    - proxyAddresses
+                    - surname
+                    - directReports
+                    - manager
+                    - memberOf
+                    - transitiveMemberOf
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.orgContact'
+                                type: array
+                        title: Collection of orgContact
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from contacts
+    tags:
+        - contacts.orgContact
+    x-ms-docs-operation-type: operation
+post:
+    operationId: contacts.orgContact.CreateOrgContact
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.orgContact'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.orgContact'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to contacts
+    tags:
+        - contacts.orgContact
+    x-ms-docs-operation-type: operation

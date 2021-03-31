@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                array: {}
+                quart: {}
+description: Action parameters
+required: true

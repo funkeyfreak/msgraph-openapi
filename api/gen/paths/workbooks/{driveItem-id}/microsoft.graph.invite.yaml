@@ -1,0 +1,52 @@
+post:
+    operationId: workbooks.invite
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        expirationDateTime:
+                            type: string
+                        message:
+                            type: string
+                        password:
+                            type: string
+                        recipients:
+                            items:
+                                $ref: '#/components/schemas/microsoft.graph.driveRecipient'
+                            type: array
+                        requireSignIn:
+                            default: false
+                            type: boolean
+                        roles:
+                            items:
+                                type: string
+                            type: array
+                        sendInvitation:
+                            default: false
+                            type: boolean
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action invite
+    tags:
+        - workbooks.Actions
+    x-ms-docs-operation-type: action

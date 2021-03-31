@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                ToRecipients:
+                    type: array
+                    items: {}
+                Message: {}
+                Comment:
+                    type: string
+description: Action parameters
+required: true

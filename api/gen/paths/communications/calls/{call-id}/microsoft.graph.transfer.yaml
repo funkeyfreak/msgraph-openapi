@@ -1,0 +1,29 @@
+post:
+    operationId: communications.calls.transfer
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        transferTarget:
+                            $ref: '#/components/schemas/microsoft.graph.invitationParticipantInfo'
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action transfer
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

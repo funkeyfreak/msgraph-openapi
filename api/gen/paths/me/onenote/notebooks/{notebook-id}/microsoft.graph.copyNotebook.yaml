@@ -1,0 +1,24 @@
+post:
+    operationId: me.onenote.notebooks.copyNotebook
+    parameters:
+        - description: 'key: notebook-id of notebook'
+          in: path
+          name: notebook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: notebook
+    requestBody:
+        $ref: '#/components/requestBodies/groups.onenote.notebooks.copyNotebookBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action copyNotebook
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

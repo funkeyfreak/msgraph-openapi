@@ -1,0 +1,40 @@
+title: conditionalAccessUsers
+type: object
+properties:
+    excludeGroups:
+        type: array
+        items:
+            type: string
+    excludeRoles:
+        type: array
+        items:
+            type: string
+    excludeUsers:
+        type: array
+        items:
+            type: string
+    includeGroups:
+        type: array
+        items:
+            type: string
+    includeRoles:
+        type: array
+        items:
+            type: string
+    includeUsers:
+        type: array
+        items:
+            type: string
+example:
+    excludeGroups:
+        - string
+    excludeRoles:
+        - string
+    excludeUsers:
+        - string
+    includeGroups:
+        - string
+    includeRoles:
+        - string
+    includeUsers:
+        - string

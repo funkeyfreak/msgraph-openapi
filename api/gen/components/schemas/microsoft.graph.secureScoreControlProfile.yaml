@@ -1,0 +1,76 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: secureScoreControlProfile
+      type: object
+      properties:
+        actionType:
+            type: string
+        actionUrl:
+            type: string
+        azureTenantId:
+            type: string
+        complianceInformation:
+            type: array
+            items: {}
+        controlCategory:
+            type: string
+        controlStateUpdates:
+            type: array
+            items: {}
+        deprecated:
+            type: boolean
+        implementationCost:
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        maxScore:
+            format: double
+        rank:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        remediation:
+            type: string
+        remediationImpact:
+            type: string
+        service:
+            type: string
+        threats:
+            type: array
+            items:
+                type: string
+        tier:
+            type: string
+        title:
+            type: string
+        userImpact:
+            type: string
+        vendorInformation: {}
+example:
+    id: string (identifier)
+    actionType: string
+    actionUrl: string
+    azureTenantId: string
+    complianceInformation:
+        - "@odata.type": microsoft.graph.complianceInformation
+    controlCategory: string
+    controlStateUpdates:
+        - "@odata.type": microsoft.graph.secureScoreControlStateUpdate
+    deprecated: true
+    implementationCost: string
+    lastModifiedDateTime: string (timestamp)
+    maxScore: double
+    rank: integer
+    remediation: string
+    remediationImpact: string
+    service: string
+    threats:
+        - string
+    tier: string
+    title: string
+    userImpact: string
+    vendorInformation:
+        "@odata.type": microsoft.graph.securityVendorInformation

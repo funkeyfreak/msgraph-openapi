@@ -1,0 +1,14 @@
+get:
+    operationId: reports.deviceConfigurationUserActivity
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function deviceConfigurationUserActivity
+    tags:
+        - reports.Functions
+    x-ms-docs-operation-type: function

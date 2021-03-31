@@ -1,0 +1,10 @@
+title: timeZoneInformation
+type: object
+properties:
+    alias:
+        type: string
+    displayName:
+        type: string
+example:
+    alias: string
+    displayName: string

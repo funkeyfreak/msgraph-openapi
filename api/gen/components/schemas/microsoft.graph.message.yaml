@@ -1,0 +1,129 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.outlookItem"
+    - title: message
+      type: object
+      properties:
+        bccRecipients:
+            type: array
+            items: {}
+        body: {}
+        bodyPreview:
+            type: string
+        ccRecipients:
+            type: array
+            items: {}
+        conversationId:
+            type: string
+        conversationIndex:
+            format: base64url
+            type: string
+        flag: {}
+        from: {}
+        hasAttachments:
+            type: boolean
+        importance: {}
+        inferenceClassification: {}
+        internetMessageHeaders:
+            type: array
+            items: {}
+        internetMessageId:
+            type: string
+        isDeliveryReceiptRequested:
+            type: boolean
+        isDraft:
+            type: boolean
+        isRead:
+            type: boolean
+        isReadReceiptRequested:
+            type: boolean
+        parentFolderId:
+            type: string
+        receivedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        replyTo:
+            type: array
+            items: {}
+        sender: {}
+        sentDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        subject:
+            type: string
+        toRecipients:
+            type: array
+            items: {}
+        uniqueBody: {}
+        webLink:
+            type: string
+        attachments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.attachment"
+        extensions:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.extension"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    categories:
+        - string
+    changeKey: string
+    createdDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    bccRecipients:
+        - "@odata.type": microsoft.graph.recipient
+    body:
+        "@odata.type": microsoft.graph.itemBody
+    bodyPreview: string
+    ccRecipients:
+        - "@odata.type": microsoft.graph.recipient
+    conversationId: string
+    conversationIndex: string
+    flag:
+        "@odata.type": microsoft.graph.followupFlag
+    from:
+        "@odata.type": microsoft.graph.recipient
+    hasAttachments: true
+    importance:
+        "@odata.type": microsoft.graph.importance
+    inferenceClassification:
+        "@odata.type": microsoft.graph.inferenceClassificationType
+    internetMessageHeaders:
+        - "@odata.type": microsoft.graph.internetMessageHeader
+    internetMessageId: string
+    isDeliveryReceiptRequested: true
+    isDraft: true
+    isRead: true
+    isReadReceiptRequested: true
+    parentFolderId: string
+    receivedDateTime: string (timestamp)
+    replyTo:
+        - "@odata.type": microsoft.graph.recipient
+    sender:
+        "@odata.type": microsoft.graph.recipient
+    sentDateTime: string (timestamp)
+    subject: string
+    toRecipients:
+        - "@odata.type": microsoft.graph.recipient
+    uniqueBody:
+        "@odata.type": microsoft.graph.itemBody
+    webLink: string
+    attachments:
+        - "@odata.type": microsoft.graph.attachment
+    extensions:
+        - "@odata.type": microsoft.graph.extension
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

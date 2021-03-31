@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: outlookCategory
+      type: object
+      properties:
+        color: {}
+        displayName:
+            type: string
+example:
+    id: string (identifier)
+    color:
+        "@odata.type": microsoft.graph.categoryColor
+    displayName: string

@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartTitle
+      type: object
+      properties:
+        overlay:
+            type: boolean
+        text:
+            type: string
+        visible:
+            type: boolean
+        format: {}
+example:
+    id: string (identifier)
+    overlay: true
+    text: string
+    visible: true
+    format:
+        "@odata.type": microsoft.graph.workbookChartTitleFormat

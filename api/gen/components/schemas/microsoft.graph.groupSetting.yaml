@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: groupSetting
+      type: object
+      properties:
+        displayName:
+            type: string
+        templateId:
+            type: string
+        values:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.settingValue"
+example:
+    id: string (identifier)
+    displayName: string
+    templateId: string
+    values:
+        - "@odata.type": microsoft.graph.settingValue

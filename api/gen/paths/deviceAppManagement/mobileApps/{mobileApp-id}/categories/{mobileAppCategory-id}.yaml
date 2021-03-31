@@ -1,0 +1,54 @@
+get:
+    operationId: deviceAppManagement.mobileApps.GetCategories
+    parameters:
+        - description: 'key: mobileApp-id of mobileApp'
+          in: path
+          name: mobileApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileApp
+        - description: 'key: mobileAppCategory-id of mobileAppCategory'
+          in: path
+          name: mobileAppCategory-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mobileAppCategory
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - lastModifiedDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.mobileAppCategory'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get categories from deviceAppManagement
+    tags:
+        - deviceAppManagement.mobileApp
+    x-ms-docs-operation-type: operation

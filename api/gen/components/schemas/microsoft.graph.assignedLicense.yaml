@@ -1,0 +1,17 @@
+title: assignedLicense
+type: object
+properties:
+    disabledPlans:
+        type: array
+        items:
+            format: uuid
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+            type: string
+    skuId:
+        format: uuid
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        type: string
+example:
+    disabledPlans:
+        - string
+    skuId: string

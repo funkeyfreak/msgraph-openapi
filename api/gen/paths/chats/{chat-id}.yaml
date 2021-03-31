@@ -1,0 +1,95 @@
+delete:
+    operationId: chats.chat.DeleteChat
+    parameters:
+        - description: 'key: chat-id of chat'
+          in: path
+          name: chat-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: chat
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from chats
+    tags:
+        - chats.chat
+    x-ms-docs-operation-type: operation
+get:
+    operationId: chats.chat.GetChat
+    parameters:
+        - description: 'key: chat-id of chat'
+          in: path
+          name: chat-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: chat
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.chat'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from chats by key
+    tags:
+        - chats.chat
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: chats.chat.UpdateChat
+    parameters:
+        - description: 'key: chat-id of chat'
+          in: path
+          name: chat-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: chat
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.chat'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in chats
+    tags:
+        - chats.chat
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,76 @@
+get:
+    operationId: planner.GetBuckets
+    parameters:
+        - description: 'key: plannerBucket-id of plannerBucket'
+          in: path
+          name: plannerBucket-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerBucket
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - name
+                    - orderHint
+                    - planId
+                    - tasks
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - tasks
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.plannerBucket'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get buckets from planner
+    tags:
+        - planner.plannerBucket
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: planner.UpdateBuckets
+    parameters:
+        - description: 'key: plannerBucket-id of plannerBucket'
+          in: path
+          name: plannerBucket-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: plannerBucket
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.plannerBucket'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property buckets in planner
+    tags:
+        - planner.plannerBucket
+    x-ms-docs-operation-type: operation

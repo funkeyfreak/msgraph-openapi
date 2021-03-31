@@ -1,0 +1,15 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.onenoteEntityBaseModel"
+    - title: onenoteResource
+      type: object
+      properties:
+        content:
+            format: base64url
+            type: string
+        contentUrl:
+            type: string
+example:
+    id: string (identifier)
+    self: string
+    content: string
+    contentUrl: string

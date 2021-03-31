@@ -1,0 +1,102 @@
+get:
+    operationId: deviceAppManagement.managedEBooks.userStateSummary.GetDeviceStates
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+        - description: 'key: userInstallStateSummary-id of userInstallStateSummary'
+          in: path
+          name: userInstallStateSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userInstallStateSummary
+        - description: 'key: deviceInstallState-id of deviceInstallState'
+          in: path
+          name: deviceInstallState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceInstallState
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deviceId
+                    - deviceName
+                    - errorCode
+                    - installState
+                    - lastSyncDateTime
+                    - osDescription
+                    - osVersion
+                    - userName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceInstallState'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceStates from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.managedEBooks.userStateSummary.UpdateDeviceStates
+    parameters:
+        - description: 'key: managedEBook-id of managedEBook'
+          in: path
+          name: managedEBook-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedEBook
+        - description: 'key: userInstallStateSummary-id of userInstallStateSummary'
+          in: path
+          name: userInstallStateSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userInstallStateSummary
+        - description: 'key: deviceInstallState-id of deviceInstallState'
+          in: path
+          name: deviceInstallState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceInstallState
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceInstallState2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceStates in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedEBook
+    x-ms-docs-operation-type: operation

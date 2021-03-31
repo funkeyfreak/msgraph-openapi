@@ -1,0 +1,101 @@
+delete:
+    operationId: dataPolicyOperations.dataPolicyOperation.DeleteDataPolicyOperation
+    parameters:
+        - description: 'key: dataPolicyOperation-id of dataPolicyOperation'
+          in: path
+          name: dataPolicyOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: dataPolicyOperation
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from dataPolicyOperations
+    tags:
+        - dataPolicyOperations.dataPolicyOperation
+    x-ms-docs-operation-type: operation
+get:
+    operationId: dataPolicyOperations.dataPolicyOperation.GetDataPolicyOperation
+    parameters:
+        - description: 'key: dataPolicyOperation-id of dataPolicyOperation'
+          in: path
+          name: dataPolicyOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: dataPolicyOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - completedDateTime
+                    - progress
+                    - status
+                    - storageLocation
+                    - submittedDateTime
+                    - userId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.dataPolicyOperation'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from dataPolicyOperations by key
+    tags:
+        - dataPolicyOperations.dataPolicyOperation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: dataPolicyOperations.dataPolicyOperation.UpdateDataPolicyOperation
+    parameters:
+        - description: 'key: dataPolicyOperation-id of dataPolicyOperation'
+          in: path
+          name: dataPolicyOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: dataPolicyOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.dataPolicyOperation'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in dataPolicyOperations
+    tags:
+        - dataPolicyOperations.dataPolicyOperation
+    x-ms-docs-operation-type: operation

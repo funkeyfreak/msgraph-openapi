@@ -1,0 +1,88 @@
+get:
+    operationId: users.insights.GetShared
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: sharedInsight-id of sharedInsight'
+          in: path
+          name: sharedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedInsight
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastShared
+                    - resourceReference
+                    - resourceVisualization
+                    - sharingHistory
+                    - lastSharedMethod
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - lastSharedMethod
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.sharedInsight'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get shared from users
+    tags:
+        - users.officeGraphInsights
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.insights.UpdateShared
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: sharedInsight-id of sharedInsight'
+          in: path
+          name: sharedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedInsight
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.sharedInsight'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property shared in users
+    tags:
+        - users.officeGraphInsights
+    x-ms-docs-operation-type: operation

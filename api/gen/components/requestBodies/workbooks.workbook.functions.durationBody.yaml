@@ -1,0 +1,13 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                settlement: {}
+                maturity: {}
+                coupon: {}
+                yld: {}
+                frequency: {}
+                basis: {}
+description: Action parameters
+required: true

@@ -1,0 +1,111 @@
+get:
+    operationId: deviceAppManagement.ListMobileAppConfigurations
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - displayName
+                    - displayName desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - targetedMobileApps
+                    - targetedMobileApps desc
+                    - version
+                    - version desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - targetedMobileApps
+                    - version
+                    - assignments
+                    - deviceStatuses
+                    - deviceStatusSummary
+                    - userStatuses
+                    - userStatusSummary
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignments
+                    - deviceStatuses
+                    - deviceStatusSummary
+                    - userStatuses
+                    - userStatusSummary
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfiguration'
+                                type: array
+                        title: Collection of managedDeviceMobileAppConfiguration
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get mobileAppConfigurations from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation
+post:
+    operationId: deviceAppManagement.CreateMobileAppConfigurations
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfiguration'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDeviceMobileAppConfiguration'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to mobileAppConfigurations for deviceAppManagement
+    tags:
+        - deviceAppManagement.managedDeviceMobileAppConfiguration
+    x-ms-docs-operation-type: operation

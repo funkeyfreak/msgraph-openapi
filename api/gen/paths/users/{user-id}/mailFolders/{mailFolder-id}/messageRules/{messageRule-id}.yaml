@@ -1,0 +1,91 @@
+get:
+    operationId: users.mailFolders.GetMessageRules
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: messageRule-id of messageRule'
+          in: path
+          name: messageRule-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: messageRule
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actions
+                    - conditions
+                    - displayName
+                    - exceptions
+                    - hasError
+                    - isEnabled
+                    - isReadOnly
+                    - sequence
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.messageRule'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get messageRules from users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.mailFolders.UpdateMessageRules
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: mailFolder-id of mailFolder'
+          in: path
+          name: mailFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: mailFolder
+        - description: 'key: messageRule-id of messageRule'
+          in: path
+          name: messageRule-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: messageRule
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.messageRule2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property messageRules in users
+    tags:
+        - users.mailFolder
+    x-ms-docs-operation-type: operation

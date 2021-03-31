@@ -1,0 +1,14 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.teamsAppInstallation"
+    - title: userScopeTeamsAppInstallation
+      type: object
+      properties:
+        chat: {}
+example:
+    id: string (identifier)
+    teamsApp:
+        "@odata.type": microsoft.graph.teamsApp
+    teamsAppDefinition:
+        "@odata.type": microsoft.graph.teamsAppDefinition
+    chat:
+        "@odata.type": microsoft.graph.chat

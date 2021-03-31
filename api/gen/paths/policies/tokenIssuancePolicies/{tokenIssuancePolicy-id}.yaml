@@ -1,0 +1,78 @@
+get:
+    operationId: policies.GetTokenIssuancePolicies
+    parameters:
+        - description: 'key: tokenIssuancePolicy-id of tokenIssuancePolicy'
+          in: path
+          name: tokenIssuancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: tokenIssuancePolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - description
+                    - displayName
+                    - definition
+                    - isOrganizationDefault
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - appliesTo
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.tokenIssuancePolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tokenIssuancePolicies from policies
+    tags:
+        - policies.tokenIssuancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: policies.UpdateTokenIssuancePolicies
+    parameters:
+        - description: 'key: tokenIssuancePolicy-id of tokenIssuancePolicy'
+          in: path
+          name: tokenIssuancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: tokenIssuancePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.tokenIssuancePolicy'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property tokenIssuancePolicies in policies
+    tags:
+        - policies.tokenIssuancePolicy
+    x-ms-docs-operation-type: operation

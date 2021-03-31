@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartGridlinesFormat
+      type: object
+      properties:
+        line: {}
+example:
+    id: string (identifier)
+    line:
+        "@odata.type": microsoft.graph.workbookChartLineFormat

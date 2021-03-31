@@ -1,0 +1,137 @@
+get:
+    operationId: sites.onenote.pages.parentNotebook.sectionGroups.sections.GetPages
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - content
+                    - contentUrl
+                    - createdByAppId
+                    - lastModifiedDateTime
+                    - level
+                    - links
+                    - order
+                    - title
+                    - userTags
+                    - parentNotebook
+                    - parentSection
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - parentNotebook
+                    - parentSection
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.onenotePage'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get pages from sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: sites.onenote.pages.parentNotebook.sectionGroups.sections.UpdatePages
+    parameters:
+        - description: 'key: site-id of site'
+          in: path
+          name: site-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: site
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+        - description: 'key: onenoteSection-id of onenoteSection'
+          in: path
+          name: onenoteSection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenoteSection
+        - description: 'key: onenotePage-id of onenotePage'
+          in: path
+          name: onenotePage-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: onenotePage
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.onenotePage2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property pages in sites
+    tags:
+        - sites.onenote
+    x-ms-docs-operation-type: operation

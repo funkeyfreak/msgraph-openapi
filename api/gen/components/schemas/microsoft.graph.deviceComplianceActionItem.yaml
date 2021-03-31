@@ -1,0 +1,30 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceComplianceActionItem
+      description: Scheduled Action Configuration
+      type: object
+      properties:
+        actionType:
+            description: What action to take
+        gracePeriodHours:
+            format: int32
+            description: Number of hours to wait till the action will be enforced. Valid values 0 to 8760
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notificationMessageCCList:
+            description: A list of group IDs to speicify who to CC this notification message to.
+            type: array
+            items:
+                type: string
+        notificationTemplateId:
+            description: What notification Message template to use
+            type: string
+example:
+    id: string (identifier)
+    actionType:
+        "@odata.type": microsoft.graph.deviceComplianceActionType
+    gracePeriodHours: integer
+    notificationMessageCCList:
+        - string
+    notificationTemplateId: string

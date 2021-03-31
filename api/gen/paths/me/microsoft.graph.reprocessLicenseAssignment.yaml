@@ -1,0 +1,14 @@
+post:
+    operationId: me.reprocessLicenseAssignment
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action reprocessLicenseAssignment
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

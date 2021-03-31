@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: plannerProgressTaskBoardTaskFormat
+      type: object
+      properties:
+        orderHint:
+            type: string
+example:
+    id: string (identifier)
+    orderHint: string

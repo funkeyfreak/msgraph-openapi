@@ -1,0 +1,10 @@
+title: itemBody
+type: object
+properties:
+    content:
+        type: string
+    contentType: {}
+example:
+    content: string
+    contentType:
+        "@odata.type": microsoft.graph.bodyType

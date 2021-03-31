@@ -1,0 +1,19 @@
+post:
+    operationId: users.removeAllDevicesFromManagement
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action removeAllDevicesFromManagement
+    tags:
+        - users.Actions
+    x-ms-docs-operation-type: action

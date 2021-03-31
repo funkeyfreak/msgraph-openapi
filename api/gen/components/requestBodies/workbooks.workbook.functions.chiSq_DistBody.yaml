@@ -1,0 +1,10 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                x: {}
+                degFreedom: {}
+                cumulative: {}
+description: Action parameters
+required: true

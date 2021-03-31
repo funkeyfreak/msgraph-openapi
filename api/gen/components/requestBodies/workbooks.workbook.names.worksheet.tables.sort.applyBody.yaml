@@ -1,0 +1,15 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                fields:
+                    type: array
+                    items: {}
+                matchCase:
+                    default: false
+                    type: boolean
+                method:
+                    type: string
+description: Action parameters
+required: true

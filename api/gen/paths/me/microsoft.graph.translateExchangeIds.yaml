@@ -1,0 +1,19 @@
+post:
+    operationId: me.translateExchangeIds
+    requestBody:
+        $ref: '#/components/requestBodies/me.translateExchangeIdsBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.convertIdResult'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action translateExchangeIds
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,90 @@
+get:
+    operationId: deviceManagement.notificationMessageTemplates.GetLocalizedNotificationMessages
+    parameters:
+        - description: 'key: notificationMessageTemplate-id of notificationMessageTemplate'
+          in: path
+          name: notificationMessageTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: notificationMessageTemplate
+        - description: 'key: localizedNotificationMessage-id of localizedNotificationMessage'
+          in: path
+          name: localizedNotificationMessage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: localizedNotificationMessage
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - isDefault
+                    - lastModifiedDateTime
+                    - locale
+                    - messageTemplate
+                    - subject
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.localizedNotificationMessage'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get localizedNotificationMessages from deviceManagement
+    tags:
+        - deviceManagement.notificationMessageTemplate
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.notificationMessageTemplates.UpdateLocalizedNotificationMessages
+    parameters:
+        - description: 'key: notificationMessageTemplate-id of notificationMessageTemplate'
+          in: path
+          name: notificationMessageTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: notificationMessageTemplate
+        - description: 'key: localizedNotificationMessage-id of localizedNotificationMessage'
+          in: path
+          name: localizedNotificationMessage-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: localizedNotificationMessage
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.localizedNotificationMessage'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property localizedNotificationMessages in deviceManagement
+    tags:
+        - deviceManagement.notificationMessageTemplate
+    x-ms-docs-operation-type: operation

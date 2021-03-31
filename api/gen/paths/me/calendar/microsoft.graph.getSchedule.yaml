@@ -1,0 +1,18 @@
+post:
+    operationId: me.calendar.getSchedule
+    requestBody:
+        $ref: '#/components/requestBodies/groups.calendar.calendarView.calendar.getScheduleBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action getSchedule
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

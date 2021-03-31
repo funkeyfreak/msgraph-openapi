@@ -1,0 +1,88 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: chatMessage
+      type: object
+      properties:
+        attachments:
+            type: array
+            items: {}
+        body:
+            $ref: "#/components/schemas/microsoft.graph.itemBody"
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        deletedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        etag:
+            type: string
+        from: {}
+        importance: {}
+        lastEditedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        locale:
+            type: string
+        mentions:
+            type: array
+            items: {}
+        messageType: {}
+        policyViolation: {}
+        reactions:
+            type: array
+            items: {}
+        replyToId:
+            type: string
+        subject:
+            type: string
+        summary:
+            type: string
+        webUrl:
+            type: string
+        hostedContents:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.chatMessageHostedContent"
+        replies:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.chatMessage"
+example:
+    id: string (identifier)
+    attachments:
+        - "@odata.type": microsoft.graph.chatMessageAttachment
+    body:
+        "@odata.type": microsoft.graph.itemBody
+    createdDateTime: string (timestamp)
+    deletedDateTime: string (timestamp)
+    etag: string
+    from:
+        "@odata.type": microsoft.graph.identitySet
+    importance:
+        "@odata.type": microsoft.graph.chatMessageImportance
+    lastEditedDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    locale: string
+    mentions:
+        - "@odata.type": microsoft.graph.chatMessageMention
+    messageType:
+        "@odata.type": microsoft.graph.chatMessageType
+    policyViolation:
+        "@odata.type": microsoft.graph.chatMessagePolicyViolation
+    reactions:
+        - "@odata.type": microsoft.graph.chatMessageReaction
+    replyToId: string
+    subject: string
+    summary: string
+    webUrl: string
+    hostedContents:
+        - "@odata.type": microsoft.graph.chatMessageHostedContent
+    replies:
+        - "@odata.type": microsoft.graph.chatMessage

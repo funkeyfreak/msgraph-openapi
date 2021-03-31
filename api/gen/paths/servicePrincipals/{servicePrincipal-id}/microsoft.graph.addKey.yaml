@@ -1,0 +1,25 @@
+post:
+    operationId: servicePrincipals.addKey
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+    requestBody:
+        $ref: '#/components/requestBodies/applications.addKeyBody'
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.keyCredential'
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action addKey
+    tags:
+        - servicePrincipals.Actions
+    x-ms-docs-operation-type: action

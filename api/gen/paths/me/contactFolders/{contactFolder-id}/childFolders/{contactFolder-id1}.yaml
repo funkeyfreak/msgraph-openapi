@@ -1,0 +1,90 @@
+get:
+    operationId: me.contactFolders.GetChildFolders
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - parentFolderId
+                    - childFolders
+                    - contacts
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - childFolders
+                    - contacts
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contactFolder'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get childFolders from me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.contactFolders.UpdateChildFolders
+    parameters:
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+        - description: 'key: contactFolder-id of contactFolder'
+          in: path
+          name: contactFolder-id1
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contactFolder
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contactFolder'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property childFolders in me
+    tags:
+        - me.contactFolder
+    x-ms-docs-operation-type: operation

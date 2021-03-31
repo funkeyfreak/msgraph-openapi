@@ -1,0 +1,26 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedAppOperation
+      description: Represents an operation applied against an app registration.
+      type: object
+      properties:
+        displayName:
+            description: The operation name.
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            description: The last time the app operation was modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        state:
+            description: The current state of the operation
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+example:
+    id: string (identifier)
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    state: string
+    version: string

@@ -1,0 +1,98 @@
+get:
+    operationId: me.todo.lists.tasks.GetLinkedResources
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+        - description: 'key: linkedResource-id of linkedResource'
+          in: path
+          name: linkedResource-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: linkedResource
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - applicationName
+                    - displayName
+                    - externalId
+                    - webUrl
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.linkedResource'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get linkedResources from me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.todo.lists.tasks.UpdateLinkedResources
+    parameters:
+        - description: 'key: todoTaskList-id of todoTaskList'
+          in: path
+          name: todoTaskList-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTaskList
+        - description: 'key: todoTask-id of todoTask'
+          in: path
+          name: todoTask-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: todoTask
+        - description: 'key: linkedResource-id of linkedResource'
+          in: path
+          name: linkedResource-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: linkedResource
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.linkedResource2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property linkedResources in me
+    tags:
+        - me.todo
+    x-ms-docs-operation-type: operation

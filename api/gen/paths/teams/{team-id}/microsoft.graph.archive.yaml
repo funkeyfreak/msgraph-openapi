@@ -1,0 +1,30 @@
+post:
+    operationId: teams.archive
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        shouldSetSpoSiteReadOnlyForMembers:
+                            default: false
+                            type: boolean
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action archive
+    tags:
+        - teams.Actions
+    x-ms-docs-operation-type: action

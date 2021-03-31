@@ -1,0 +1,19 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: thumbnailSet
+      type: object
+      properties:
+        large: {}
+        medium: {}
+        small: {}
+        source: {}
+example:
+    id: string (identifier)
+    large:
+        "@odata.type": microsoft.graph.thumbnail
+    medium:
+        "@odata.type": microsoft.graph.thumbnail
+    small:
+        "@odata.type": microsoft.graph.thumbnail
+    source:
+        "@odata.type": microsoft.graph.thumbnail

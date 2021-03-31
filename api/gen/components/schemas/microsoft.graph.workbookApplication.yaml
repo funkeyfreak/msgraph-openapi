@@ -1,0 +1,10 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookApplication
+      type: object
+      properties:
+        calculationMode:
+            type: string
+example:
+    id: string (identifier)
+    calculationMode: string

@@ -1,0 +1,10 @@
+title: keyValue
+type: object
+properties:
+    key:
+        type: string
+    value:
+        type: string
+example:
+    key: string
+    value: string

@@ -1,0 +1,98 @@
+delete:
+    operationId: groupLifecyclePolicies.groupLifecyclePolicy.DeleteGroupLifecyclePolicy
+    parameters:
+        - description: 'key: groupLifecyclePolicy-id of groupLifecyclePolicy'
+          in: path
+          name: groupLifecyclePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from groupLifecyclePolicies
+    tags:
+        - groupLifecyclePolicies.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation
+get:
+    operationId: groupLifecyclePolicies.groupLifecyclePolicy.GetGroupLifecyclePolicy
+    parameters:
+        - description: 'key: groupLifecyclePolicy-id of groupLifecyclePolicy'
+          in: path
+          name: groupLifecyclePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - alternateNotificationEmails
+                    - groupLifetimeInDays
+                    - managedGroupTypes
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from groupLifecyclePolicies by key
+    tags:
+        - groupLifecyclePolicies.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: groupLifecyclePolicies.groupLifecyclePolicy.UpdateGroupLifecyclePolicy
+    parameters:
+        - description: 'key: groupLifecyclePolicy-id of groupLifecyclePolicy'
+          in: path
+          name: groupLifecyclePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in groupLifecyclePolicies
+    tags:
+        - groupLifecyclePolicies.groupLifecyclePolicy
+    x-ms-docs-operation-type: operation

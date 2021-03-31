@@ -1,0 +1,12 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                keyCredential:
+                    $ref: "#/components/schemas/microsoft.graph.keyCredential"
+                passwordCredential: {}
+                proof:
+                    type: string
+description: Action parameters
+required: true

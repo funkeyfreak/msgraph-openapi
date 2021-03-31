@@ -1,0 +1,123 @@
+delete:
+    operationId: teams.team.DeleteTeam
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from teams
+    tags:
+        - teams.team
+    x-ms-docs-operation-type: operation
+get:
+    operationId: teams.team.GetTeam
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classification
+                    - description
+                    - displayName
+                    - funSettings
+                    - guestSettings
+                    - internalId
+                    - isArchived
+                    - memberSettings
+                    - messagingSettings
+                    - specialization
+                    - visibility
+                    - webUrl
+                    - schedule
+                    - channels
+                    - group
+                    - installedApps
+                    - members
+                    - operations
+                    - primaryChannel
+                    - template
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - schedule
+                    - channels
+                    - group
+                    - installedApps
+                    - members
+                    - operations
+                    - primaryChannel
+                    - template
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.team'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from teams by key
+    tags:
+        - teams.team
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.team.UpdateTeam
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.team'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in teams
+    tags:
+        - teams.team
+    x-ms-docs-operation-type: operation

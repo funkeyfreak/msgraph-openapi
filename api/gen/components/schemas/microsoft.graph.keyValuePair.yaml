@@ -1,0 +1,13 @@
+title: keyValuePair
+description: Key value pair for storing custom settings
+type: object
+properties:
+    name:
+        description: Name for this key-value pair
+        type: string
+    value:
+        description: Value for this key-value pair
+        type: string
+example:
+    name: string
+    value: string

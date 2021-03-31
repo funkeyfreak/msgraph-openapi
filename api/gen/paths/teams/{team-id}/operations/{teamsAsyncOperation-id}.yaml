@@ -1,0 +1,93 @@
+get:
+    operationId: teams.GetOperations
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: teamsAsyncOperation-id of teamsAsyncOperation'
+          in: path
+          name: teamsAsyncOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsAsyncOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - attemptsCount
+                    - createdDateTime
+                    - error
+                    - lastActionDateTime
+                    - operationType
+                    - status
+                    - targetResourceId
+                    - targetResourceLocation
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.teamsAsyncOperation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get operations from teams
+    tags:
+        - teams.teamsAsyncOperation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.UpdateOperations
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: 'key: teamsAsyncOperation-id of teamsAsyncOperation'
+          in: path
+          name: teamsAsyncOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsAsyncOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.teamsAsyncOperation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property operations in teams
+    tags:
+        - teams.teamsAsyncOperation
+    x-ms-docs-operation-type: operation

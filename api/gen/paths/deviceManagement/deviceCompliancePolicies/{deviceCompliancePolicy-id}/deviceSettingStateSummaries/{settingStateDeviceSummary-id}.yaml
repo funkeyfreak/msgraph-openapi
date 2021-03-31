@@ -1,0 +1,89 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicies.GetDeviceSettingStateSummaries
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: settingStateDeviceSummary-id of settingStateDeviceSummary'
+          in: path
+          name: settingStateDeviceSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: settingStateDeviceSummary
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - compliantDeviceCount
+                    - conflictDeviceCount
+                    - errorDeviceCount
+                    - instancePath
+                    - nonCompliantDeviceCount
+                    - notApplicableDeviceCount
+                    - remediatedDeviceCount
+                    - settingName
+                    - unknownDeviceCount
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.settingStateDeviceSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceSettingStateSummaries from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceCompliancePolicies.UpdateDeviceSettingStateSummaries
+    parameters:
+        - description: 'key: deviceCompliancePolicy-id of deviceCompliancePolicy'
+          in: path
+          name: deviceCompliancePolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicy
+        - description: 'key: settingStateDeviceSummary-id of settingStateDeviceSummary'
+          in: path
+          name: settingStateDeviceSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: settingStateDeviceSummary
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.settingStateDeviceSummary2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceSettingStateSummaries in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicy
+    x-ms-docs-operation-type: operation

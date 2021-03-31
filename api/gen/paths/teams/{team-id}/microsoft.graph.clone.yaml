@@ -1,0 +1,37 @@
+post:
+    operationId: teams.clone
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        classification:
+                            type: string
+                        description:
+                            type: string
+                        displayName:
+                            type: string
+                        mailNickname:
+                            type: string
+                        partsToClone: {}
+                        visibility: {}
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action clone
+    tags:
+        - teams.Actions
+    x-ms-docs-operation-type: action

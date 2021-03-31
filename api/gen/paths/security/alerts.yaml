@@ -1,0 +1,200 @@
+get:
+    operationId: security.ListAlerts
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - activityGroupName
+                    - activityGroupName desc
+                    - alertDetections
+                    - alertDetections desc
+                    - assignedTo
+                    - assignedTo desc
+                    - azureSubscriptionId
+                    - azureSubscriptionId desc
+                    - azureTenantId
+                    - azureTenantId desc
+                    - category
+                    - category desc
+                    - closedDateTime
+                    - closedDateTime desc
+                    - cloudAppStates
+                    - cloudAppStates desc
+                    - comments
+                    - comments desc
+                    - confidence
+                    - confidence desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - description
+                    - description desc
+                    - detectionIds
+                    - detectionIds desc
+                    - eventDateTime
+                    - eventDateTime desc
+                    - feedback
+                    - feedback desc
+                    - fileStates
+                    - fileStates desc
+                    - historyStates
+                    - historyStates desc
+                    - hostStates
+                    - hostStates desc
+                    - incidentIds
+                    - incidentIds desc
+                    - investigationSecurityStates
+                    - investigationSecurityStates desc
+                    - lastEventDateTime
+                    - lastEventDateTime desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - malwareStates
+                    - malwareStates desc
+                    - messageSecurityStates
+                    - messageSecurityStates desc
+                    - networkConnections
+                    - networkConnections desc
+                    - processes
+                    - processes desc
+                    - recommendedActions
+                    - recommendedActions desc
+                    - registryKeyStates
+                    - registryKeyStates desc
+                    - securityResources
+                    - securityResources desc
+                    - severity
+                    - severity desc
+                    - sourceMaterials
+                    - sourceMaterials desc
+                    - status
+                    - status desc
+                    - tags
+                    - tags desc
+                    - title
+                    - title desc
+                    - triggers
+                    - triggers desc
+                    - uriClickSecurityStates
+                    - uriClickSecurityStates desc
+                    - userStates
+                    - userStates desc
+                    - vendorInformation
+                    - vendorInformation desc
+                    - vulnerabilityStates
+                    - vulnerabilityStates desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activityGroupName
+                    - alertDetections
+                    - assignedTo
+                    - azureSubscriptionId
+                    - azureTenantId
+                    - category
+                    - closedDateTime
+                    - cloudAppStates
+                    - comments
+                    - confidence
+                    - createdDateTime
+                    - description
+                    - detectionIds
+                    - eventDateTime
+                    - feedback
+                    - fileStates
+                    - historyStates
+                    - hostStates
+                    - incidentIds
+                    - investigationSecurityStates
+                    - lastEventDateTime
+                    - lastModifiedDateTime
+                    - malwareStates
+                    - messageSecurityStates
+                    - networkConnections
+                    - processes
+                    - recommendedActions
+                    - registryKeyStates
+                    - securityResources
+                    - severity
+                    - sourceMaterials
+                    - status
+                    - tags
+                    - title
+                    - triggers
+                    - uriClickSecurityStates
+                    - userStates
+                    - vendorInformation
+                    - vulnerabilityStates
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.alert'
+                                type: array
+                        title: Collection of alert
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get alerts from security
+    tags:
+        - security.alert
+    x-ms-docs-operation-type: operation
+post:
+    operationId: security.CreateAlerts
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.alert'
+        description: New navigation property
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.alert'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to alerts for security
+    tags:
+        - security.alert
+    x-ms-docs-operation-type: operation

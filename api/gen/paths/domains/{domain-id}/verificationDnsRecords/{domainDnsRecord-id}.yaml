@@ -1,0 +1,85 @@
+get:
+    operationId: domains.GetVerificationDnsRecords
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+        - description: 'key: domainDnsRecord-id of domainDnsRecord'
+          in: path
+          name: domainDnsRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domainDnsRecord
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - isOptional
+                    - label
+                    - recordType
+                    - supportedService
+                    - ttl
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.domainDnsRecord'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get verificationDnsRecords from domains
+    tags:
+        - domains.domainDnsRecord
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: domains.UpdateVerificationDnsRecords
+    parameters:
+        - description: 'key: domain-id of domain'
+          in: path
+          name: domain-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domain
+        - description: 'key: domainDnsRecord-id of domainDnsRecord'
+          in: path
+          name: domainDnsRecord-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: domainDnsRecord
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.domainDnsRecord'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property verificationDnsRecords in domains
+    tags:
+        - domains.domainDnsRecord
+    x-ms-docs-operation-type: operation

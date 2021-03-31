@@ -1,0 +1,20 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.managedAppPolicy"
+    - title: managedAppConfiguration
+      description: Configuration used to deliver a set of custom settings as-is to apps for users to whom the configuration is scoped
+      type: object
+      properties:
+        customSettings:
+            description: A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.keyValuePair"
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    displayName: string
+    lastModifiedDateTime: string (timestamp)
+    version: string
+    customSettings:
+        - "@odata.type": microsoft.graph.keyValuePair

@@ -1,0 +1,95 @@
+delete:
+    operationId: teamsTemplates.teamsTemplate.DeleteTeamsTemplate
+    parameters:
+        - description: 'key: teamsTemplate-id of teamsTemplate'
+          in: path
+          name: teamsTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsTemplate
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from teamsTemplates
+    tags:
+        - teamsTemplates.teamsTemplate
+    x-ms-docs-operation-type: operation
+get:
+    operationId: teamsTemplates.teamsTemplate.GetTeamsTemplate
+    parameters:
+        - description: 'key: teamsTemplate-id of teamsTemplate'
+          in: path
+          name: teamsTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsTemplate
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.teamsTemplate'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from teamsTemplates by key
+    tags:
+        - teamsTemplates.teamsTemplate
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teamsTemplates.teamsTemplate.UpdateTeamsTemplate
+    parameters:
+        - description: 'key: teamsTemplate-id of teamsTemplate'
+          in: path
+          name: teamsTemplate-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: teamsTemplate
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.teamsTemplate'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in teamsTemplates
+    tags:
+        - teamsTemplates.teamsTemplate
+    x-ms-docs-operation-type: operation

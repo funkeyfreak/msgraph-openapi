@@ -1,0 +1,83 @@
+get:
+    operationId: users.GetScopedRoleMemberOf
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: scopedRoleMembership-id of scopedRoleMembership'
+          in: path
+          name: scopedRoleMembership-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: scopedRoleMembership
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - administrativeUnitId
+                    - roleId
+                    - roleMemberInfo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get scopedRoleMemberOf from users
+    tags:
+        - users.scopedRoleMembership
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.UpdateScopedRoleMemberOf
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: scopedRoleMembership-id of scopedRoleMembership'
+          in: path
+          name: scopedRoleMembership-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: scopedRoleMembership
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.scopedRoleMembership2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property scopedRoleMemberOf in users
+    tags:
+        - users.scopedRoleMembership
+    x-ms-docs-operation-type: operation

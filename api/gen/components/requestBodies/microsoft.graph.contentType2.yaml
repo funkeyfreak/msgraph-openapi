@@ -1,0 +1,6 @@
+content:
+    application/json:
+        schema:
+            $ref: "#/components/schemas/microsoft.graph.contentType"
+description: New navigation property
+required: true

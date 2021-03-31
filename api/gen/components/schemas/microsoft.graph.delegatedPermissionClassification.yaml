@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: delegatedPermissionClassification
+      type: object
+      properties:
+        classification: {}
+        permissionId:
+            type: string
+        permissionName:
+            type: string
+example:
+    id: string (identifier)
+    classification:
+        "@odata.type": microsoft.graph.permissionClassificationType
+    permissionId: string
+    permissionName: string

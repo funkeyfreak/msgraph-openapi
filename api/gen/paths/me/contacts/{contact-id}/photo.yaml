@@ -1,0 +1,57 @@
+get:
+    operationId: me.contacts.GetPhoto
+    parameters:
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - height
+                    - width
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get photo from me
+    tags:
+        - me.contact
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.contacts.UpdatePhoto
+    parameters:
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.profilePhoto2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property photo in me
+    tags:
+        - me.contact
+    x-ms-docs-operation-type: operation

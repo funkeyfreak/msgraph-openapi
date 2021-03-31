@@ -1,0 +1,101 @@
+get:
+    operationId: workbooks.workbook.comments.GetReplies
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookComment-id of workbookComment'
+          in: path
+          name: workbookComment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookComment
+        - description: 'key: workbookCommentReply-id of workbookCommentReply'
+          in: path
+          name: workbookCommentReply-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookCommentReply
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - content
+                    - contentType
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.workbookCommentReply'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get replies from workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: workbooks.workbook.comments.UpdateReplies
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookComment-id of workbookComment'
+          in: path
+          name: workbookComment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookComment
+        - description: 'key: workbookCommentReply-id of workbookCommentReply'
+          in: path
+          name: workbookCommentReply-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookCommentReply
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.workbookCommentReply'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property replies in workbooks
+    tags:
+        - workbooks.workbook
+    x-ms-docs-operation-type: operation

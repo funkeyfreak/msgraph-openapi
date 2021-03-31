@@ -1,0 +1,117 @@
+get:
+    operationId: groups.ListAppRoleAssignments
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                    - appRoleId
+                    - appRoleId desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - principalDisplayName
+                    - principalDisplayName desc
+                    - principalId
+                    - principalId desc
+                    - principalType
+                    - principalType desc
+                    - resourceDisplayName
+                    - resourceDisplayName desc
+                    - resourceId
+                    - resourceId desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                    - appRoleId
+                    - createdDateTime
+                    - principalDisplayName
+                    - principalId
+                    - principalType
+                    - resourceDisplayName
+                    - resourceId
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+                                type: array
+                        title: Collection of appRoleAssignment
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get appRoleAssignments from groups
+    tags:
+        - groups.appRoleAssignment
+    x-ms-docs-operation-type: operation
+post:
+    operationId: groups.CreateAppRoleAssignments
+    parameters:
+        - description: 'key: group-id of group'
+          in: path
+          name: group-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.appRoleAssignment'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to appRoleAssignments for groups
+    tags:
+        - groups.appRoleAssignment
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,81 @@
+get:
+    operationId: users.calendar.GetSingleValueExtendedProperties
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: singleValueLegacyExtendedProperty-id of singleValueLegacyExtendedProperty'
+          in: path
+          name: singleValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: singleValueLegacyExtendedProperty
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - value
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get singleValueExtendedProperties from users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: users.calendar.UpdateSingleValueExtendedProperties
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: singleValueLegacyExtendedProperty-id of singleValueLegacyExtendedProperty'
+          in: path
+          name: singleValueLegacyExtendedProperty-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: singleValueLegacyExtendedProperty
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.singleValueLegacyExtendedProperty2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property singleValueExtendedProperties in users
+    tags:
+        - users.calendar
+    x-ms-docs-operation-type: operation

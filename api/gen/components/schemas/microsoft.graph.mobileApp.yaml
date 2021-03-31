@@ -1,0 +1,76 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: mobileApp
+      description: An abstract class containing the base properties for Intune mobile apps.
+      type: object
+      properties:
+        createdDateTime:
+            format: date-time
+            description: The date and time the app was created.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            description: The description of the app.
+            type: string
+        developer:
+            description: The developer of the app.
+            type: string
+        displayName:
+            description: The admin provided or imported title of the app.
+            type: string
+        informationUrl:
+            description: The more information Url.
+            type: string
+        isFeatured:
+            description: The value indicating whether the app is marked as featured by the admin.
+            type: boolean
+        largeIcon:
+            description: The large icon, to be displayed in the app details and used for upload of the icon.
+        lastModifiedDateTime:
+            format: date-time
+            description: The date and time the app was last modified.
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        notes:
+            description: Notes for the app.
+            type: string
+        owner:
+            description: The owner of the app.
+            type: string
+        privacyInformationUrl:
+            description: The privacy statement Url.
+            type: string
+        publisher:
+            description: The publisher of the app.
+            type: string
+        publishingState:
+            description: The publishing state for the app. The app cannot be assigned unless the app is published.
+        assignments:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.mobileAppAssignment"
+        categories:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.mobileAppCategory"
+example:
+    id: string (identifier)
+    createdDateTime: string (timestamp)
+    description: string
+    developer: string
+    displayName: string
+    informationUrl: string
+    isFeatured: true
+    largeIcon:
+        "@odata.type": microsoft.graph.mimeContent
+    lastModifiedDateTime: string (timestamp)
+    notes: string
+    owner: string
+    privacyInformationUrl: string
+    publisher: string
+    publishingState:
+        "@odata.type": microsoft.graph.mobileAppPublishingState
+    assignments:
+        - "@odata.type": microsoft.graph.mobileAppAssignment
+    categories:
+        - "@odata.type": microsoft.graph.mobileAppCategory

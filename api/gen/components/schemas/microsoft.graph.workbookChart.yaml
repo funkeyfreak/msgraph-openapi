@@ -1,0 +1,46 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChart
+      type: object
+      properties:
+        height:
+            format: double
+        left:
+            format: double
+        name:
+            type: string
+        top:
+            format: double
+        width:
+            format: double
+        axes: {}
+        dataLabels: {}
+        format: {}
+        legend: {}
+        series:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.workbookChartSeries"
+        title: {}
+        worksheet: {}
+example:
+    id: string (identifier)
+    height: double
+    left: double
+    name: string
+    top: double
+    width: double
+    axes:
+        "@odata.type": microsoft.graph.workbookChartAxes
+    dataLabels:
+        "@odata.type": microsoft.graph.workbookChartDataLabels
+    format:
+        "@odata.type": microsoft.graph.workbookChartAreaFormat
+    legend:
+        "@odata.type": microsoft.graph.workbookChartLegend
+    series:
+        - "@odata.type": microsoft.graph.workbookChartSeries
+    title:
+        "@odata.type": microsoft.graph.workbookChartTitle
+    worksheet:
+        "@odata.type": microsoft.graph.workbookWorksheet

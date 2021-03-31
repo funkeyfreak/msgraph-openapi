@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartTitleFormat
+      type: object
+      properties:
+        fill: {}
+        font: {}
+example:
+    id: string (identifier)
+    fill:
+        "@odata.type": microsoft.graph.workbookChartFill
+    font:
+        "@odata.type": microsoft.graph.workbookChartFont

@@ -1,0 +1,26 @@
+post:
+    operationId: drive.list.items.versions.restoreVersion
+    parameters:
+        - description: 'key: listItem-id of listItem'
+          in: path
+          name: listItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItem
+        - description: 'key: listItemVersion-id of listItemVersion'
+          in: path
+          name: listItemVersion-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: listItemVersion
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action restoreVersion
+    tags:
+        - drive.Actions
+    x-ms-docs-operation-type: action

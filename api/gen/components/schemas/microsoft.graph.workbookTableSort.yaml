@@ -1,0 +1,18 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookTableSort
+      type: object
+      properties:
+        fields:
+            type: array
+            items: {}
+        matchCase:
+            type: boolean
+        method:
+            type: string
+example:
+    id: string (identifier)
+    fields:
+        - "@odata.type": microsoft.graph.workbookSortField
+    matchCase: true
+    method: string

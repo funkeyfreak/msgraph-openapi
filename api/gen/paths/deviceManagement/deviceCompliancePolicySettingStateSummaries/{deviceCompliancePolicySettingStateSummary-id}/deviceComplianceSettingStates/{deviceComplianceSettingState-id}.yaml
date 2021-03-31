@@ -1,0 +1,96 @@
+get:
+    operationId: deviceManagement.deviceCompliancePolicySettingStateSummaries.GetDeviceComplianceSettingStates
+    parameters:
+        - description: 'key: deviceCompliancePolicySettingStateSummary-id of deviceCompliancePolicySettingStateSummary'
+          in: path
+          name: deviceCompliancePolicySettingStateSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicySettingStateSummary
+        - description: 'key: deviceComplianceSettingState-id of deviceComplianceSettingState'
+          in: path
+          name: deviceComplianceSettingState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceSettingState
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - complianceGracePeriodExpirationDateTime
+                    - deviceId
+                    - deviceModel
+                    - deviceName
+                    - setting
+                    - settingName
+                    - state
+                    - userEmail
+                    - userId
+                    - userName
+                    - userPrincipalName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceComplianceSettingState'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceComplianceSettingStates from deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicySettingStateSummary
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.deviceCompliancePolicySettingStateSummaries.UpdateDeviceComplianceSettingStates
+    parameters:
+        - description: 'key: deviceCompliancePolicySettingStateSummary-id of deviceCompliancePolicySettingStateSummary'
+          in: path
+          name: deviceCompliancePolicySettingStateSummary-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicySettingStateSummary
+        - description: 'key: deviceComplianceSettingState-id of deviceComplianceSettingState'
+          in: path
+          name: deviceComplianceSettingState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceComplianceSettingState
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.deviceComplianceSettingState'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceComplianceSettingStates in deviceManagement
+    tags:
+        - deviceManagement.deviceCompliancePolicySettingStateSummary
+    x-ms-docs-operation-type: operation

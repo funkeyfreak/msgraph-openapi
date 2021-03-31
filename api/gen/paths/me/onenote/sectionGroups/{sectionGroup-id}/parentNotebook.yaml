@@ -1,0 +1,82 @@
+get:
+    operationId: me.onenote.sectionGroups.GetParentNotebook
+    parameters:
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - self
+                    - createdDateTime
+                    - createdBy
+                    - displayName
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - isDefault
+                    - isShared
+                    - links
+                    - sectionGroupsUrl
+                    - sectionsUrl
+                    - userRole
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - sectionGroups
+                    - sections
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.notebook'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get parentNotebook from me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.onenote.sectionGroups.UpdateParentNotebook
+    parameters:
+        - description: 'key: sectionGroup-id of sectionGroup'
+          in: path
+          name: sectionGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sectionGroup
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.notebook'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property parentNotebook in me
+    tags:
+        - me.onenote
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,10 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                sourceData: {}
+                seriesBy:
+                    type: string
+description: Action parameters
+required: true

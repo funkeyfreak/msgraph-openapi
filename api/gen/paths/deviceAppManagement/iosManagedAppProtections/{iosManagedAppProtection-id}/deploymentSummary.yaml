@@ -1,0 +1,71 @@
+get:
+    operationId: deviceAppManagement.iosManagedAppProtections.GetDeploymentSummary
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - configurationDeployedUserCount
+                    - configurationDeploymentSummaryPerApp
+                    - displayName
+                    - lastRefreshTime
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppPolicyDeploymentSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deploymentSummary from deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.iosManagedAppProtections.UpdateDeploymentSummary
+    parameters:
+        - description: 'key: iosManagedAppProtection-id of iosManagedAppProtection'
+          in: path
+          name: iosManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: iosManagedAppProtection
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedAppPolicyDeploymentSummary'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deploymentSummary in deviceAppManagement
+    tags:
+        - deviceAppManagement.iosManagedAppProtection
+    x-ms-docs-operation-type: operation

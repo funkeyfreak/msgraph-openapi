@@ -1,0 +1,58 @@
+get:
+    operationId: me.GetCalendar
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedOnlineMeetingProviders
+                    - canEdit
+                    - canShare
+                    - canViewPrivateItems
+                    - changeKey
+                    - color
+                    - defaultOnlineMeetingProvider
+                    - hexColor
+                    - isDefaultCalendar
+                    - isRemovable
+                    - isTallyingResponses
+                    - name
+                    - owner
+                    - calendarPermissions
+                    - calendarView
+                    - events
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendar'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendar from me
+    tags:
+        - me.calendar
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateCalendar
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendar'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property calendar in me
+    tags:
+        - me.calendar
+    x-ms-docs-operation-type: operation

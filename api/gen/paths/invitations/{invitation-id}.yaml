@@ -1,0 +1,105 @@
+delete:
+    operationId: invitations.invitation.DeleteInvitation
+    parameters:
+        - description: 'key: invitation-id of invitation'
+          in: path
+          name: invitation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: invitation
+        - description: ETag
+          in: header
+          name: If-Match
+          schema:
+            type: string
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Delete entity from invitations
+    tags:
+        - invitations.invitation
+    x-ms-docs-operation-type: operation
+get:
+    operationId: invitations.invitation.GetInvitation
+    parameters:
+        - description: 'key: invitation-id of invitation'
+          in: path
+          name: invitation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: invitation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - invitedUserDisplayName
+                    - invitedUserEmailAddress
+                    - invitedUserMessageInfo
+                    - invitedUserType
+                    - inviteRedeemUrl
+                    - inviteRedirectUrl
+                    - sendInvitationMessage
+                    - status
+                    - invitedUser
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - invitedUser
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.invitation'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entity from invitations by key
+    tags:
+        - invitations.invitation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: invitations.invitation.UpdateInvitation
+    parameters:
+        - description: 'key: invitation-id of invitation'
+          in: path
+          name: invitation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: invitation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.invitation'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update entity in invitations
+    tags:
+        - invitations.invitation
+    x-ms-docs-operation-type: operation

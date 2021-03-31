@@ -1,0 +1,9 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                userPrincipalName:
+                    type: string
+description: Action parameters
+required: true

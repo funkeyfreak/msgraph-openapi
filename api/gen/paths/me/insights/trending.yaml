@@ -1,0 +1,92 @@
+get:
+    operationId: me.insights.ListTrending
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - resourceReference
+                    - resourceReference desc
+                    - resourceVisualization
+                    - resourceVisualization desc
+                    - weight
+                    - weight desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - lastModifiedDateTime
+                    - resourceReference
+                    - resourceVisualization
+                    - weight
+                    - resource
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - resource
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.trending'
+                                type: array
+                        title: Collection of trending
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get trending from me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.insights.CreateTrending
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.trending'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.trending'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to trending for me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation

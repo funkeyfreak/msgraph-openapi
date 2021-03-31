@@ -1,0 +1,96 @@
+get:
+    operationId: me.GetContacts
+    parameters:
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - categories
+                    - changeKey
+                    - createdDateTime
+                    - lastModifiedDateTime
+                    - assistantName
+                    - birthday
+                    - businessAddress
+                    - businessHomePage
+                    - businessPhones
+                    - children
+                    - companyName
+                    - department
+                    - displayName
+                    - emailAddresses
+                    - fileAs
+                    - generation
+                    - givenName
+                    - homeAddress
+                    - homePhones
+                    - imAddresses
+                    - initials
+                    - jobTitle
+                    - manager
+                    - middleName
+                    - mobilePhone
+                    - nickName
+                    - officeLocation
+                    - otherAddress
+                    - parentFolderId
+                    - personalNotes
+                    - profession
+                    - spouseName
+                    - surname
+                    - title
+                    - yomiCompanyName
+                    - yomiGivenName
+                    - yomiSurname
+                    - extensions
+                    - multiValueExtendedProperties
+                    - photo
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.contact'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get contacts from me
+    tags:
+        - me.contact
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateContacts
+    parameters:
+        - description: 'key: contact-id of contact'
+          in: path
+          name: contact-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: contact
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.contact'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property contacts in me
+    tags:
+        - me.contact
+    x-ms-docs-operation-type: operation

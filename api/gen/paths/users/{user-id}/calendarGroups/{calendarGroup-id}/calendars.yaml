@@ -1,0 +1,139 @@
+get:
+    operationId: users.calendarGroups.ListCalendars
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - allowedOnlineMeetingProviders
+                    - allowedOnlineMeetingProviders desc
+                    - canEdit
+                    - canEdit desc
+                    - canShare
+                    - canShare desc
+                    - canViewPrivateItems
+                    - canViewPrivateItems desc
+                    - changeKey
+                    - changeKey desc
+                    - color
+                    - color desc
+                    - defaultOnlineMeetingProvider
+                    - defaultOnlineMeetingProvider desc
+                    - hexColor
+                    - hexColor desc
+                    - isDefaultCalendar
+                    - isDefaultCalendar desc
+                    - isRemovable
+                    - isRemovable desc
+                    - isTallyingResponses
+                    - isTallyingResponses desc
+                    - name
+                    - name desc
+                    - owner
+                    - owner desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - allowedOnlineMeetingProviders
+                    - canEdit
+                    - canShare
+                    - canViewPrivateItems
+                    - changeKey
+                    - color
+                    - defaultOnlineMeetingProvider
+                    - hexColor
+                    - isDefaultCalendar
+                    - isRemovable
+                    - isTallyingResponses
+                    - name
+                    - owner
+                    - calendarPermissions
+                    - calendarView
+                    - events
+                    - multiValueExtendedProperties
+                    - singleValueExtendedProperties
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.calendar'
+                                type: array
+                        title: Collection of calendar
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get calendars from users
+    tags:
+        - users.calendarGroup
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.calendarGroups.CreateCalendars
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: calendarGroup-id of calendarGroup'
+          in: path
+          name: calendarGroup-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: calendarGroup
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.calendar2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.calendar'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to calendars for users
+    tags:
+        - users.calendarGroup
+    x-ms-docs-operation-type: operation

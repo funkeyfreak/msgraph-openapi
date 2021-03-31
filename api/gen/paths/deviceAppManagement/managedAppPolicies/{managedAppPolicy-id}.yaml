@@ -1,0 +1,71 @@
+get:
+    operationId: deviceAppManagement.GetManagedAppPolicies
+    parameters:
+        - description: 'key: managedAppPolicy-id of managedAppPolicy'
+          in: path
+          name: managedAppPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppPolicy
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdDateTime
+                    - description
+                    - displayName
+                    - lastModifiedDateTime
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppPolicy'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedAppPolicies from deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppPolicy
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.UpdateManagedAppPolicies
+    parameters:
+        - description: 'key: managedAppPolicy-id of managedAppPolicy'
+          in: path
+          name: managedAppPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppPolicy
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedAppPolicy2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property managedAppPolicies in deviceAppManagement
+    tags:
+        - deviceAppManagement.managedAppPolicy
+    x-ms-docs-operation-type: operation

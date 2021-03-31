@@ -1,0 +1,90 @@
+get:
+    operationId: deviceManagement.roleDefinitions.GetRoleAssignments
+    parameters:
+        - description: 'key: roleDefinition-id of roleDefinition'
+          in: path
+          name: roleDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleDefinition
+        - description: 'key: roleAssignment-id of roleAssignment'
+          in: path
+          name: roleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleAssignment
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - resourceScopes
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - roleDefinition
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.roleAssignment'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get roleAssignments from deviceManagement
+    tags:
+        - deviceManagement.roleDefinition
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.roleDefinitions.UpdateRoleAssignments
+    parameters:
+        - description: 'key: roleDefinition-id of roleDefinition'
+          in: path
+          name: roleDefinition-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleDefinition
+        - description: 'key: roleAssignment-id of roleAssignment'
+          in: path
+          name: roleAssignment-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: roleAssignment
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.roleAssignment'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property roleAssignments in deviceManagement
+    tags:
+        - deviceManagement.roleDefinition
+    x-ms-docs-operation-type: operation

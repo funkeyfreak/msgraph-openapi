@@ -1,0 +1,88 @@
+get:
+    operationId: servicePrincipals.GetDelegatedPermissionClassifications
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - description: 'key: delegatedPermissionClassification-id of delegatedPermissionClassification'
+          in: path
+          name: delegatedPermissionClassification-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: delegatedPermissionClassification
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - classification
+                    - permissionId
+                    - permissionName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.delegatedPermissionClassification'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get delegatedPermissionClassifications from servicePrincipals
+    tags:
+        - servicePrincipals.delegatedPermissionClassification
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: servicePrincipals.UpdateDelegatedPermissionClassifications
+    parameters:
+        - description: 'key: servicePrincipal-id of servicePrincipal'
+          in: path
+          name: servicePrincipal-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - description: 'key: delegatedPermissionClassification-id of delegatedPermissionClassification'
+          in: path
+          name: delegatedPermissionClassification-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: delegatedPermissionClassification
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.delegatedPermissionClassification'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property delegatedPermissionClassifications in servicePrincipals
+    tags:
+        - servicePrincipals.delegatedPermissionClassification
+    x-ms-docs-operation-type: operation

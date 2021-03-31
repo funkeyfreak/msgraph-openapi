@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: informationProtection
+      type: object
+      properties:
+        threatAssessmentRequests:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.threatAssessmentRequest"
+example:
+    id: string (identifier)
+    threatAssessmentRequests:
+        - "@odata.type": microsoft.graph.threatAssessmentRequest

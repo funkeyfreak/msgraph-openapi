@@ -1,0 +1,45 @@
+get:
+    operationId: me.insights.shared.GetResource
+    parameters:
+        - description: 'key: sharedInsight-id of sharedInsight'
+          in: path
+          name: sharedInsight-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: sharedInsight
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.entity'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get resource from me
+    tags:
+        - me.officeGraphInsights
+    x-ms-docs-operation-type: operation

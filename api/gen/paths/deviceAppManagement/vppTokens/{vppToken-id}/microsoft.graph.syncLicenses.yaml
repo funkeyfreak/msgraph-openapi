@@ -1,0 +1,22 @@
+post:
+    operationId: deviceAppManagement.vppTokens.syncLicenses
+    parameters:
+        - description: 'key: vppToken-id of vppToken'
+          in: path
+          name: vppToken-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: vppToken
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action syncLicenses
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

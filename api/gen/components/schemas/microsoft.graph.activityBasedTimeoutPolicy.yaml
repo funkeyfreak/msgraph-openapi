@@ -1,0 +1,15 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.stsPolicy"
+    - title: activityBasedTimeoutPolicy
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    description: string
+    displayName: string
+    definition:
+        - string
+    isOrganizationDefault: true
+    appliesTo:
+        - "@odata.type": microsoft.graph.directoryObject

@@ -1,0 +1,11 @@
+post:
+    operationId: me.removeAllDevicesFromManagement
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action removeAllDevicesFromManagement
+    tags:
+        - me.Actions
+    x-ms-docs-operation-type: action

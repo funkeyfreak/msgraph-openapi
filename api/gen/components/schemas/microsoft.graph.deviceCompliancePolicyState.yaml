@@ -1,0 +1,39 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceCompliancePolicyState
+      description: Device Compliance Policy State for a given device.
+      type: object
+      properties:
+        displayName:
+            description: The name of the policy for this policyBase
+            type: string
+        platformType:
+            description: Platform type that the policy applies to
+        settingCount:
+            format: int32
+            description: Count of how many setting a policy holds
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        settingStates:
+            type: array
+            items: {}
+        state:
+            description: The compliance state of the policy
+        version:
+            format: int32
+            description: The version of the policy
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+example:
+    id: string (identifier)
+    displayName: string
+    platformType:
+        "@odata.type": microsoft.graph.policyPlatformType
+    settingCount: integer
+    settingStates:
+        - "@odata.type": microsoft.graph.deviceCompliancePolicySettingState
+    state:
+        "@odata.type": microsoft.graph.complianceStatus
+    version: integer

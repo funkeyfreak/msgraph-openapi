@@ -1,0 +1,124 @@
+get:
+    operationId: me.ListPeople
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - birthday
+                    - birthday desc
+                    - companyName
+                    - companyName desc
+                    - department
+                    - department desc
+                    - displayName
+                    - displayName desc
+                    - givenName
+                    - givenName desc
+                    - imAddress
+                    - imAddress desc
+                    - isFavorite
+                    - isFavorite desc
+                    - jobTitle
+                    - jobTitle desc
+                    - officeLocation
+                    - officeLocation desc
+                    - personNotes
+                    - personNotes desc
+                    - personType
+                    - personType desc
+                    - phones
+                    - phones desc
+                    - postalAddresses
+                    - postalAddresses desc
+                    - profession
+                    - profession desc
+                    - scoredEmailAddresses
+                    - scoredEmailAddresses desc
+                    - surname
+                    - surname desc
+                    - userPrincipalName
+                    - userPrincipalName desc
+                    - websites
+                    - websites desc
+                    - yomiCompany
+                    - yomiCompany desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - birthday
+                    - companyName
+                    - department
+                    - displayName
+                    - givenName
+                    - imAddress
+                    - isFavorite
+                    - jobTitle
+                    - officeLocation
+                    - personNotes
+                    - personType
+                    - phones
+                    - postalAddresses
+                    - profession
+                    - scoredEmailAddresses
+                    - surname
+                    - userPrincipalName
+                    - websites
+                    - yomiCompany
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.person'
+                                type: array
+                        title: Collection of person
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get people from me
+    tags:
+        - me.person
+    x-ms-docs-operation-type: operation
+post:
+    operationId: me.CreatePeople
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.person'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.person'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to people for me
+    tags:
+        - me.person
+    x-ms-docs-operation-type: operation

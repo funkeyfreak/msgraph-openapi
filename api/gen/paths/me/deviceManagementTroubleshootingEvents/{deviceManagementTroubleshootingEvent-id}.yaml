@@ -1,0 +1,68 @@
+get:
+    operationId: me.GetDeviceManagementTroubleshootingEvents
+    parameters:
+        - description: 'key: deviceManagementTroubleshootingEvent-id of deviceManagementTroubleshootingEvent'
+          in: path
+          name: deviceManagementTroubleshootingEvent-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementTroubleshootingEvent
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - correlationId
+                    - eventDateTime
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceManagementTroubleshootingEvents from me
+    tags:
+        - me.deviceManagementTroubleshootingEvent
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.UpdateDeviceManagementTroubleshootingEvents
+    parameters:
+        - description: 'key: deviceManagementTroubleshootingEvent-id of deviceManagementTroubleshootingEvent'
+          in: path
+          name: deviceManagementTroubleshootingEvent-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceManagementTroubleshootingEvent
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceManagementTroubleshootingEvent2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceManagementTroubleshootingEvents in me
+    tags:
+        - me.deviceManagementTroubleshootingEvent
+    x-ms-docs-operation-type: operation

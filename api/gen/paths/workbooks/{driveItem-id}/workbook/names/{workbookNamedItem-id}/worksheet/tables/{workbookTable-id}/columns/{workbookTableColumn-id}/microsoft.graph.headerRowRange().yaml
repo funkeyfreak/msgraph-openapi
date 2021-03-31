@@ -1,0 +1,43 @@
+get:
+    operationId: workbooks.workbook.names.worksheet.tables.columns.headerRowRange
+    parameters:
+        - description: 'key: driveItem-id of driveItem'
+          in: path
+          name: driveItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: driveItem
+        - description: 'key: workbookNamedItem-id of workbookNamedItem'
+          in: path
+          name: workbookNamedItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookNamedItem
+        - description: 'key: workbookTable-id of workbookTable'
+          in: path
+          name: workbookTable-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTable
+        - description: 'key: workbookTableColumn-id of workbookTableColumn'
+          in: path
+          name: workbookTableColumn-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: workbookTableColumn
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function headerRowRange
+    tags:
+        - workbooks.Functions
+    x-ms-docs-operation-type: function

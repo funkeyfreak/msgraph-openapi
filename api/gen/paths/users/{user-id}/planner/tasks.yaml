@@ -1,0 +1,136 @@
+get:
+    operationId: users.planner.ListTasks
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - activeChecklistItemCount
+                    - activeChecklistItemCount desc
+                    - appliedCategories
+                    - appliedCategories desc
+                    - assigneePriority
+                    - assigneePriority desc
+                    - assignments
+                    - assignments desc
+                    - bucketId
+                    - bucketId desc
+                    - checklistItemCount
+                    - checklistItemCount desc
+                    - completedBy
+                    - completedBy desc
+                    - completedDateTime
+                    - completedDateTime desc
+                    - conversationThreadId
+                    - conversationThreadId desc
+                    - createdBy
+                    - createdBy desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - dueDateTime
+                    - dueDateTime desc
+                    - hasDescription
+                    - hasDescription desc
+                    - orderHint
+                    - orderHint desc
+                    - percentComplete
+                    - percentComplete desc
+                    - planId
+                    - planId desc
+                    - previewType
+                    - previewType desc
+                    - referenceCount
+                    - referenceCount desc
+                    - startDateTime
+                    - startDateTime desc
+                    - title
+                    - title desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activeChecklistItemCount
+                    - appliedCategories
+                    - assigneePriority
+                    - assignments
+                    - bucketId
+                    - checklistItemCount
+                    - completedBy
+                    - completedDateTime
+                    - conversationThreadId
+                    - createdBy
+                    - createdDateTime
+                    - dueDateTime
+                    - hasDescription
+                    - orderHint
+                    - percentComplete
+                    - planId
+                    - previewType
+                    - referenceCount
+                    - startDateTime
+                    - title
+                    - assignedToTaskBoardFormat
+                    - bucketTaskBoardFormat
+                    - details
+                    - progressTaskBoardFormat
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - assignedToTaskBoardFormat
+                    - bucketTaskBoardFormat
+                    - details
+                    - progressTaskBoardFormat
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.plannerTask'
+                                type: array
+                        title: Collection of plannerTask
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get tasks from users
+    tags:
+        - users.plannerUser
+    x-ms-docs-operation-type: operation

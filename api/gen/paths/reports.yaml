@@ -1,0 +1,56 @@
+get:
+    operationId: reports.reportRoot.GetReportRoot
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.reportRoot'
+            description: Retrieved entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get reports
+    tags:
+        - reports.reportRoot
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: reports.reportRoot.UpdateReportRoot
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.reportRoot'
+        description: New property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update reports
+    tags:
+        - reports.reportRoot
+    x-ms-docs-operation-type: operation

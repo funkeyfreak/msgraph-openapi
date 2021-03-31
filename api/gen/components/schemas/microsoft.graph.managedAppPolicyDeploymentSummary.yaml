@@ -1,0 +1,31 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: managedAppPolicyDeploymentSummary
+      description: The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
+      type: object
+      properties:
+        configurationDeployedUserCount:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        configurationDeploymentSummaryPerApp:
+            type: array
+            items: {}
+        displayName:
+            type: string
+        lastRefreshTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        version:
+            description: Version of the entity.
+            type: string
+example:
+    id: string (identifier)
+    configurationDeployedUserCount: integer
+    configurationDeploymentSummaryPerApp:
+        - "@odata.type": microsoft.graph.managedAppPolicyDeploymentSummaryPerApp
+    displayName: string
+    lastRefreshTime: string (timestamp)
+    version: string

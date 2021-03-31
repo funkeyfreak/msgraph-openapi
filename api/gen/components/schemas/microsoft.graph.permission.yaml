@@ -1,0 +1,41 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: permission
+      type: object
+      properties:
+        expirationDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        grantedTo: {}
+        grantedToIdentities:
+            type: array
+            items: {}
+        hasPassword:
+            type: boolean
+        inheritedFrom: {}
+        invitation: {}
+        link: {}
+        roles:
+            type: array
+            items:
+                type: string
+        shareId:
+            type: string
+example:
+    id: string (identifier)
+    expirationDateTime: string (timestamp)
+    grantedTo:
+        "@odata.type": microsoft.graph.identitySet
+    grantedToIdentities:
+        - "@odata.type": microsoft.graph.identitySet
+    hasPassword: true
+    inheritedFrom:
+        "@odata.type": microsoft.graph.itemReference
+    invitation:
+        "@odata.type": microsoft.graph.sharingInvitation
+    link:
+        "@odata.type": microsoft.graph.sharingLink
+    roles:
+        - string
+    shareId: string

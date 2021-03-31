@@ -1,0 +1,74 @@
+get:
+    operationId: deviceManagement.GetResourceOperations
+    parameters:
+        - description: 'key: resourceOperation-id of resourceOperation'
+          in: path
+          name: resourceOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceOperation
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - actionName
+                    - description
+                    - resourceName
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.resourceOperation'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get resourceOperations from deviceManagement
+    tags:
+        - deviceManagement.resourceOperation
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceManagement.UpdateResourceOperations
+    parameters:
+        - description: 'key: resourceOperation-id of resourceOperation'
+          in: path
+          name: resourceOperation-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: resourceOperation
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.resourceOperation'
+        description: New navigation property values
+        required: true
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property resourceOperations in deviceManagement
+    tags:
+        - deviceManagement.resourceOperation
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,17 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                groupId:
+                    type: string
+                renameAs:
+                    type: string
+                notebookFolder:
+                    type: string
+                siteCollectionId:
+                    type: string
+                siteId:
+                    type: string
+description: Action parameters
+required: true

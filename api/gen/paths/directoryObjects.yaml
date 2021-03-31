@@ -1,0 +1,72 @@
+get:
+    operationId: directoryObjects.directoryObject.ListDirectoryObject
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/search'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - deletedDateTime
+                    - deletedDateTime desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - deletedDateTime
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                                type: array
+                        title: Collection of directoryObject
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from directoryObjects
+    tags:
+        - directoryObjects.directoryObject
+    x-ms-docs-operation-type: operation
+post:
+    operationId: directoryObjects.directoryObject.CreateDirectoryObject
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to directoryObjects
+    tags:
+        - directoryObjects.directoryObject
+    x-ms-docs-operation-type: operation

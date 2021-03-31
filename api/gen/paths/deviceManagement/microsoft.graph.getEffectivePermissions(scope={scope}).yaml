@@ -1,0 +1,22 @@
+get:
+    operationId: deviceManagement.getEffectivePermissions
+    parameters:
+        - in: path
+          name: scope
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getEffectivePermissions
+    tags:
+        - deviceManagement.Functions
+    x-ms-docs-operation-type: function

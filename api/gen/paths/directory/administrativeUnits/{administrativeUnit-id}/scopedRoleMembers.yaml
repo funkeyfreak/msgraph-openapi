@@ -1,0 +1,102 @@
+get:
+    operationId: directory.administrativeUnits.ListScopedRoleMembers
+    parameters:
+        - description: 'key: administrativeUnit-id of administrativeUnit'
+          in: path
+          name: administrativeUnit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: administrativeUnit
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - administrativeUnitId
+                    - administrativeUnitId desc
+                    - roleId
+                    - roleId desc
+                    - roleMemberInfo
+                    - roleMemberInfo desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - administrativeUnitId
+                    - roleId
+                    - roleMemberInfo
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+                                type: array
+                        title: Collection of scopedRoleMembership
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get scopedRoleMembers from directory
+    tags:
+        - directory.administrativeUnit
+    x-ms-docs-operation-type: operation
+post:
+    operationId: directory.administrativeUnits.CreateScopedRoleMembers
+    parameters:
+        - description: 'key: administrativeUnit-id of administrativeUnit'
+          in: path
+          name: administrativeUnit-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: administrativeUnit
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.scopedRoleMembership'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to scopedRoleMembers for directory
+    tags:
+        - directory.administrativeUnit
+    x-ms-docs-operation-type: operation

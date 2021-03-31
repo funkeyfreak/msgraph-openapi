@@ -1,0 +1,98 @@
+get:
+    operationId: oauth2PermissionGrants.oAuth2PermissionGrant.ListOAuth2PermissionGrant
+    parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - clientId
+                    - clientId desc
+                    - consentType
+                    - consentType desc
+                    - principalId
+                    - principalId desc
+                    - resourceId
+                    - resourceId desc
+                    - scope
+                    - scope desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - clientId
+                    - consentType
+                    - principalId
+                    - resourceId
+                    - scope
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+                                type: array
+                        title: Collection of oAuth2PermissionGrant
+                        type: object
+            description: Retrieved entities
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get entities from oauth2PermissionGrants
+    tags:
+        - oauth2PermissionGrants.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation
+post:
+    operationId: oauth2PermissionGrants.oAuth2PermissionGrant.CreateOAuth2PermissionGrant
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+        description: New entity
+        required: true
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.oAuth2PermissionGrant'
+            description: Created entity
+        default:
+            $ref: '#/components/responses/error'
+    summary: Add new entity to oauth2PermissionGrants
+    tags:
+        - oauth2PermissionGrants.oAuth2PermissionGrant
+    x-ms-docs-operation-type: operation

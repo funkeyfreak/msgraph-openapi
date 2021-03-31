@@ -1,0 +1,78 @@
+get:
+    operationId: drive.GetList
+    parameters:
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - createdBy
+                    - createdDateTime
+                    - description
+                    - eTag
+                    - lastModifiedBy
+                    - lastModifiedDateTime
+                    - name
+                    - parentReference
+                    - webUrl
+                    - displayName
+                    - list
+                    - sharepointIds
+                    - system
+                    - createdByUser
+                    - lastModifiedByUser
+                    - columns
+                    - contentTypes
+                    - drive
+                    - items
+                    - subscriptions
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - createdByUser
+                    - lastModifiedByUser
+                    - columns
+                    - contentTypes
+                    - drive
+                    - items
+                    - subscriptions
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.list'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get list from drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: drive.UpdateList
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.list'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property list in drive
+    tags:
+        - drive.list
+    x-ms-docs-operation-type: operation

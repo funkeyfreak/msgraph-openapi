@@ -1,0 +1,11 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.recipient"
+    - title: attendeeBase
+      type: object
+      properties:
+        type: {}
+example:
+    emailAddress:
+        "@odata.type": microsoft.graph.emailAddress
+    type:
+        "@odata.type": microsoft.graph.attendeeType

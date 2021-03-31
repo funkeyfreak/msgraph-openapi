@@ -1,0 +1,39 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: userInstallStateSummary
+      description: Contains properties for the installation state summary for a user.
+      type: object
+      properties:
+        failedDeviceCount:
+            format: int32
+            description: Failed Device Count.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        installedDeviceCount:
+            format: int32
+            description: Installed Device Count.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        notInstalledDeviceCount:
+            format: int32
+            description: Not installed device count.
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        userName:
+            description: User name.
+            type: string
+        deviceStates:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.deviceInstallState"
+example:
+    id: string (identifier)
+    failedDeviceCount: integer
+    installedDeviceCount: integer
+    notInstalledDeviceCount: integer
+    userName: string
+    deviceStates:
+        - "@odata.type": microsoft.graph.deviceInstallState

@@ -1,0 +1,86 @@
+get:
+    operationId: me.managedDevices.GetDeviceCompliancePolicyStates
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: 'key: deviceCompliancePolicyState-id of deviceCompliancePolicyState'
+          in: path
+          name: deviceCompliancePolicyState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicyState
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - displayName
+                    - platformType
+                    - settingCount
+                    - settingStates
+                    - state
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.deviceCompliancePolicyState'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deviceCompliancePolicyStates from me
+    tags:
+        - me.managedDevice
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: me.managedDevices.UpdateDeviceCompliancePolicyStates
+    parameters:
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: 'key: deviceCompliancePolicyState-id of deviceCompliancePolicyState'
+          in: path
+          name: deviceCompliancePolicyState-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: deviceCompliancePolicyState
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.deviceCompliancePolicyState2'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deviceCompliancePolicyStates in me
+    tags:
+        - me.managedDevice
+    x-ms-docs-operation-type: operation

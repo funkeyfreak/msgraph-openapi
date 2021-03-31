@@ -1,0 +1,10 @@
+content:
+    application/json:
+        schema:
+            type: object
+            properties:
+                findText: {}
+                withinText: {}
+                startNum: {}
+description: Action parameters
+required: true

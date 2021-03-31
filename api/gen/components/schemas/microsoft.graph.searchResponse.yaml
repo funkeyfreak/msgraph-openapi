@@ -1,0 +1,15 @@
+title: searchResponse
+type: object
+properties:
+    hitsContainers:
+        type: array
+        items: {}
+    searchTerms:
+        type: array
+        items:
+            type: string
+example:
+    hitsContainers:
+        - "@odata.type": microsoft.graph.searchHitsContainer
+    searchTerms:
+        - string

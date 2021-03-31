@@ -1,0 +1,17 @@
+get:
+    operationId: me.managedAppRegistrations.getUserIdsWithFlaggedAppRegistration
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            type: string
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getUserIdsWithFlaggedAppRegistration
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

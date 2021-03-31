@@ -1,0 +1,20 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.baseItemVersion"
+    - title: driveItemVersion
+      type: object
+      properties:
+        content:
+            format: base64url
+            type: string
+        size:
+            format: int64
+            type: integer
+example:
+    id: string (identifier)
+    lastModifiedBy:
+        "@odata.type": microsoft.graph.identitySet
+    lastModifiedDateTime: string (timestamp)
+    publication:
+        "@odata.type": microsoft.graph.publicationFacet
+    content: string
+    size: integer

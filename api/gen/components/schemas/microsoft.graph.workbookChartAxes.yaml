@@ -1,0 +1,16 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: workbookChartAxes
+      type: object
+      properties:
+        categoryAxis: {}
+        seriesAxis: {}
+        valueAxis: {}
+example:
+    id: string (identifier)
+    categoryAxis:
+        "@odata.type": microsoft.graph.workbookChartAxis
+    seriesAxis:
+        "@odata.type": microsoft.graph.workbookChartAxis
+    valueAxis:
+        "@odata.type": microsoft.graph.workbookChartAxis

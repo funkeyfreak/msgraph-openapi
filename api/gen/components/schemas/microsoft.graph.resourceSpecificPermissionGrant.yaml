@@ -1,0 +1,24 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.directoryObject"
+    - title: resourceSpecificPermissionGrant
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      type: object
+      properties:
+        clientAppId:
+            type: string
+        clientId:
+            type: string
+        permission:
+            type: string
+        permissionType:
+            type: string
+        resourceAppId:
+            type: string
+example:
+    id: string (identifier)
+    deletedDateTime: string (timestamp)
+    clientAppId: string
+    clientId: string
+    permission: string
+    permissionType: string
+    resourceAppId: string

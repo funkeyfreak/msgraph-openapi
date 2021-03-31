@@ -1,0 +1,187 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: alert
+      type: object
+      properties:
+        activityGroupName:
+            type: string
+        alertDetections:
+            type: array
+            items: {}
+        assignedTo:
+            type: string
+        azureSubscriptionId:
+            type: string
+        azureTenantId:
+            type: string
+        category:
+            type: string
+        closedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        cloudAppStates:
+            type: array
+            items: {}
+        comments:
+            type: array
+            items:
+                type: string
+        confidence:
+            format: int32
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+        createdDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        description:
+            type: string
+        detectionIds:
+            type: array
+            items:
+                type: string
+        eventDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        feedback: {}
+        fileStates:
+            type: array
+            items: {}
+        historyStates:
+            type: array
+            items: {}
+        hostStates:
+            type: array
+            items: {}
+        incidentIds:
+            type: array
+            items:
+                type: string
+        investigationSecurityStates:
+            type: array
+            items: {}
+        lastEventDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        lastModifiedDateTime:
+            format: date-time
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        malwareStates:
+            type: array
+            items: {}
+        messageSecurityStates:
+            type: array
+            items: {}
+        networkConnections:
+            type: array
+            items: {}
+        processes:
+            type: array
+            items: {}
+        recommendedActions:
+            type: array
+            items:
+                type: string
+        registryKeyStates:
+            type: array
+            items: {}
+        securityResources:
+            type: array
+            items: {}
+        severity: {}
+        sourceMaterials:
+            type: array
+            items:
+                type: string
+        status: {}
+        tags:
+            type: array
+            items:
+                type: string
+        title:
+            type: string
+        triggers:
+            type: array
+            items: {}
+        uriClickSecurityStates:
+            type: array
+            items: {}
+        userStates:
+            type: array
+            items: {}
+        vendorInformation: {}
+        vulnerabilityStates:
+            type: array
+            items: {}
+example:
+    id: string (identifier)
+    activityGroupName: string
+    alertDetections:
+        - "@odata.type": microsoft.graph.alertDetection
+    assignedTo: string
+    azureSubscriptionId: string
+    azureTenantId: string
+    category: string
+    closedDateTime: string (timestamp)
+    cloudAppStates:
+        - "@odata.type": microsoft.graph.cloudAppSecurityState
+    comments:
+        - string
+    confidence: integer
+    createdDateTime: string (timestamp)
+    description: string
+    detectionIds:
+        - string
+    eventDateTime: string (timestamp)
+    feedback:
+        "@odata.type": microsoft.graph.alertFeedback
+    fileStates:
+        - "@odata.type": microsoft.graph.fileSecurityState
+    historyStates:
+        - "@odata.type": microsoft.graph.alertHistoryState
+    hostStates:
+        - "@odata.type": microsoft.graph.hostSecurityState
+    incidentIds:
+        - string
+    investigationSecurityStates:
+        - "@odata.type": microsoft.graph.investigationSecurityState
+    lastEventDateTime: string (timestamp)
+    lastModifiedDateTime: string (timestamp)
+    malwareStates:
+        - "@odata.type": microsoft.graph.malwareState
+    messageSecurityStates:
+        - "@odata.type": microsoft.graph.messageSecurityState
+    networkConnections:
+        - "@odata.type": microsoft.graph.networkConnection
+    processes:
+        - "@odata.type": microsoft.graph.process
+    recommendedActions:
+        - string
+    registryKeyStates:
+        - "@odata.type": microsoft.graph.registryKeyState
+    securityResources:
+        - "@odata.type": microsoft.graph.securityResource
+    severity:
+        "@odata.type": microsoft.graph.alertSeverity
+    sourceMaterials:
+        - string
+    status:
+        "@odata.type": microsoft.graph.alertStatus
+    tags:
+        - string
+    title: string
+    triggers:
+        - "@odata.type": microsoft.graph.alertTrigger
+    uriClickSecurityStates:
+        - "@odata.type": microsoft.graph.uriClickSecurityState
+    userStates:
+        - "@odata.type": microsoft.graph.userSecurityState
+    vendorInformation:
+        "@odata.type": microsoft.graph.securityVendorInformation
+    vulnerabilityStates:
+        - "@odata.type": microsoft.graph.vulnerabilityState

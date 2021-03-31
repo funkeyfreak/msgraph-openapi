@@ -1,0 +1,37 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: contactFolder
+      type: object
+      properties:
+        displayName:
+            type: string
+        parentFolderId:
+            type: string
+        childFolders:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contactFolder"
+        contacts:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.contact"
+        multiValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty"
+        singleValueExtendedProperties:
+            type: array
+            items:
+                $ref: "#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty"
+example:
+    id: string (identifier)
+    displayName: string
+    parentFolderId: string
+    childFolders:
+        - "@odata.type": microsoft.graph.contactFolder
+    contacts:
+        - "@odata.type": microsoft.graph.contact
+    multiValueExtendedProperties:
+        - "@odata.type": microsoft.graph.multiValueLegacyExtendedProperty
+    singleValueExtendedProperties:
+        - "@odata.type": microsoft.graph.singleValueLegacyExtendedProperty

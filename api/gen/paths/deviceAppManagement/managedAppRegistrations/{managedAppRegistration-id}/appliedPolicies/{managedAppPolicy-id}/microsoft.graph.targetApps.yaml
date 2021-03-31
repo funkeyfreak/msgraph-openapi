@@ -1,0 +1,28 @@
+post:
+    operationId: deviceAppManagement.managedAppRegistrations.appliedPolicies.targetApps
+    parameters:
+        - description: 'key: managedAppRegistration-id of managedAppRegistration'
+          in: path
+          name: managedAppRegistration-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppRegistration
+        - description: 'key: managedAppPolicy-id of managedAppPolicy'
+          in: path
+          name: managedAppPolicy-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedAppPolicy
+    requestBody:
+        $ref: '#/components/requestBodies/deviceAppManagement.managedAppPolicies.targetAppsBody'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action targetApps
+    tags:
+        - deviceAppManagement.Actions
+    x-ms-docs-operation-type: action

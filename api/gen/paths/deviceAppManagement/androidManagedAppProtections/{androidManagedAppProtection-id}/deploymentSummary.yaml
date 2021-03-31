@@ -1,0 +1,71 @@
+get:
+    operationId: deviceAppManagement.androidManagedAppProtections.GetDeploymentSummary
+    parameters:
+        - description: 'key: androidManagedAppProtection-id of androidManagedAppProtection'
+          in: path
+          name: androidManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: androidManagedAppProtection
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - configurationDeployedUserCount
+                    - configurationDeploymentSummaryPerApp
+                    - displayName
+                    - lastRefreshTime
+                    - version
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedAppPolicyDeploymentSummary'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get deploymentSummary from deviceAppManagement
+    tags:
+        - deviceAppManagement.androidManagedAppProtection
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: deviceAppManagement.androidManagedAppProtections.UpdateDeploymentSummary
+    parameters:
+        - description: 'key: androidManagedAppProtection-id of androidManagedAppProtection'
+          in: path
+          name: androidManagedAppProtection-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: androidManagedAppProtection
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.managedAppPolicyDeploymentSummary'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property deploymentSummary in deviceAppManagement
+    tags:
+        - deviceAppManagement.androidManagedAppProtection
+    x-ms-docs-operation-type: operation

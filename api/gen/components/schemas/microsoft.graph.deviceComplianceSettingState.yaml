@@ -1,0 +1,54 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: deviceComplianceSettingState
+      description: Device compliance setting State for a given device.
+      type: object
+      properties:
+        complianceGracePeriodExpirationDateTime:
+            format: date-time
+            description: The DateTime when device compliance grace period expires
+            pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+            type: string
+        deviceId:
+            description: The Device Id that is being reported
+            type: string
+        deviceModel:
+            description: The device model that is being reported
+            type: string
+        deviceName:
+            description: The Device Name that is being reported
+            type: string
+        setting:
+            description: The setting class name and property name.
+            type: string
+        settingName:
+            description: The Setting Name that is being reported
+            type: string
+        state:
+            description: The compliance state of the setting
+        userEmail:
+            description: The User email address that is being reported
+            type: string
+        userId:
+            description: The user Id that is being reported
+            type: string
+        userName:
+            description: The User Name that is being reported
+            type: string
+        userPrincipalName:
+            description: The User PrincipalName that is being reported
+            type: string
+example:
+    id: string (identifier)
+    complianceGracePeriodExpirationDateTime: string (timestamp)
+    deviceId: string
+    deviceModel: string
+    deviceName: string
+    setting: string
+    settingName: string
+    state:
+        "@odata.type": microsoft.graph.complianceStatus
+    userEmail: string
+    userId: string
+    userName: string
+    userPrincipalName: string

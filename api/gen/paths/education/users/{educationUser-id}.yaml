@@ -1,0 +1,101 @@
+get:
+    operationId: education.GetUsers
+    parameters:
+        - description: 'key: educationUser-id of educationUser'
+          in: path
+          name: educationUser-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationUser
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - accountEnabled
+                    - assignedLicenses
+                    - assignedPlans
+                    - businessPhones
+                    - createdBy
+                    - department
+                    - displayName
+                    - externalSource
+                    - givenName
+                    - mail
+                    - mailingAddress
+                    - mailNickname
+                    - middleName
+                    - mobilePhone
+                    - officeLocation
+                    - passwordPolicies
+                    - passwordProfile
+                    - preferredLanguage
+                    - primaryRole
+                    - provisionedPlans
+                    - refreshTokensValidFromDateTime
+                    - residenceAddress
+                    - showInAddressList
+                    - student
+                    - surname
+                    - teacher
+                    - usageLocation
+                    - userPrincipalName
+                    - userType
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - classes
+                    - schools
+                    - user
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.educationUser'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get users from education
+    tags:
+        - education.educationUser
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: education.UpdateUsers
+    parameters:
+        - description: 'key: educationUser-id of educationUser'
+          in: path
+          name: educationUser-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: educationUser
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.educationUser'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property users in education
+    tags:
+        - education.educationUser
+    x-ms-docs-operation-type: operation

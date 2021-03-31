@@ -1,0 +1,29 @@
+get:
+    operationId: drives.search
+    parameters:
+        - description: 'key: drive-id of drive'
+          in: path
+          name: drive-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: drive
+        - in: path
+          name: q
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function search
+    tags:
+        - drives.Functions
+    x-ms-docs-operation-type: function

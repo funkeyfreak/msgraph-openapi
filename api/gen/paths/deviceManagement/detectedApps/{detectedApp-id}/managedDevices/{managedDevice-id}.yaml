@@ -1,0 +1,104 @@
+get:
+    operationId: deviceManagement.detectedApps.GetManagedDevices
+    parameters:
+        - description: 'key: detectedApp-id of detectedApp'
+          in: path
+          name: detectedApp-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: detectedApp
+        - description: 'key: managedDevice-id of managedDevice'
+          in: path
+          name: managedDevice-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: managedDevice
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activationLockBypassCode
+                    - androidSecurityPatchLevel
+                    - azureADDeviceId
+                    - azureADRegistered
+                    - complianceGracePeriodExpirationDateTime
+                    - complianceState
+                    - configurationManagerClientEnabledFeatures
+                    - deviceActionResults
+                    - deviceCategoryDisplayName
+                    - deviceEnrollmentType
+                    - deviceHealthAttestationState
+                    - deviceName
+                    - deviceRegistrationState
+                    - easActivated
+                    - easActivationDateTime
+                    - easDeviceId
+                    - emailAddress
+                    - enrolledDateTime
+                    - exchangeAccessState
+                    - exchangeAccessStateReason
+                    - exchangeLastSuccessfulSyncDateTime
+                    - freeStorageSpaceInBytes
+                    - imei
+                    - isEncrypted
+                    - isSupervised
+                    - jailBroken
+                    - lastSyncDateTime
+                    - managedDeviceName
+                    - managedDeviceOwnerType
+                    - managementAgent
+                    - manufacturer
+                    - meid
+                    - model
+                    - operatingSystem
+                    - osVersion
+                    - partnerReportedThreatState
+                    - phoneNumber
+                    - remoteAssistanceSessionErrorDetails
+                    - remoteAssistanceSessionUrl
+                    - serialNumber
+                    - subscriberCarrier
+                    - totalStorageSpaceInBytes
+                    - userDisplayName
+                    - userId
+                    - userPrincipalName
+                    - wiFiMacAddress
+                    - deviceCompliancePolicyStates
+                    - deviceConfigurationStates
+                    - deviceCategory
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - deviceCompliancePolicyStates
+                    - deviceConfigurationStates
+                    - deviceCategory
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.managedDevice'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get managedDevices from deviceManagement
+    tags:
+        - deviceManagement.detectedApp
+    x-ms-docs-operation-type: operation

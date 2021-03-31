@@ -1,0 +1,7 @@
+title: searchQuery
+type: object
+properties:
+    queryString:
+        type: string
+example:
+    queryString: string

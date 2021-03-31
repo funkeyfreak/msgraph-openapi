@@ -1,0 +1,80 @@
+get:
+    operationId: teams.GetPrimaryChannel
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - description
+                    - displayName
+                    - email
+                    - isFavoriteByDefault
+                    - membershipType
+                    - webUrl
+                    - filesFolder
+                    - members
+                    - messages
+                    - tabs
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - filesFolder
+                    - members
+                    - messages
+                    - tabs
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.channel'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get primaryChannel from teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation
+patch:
+    operationId: teams.UpdatePrimaryChannel
+    parameters:
+        - description: 'key: team-id of team'
+          in: path
+          name: team-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: team
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.channel'
+    responses:
+        "204":
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Update the navigation property primaryChannel in teams
+    tags:
+        - teams.channel
+    x-ms-docs-operation-type: operation

@@ -1,0 +1,35 @@
+get:
+    operationId: users.reminderView
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - in: path
+          name: StartDateTime
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: EndDateTime
+          required: true
+          schema:
+            type: string
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items:
+                            $ref: '#/components/schemas/microsoft.graph.reminder'
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function reminderView
+    tags:
+        - users.Functions
+    x-ms-docs-operation-type: function

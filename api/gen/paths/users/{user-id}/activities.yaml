@@ -1,0 +1,134 @@
+get:
+    operationId: users.ListActivities
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - description: Order items by property values
+          explode: false
+          in: query
+          name: $orderby
+          schema:
+            items:
+                enum:
+                    - id
+                    - id desc
+                    - activationUrl
+                    - activationUrl desc
+                    - activitySourceHost
+                    - activitySourceHost desc
+                    - appActivityId
+                    - appActivityId desc
+                    - appDisplayName
+                    - appDisplayName desc
+                    - contentInfo
+                    - contentInfo desc
+                    - contentUrl
+                    - contentUrl desc
+                    - createdDateTime
+                    - createdDateTime desc
+                    - expirationDateTime
+                    - expirationDateTime desc
+                    - fallbackUrl
+                    - fallbackUrl desc
+                    - lastModifiedDateTime
+                    - lastModifiedDateTime desc
+                    - status
+                    - status desc
+                    - userTimezone
+                    - userTimezone desc
+                    - visualElements
+                    - visualElements desc
+                type: string
+            type: array
+          style: form
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activationUrl
+                    - activitySourceHost
+                    - appActivityId
+                    - appDisplayName
+                    - contentInfo
+                    - contentUrl
+                    - createdDateTime
+                    - expirationDateTime
+                    - fallbackUrl
+                    - lastModifiedDateTime
+                    - status
+                    - userTimezone
+                    - visualElements
+                    - historyItems
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - historyItems
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        properties:
+                            value:
+                                items:
+                                    $ref: '#/components/schemas/microsoft.graph.userActivity'
+                                type: array
+                        title: Collection of userActivity
+                        type: object
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get activities from users
+    tags:
+        - users.userActivity
+    x-ms-docs-operation-type: operation
+post:
+    operationId: users.CreateActivities
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+    requestBody:
+        $ref: '#/components/requestBodies/microsoft.graph.userActivity2'
+    responses:
+        "201":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.userActivity'
+            description: Created navigation property.
+        default:
+            $ref: '#/components/responses/error'
+    summary: Create new navigation property to activities for users
+    tags:
+        - users.userActivity
+    x-ms-docs-operation-type: operation

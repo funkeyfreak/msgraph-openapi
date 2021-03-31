@@ -1,0 +1,13 @@
+allOf:
+    - $ref: "#/components/schemas/microsoft.graph.entity"
+    - title: teamsAppInstallation
+      type: object
+      properties:
+        teamsApp: {}
+        teamsAppDefinition: {}
+example:
+    id: string (identifier)
+    teamsApp:
+        "@odata.type": microsoft.graph.teamsApp
+    teamsAppDefinition:
+        "@odata.type": microsoft.graph.teamsAppDefinition

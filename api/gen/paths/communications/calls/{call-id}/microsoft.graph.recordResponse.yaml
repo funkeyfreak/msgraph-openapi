@@ -1,0 +1,60 @@
+post:
+    operationId: communications.calls.recordResponse
+    parameters:
+        - description: 'key: call-id of call'
+          in: path
+          name: call-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: call
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    properties:
+                        bargeInAllowed:
+                            default: false
+                            type: boolean
+                        clientContext:
+                            type: string
+                        initialSilenceTimeoutInSeconds:
+                            format: int32
+                            maximum: 2.147483647e+09
+                            minimum: -2.147483648e+09
+                            type: integer
+                        maxRecordDurationInSeconds:
+                            format: int32
+                            maximum: 2.147483647e+09
+                            minimum: -2.147483648e+09
+                            type: integer
+                        maxSilenceTimeoutInSeconds:
+                            format: int32
+                            maximum: 2.147483647e+09
+                            minimum: -2.147483648e+09
+                            type: integer
+                        playBeep:
+                            default: false
+                            type: boolean
+                        prompts:
+                            items: {}
+                            type: array
+                        stopTones:
+                            items:
+                                type: string
+                            type: array
+                    type: object
+        description: Action parameters
+        required: true
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema: {}
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke action recordResponse
+    tags:
+        - communications.Actions
+    x-ms-docs-operation-type: action

@@ -1,0 +1,74 @@
+get:
+    operationId: users.activities.historyItems.GetActivity
+    parameters:
+        - description: 'key: user-id of user'
+          in: path
+          name: user-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - description: 'key: userActivity-id of userActivity'
+          in: path
+          name: userActivity-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: userActivity
+        - description: 'key: activityHistoryItem-id of activityHistoryItem'
+          in: path
+          name: activityHistoryItem-id
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: activityHistoryItem
+        - description: Select properties to be returned
+          explode: false
+          in: query
+          name: $select
+          schema:
+            items:
+                enum:
+                    - id
+                    - activationUrl
+                    - activitySourceHost
+                    - appActivityId
+                    - appDisplayName
+                    - contentInfo
+                    - contentUrl
+                    - createdDateTime
+                    - expirationDateTime
+                    - fallbackUrl
+                    - lastModifiedDateTime
+                    - status
+                    - userTimezone
+                    - visualElements
+                    - historyItems
+                type: string
+            type: array
+          style: form
+        - description: Expand related entities
+          explode: false
+          in: query
+          name: $expand
+          schema:
+            items:
+                enum:
+                    - '*'
+                    - historyItems
+                type: string
+            type: array
+          style: form
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/microsoft.graph.userActivity'
+            description: Retrieved navigation property
+        default:
+            $ref: '#/components/responses/error'
+    summary: Get activity from users
+    tags:
+        - users.userActivity
+    x-ms-docs-operation-type: operation

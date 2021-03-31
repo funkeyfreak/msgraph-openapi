@@ -1,0 +1,16 @@
+get:
+    operationId: me.getManagedAppPolicies
+    responses:
+        "200":
+            content:
+                application/json:
+                    schema:
+                        items: {}
+                        type: array
+            description: Success
+        default:
+            $ref: '#/components/responses/error'
+    summary: Invoke function getManagedAppPolicies
+    tags:
+        - me.Functions
+    x-ms-docs-operation-type: function

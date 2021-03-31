@@ -1,0 +1,28 @@
+title: location
+type: object
+properties:
+    address: {}
+    coordinates: {}
+    displayName:
+        type: string
+    locationEmailAddress:
+        type: string
+    locationType: {}
+    locationUri:
+        type: string
+    uniqueId:
+        type: string
+    uniqueIdType: {}
+example:
+    address:
+        "@odata.type": microsoft.graph.physicalAddress
+    coordinates:
+        "@odata.type": microsoft.graph.outlookGeoCoordinates
+    displayName: string
+    locationEmailAddress: string
+    locationType:
+        "@odata.type": microsoft.graph.locationType
+    locationUri: string
+    uniqueId: string
+    uniqueIdType:
+        "@odata.type": microsoft.graph.locationUniqueIdType
